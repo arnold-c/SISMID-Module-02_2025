@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.554">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Callum Arnold">
-<title>SISMID Module 2 Materials (2023) - Just Enough R</title>
+<title>SISMID Module 2 Materials (2024) - Just Enough R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -80,7 +80,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -89,6 +95,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -105,25 +112,25 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./exercise-requirements.html">Pre-Requisites</a></li><li class="breadcrumb-item"><a href="./just-enough-r.html">Just Enough R</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./exercise-requirements.html">Pre-Requisites</a></li><li class="breadcrumb-item"><a href="./just-enough-r.html">Just Enough R</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="././images/sismid2023-logo-green.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">SISMID Module 2 Materials (2023)</a> 
+      <a href="./">SISMID Module 2 Materials (2024)</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/arnold-c/SISMID-Module-02_2023" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/arnold-c/SISMID-Module-02_2023" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -300,7 +307,7 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
 </li>
     </ul>
 </div>
-</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Page Items</h2>
@@ -364,10 +371,10 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
   <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><code>%*%</code></a></li>
   </ul>
 </li>
-  </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/arnold-c/SISMID-Module-02_2023/edit/main/just-enough-r.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/arnold-c/SISMID-Module-02_2023/edit/main/just-enough-r.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./exercise-requirements.html">Pre-Requisites</a></li><li class="breadcrumb-item"><a href="./just-enough-r.html">Just Enough R</a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Just Enough R</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
@@ -379,12 +386,12 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
     <div class="quarto-title-meta-contents">
     <p class="author"><a href="https://callumarnold.com">Callum Arnold</a> <a href="https://orcid.org/0000-0002-3245-6956" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
   </div>
-    <div class="quarto-title-meta-contents">
+  <div class="quarto-title-meta-contents">
         <p class="affiliation">
             Pennsylvania State University
           </p>
       </div>
-    </div>
+  </div>
 
 <div class="quarto-title-meta">
 
@@ -393,6 +400,7 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
     
   </div>
   
+
 
 </header><p>The purpose of this section is to get you up-to-speed with <code>R</code>. If you’re completely unfamiliar with <code>R</code> and RStudio, this should provide you with enough to get started and understand what’s going on in the code (and you can always refer back to this page if you understandably get a little lost), and if you have some experience, then it should provide a sufficient description of the packages and functions that we use in this workshop.</p>
 <p>Now you have <code>R</code> set installed and you can access it and are familiar with RStudio, it’s time to learn some of the core features of the language.</p>
@@ -414,7 +422,7 @@ Tip
 <p>An object is anything you can create in R using code, whether that is a table you import from a <strong>csv</strong> file (that will get converted to a <strong>dataframe</strong>), or a <strong>vector</strong> you create within a script. Each object you create has a <strong>type</strong>. We’ve already mentioned two (<strong>dataframes</strong> and <strong>vectors</strong>), but there are plenty more. But before we get into object types, let’s take a step back and look at types in general, thinking about individual elements and the fundamentals.</p>
 </section><section id="element-types" class="level2"><h2 class="anchored" data-anchor-id="element-types">Element types</h2>
 <p>Generally in programming, we have two broad types of numbers: <strong>floating point</strong> and <strong>integer</strong> numbers, i.e., numbers with decimals, and whole numbers, respectively. In <code>R</code>, we have these number types, but a <strong>floating point</strong> number is called a <strong>double</strong>. The <strong>floating point</strong> number is the default type <code>R</code> assigns to number: look at the types assigned when we leave off a decimal place vs.&nbsp;specify type integer by ending a number with an <code>L</code>.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-1_7fed27930183a101f2ded636ef2e8eff">
+<div class="cell">
 <div class="sourceCode" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>[1] "double"</code></pre>
@@ -455,22 +463,22 @@ Note
 <div class="callout-body-container callout-body">
 <p><code>R</code> has some idiosyncrasies when it comes to numbers. For the most part, <strong>doubles</strong> are produced, but occasionally an <strong>integer</strong> will be produced when you are expecting a <strong>double</strong>.</p>
 <p>For example:</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-2_41796d08f8df336964873ea5e4d862ce">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode" id="cb5" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "double"</code></pre>
+<pre data-code-line-numbers=""><code>[1] "double"</code></pre>
 </div>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "integer"</code></pre>
+<pre data-code-line-numbers=""><code>[1] "integer"</code></pre>
 </div>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "integer"</code></pre>
+<pre data-code-line-numbers=""><code>[1] "integer"</code></pre>
 </div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "double"</code></pre>
+<pre data-code-line-numbers=""><code>[1] "double"</code></pre>
 </div>
 </div>
 </div>
@@ -478,7 +486,7 @@ Note
 </div>
 <p>Outside of numbers, we have <strong>characters</strong> (<strong>strings</strong>) and <strong>boolean</strong> types.</p>
 <p>A <strong>boolean</strong> (also known as a <strong>logical</strong> in <code>R</code>) is a <code>TRUE/FALSE</code> statement. In <code>R</code>, as in many programming languages, <code>TRUE</code> is equal to a value of 1, and <code>FALSE</code> equals <code>0</code>. There are times when this comes in handy e.g.&nbsp;you need to calculate the number of people that responded to a question, and their responses is coded as <code>TRUE/FALSE</code>, you can just sum the <strong>vector</strong> of responses (more on <strong>vectors</strong> shortly).</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-3_a260ce38415c7548dfd3be1a2c27e5f4">
+<div class="cell">
 <div class="sourceCode" id="cb13" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="cn">TRUE</span> <span class="op">==</span> <span class="fl">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>[1] TRUE</code></pre>
@@ -502,7 +510,7 @@ Question
 </div>
 </div>
 <p>A <strong>character</strong> is anything in quotation marks. This would typically by letter, but is occasionally a number, or other symbol. Other languages make a distinction between <strong>characters</strong> and <strong>strings</strong>, but not <code>R</code>.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-4_be4bf4338971c35e59507993d709fdba">
+<div class="cell">
 <div class="sourceCode" id="cb17" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>[1] "character"</code></pre>
@@ -513,7 +521,7 @@ Question
 </div>
 </div>
 <p>It is important to note that characters are not <strong>parsed</strong> i.e., they are not interpreted by <code>R</code> as anything other than a <strong>character</strong>. This means that despite <code>"1"</code> looking like the number <code>1</code>, it behaves like a <strong>character</strong> in <code>R</code>, not a <strong>double</strong>, so we can’t do addition etc. with it.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-5_2db7db9777b11706eb78b768690eaec6">
+<div class="cell">
 <div class="sourceCode" id="cb21" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="st">"1"</span> <span class="op">+</span> <span class="fl">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre data-code-line-numbers=""><code>Error in "1" + 1: non-numeric argument to binary operator</code></pre>
@@ -522,7 +530,7 @@ Question
 </section><section id="object-types" class="level2"><h2 class="anchored" data-anchor-id="object-types">Object types</h2>
 <section id="vectors" class="level3"><h3 class="anchored" data-anchor-id="vectors">Vectors</h3>
 <p>As mentioned, anything you can create in <code>R</code> is an object. For example, we can create an character object with the assignment operator (<code>&lt;-</code>).</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-6_e4f4cbf1237f4932b0c02edc7b0f988b">
+<div class="cell">
 <div class="sourceCode" id="cb23" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_char_obj</span> <span class="op">&lt;-</span> <span class="st">"a"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -542,25 +550,25 @@ Note
 </div>
 </div>
 <p>You will note that when we created our object, it did not return a value (unlike the previous examples, a value was not printed). To retrieve the value of the object (in this case, just print it), we just type out the object name.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-7_ea273eb546b35969ea6a505cbebe991a">
+<div class="cell">
 <div class="sourceCode" id="cb24" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_char_obj</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>[1] "a"</code></pre>
 </div>
 </div>
 <p>In this case, we just create an object with only one element. We can check this using the <code><a href="https://rdrr.io/r/base/length.html">length()</a></code> function.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-8_634df407247be4774097dbd6cdcc9abd">
+<div class="cell">
 <div class="sourceCode" id="cb26" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">my_char_obj</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>[1] 1</code></pre>
 </div>
 </div>
 <p>We could also create an <strong>atomic vector</strong> (commonly just called a <strong>vector</strong>, which we’ll use from here-on in). In fact, <code>my_char_obj</code> is actually an <strong>vector</strong>, i.e., it is a vector of length 1, as we’ve just seen. Generally, a <strong>vector</strong> is an object that contains multiple elements that each have the same type.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-9_323d40e1fdfecafb900a6b6c8a78b727">
+<div class="cell">
 <div class="sourceCode" id="cb28" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_char_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>As we’ll see in the example below, we can give each element in a <strong>vector</strong> a name, and to highlight that vectors must contain elements of the same type, watch what happens here.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-10_80d8254a841b36eb3738bfa2c9b741f2">
+<div class="cell">
 <div class="sourceCode" id="cb29" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_named_char_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>a <span class="op">=</span> <span class="st">"a"</span>, b <span class="op">=</span> <span class="st">"b"</span>, c <span class="op">=</span> <span class="st">"c"</span>, d <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">my_named_char_vec</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -578,7 +586,7 @@ Note
 <p>A <strong>factor</strong> is a <strong>vector</strong> where there are distinct groups that exist within a <strong>vector</strong> i.e., they are <em>nominal categorical data</em>. For example, we often include gender as a covariate in epidemiological analysis. There is no intrinsic order, but we would want to account for the groups in the analysis.</p>
 <p>An <strong>ordered vector</strong> is when there <em>is</em> an intrinsic order to the grouping i.e., we have <em>ordinal categorical data</em>. If, for example, we were interested in how the frequency of cigarette smoking is related to an outcome, and we wanted to use <em>binned</em> groups, rather than treating it as a continuous value, we would want to create an <strong>ordered vector</strong> as the ordering of the different groupings is important.</p>
 <p>Let’s use the <code>mtcars</code> dataset (that comes installed with <code>R</code>), and turn the number of cylinders (<code>cyl</code>) into an <strong>ordered vector</strong>, as there are discrete numbers of cylinders a car engine can have, <em>and</em> the ordering matters. Don’t worry about what <code>$</code> is doing; we’ll come to that <a href="#indexing-objects">later</a></p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-11_184804b7a4ce842b1e338926329331ec">
+<div class="cell">
 <div class="sourceCode" id="cb33" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_mtcars</span> <span class="op">&lt;-</span> <span class="va">mtcars</span></span>
 <span><span class="va">my_mtcars</span><span class="op">$</span><span class="va">cyl</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -592,7 +600,7 @@ Levels: 4 &lt; 6 &lt; 8</code></pre>
 </div>
 </div>
 <p>If we wanted to directly specify the ordering of the groups, we can do this using the <code>levels</code> argument i.e.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-12_0f5fae6d8a790f53dcc96cbc7cfb6d29">
+<div class="cell">
 <div class="sourceCode" id="cb37" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_mtcars</span><span class="op">$</span><span class="va">cyl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">ordered</a></span><span class="op">(</span><span class="va">my_mtcars</span><span class="op">$</span><span class="va">cyl</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">6</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">my_mtcars</span><span class="op">$</span><span class="va">cyl</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -604,7 +612,7 @@ Levels: 8 &lt; 6 &lt; 4</code></pre>
 </section></section><section id="lists" class="level3"><h3 class="anchored" data-anchor-id="lists">Lists</h3>
 <p>There is another type of <strong>vector</strong>: the <strong>list</strong>. Most people do not refer to <strong>lists</strong> as type of <strong>vectors</strong>, so we will only refer to them as <strong>lists</strong>, and <strong>atomic vectors</strong> will just be referred to as <strong>vectors</strong>.</p>
 <p>Unlike <strong>vectors</strong> there are no requirements about the form of <strong>lists</strong> i.e., each element of the <strong>list</strong> can be completely different. One element could store a <strong>vector</strong> of numbers, another a model object, another a <strong>dataframe</strong>, and another a <strong>list</strong> (i.e.&nbsp;a nested <strong>list</strong>).</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-13_e471ccd05bf90d039e55759ac6fce060">
+<div class="cell">
 <div class="sourceCode" id="cb39" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span>,</span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">ordered</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op">+</span> <span class="va">disp</span> <span class="op">+</span> <span class="va">hp</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span>,</span>
@@ -686,7 +694,7 @@ Note
 </section><section id="dataframes" class="level3"><h3 class="anchored" data-anchor-id="dataframes">Dataframes</h3>
 <p><strong>Dataframes</strong> are the last key object type to learn about. A <strong>dataframe</strong> is technically a special type of list. Effectively, it is a 2-D table where every column has to have elements of the same type (i.e., is a <strong>vector</strong>), but the columns can be different types to each other. The other important restriction is that all columns must be the same length, i.e.&nbsp;we have a rectangular <strong>dataframe</strong>.</p>
 <p>As we’ve seen before, we can create a dataframe using this code, where <code>1:5</code> is shorthand for a vector that contains the sequence of numbers from 1 to 5, inclusive (i.e., <code>c(1, 2, 3, 4, 5)</code>). We could also write this sequence as <code>seq(1, 5, by = 1)</code>, allowing us more control over the steps in the sequence.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-14_f4e7ab79b029bea049ecd7dd5a9a5409">
+<div class="cell">
 <div class="sourceCode" id="cb43" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_dataframe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>    column_int <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,</span>
 <span>    column_dbl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">10</span>, <span class="fl">1</span><span class="op">)</span>,</span>
@@ -694,7 +702,7 @@ Note
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Like with every other object type, we can just type in the <strong>dataframe’s</strong> name to return it’s value, but this tim, let’ explore the <em>structure</em> of the <strong>dataframe</strong> using the <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> function. This function can be used on any of the objects we’ve seen so far, and is particularly helpful when exploring <strong>lists</strong>. One nice feature of <strong>dataframes</strong> is that it will explicitly print the columns types.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-15_20f1ec8f6653ce108a4ff12e77ac5699">
+<div class="cell">
 <div class="sourceCode" id="cb44" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">my_dataframe</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>'data.frame':   5 obs. of  3 variables:
@@ -706,7 +714,7 @@ Note
 </section><section id="matrices" class="level3"><h3 class="anchored" data-anchor-id="matrices">Matrices</h3>
 <p><strong>Matrices</strong> are crucial to many scientific fields, including epidemiology, as they are the basis of linear algebra. This course will use <strong>matrix</strong> multiplication extensively (notably <a href="./r-session-02.html">R Session 2</a>), so it is worth knowing how to create matrices.</p>
 <p>Much like vectors, all elements in a <strong>matrix</strong> should be the same type (or they will be coerced if possible, resulting in <code>NA</code> if not). It is unusual to have a <strong>non-numeric matrix</strong> e.g., a <strong>character matrix</strong>, but it is possible. When we create our <strong>matrix</strong>, notice that it fills column-first, much like how we think of <strong>matrices</strong> in math (i.e., <code>i</code> then <code>j</code>).</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-16_e38bb6219c44346a471633a7d4c619f6">
+<div class="cell">
 <div class="sourceCode" id="cb46" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">8</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">my_matrix</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -729,7 +737,7 @@ Note
 <p>Which method we use depends on the type of object we have. Handily, <code>[]</code> will work for pretty much everything, and we typically only use use <code>[[]]</code> for <strong>lists</strong>.</p>
 </section><section id="indexing-vectors" class="level3"><h3 class="anchored" data-anchor-id="indexing-vectors">Indexing vectors</h3>
 <p>With both <code>[]</code> and <code>[[]]</code>, we can use the <em>indices</em> i.e., the numbered position of the specific values/elements we want to extract, but if we have named objects, we can pass the names to the <code>[]</code> in a <strong>vector</strong>.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-17_7a0d1e0ab6bdd4468f2d85908e525d68">
+<div class="cell">
 <div class="sourceCode" id="cb48" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Extract elements 1 through 3 inclusively</span></span>
 <span><span class="va">my_char_vec</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -743,7 +751,7 @@ Note
 </div>
 </div>
 <p>Notice that when we index the named <strong>vector</strong> we get <em>both</em> the name <em>and</em> the value returned. Many times this is OK, but if we only wanted the value, then you’d index with <code>[[]]</code>, but it is important to note that you can only pass <em>one</em> value to the brackets.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-18_fa86ce8df0ba9688c9a322db7ec64ac0">
+<div class="cell">
 <div class="sourceCode" id="cb52" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_named_char_vec</span><span class="op">[[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">]</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre data-code-line-numbers=""><code>Error in my_named_char_vec[[c("a", "b")]]: attempt to select more than one element in vectorIndex</code></pre>
@@ -756,7 +764,7 @@ Note
 <p>If you’re wondering why go through the hassle, it’s because values can change position in the list when we update inputs, such as <strong>csv</strong> datafiles, or needing to restructure code to make something else work. If we only index with the numeric indices, we run the risk of a silent error being returned i.e., a value is provided to us, but we don’t know that it’s referring to the wrong thing. Indexing with names mean that the element’s position in the <strong>vector</strong> doesn’t matter, and if it’s accidentally been removed when we updated code, and error will be explicitly thrown as it won’t be able to find the index.</p>
 </section><section id="lists-and-dataframes" class="level3"><h3 class="anchored" data-anchor-id="lists-and-dataframes">Lists and Dataframes</h3>
 <p>When it comes to indexing <strong>lists</strong> and <strong>dataframes</strong> (remember, <strong>dataframes</strong> are just special <strong>lists</strong>, so the same methods are available to us), it is more common to use <code>[[]]</code> and <code>$</code>, though there are obviously occasions when <code>[]</code> is useful. Let’s look at <code>my_named_list</code> first.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-19_4cb8f04dd72035ec1c952f15e889de9c">
+<div class="cell">
 <div class="sourceCode" id="cb56" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_named_list</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>$my_vec
@@ -794,7 +802,7 @@ Note
 </div>
 </div>
 <p>We can do the same with the unnamed <strong>list</strong>, except the last two methods are not available as we do not have a name to use.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-20_f21f74bf7d07087b4aa3f3bc3bfd1c8e">
+<div class="cell">
 <div class="sourceCode" id="cb66" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_list</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>[[1]]
@@ -806,7 +814,7 @@ Note
 </div>
 </div>
 <p>Because a <strong>dataframe</strong> is a type of list where the column headers are the element names, we can use <code>[[]]</code> and <code>$</code> as with the named list.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-21_3491ad3176712148ba70b78b7082071f">
+<div class="cell">
 <div class="sourceCode" id="cb70" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_dataframe</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>data.frame [5, 1]
@@ -827,7 +835,7 @@ column_int int 1 2 3 4 5</code></pre>
 </div>
 </div>
 <p>If we wanted to extract a particular value from a column, we can use the following methods.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-22_55ec8f25c7f5c1bb6b4e16532d103711">
+<div class="cell">
 <div class="sourceCode" id="cb78" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># indexes i then j, just like in math</span></span>
 <span><span class="va">my_dataframe</span><span class="op">[</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -857,7 +865,7 @@ column_int int 1 2 3 4 5</code></pre>
 <p>To find packages, you can go to the CRAN website and search by name, but there are far too many for that to be worthwhile - just Google what you want to do and add “r” to the end of your search query, and you’ll likely find what you’re looking for. Once you’ve found a package you want to download, next you need to install it.</p>
 </section><section id="installing-packages" class="level3"><h3 class="anchored" data-anchor-id="installing-packages">Installing packages</h3>
 <p>Barring any super-niche packages, you should be able to use the following command(s):</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-23_28099d379e21efb6c60f422bf5669dcd">
+<div class="cell">
 <div class="sourceCode" id="cb86" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"package to download"</span><span class="op">)</span></span>
 <span><span class="co"># Download multiple by passing a vector of package names</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"package 1"</span>, <span class="st">"package 2"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -865,14 +873,14 @@ column_int int 1 2 3 4 5</code></pre>
 <p>If for some reason you get an error message saying the package isn’t available on CRAN, first, check for typos, and if you still get an error, you may need to download it directly from GitHub. Read <a href="https://pak.r-lib.org/dev/reference/get-started.html#install-a-package-from-github">here</a> for more information about using the <a href="https://pak.r-lib.org/">pak</a> package to download packages from other sources.</p>
 </section><section id="loading-packages" class="level3 page-columns page-full"><h3 class="anchored" data-anchor-id="loading-packages">Loading packages</h3>
 <p>Now you have your packages installed, you just need to load them to get any of their functionality. The easiest way is to place this code at the top of your script.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-24_0660e0d2cc7d119e240d37c4dc6a7dae">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb87" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Quotations are not required, but can be used</span></span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(package to download)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><a id="namespace-conflict"></a></p>
 <p>Most of the time, this is fine, but occasionally you will run in to an issue where a function doesn’t work as expected. Sometimes this is because of what’s called a <em>namespace conflict</em> i.e., you have two functions with the same name loaded, and potentially you’re using the wrong verion.</p>
 <p>For example, in base <code>R</code> (i.e, these functions come pre-installed when you set up <code>R</code>), there is a <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function from the <code>{stats}</code> package (as mentioned, we’ll denote this as <code><a href="https://rdrr.io/r/stats/filter.html">stats::filter()</a></code>). Throughout this workshop, you will see <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> at the top of the pages to indicate the <a href="https://tidyverse.tidyverse.org">tidyverse</a> set of packages are being loaded (this is actually a package that installs a bunch of related and useful packages for us). In <a href="https://dplyr.tidyverse.org">dplyr</a> (one of the packages loaded by <a href="https://tidyverse.tidyverse.org">tidyverse</a>) there is also a function called <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>. Because <a href="https://dplyr.tidyverse.org">dplyr</a> was loaded after <code>{stats}</code> was loaded (because <code>{stats}</code> is automatically loaded when <code>R</code> is started), the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">dplyr::filter()</a></code> function will take precedence. If we wanted to specifically use the <code>{stats}</code> version, we could write this:</p>
-<div class="cell page-columns page-full" data-hash="just-enough-r_cache/html/unnamed-chunk-25_510eb78d362840f219abf605168ae8a8">
+<div class="cell page-columns page-full">
 <div class="sourceCode" id="cb88" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Set the seed for the document so we get the same random numbers sampled</span></span>
 <span><span class="co"># each time we run the script (assuming it's run in its entirety from start</span></span>
 <span><span class="co"># to finish)</span></span>
@@ -889,13 +897,16 @@ column_int int 1 2 3 4 5</code></pre>
 <span></span>
 <span><span class="co"># Overlay smoothed data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">smooth_timeseries</span>, col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display column-body">
-<p><img src="just-enough-r_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" style="width:100.0%"></p>
+<div class="cell-output-display page-columns page-full">
+<div class="page-columns page-full">
+<figure class="figure page-columns page-full"><p class="page-columns page-full"><img src="just-enough-r_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img column-body" style="width:100.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 </section></section><section id="functions" class="level2"><h2 class="anchored" data-anchor-id="functions">Functions</h2>
 <p>As we’ve alluded to, <strong>functions</strong> are core to gaining <em>functionality</em> in <code>R</code>. We can always hand-write the code to complete a task, but if we have to repeat a task more than once, it can be tiresome to repeat the same code, particularly if it is a particularly complex task that requires many lines of code. This is where <strong>functions</strong> come in: they provide us with a mechanism to wrap up code into something that can be re-used. Not only does this reduce the amount of code we need to write, but by minimize code duplication, debugging becomes a lot easier as we only need to remember to make changes and correct one section of our codebase. Say, for example, you want to take a vector of numbers and calculate the cumulative sum e.g.;</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-26_26627b60a12d701a6f88407c8730170e">
+<div class="cell">
 <div class="sourceCode" id="cb89" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_dbl_vec</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span></span>
 <span><span class="va">cumulative_sum</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
@@ -910,7 +921,7 @@ column_int int 1 2 3 4 5</code></pre>
 </div>
 </div>
 <p>This is OK if we only do this calculation once, but it’s easy to imagine us wanting to repeat this calculation; for example, we might use calculate the cumulative sum of daily cases to get a weekly incidence over every week of a year. In this situation, we would want to create a function.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-27_976e0f96655762ae6ae7d908499b32bd">
+<div class="cell">
 <div class="sourceCode" id="cb91" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_cumsum</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">vector</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="va">cumulative_sum</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
 <span></span>
@@ -946,7 +957,7 @@ Note
 <section id="anonymous-functions" class="level3"><h3 class="anchored" data-anchor-id="anonymous-functions">Anonymous functions</h3>
 <p>There is a special class of functions called anonymous functions that are worth being aware of, as we will use them quite extensively throughout this workshop. As the name might suggest, <strong>anonymous functions</strong> are functions that are not named, and therefore, not saved for re-use. You may, understandably, be wondering why we would want to use them, given we just make the case for functions replacing repeatable blocks of code. In some instances, we want to be able to perform multiple computations that require creating intermediate objects, but because we only need to use them once, we don’t save them save to our environment, potentially causing issues with conflicts (e.g., accidentally using an object we didn’t mean to, or overwriting existing ones by re-using the same object name). This gets into the broader concept of local vs global scopes, but that is too far beyond the scope of this workshop: see <a href="https://rstudio-education.github.io/hopr/environments.html#scoping-rules">Hands-On Programming with R</a> and <a href="https://adv-r.hadley.nz/functions.html?q=lexical#lexical-scoping">Advanced R</a> for more information. Let’s look at an example to see when we might want to use an anonymous function.</p>
 <p>Throughout this workshop, we will make use of the <code>map_*()</code> series of functions from the <a href="https://purrr.tidyverse.org/">purrr</a> package. We’ll go into more detail about <code>purr::map()</code> <a href="#sec-map-functions">shortly</a>, but for now, imagine we have a <strong>vector</strong> of numbers, and we want to add <code>5</code> to each value before and multiplying by <code>10</code>. The <code><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl()</a></code> function takes a <strong>vector</strong> and a function, and outputs a <strong>double vector</strong>. We could write a function to perform this multiplication, but if we’re only going to do this operation once, it seems unnecessary.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-28_cbc4dc9b4f5f87358b0c639a59471ef3">
+<div class="cell">
 <div class="sourceCode" id="cb93" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span><span class="op">(</span></span>
 <span>    .x <span class="op">=</span> <span class="va">my_dbl_vec</span>,</span>
 <span>    .f <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="op">{</span></span>
@@ -965,7 +976,7 @@ Note
 </div>
 </div>
 <p>Here, we’ve specified the anonymous function to take the input <code>.x</code> and multiple each value by 10, and we did it without saving the function. This would be equivalent to writing this:</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-29_f97e4077203580ab6456e7f0e1ad2e23">
+<div class="cell">
 <div class="sourceCode" id="cb97" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">add_five_multiply_ten</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="va">add_five_val</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="fl">5</span></span>
 <span>    <span class="va">add_five_val</span> <span class="op">*</span> <span class="fl">10</span></span>
@@ -1010,10 +1021,10 @@ Note
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>In this example, because we are doing standard arithmetic, <code>R</code> will <strong>vectorize</strong> our function so that it can automatically be applied to each element of the object, so this example was merely to illustrate the point.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-30_15d8279f8551101dd95136e371f6931e">
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">add_five_multiply_ten</span><span class="op">(</span><span class="va">my_dbl_vec</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode" id="cb101" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">add_five_multiply_ten</span><span class="op">(</span><span class="va">my_dbl_vec</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  60  70  80  90 100 110 120 130 140 150</code></pre>
+<pre data-code-line-numbers=""><code> [1]  60  70  80  90 100 110 120 130 140 150</code></pre>
 </div>
 </div>
 </div>
@@ -1022,7 +1033,7 @@ Note
 </section></section><section id="tidy-data" class="level2"><h2 class="anchored" data-anchor-id="tidy-data">Tidy data</h2>
 <p>Before we look at the common packages and functions we use throughout this workshop, let’s take a second to talk about how our data is structured. For much of what we do, it is convenient to work with <strong>dataframes</strong>, and many functions we will use are designed to work with <em>long</em> <strong>dataframes</strong>. What this means is that each <em>column</em> represents a variable, and each row is a unique observation.</p>
 <p>Let’s first look at a <strong>wide dataframe</strong> to see how data may be represented. Here, we have one column representing a number for each of the states in the US, and then we have two columns representing some random incidence: one for July and one for August.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-31_01b08bd4273eb67d54f0f231cb704328">
+<div class="cell">
 <div class="sourceCode" id="cb103" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wide_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>    state_id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">52</span>,</span>
 <span>    july_inc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="fl">52</span>, <span class="fl">1000</span>, <span class="fl">0.4</span><span class="op">)</span>,</span>
@@ -1038,7 +1049,7 @@ aug_inc  int 613 578 604 607 603 614</code></pre>
 </div>
 </div>
 <p>Instead, we reshape this into a <strong>long dataframe</strong> so that there is a column for the state ID, a column for the month, and a column for the incidence (that is associated with <em>both</em> the state <em>and</em> the month). Using the <a href="https://tidyr.tidyverse.org">tidyr</a> package, we could reshape this <strong>wide dataframe</strong> to be a <strong>long dataframe</strong> (see <a href="#sec-pivot-functions">this section</a> for more information about the <code>pivot_*()</code> functions)</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-32_37c6c3e6972bb05f645e45b797e1c898">
+<div class="cell">
 <div class="sourceCode" id="cb105" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">long_df</span> <span class="op">&lt;-</span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
 <span>    <span class="va">wide_df</span>,</span>
 <span>    cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">july_inc</span>, <span class="va">aug_inc</span><span class="op">)</span>,</span>
@@ -1079,15 +1090,15 @@ Note
 <p>We’re finally ready to talk about the functions that are used throughout this workshop. The first package to mention is the <a href="https://tidyverse.tidyverse.org">tidyverse</a> package, which actually a collection of packages: the core packages can be found <a href="https://www.tidyverse.org/packages/">here</a>. The reason why are using the <a href="https://tidyverse.tidyverse.org">tidyverse</a> packages throughout this workshop is that they are relatively easily to learn, compared to base <code>R</code> and <a href="https://r-datatable.com">data.table</a> (not that they are mutually exclusive), and what most people are familiar with. They also are well designed and powerful, so you should be able to do most things you need using their packages.</p>
 <p>You can find a list of cheatsheets for all of these packages (and more) <a href="https://posit.co/resources/cheatsheets/?type=posit-cheatsheets&amp;_page=1/">here</a>.</p>
 <p>Let’s load the <a href="https://tidyverse.tidyverse.org">tidyverse</a> packages and then go through the key functions used. Unless stated explicitly, these packages will be available to you after loading the <a href="https://tidyverse.tidyverse.org">tidyverse</a> with the following command.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-33_522d51e3d4765de1641432283da26bd9">
+<div class="cell">
 <div class="sourceCode" id="cb109" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre data-code-line-numbers=""><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.2     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.2     ✔ tibble    3.2.1
-✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-✔ purrr     1.0.1     
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -1099,7 +1110,7 @@ Note
 </section><section id="dplyrfilter" class="level3"><h3 class="anchored" data-anchor-id="dplyrfilter"><code>dplyr::filter()</code></h3>
 <p>If we wanted to take a subset of rows of a <strong>dataframe</strong>, we would use the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">dplyr::filter()</a></code> function. Here, we’re listing the package it’s coming from, as there are some other packages that also export their own version of the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function. However, for all the code in this workshop, there aren’t any concerns about <a href="#namespace-conflict"><strong>namespace conflicts</strong></a>, so we won’t use it from here on in.</p>
 <p>The <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function is relatively simple to work with: you specify the <strong>dataframe</strong> variable you want to subset by, the filtering criteria, and that’s it. If we include multiple arguments, they get treated as <em>AND</em> statements (<code>&amp;</code>), so all conditions need to be met.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-34_f413472e322ec48ff1958d64e9940a17">
+<div class="cell">
 <div class="sourceCode" id="cb111" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span></span>
 <span>    <span class="va">long_df</span>,</span>
 <span>    <span class="va">month</span> <span class="op">==</span> <span class="st">"july"</span>,</span>
@@ -1114,7 +1125,7 @@ incidence int 422 421 422 426 441 417</code></pre>
 </div>
 </div>
 <p>We can filter using <em>OR</em> statements (<code>|</code>), so if either condition returns <code>TRUE</code>, then it will be included in the subset.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-35_476d8cb536331d4c1ad89f84a020a8f0">
+<div class="cell">
 <div class="sourceCode" id="cb113" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span></span>
 <span>    <span class="va">long_df</span>,</span>
 <span>    <span class="va">month</span> <span class="op">==</span> <span class="st">"july"</span> <span class="op">|</span> <span class="va">incidence</span> <span class="op">&gt;</span> <span class="fl">600</span></span>
@@ -1129,7 +1140,7 @@ incidence int 399 613 409 381 604 381</code></pre>
 </section><section id="select" class="level3"><h3 class="anchored" data-anchor-id="select"><code>select()</code></h3>
 <p>If, instead, we wanted to subset of columns of a <strong>dataframe</strong>, we would use the <code><a href="https://dplyr.tidyverse.org/reference/select.html">dplyr::select()</a></code> function.</p>
 <p>Let’s say, from our wide incidence data, we only want the state’s ID and their August incidence. We can directly select the columns this way.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-36_170484a0523e17a58ddf455fb66f4819">
+<div class="cell">
 <div class="sourceCode" id="cb115" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span></span>
 <span>    <span class="va">wide_df</span>,</span>
 <span>    <span class="va">state_id</span>, <span class="va">aug_inc</span></span>
@@ -1141,7 +1152,7 @@ aug_inc  int 613 578 604 607 603 614</code></pre>
 </div>
 </div>
 <p>But in this case, it would be more efficient (for us) to tell <code>R</code> the columns we <em>don’t</em> want. We can do that using the <code>-</code> sign.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-37_3c5bb0aa8b195a9e9910a4eb02f5b554">
+<div class="cell">
 <div class="sourceCode" id="cb117" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span></span>
 <span>    <span class="va">wide_df</span>,</span>
 <span>    <span class="op">-</span><span class="va">july_inc</span></span>
@@ -1153,7 +1164,7 @@ aug_inc  int 613 578 604 607 603 614</code></pre>
 </div>
 </div>
 <p>If there were multiple columns we didn’t want, we would pass them in a vector.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-38_cbb3c396aba27a3d3ee379d37461399f">
+<div class="cell">
 <div class="sourceCode" id="cb119" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span></span>
 <span>    <span class="va">wide_df</span>,</span>
 <span>    <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">july_inc</span>, <span class="va">aug_inc</span><span class="op">)</span></span>
@@ -1166,7 +1177,7 @@ state_id int 1 2 3 4 5 6</code></pre>
 <p>When it comes to selecting columns, the <a href="https://tidyselect.r-lib.org">tidyselect</a> package has a few very handy functions for us. To understand when they are most useful, let’s first look at the <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function, and then we’ll highlight how to use the different column selection functions available to use through <a href="https://tidyselect.r-lib.org">tidyselect</a>.</p>
 </section><section id="mutate" class="level3"><h3 class="anchored" data-anchor-id="mutate"><code>mutate()</code></h3>
 <p>If we have a <strong>dataframe</strong> and want to add or edit a column, we use the <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function. Usually the <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function is used to add a column that is related to the existing data, but it is not necessary. Below are examples of both.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-39_698772ffd2579d9dadd1987b4433ddbb">
+<div class="cell">
 <div class="sourceCode" id="cb121" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># add September incidence that is based on August incidence</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    <span class="va">wide_df</span>,</span>
@@ -1193,7 +1204,7 @@ sep_inc  int 702 722 711 709 684 682</code></pre>
 </div>
 </div>
 <p>If we wanted to update a column, we can do that by specifying the column on both sides of the equals sign.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-40_fc6a42090880d956ff173614e4c32210">
+<div class="cell">
 <div class="sourceCode" id="cb125" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Update the August incidence to add random noise</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    <span class="va">wide_df</span>,</span>
@@ -1209,7 +1220,7 @@ aug_inc  dbl 609 587 614 616 577 605</code></pre>
 <p>One crucial thing to note is that <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> applies our function/operation to each row simultaneously, so the new column’s value only depends on the <em>row’s</em> original values (or the vector in the case of the second example that didn’t use the values from the data).</p>
 </section><section id="paste0" class="level3"><h3 class="anchored" data-anchor-id="paste0"><code>paste0()</code></h3>
 <p>The <code><a href="https://rdrr.io/r/base/paste.html">paste0()</a></code> function is useful for manipulating objects and coercing them into string, allowing us to do <em>string interpolation</em>. It comes installed with base <code>R</code>, so there’s nothing to install, and because of the way <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> works, apply functions to each row simultaneously, we can modify whole columns at once, depending on the row’s original values. It works to <em>squish</em> all the values together, without any separators by default. If you wanted spaces between your words, for example, you can use the <code>paste(..., sep = " ")</code> function, which takes the <code>sep</code> argument.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-41_cc10701ac9544489a820dfa3f8de6f2f">
+<div class="cell">
 <div class="sourceCode" id="cb127" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">char_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    <span class="va">long_df</span>,</span>
 <span>    <span class="co"># Notice that text is in commas, and object values being passed to paste0()</span></span>
@@ -1226,8 +1237,8 @@ incidence int 399 613 409 578 381 604</code></pre>
 </div>
 </div>
 </section><section id="sec-glue" class="level3"><h3 class="anchored" data-anchor-id="sec-glue"><code>glue::glue()</code></h3>
-<p><code>glue()</code> is a function that comes installed with <a href="https://tidyverse.tidyverse.org">tidyverse</a>, but is not loaded automatically, so you have to reference it explicitly by either using <code><a href="https://github.com/tidyverse/glue">library(glue)</a></code> or the <code>::</code> notation shown below. It serves the same purpose as the base <code><a href="https://rdrr.io/r/base/paste.html">paste0()</a></code>, but in a slightly different syntax. Instead of using a mix of quotations and unquoted object names, <code>glue()</code> requires everything to be in quotation marks, with any value being passed to the <em>string interpolation</em> being <em>enclosed</em> in <code><a href="https://rdrr.io/r/base/Paren.html">{ }</a></code>. It is worth learning <code>glue()</code> as it is used throughout the <a href="https://tidyverse.tidyverse.org">tidyverse</a> packages, such as in the <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> function.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-42_aadbe1b7914455d85bbb47b233c76510">
+<p><code>glue()</code> is a function that comes installed with <a href="https://tidyverse.tidyverse.org">tidyverse</a>, but is not loaded automatically, so you have to reference it explicitly by either using <code><a href="https://glue.tidyverse.org/">library(glue)</a></code> or the <code>::</code> notation shown below. It serves the same purpose as the base <code><a href="https://rdrr.io/r/base/paste.html">paste0()</a></code>, but in a slightly different syntax. Instead of using a mix of quotations and unquoted object names, <code>glue()</code> requires everything to be in quotation marks, with any value being passed to the <em>string interpolation</em> being <em>enclosed</em> in <code><a href="https://rdrr.io/r/base/Paren.html">{ }</a></code>. It is worth learning <code>glue()</code> as it is used throughout the <a href="https://tidyverse.tidyverse.org">tidyverse</a> packages, such as in the <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> function.</p>
+<div class="cell">
 <div class="sourceCode" id="cb129" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">char_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    <span class="va">long_df</span>,</span>
 <span>    state_id <span class="op">=</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">"state_{state_id}"</span><span class="op">)</span></span>
@@ -1243,7 +1254,7 @@ incidence int 399 613 409 578 381 604</code></pre>
 </div>
 </section><section id="str_replace_all" class="level3"><h3 class="anchored" data-anchor-id="str_replace_all"><code>str_replace_all()</code></h3>
 <p>If we want to replace characters throughout the whole of a string vector, we can do that with the <code><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all()</a></code> function. And because <strong>dataframes</strong> are made up of individual <strong>vectors</strong>, we can use this to modify vectors.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-43_e3b348bdb39777f32bcef09f2113e495">
+<div class="cell">
 <div class="sourceCode" id="cb131" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    <span class="va">char_df</span>,</span>
 <span>    <span class="co"># pass in the vector (a column, here), the pattern to remove, and the replacement</span></span>
@@ -1267,7 +1278,7 @@ clean_state_id chr 1 1 2 2 3 3</code></pre>
 <li>
 <code>~</code> is required to pass arguments into the function. In this case it is an anonymous function using the <a href="#sec-map-functions"><code>map_*()</code> syntax</a>.</li>
 </ul>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-44_0e3f2f8500dd5ca88b588cb10eac9387">
+<div class="cell">
 <div class="sourceCode" id="cb133" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    <span class="va">wide_df</span>,</span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span></span>
@@ -1286,7 +1297,7 @@ aug_inc  dbl 143.033333 134.866667 140.933333 141.633333 140.7 143.266667</code>
 <p>If we wanted to select every column in a dataframe, we would use the <code><a href="https://tidyselect.r-lib.org/reference/everything.html">everything()</a></code> function. This may not seem helpful initially, but there are occasions when it’s very useful. For instance, in the previous example we still specified the exact columns we wanted to transform. However, if there were five times as many, we wouldn’t want to do that. Do note that if we replaced this with <code><a href="https://tidyselect.r-lib.org/reference/everything.html">everything()</a></code>, we would also <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> our <code>state_id</code> column, which we probably don’t want to do, so we could combine it with the <code>-</code> selection seen previously.</p>
 </section><section id="contains" class="level3"><h3 class="anchored" data-anchor-id="contains"><code>contains()</code></h3>
 <p>Another very handy function is the <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">tidyselect::contains()</a></code> function. This allows us to specify a string that the column names must <em>contain</em> for them to be selected. We could change the above example to look like this:</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-45_d506e68fabd2708f3f51f857b10ff38e">
+<div class="cell">
 <div class="sourceCode" id="cb135" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    <span class="va">wide_df</span>,</span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span></span>
@@ -1303,7 +1314,7 @@ aug_inc  dbl 143.033333 134.866667 140.933333 141.633333 140.7 143.266667</code>
 </div>
 </section><section id="rename_with" class="level3"><h3 class="anchored" data-anchor-id="rename_with"><code>rename_with()</code></h3>
 <p>If we wanted to rename columns of a <strong>dataframe</strong>, we can use the <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code> function. However, like the previous <a href="https://tidyselect.r-lib.org">tidyselect</a> examples, sometimes we want to apply the same renaming scheme (function) to the columns. <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename_with()</a></code> allows us to pass a function to multiple columns at once, achieving what we want with minimal effort, and without needing to use <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code>.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-46_511e38cfd329a2a3d21feac7369826b1">
+<div class="cell">
 <div class="sourceCode" id="cb137" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename_with</a></span><span class="op">(</span></span>
 <span>    <span class="va">wide_df</span>,</span>
 <span>    .cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"_inc"</span><span class="op">)</span>,</span>
@@ -1331,7 +1342,7 @@ Important
 </div>
 </section><section id="magrittr" class="level3"><h3 class="anchored" data-anchor-id="magrittr"><code>magrittr::%&gt;%</code></h3>
 <p>The <code>%&gt;%</code> operator is an interesting and very useful function that comes installed (and loaded) with the <a href="https://tidyverse.tidyverse.org">tidyverse</a> package (technically from the <a href="https://magrittr.tidyverse.org">magrittr</a> package from within the <a href="https://tidyverse.tidyverse.org">tidyverse</a>). It allows us to chain together operations without needing to create intermediate objects. Say for example we have our wide incidence data and want to add data for September before turning it into a <strong>long dataframe</strong>, we could create and intermediate object before using the <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> function from before, but we might not want to create another object that we don’t really care about. This is when we would want to use a pipe, as it takes the output of one operation and <em>pipes</em> it into the next one.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-47_23aa1abebd37970532239c89dbf8b63c">
+<div class="cell">
 <div class="sourceCode" id="cb139" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    <span class="va">wide_df</span>,</span>
 <span>    sep_inc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">aug_inc</span> <span class="op">*</span> <span class="fl">1.2</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">52</span>, <span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
@@ -1355,7 +1366,7 @@ incidence dbl 399 613 725 409 578 685</code></pre>
 <p>In <code>R</code> version 4.1.0, the <code>|&gt;</code> was added as the base pipe operator. It works slightly differently to <code>%&gt;%</code>, and frankly, is less powerful and less common (at the moment), so we won’t use it in this workshop.</p>
 </section><section id="group_by" class="level3"><h3 class="anchored" data-anchor-id="group_by"><code>group_by()</code></h3>
 <p>If we have groups in our <strong>dataframe</strong> and want to apply some function to each group’s data, we can use the <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> function. For example, if we wanted to calculate the mean and median incidence in our fake data from earlier, but group it by the month.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-48_b3482532c2f48eb8c5e7a6e2b8597d90">
+<div class="cell">
 <div class="sourceCode" id="cb141" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">long_df</span>, <span class="va">month</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">incidence</span><span class="op">)</span>, median <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">incidence</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1367,7 +1378,7 @@ median dbl 600.5 398</code></pre>
 </div>
 </section><section id="sec-pivot-functions" class="level3"><h3 class="anchored" data-anchor-id="sec-pivot-functions"><code>pivot_*()</code></h3>
 <p>We’ve <a href="#tidy-data">already seen</a> the purpose of the <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> function: taking wide data and reshaping it to be long. There is an equivalent to go from long to wide: <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code>. Occassionally this is useful (though it is less common than creating long data).</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-49_6bd25d253633bbd5ad6f126b5a6b7a06">
+<div class="cell">
 <div class="sourceCode" id="cb143" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
 <span>    <span class="va">long_df</span>,</span>
 <span>    names_from <span class="op">=</span> <span class="va">month</span>,</span>
@@ -1386,7 +1397,7 @@ aug_inc  int 613 578 604 607 603 614</code></pre>
 <p>The <code>map_*()</code> functions come from the <a href="https://purrr.tidyverse.org/">purrr</a> package (a core part of the <a href="https://tidyverse.tidyverse.org">tidyverse</a>), and are incredibly useful. They are relatively complicated, so there isn’t enough space to go into full detail, but here we’ll just outline enough so you can read more and understand what’s going on.</p>
 <p>We’ve <a href="#anonymous-functions">already seen</a> we can apply functions to each element of a vector (<strong>atomic</strong> or <strong>list</strong> vectors). The key points to note are the <code>.</code> preceding the <code>x</code> and <code>f</code> arguments. If we use <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> we get a <strong>list</strong> returned, <code><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl()</a></code> a <strong>double vector</strong>, <code>map_char()</code> a <strong>character vector</strong>, <code><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map_dfr()</a></code> a <strong>dataframe</strong> etc.</p>
 <p>In the example below, we’ll walk through <code><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map_dfr()</a></code> as it’s one of the more confusing variants due to the <strong>return</strong> requirements.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-50_62f02424a17e5c42972d86041d43a667">
+<div class="cell">
 <div class="sourceCode" id="cb145" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">map_dfr_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map_dfr</a></span><span class="op">(</span></span>
 <span>    .x <span class="op">=</span> <span class="va">my_dbl_vec</span>,</span>
 <span>    .f <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="op">{</span></span>
@@ -1413,7 +1424,7 @@ divide_ten   dbl 0.1 0.2 0.3 0.4 0.5 0.6</code></pre>
 </div>
 </div>
 <p>What’s happening under the hood is that <code><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map_dfr()</a></code> is applying the <a href="#anonymous-functions">anonymous function</a> we defined to each element in our vector and returning a <strong>list</strong> of <strong>dataframes</strong> that contains one row and three columns, i.e.&nbsp;for the first element, we would get this:</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-51_8d241ab922a36c191c03589d1b24f4fe">
+<div class="cell">
 <div class="sourceCode" id="cb147" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">map_dfr_example</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>[[1]]
@@ -1424,7 +1435,7 @@ divide_ten   dbl 0.1</code></pre>
 </div>
 </div>
 <p>It then calls the <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows()</a></code> function to <em>squash</em> all of those <strong>dataframes</strong> together, one row stacked on top of the next, to create one large <strong>dataframe</strong>. We could write the equivalent code like this:</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-52_4a5a2a4a607420ed770802f84f476deb">
+<div class="cell">
 <div class="sourceCode" id="cb149" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span></span>
 <span>    .x <span class="op">=</span> <span class="va">my_dbl_vec</span>,</span>
@@ -1452,7 +1463,7 @@ divide_ten   dbl 0.1 0.2 0.3 0.4 0.5 0.6</code></pre>
 </div>
 <p><code><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map_dfc()</a></code> does exactly the same thing, but calls <code><a href="https://dplyr.tidyverse.org/reference/bind_cols.html">bind_cols()</a></code> instead, to place the columns next to each other.</p>
 <p>There is one more important variant to go through: <code>pmap_*()</code>. If <code>map_*()</code> takes one vector as an argument, <code>pmap_*()</code> takes a <strong>list</strong> of arguments. What this means is that we can iterate through the elements of as many arguments as we’d like, <em>in sequence</em>. For example, let’s multiply the elements of two <strong>double</strong> vectors together.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-53_d5b48fbfd5d97df7e034a09e4ae5463a">
+<div class="cell">
 <div class="sourceCode" id="cb151" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create a second vector of numbers</span></span>
 <span><span class="va">my_second_dbl_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">my_dbl_vec</span><span class="op">)</span>, <span class="fl">20</span>, <span class="fl">20</span><span class="op">)</span></span>
 <span><span class="va">my_second_dbl_vec</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1496,10 +1507,10 @@ Note
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>As before, this is an unnecessary approach as <code>R</code> would vectorize the operation, but it is useful to demonstrate the principle.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-54_23ff0d7af3f2fecf1b527a208b411726">
-<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_dbl_vec</span> <span class="op">*</span> <span class="va">my_second_dbl_vec</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode" id="cb157" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_dbl_vec</span> <span class="op">*</span> <span class="va">my_second_dbl_vec</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  45.58359  14.92617  61.51580 184.12072  75.02103 136.19980 119.46575
+<pre data-code-line-numbers=""><code> [1]  45.58359  14.92617  61.51580 184.12072  75.02103 136.19980 119.46575
  [8] 357.42890 204.37668 213.44806</code></pre>
 </div>
 </div>
@@ -1508,7 +1519,7 @@ Note
 </div>
 </section><section id="nest" class="level3"><h3 class="anchored" data-anchor-id="nest"><code>nest()</code></h3>
 <p>Nesting is a relatively complex, but powerful, concept, particularly when combined with the <code>map_*()</code> functions. Commonly, as in this workshop, it is used to apply a model function to multiple different datasets, and store them all in one <strong>dataframe</strong> for easy of manipulation. What it effectively does is group your existing <strong>dataframe</strong> by a variable, and then shrink all the columns (except the grouping column), into a single list column, leaving you with as many rows as there are distinct groups. Each element of the new list column is itself a small <strong>dataframe</strong> that contains all the original variables and data, but only those that are relevant for the group. Hopefully this example will make it clearer. Here, we’ll take the <code>mtcars</code> dataset, and like before, we’ll group by the <code>cyl</code> variable, but this time we’ll nest the rest of the data.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-55_e4540ba32b1793d85b24d64a43c9a86d">
+<div class="cell">
 <div class="sourceCode" id="cb159" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nested_mtcars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">nest</a></span><span class="op">(</span><span class="va">mtcars</span>, data <span class="op">=</span> <span class="op">-</span><span class="va">cyl</span><span class="op">)</span></span>
 <span><span class="va">nested_mtcars</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1518,7 +1529,7 @@ data lst tibble [7, 10] tibble [11, 10] tibble [14, 10]</code></pre>
 </div>
 </div>
 <p>We can see we’ve nested all columns, <em>except</em> cyl. Looking at the <code>data</code> column for just the first row (<code>cyl == 6</code>), we see we have a list with one item: the rest of the data that’s relevant to the rows where <code>cyl == 6</code> (notice the <code>[[1]]</code> above the <strong>tibble</strong>).</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-56_b1e2777e93186707e51cb86e7ddc7e27">
+<div class="cell">
 <div class="sourceCode" id="cb161" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nested_mtcars</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span><span class="op">$</span><span class="va">data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>[[1]]
@@ -1536,7 +1547,7 @@ carb dbl 4 4 1 1 4 4</code></pre>
 </div>
 </div>
 <p>Now we can use <code>map</code> to fit a model to this subsetted data.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-57_738b6efe40011011c714e88fac46a59c">
+<div class="cell">
 <div class="sourceCode" id="cb163" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    <span class="va">nested_mtcars</span>,</span>
 <span>    model_fit <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">data</span>, <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span> <span class="op">+</span> <span class="va">wt</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">ordered</a></span><span class="op">(</span><span class="va">carb</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">.x</span><span class="op">)</span><span class="op">)</span></span>
@@ -1560,11 +1571,11 @@ Important
 </div>
 <div class="callout-body-container callout-body">
 <p>It is important to note that there is also a function called <code><a href="https://dplyr.tidyverse.org/reference/nest_by.html">nest_by()</a></code>. However, it returns a <code>rowwise</code> <strong>tibble</strong>, i.e., any later manipulations will be applied on a row-by-row basis, unlike a standard <strong>tibble</strong> that applies the manipulation to every row all at once, so we would need to use normal <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> syntax (and explicitly return a list column) to get the same effect as before.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-58_9991fb989774b4c8fc1d5e98d217220e">
-<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/nest_by.html">nest_by</a></span><span class="op">(</span><span class="va">mtcars</span>, .by <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="cell">
+<div class="sourceCode" id="cb165" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/nest_by.html">nest_by</a></span><span class="op">(</span><span class="va">mtcars</span>, .by <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>model_fit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span> <span class="op">+</span> <span class="va">wt</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">ordered</a></span><span class="op">(</span><span class="va">carb</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tibble [3, 3]
+<pre data-code-line-numbers=""><code>tibble [3, 3]
 rowwise grouped by: .by
 .by       dbl               4 6 8
 data      list&lt;tibble[,11]&gt; 22.800, 24.400, 22.800, 32.400, 30.400, 33.900, 21.500, 27.300, 26.000,~
@@ -1577,7 +1588,7 @@ model_fit lst               glm [30, 1] glm [30, 1] glm [30, 1]</code></pre>
 <p>To create out plots, we can use the base <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> functions, but <a href="https://ggplot2.tidyverse.org">ggplot2</a> package provides a clean and consistent interface to plotting that has many benefits. In essence, plots are built up in layers, with each stacking on top of the previous.</p>
 <p>To initialize a plot, we simply use the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> function call, that creates the background of a figure. Now we need to add data, and <strong>geoms</strong> to interpret that data.</p>
 <p>Let’s use the <code>mtcars</code> dataset again.</p>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-59_7e2259805f25571496f2a61e274b0335">
+<div class="cell">
 <div class="sourceCode" id="cb167" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mtcars</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>data.frame [32, 11]
@@ -1597,33 +1608,42 @@ carb dbl 4 4 1 1 2 1</code></pre>
 <p>Looking at the data, we might be interested in how the <code>mpg</code> of a car is affected by it horsepower (<code>hp</code>). To add data, we just use the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> function argument <code>data = mtcars</code>. We also need to tell <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> how to map the data points to the figure, i.e., the values for the <code>x</code> and <code>y</code> axes.</p>
 <p><strong>Because this depends on the underlying data, this must go within an argument called <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> i.e., <code>aes(x = hp, y = mpg)</code></strong>.</p>
 <p>To add a layer to show the data, we add a <strong>geom</strong>. In this case, because we have continuous independent and dependent variables, we could use the <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> <strong>geom</strong>, that will give us a scatter plot. Much like basic arithmetic, we <em>add</em> layers using the <code>+</code> operator.</p>
-<div class="cell page-columns page-full" data-hash="just-enough-r_cache/html/unnamed-chunk-60_c1b9ebb9bb04edbc57fb63775ac85f0a">
+<div class="cell page-columns page-full">
 <div class="sourceCode" id="cb169" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">hp</span>, y <span class="op">=</span> <span class="va">mpg</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display column-body">
-<p><img src="just-enough-r_files/figure-html/unnamed-chunk-60-1.png" class="img-fluid" style="width:100.0%"></p>
+<div class="cell-output-display page-columns page-full">
+<div class="page-columns page-full">
+<figure class="figure page-columns page-full"><p class="page-columns page-full"><img src="just-enough-r_files/figure-html/unnamed-chunk-60-1.png" class="img-fluid figure-img column-body" style="width:100.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Now let’s imagine we wanted to explore this relationship, but separated by engine type (the <code>vs</code> column). We can use color to separate these points. Because this is an argument that depends on the underlying data, again, this must be placed <em>within</em> <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>.</p>
-<div class="cell page-columns page-full" data-hash="just-enough-r_cache/html/unnamed-chunk-61_d9fdecf41ab2d5140632e4a00b519681">
+<div class="cell page-columns page-full">
 <div class="sourceCode" id="cb170" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">hp</span>, y <span class="op">=</span> <span class="va">mpg</span>, color <span class="op">=</span> <span class="va">vs</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display column-body">
-<p><img src="just-enough-r_files/figure-html/unnamed-chunk-61-1.png" class="img-fluid" style="width:100.0%"></p>
+<div class="cell-output-display page-columns page-full">
+<div class="page-columns page-full">
+<figure class="figure page-columns page-full"><p class="page-columns page-full"><img src="just-enough-r_files/figure-html/unnamed-chunk-61-1.png" class="img-fluid figure-img column-body" style="width:100.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>What you’ll notice here is that despite <code>vs</code> being a binary choice, because it is of type <strong>double</strong>, <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> interprets this as a number, so provides a continuous color scale. To correct this, let’s convert <code>vs</code> into a factor before plotting.</p>
-<div class="cell page-columns page-full" data-hash="just-enough-r_cache/html/unnamed-chunk-62_21018f4e32707c9a199deab6867a4d1c">
+<div class="cell page-columns page-full">
 <div class="sourceCode" id="cb171" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>vs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">vs</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">hp</span>, y <span class="op">=</span> <span class="va">mpg</span>, color <span class="op">=</span> <span class="va">vs</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display column-body">
-<p><img src="just-enough-r_files/figure-html/unnamed-chunk-62-1.png" class="img-fluid" style="width:100.0%"></p>
+<div class="cell-output-display page-columns page-full">
+<div class="page-columns page-full">
+<figure class="figure page-columns page-full"><p class="page-columns page-full"><img src="just-enough-r_files/figure-html/unnamed-chunk-62-1.png" class="img-fluid figure-img column-body" style="width:100.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>We can change the theme by layering in more information, as we did with the other plotting layers. Here, let’s change the background to white, and add some different colors. We’ll also change the size of the points.</p>
-<div class="cell page-columns page-full" data-hash="just-enough-r_cache/html/unnamed-chunk-63_5ce1ecd23884acab7131f53350823c16">
+<div class="cell page-columns page-full">
 <div class="sourceCode" id="cb172" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>vs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">vs</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">hp</span>, y <span class="op">=</span> <span class="va">mpg</span>, color <span class="op">=</span> <span class="va">vs</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1636,12 +1656,15 @@ carb dbl 4 4 1 1 2 1</code></pre>
 <span>        values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"0"</span> <span class="op">=</span> <span class="st">"#6b3df5ff"</span>, <span class="st">"1"</span> <span class="op">=</span> <span class="st">"#f5c13cff"</span><span class="op">)</span>,</span>
 <span>        labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"0"</span> <span class="op">=</span> <span class="st">"V-Shaped"</span>, <span class="st">"1"</span> <span class="op">=</span> <span class="st">"Straight"</span><span class="op">)</span></span>
 <span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display column-body">
-<p><img src="just-enough-r_files/figure-html/unnamed-chunk-63-1.png" class="img-fluid" style="width:100.0%"></p>
+<div class="cell-output-display page-columns page-full">
+<div class="page-columns page-full">
+<figure class="figure page-columns page-full"><p class="page-columns page-full"><img src="just-enough-r_files/figure-html/unnamed-chunk-63-1.png" class="img-fluid figure-img column-body" style="width:100.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Imagine we wanted to use one more grouping: automatic vs manual transmission (<code>am</code>). Rather than adding yet another color, we could do something called a <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code>, which creates separate panels for each group. Adding this to a <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> is very easy - it’s just another <code>+</code> operation! As before, we will add labels for easier interpretation.</p>
-<div class="cell page-columns page-full" data-hash="just-enough-r_cache/html/unnamed-chunk-64_462db12ab2e38fac9771e04c63093b61">
+<div class="cell page-columns page-full">
 <div class="sourceCode" id="cb173" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>vs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">vs</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">hp</span>, y <span class="op">=</span> <span class="va">mpg</span>, color <span class="op">=</span> <span class="va">vs</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1655,12 +1678,15 @@ carb dbl 4 4 1 1 2 1</code></pre>
 <span>        labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"0"</span> <span class="op">=</span> <span class="st">"V-Shaped"</span>, <span class="st">"1"</span> <span class="op">=</span> <span class="st">"Straight"</span><span class="op">)</span></span>
 <span>    <span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">am</span>, labeller <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/as_labeller.html">as_labeller</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"0"</span> <span class="op">=</span> <span class="st">"Automatic"</span>, <span class="st">"1"</span> <span class="op">=</span> <span class="st">"Manual"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display column-body">
-<p><img src="just-enough-r_files/figure-html/unnamed-chunk-64-1.png" class="img-fluid" style="width:100.0%"></p>
+<div class="cell-output-display page-columns page-full">
+<div class="page-columns page-full">
+<figure class="figure page-columns page-full"><p class="page-columns page-full"><img src="just-enough-r_files/figure-html/unnamed-chunk-64-1.png" class="img-fluid figure-img column-body" style="width:100.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>This is looking much better, but we might want to add a line to show the trends within the groups. Again, this is as simple as adding another layer. One thing to note about the plot below, because we specified the <code>data</code> and <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> arguments in the original <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> function call, those data relationships will also be applied to our new <strong>geom</strong>. We could just as easily write them within the <code>geom_*()</code> explicitly, but then we would have to do that for each <code>geom_*()</code> in our plot, which is unnecessary when they all have the same data relationships. To demonstrate this, let’s also make a small modification so that only the points are colored, and the lines are all red. To do that, we will remove <code>color = vs</code> from the global <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>, and add it to one specific to <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>. But because we still want to fit a linear model to the different engine types (<code>vs</code>) separately, we will add <code>group = vs</code> to the <code>geom_smooth(aes(), ...)</code> call, to let <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> know to treat them as separate groups for the <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> Because the line color doesn’t depend on the data, it is not in an <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> argument call.</p>
-<div class="cell page-columns page-full" data-hash="just-enough-r_cache/html/unnamed-chunk-65_f25ae8ef24a4e3be17fd9df1d10ba07c">
+<div class="cell page-columns page-full">
 <div class="sourceCode" id="cb174" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>vs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">vs</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">hp</span>, y <span class="op">=</span> <span class="va">mpg</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1678,8 +1704,11 @@ carb dbl 4 4 1 1 2 1</code></pre>
 <div class="cell-output cell-output-stderr">
 <pre data-code-line-numbers=""><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
-<div class="cell-output-display column-body">
-<p><img src="just-enough-r_files/figure-html/unnamed-chunk-65-1.png" class="img-fluid" style="width:100.0%"></p>
+<div class="cell-output-display page-columns page-full">
+<div class="page-columns page-full">
+<figure class="figure page-columns page-full"><p class="page-columns page-full"><img src="just-enough-r_files/figure-html/unnamed-chunk-65-1.png" class="img-fluid figure-img column-body" style="width:100.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>As you can see, once you get used to it, the layering system makes it relatively intuitive to build complex and interesting plots. We’ve only stratched the surface here, so be sure to read the <a href="#suggested-reading">suggested books</a> and the <a href="https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf"><code>{ggplot2}</code> cheatsheet</a> for more information.</p>
@@ -1698,14 +1727,14 @@ Important
 <p>As you can see below, <code>R</code> treats vectors as dimensionless, and will try to convert it to <em>either</em> a row <em>or</em> column vector, depending on what makes sense for the matrix multiplication</p>
 </div>
 </div>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-66_61ec811d5872be14918fbe6bc0bdccfe">
+<div class="cell">
 <div class="sourceCode" id="cb176" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_dbl_vec</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">my_second_dbl_vec</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>         [,1]
 [1,] 1412.086</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="just-enough-r_cache/html/unnamed-chunk-67_df43c2a2b4e7db75ea5758edaac93897">
+<div class="cell">
 <div class="sourceCode" id="cb178" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">60</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="va">my_matrix</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1796,6 +1825,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -1862,13 +1918,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1998,10 +2056,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2011,8 +2086,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2024,7 +2108,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2068,6 +2275,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2093,6 +2301,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2152,12 +2386,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./just-enough-rstudio.html" class="pagination-link">
+      <a href="./just-enough-rstudio.html" class="pagination-link" aria-label="Just Enough RStudio">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Just Enough RStudio</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./project-management.html" class="pagination-link">
+      <a href="./project-management.html" class="pagination-link" aria-label="Organizing A Project">
         <span class="nav-page-text">Organizing A Project</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -2176,7 +2410,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb190-12"><a href="#cb190-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb190-13"><a href="#cb190-13" aria-hidden="true" tabindex="-1"></a>Now you have <span class="in">`R`</span> set installed and you can access it and are familiar with RStudio, it's time to learn some of the core features of the language.</span>
 <span id="cb190-14"><a href="#cb190-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb190-15"><a href="#cb190-15" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;a</span> <span class="er">id</span><span class="ot">=</span><span class="st">"suggested-reading"</span><span class="kw">/&gt;</span></span>
+<span id="cb190-15"><a href="#cb190-15" aria-hidden="true" tabindex="-1"></a>&lt;a id="suggested-reading"/&gt;</span>
 <span id="cb190-16"><a href="#cb190-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb190-17"><a href="#cb190-17" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
 <span id="cb190-18"><a href="#cb190-18" aria-hidden="true" tabindex="-1"></a>We'd strongly recommend you read <span class="co">[</span><span class="ot">Hands-On Programming With R</span><span class="co">](https://rstudio-education.github.io/hopr)</span> by Garett Grolemund and <span class="co">[</span><span class="ot">R for DataScience</span><span class="co">](https://r4ds.hadley.nz/)</span> by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund for a deeper understanding of the following concepts (and many more).</span>
@@ -2197,7 +2431,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb190-33"><a href="#cb190-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb190-36"><a href="#cb190-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb190-37"><a href="#cb190-37" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="dv">1</span>)</span>
-<span id="cb190-38"><a href="#cb190-38" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(1L)</span>
+<span id="cb190-38"><a href="#cb190-38" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="dv">1</span>L)</span>
 <span id="cb190-39"><a href="#cb190-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb190-40"><a href="#cb190-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb190-41"><a href="#cb190-41" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse=true}</span>
@@ -2542,7 +2776,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb190-426"><a href="#cb190-426" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(package to download)</span>
 <span id="cb190-427"><a href="#cb190-427" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb190-428"><a href="#cb190-428" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb190-429"><a href="#cb190-429" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;a</span> <span class="er">id</span><span class="ot">=</span><span class="st">"namespace-conflict"</span><span class="kw">/&gt;</span></span>
+<span id="cb190-429"><a href="#cb190-429" aria-hidden="true" tabindex="-1"></a>&lt;a id="namespace-conflict"/&gt;</span>
 <span id="cb190-430"><a href="#cb190-430" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb190-431"><a href="#cb190-431" aria-hidden="true" tabindex="-1"></a>Most of the time, this is fine, but occasionally you will run in to an issue where a function doesn't work as expected.</span>
 <span id="cb190-432"><a href="#cb190-432" aria-hidden="true" tabindex="-1"></a>Sometimes this is because of what's called a *namespace conflict* i.e., you have two functions with the same name loaded, and potentially you're using the wrong verion.</span>
@@ -3314,5 +3548,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/arnold-c/SISMID-Module-02_2023/edit/main/just-enough-r.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer><script src="site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
 </body></html>
