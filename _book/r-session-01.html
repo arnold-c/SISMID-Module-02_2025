@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.554">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Callum Arnold">
-<title>SISMID Module 2 Materials (2023) - 3&nbsp; R Session 01</title>
+<title>SISMID Module 2 Materials (2024) - 3&nbsp; R Session 01</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -80,7 +80,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -89,6 +95,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -100,31 +107,56 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
 </script><script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script><link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 </head>
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./L01_intro-to-modeling.html">Day 1</a></li><li class="breadcrumb-item"><a href="./r-session-01.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Session 01</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./L01_intro-to-modeling.html">Day 1</a></li><li class="breadcrumb-item"><a href="./r-session-01.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Session 01</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="././images/sismid2023-logo-green.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">SISMID Module 2 Materials (2023)</a> 
+      <a href="./">SISMID Module 2 Materials (2024)</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/arnold-c/SISMID-Module-02_2023" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/arnold-c/SISMID-Module-02_2023" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -301,7 +333,7 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
 </li>
     </ul>
 </div>
-</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Page Items</h2>
@@ -333,7 +365,7 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
   <li><a href="#sec-demog-updatedr0" id="toc-sec-demog-updatedr0" class="nav-link" data-scroll-target="#sec-demog-updatedr0"><span class="header-section-number">3.3.5</span> What is the new <span class="math inline">\(R_0\)</span>?</a></li>
   <li><a href="#at-what-time-approximately-does-the-system-reach-equilibrium-1" id="toc-at-what-time-approximately-does-the-system-reach-equilibrium-1" class="nav-link" data-scroll-target="#at-what-time-approximately-does-the-system-reach-equilibrium-1"><span class="header-section-number">3.3.6</span> At what time (approximately) does the system reach equilibrium?</a></li>
   <li><a href="#what-is-the-new-equilibrium-proportion-that-is-susceptible" id="toc-what-is-the-new-equilibrium-proportion-that-is-susceptible" class="nav-link" data-scroll-target="#what-is-the-new-equilibrium-proportion-that-is-susceptible"><span class="header-section-number">3.3.7</span> What is the new equilibrium proportion that is susceptible?</a></li>
-  <li><a href="#what-is-different-about-the-prevalence-of-infection-equilibrium-proportion-that-is-infected-in-the-scenarios-sec-demog-whatisr0-and-sec-demog-updatedr0-i.e.-higher-birth-rate-with-the-same-r_0" id="toc-what-is-different-about-the-prevalence-of-infection-equilibrium-proportion-that-is-infected-in-the-scenarios-sec-demog-whatisr0-and-sec-demog-updatedr0-i.e.-higher-birth-rate-with-the-same-r_0" class="nav-link" data-scroll-target="#what-is-different-about-the-prevalence-of-infection-equilibrium-proportion-that-is-infected-in-the-scenarios-sec-demog-whatisr0-and-sec-demog-updatedr0-i.e.-higher-birth-rate-with-the-same-r_0"><span class="header-section-number">3.3.8</span> What is different about the prevalence of infection (equilibrium proportion that is infected) in the scenarios <span>Section&nbsp;3.3.1</span> and <span>Section&nbsp;3.3.5</span> i.e.&nbsp;higher birth rate with the same <span class="math inline">\(R_0\)</span>?</a></li>
+  <li><a href="#what-is-different-about-the-prevalence-of-infection-equilibrium-proportion-that-is-infected-in-the-scenarios-sec-demog-whatisr0-and-sec-demog-updatedr0-i.e.-higher-birth-rate-with-the-same-r_0" id="toc-what-is-different-about-the-prevalence-of-infection-equilibrium-proportion-that-is-infected-in-the-scenarios-sec-demog-whatisr0-and-sec-demog-updatedr0-i.e.-higher-birth-rate-with-the-same-r_0" class="nav-link" data-scroll-target="#what-is-different-about-the-prevalence-of-infection-equilibrium-proportion-that-is-infected-in-the-scenarios-sec-demog-whatisr0-and-sec-demog-updatedr0-i.e.-higher-birth-rate-with-the-same-r_0"><span class="header-section-number">3.3.8</span> What is different about the prevalence of infection (equilibrium proportion that is infected) in the scenarios <span>Section 3.3.1</span> and <span>Section 3.3.5</span> i.e.&nbsp;higher birth rate with the same <span class="math inline">\(R_0\)</span>?</a></li>
   </ul>
 </li>
   <li>
@@ -347,14 +379,14 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
   <li>
 <a href="#exercise-solutions" id="toc-exercise-solutions" class="nav-link" data-scroll-target="#exercise-solutions"><span class="header-section-number">3.5</span> Exercise Solutions</a>
   <ul class="collapse">
-<li><a href="#sec-ex-commenting-code-commented-basic-sir-code" id="toc-sec-ex-commenting-code-commented-basic-sir-code" class="nav-link" data-scroll-target="#sec-ex-commenting-code-commented-basic-sir-code"><span class="header-section-number">3.5.1</span> <span>Section&nbsp;3.4.2</span>: Commented basic SIR code</a></li>
-  <li><a href="#sec-ex-add-demographics-commented-demographic-sir-code" id="toc-sec-ex-add-demographics-commented-demographic-sir-code" class="nav-link" data-scroll-target="#sec-ex-add-demographics-commented-demographic-sir-code"><span class="header-section-number">3.5.2</span> <span>Section&nbsp;3.4.3</span>: Commented demographic SIR code</a></li>
+<li><a href="#sec-ex-commenting-code-commented-basic-sir-code" id="toc-sec-ex-commenting-code-commented-basic-sir-code" class="nav-link" data-scroll-target="#sec-ex-commenting-code-commented-basic-sir-code"><span class="header-section-number">3.5.1</span> <span>Section 3.4.2</span>: Commented basic SIR code</a></li>
+  <li><a href="#sec-ex-add-demographics-commented-demographic-sir-code" id="toc-sec-ex-add-demographics-commented-demographic-sir-code" class="nav-link" data-scroll-target="#sec-ex-add-demographics-commented-demographic-sir-code"><span class="header-section-number">3.5.2</span> <span>Section 3.4.3</span>: Commented demographic SIR code</a></li>
   </ul>
 </li>
-  </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/arnold-c/SISMID-Module-02_2023/edit/main/r-session-01.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/arnold-c/SISMID-Module-02_2023/edit/main/r-session-01.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./L01_intro-to-modeling.html">Day 1</a></li><li class="breadcrumb-item"><a href="./r-session-01.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Session 01</span></a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">
 <span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Session 01</span>
 </h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
@@ -368,12 +400,12 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
     <div class="quarto-title-meta-contents">
     <p class="author"><a href="https://callumarnold.com">Callum Arnold</a> <a href="https://orcid.org/0000-0002-3245-6956" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
   </div>
-    <div class="quarto-title-meta-contents">
+  <div class="quarto-title-meta-contents">
         <p class="affiliation">
             Pennsylvania State University
           </p>
       </div>
-    </div>
+  </div>
 
 <div class="quarto-title-meta">
 
@@ -383,10 +415,11 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
   </div>
   
 
+
 </header><section id="sec-interactive-plots" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="sec-interactive-plots">
 <span class="header-section-number">3.1</span> Interactive Plot</h2>
 <div class="cell">
-<details class="hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="10" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 9;"><span id="cb1-10"><a href="#cb1-10"></a>init_beta <span class="op">=</span> <span class="fl">0.3</span></span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="10" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 9;"><span id="cb1-10"><a href="#cb1-10"></a>init_beta <span class="op">=</span> <span class="fl">0.3</span></span>
 <span id="cb1-11"><a href="#cb1-11"></a>init_dur_inf <span class="op">=</span> <span class="fl">6.0</span></span>
 <span id="cb1-12"><a href="#cb1-12"></a>init_I0 <span class="op">=</span> <span class="fl">0.01</span></span>
 <span id="cb1-13"><a href="#cb1-13"></a>init_births <span class="op">=</span> <span class="fl">0.0</span></span>
@@ -428,7 +461,7 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="cell">
-<details class="hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="17" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 16;"><span id="cb2-17"><a href="#cb2-17"></a><span class="kw">function</span> <span class="fu">set</span>(input<span class="op">,</span> value) {</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="17" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 16;"><span id="cb2-17"><a href="#cb2-17"></a><span class="kw">function</span> <span class="fu">set</span>(input<span class="op">,</span> value) {</span>
 <span id="cb2-18"><a href="#cb2-18"></a>  input<span class="op">.</span><span class="at">value</span> <span class="op">=</span> value<span class="op">;</span></span>
 <span id="cb2-19"><a href="#cb2-19"></a>  input<span class="op">.</span><span class="fu">dispatchEvent</span>(<span class="kw">new</span> <span class="bu">Event</span>(<span class="st">"input"</span><span class="op">,</span> {<span class="dt">bubbles</span><span class="op">:</span> <span class="kw">true</span>}))<span class="op">;</span></span>
 <span id="cb2-20"><a href="#cb2-20"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -440,7 +473,7 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
 </div>
 <div class="panel-grid layout-sidebar ms-md-0 layout-sidebar-left">
 <div class="cell panel-sidebar card bg-light p-2 g-col-24 g-col-lg-7">
-<details class="hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="26" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 25;"><span id="cb3-26"><a href="#cb3-26"></a>viewof reset <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>([</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="26" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 25;"><span id="cb3-26"><a href="#cb3-26"></a>viewof reset <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>([</span>
 <span id="cb3-27"><a href="#cb3-27"></a>  [<span class="st">"Reset all sliders"</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
 <span id="cb3-28"><a href="#cb3-28"></a>    <span class="kw">set</span>(viewof beta<span class="op">,</span> init_beta)</span>
 <span id="cb3-29"><a href="#cb3-29"></a>    <span class="kw">set</span>(viewof dur_inf<span class="op">,</span> init_dur_inf)</span>
@@ -536,7 +569,7 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<details class="hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="67" data-source-offset="-917" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 66;"><span id="cb4-67"><a href="#cb4-67"></a>{</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="67" data-source-offset="-917" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 66;"><span id="cb4-67"><a href="#cb4-67"></a>{</span>
 <span id="cb4-68"><a href="#cb4-68"></a>  <span class="cf">if</span> (births <span class="op">==</span> <span class="dv">0</span>){</span>
 <span id="cb4-69"><a href="#cb4-69"></a>    <span class="kw">var</span> finalsize <span class="op">=</span> sir_sol<span class="op">.</span><span class="fu">get</span>(<span class="st">"R"</span><span class="op">,</span> sir_sol<span class="op">.</span><span class="fu">numRows</span>()<span class="op">-</span><span class="dv">1</span>)</span>
 <span id="cb4-70"><a href="#cb4-70"></a>    <span class="kw">var</span> finalsize_str <span class="op">=</span> finalsize<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="kw">undefined</span><span class="op">,</span> {<span class="dt">minimumFractionDigits</span><span class="op">:</span> <span class="dv">2</span>})</span>
@@ -556,7 +589,7 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
 </div>
 <div class="panel-fill g-col-24 g-col-lg-17 pt-3 pt-lg-0">
 <div class="cell">
-<details class="hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="80" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 79;"><span id="cb5-80"><a href="#cb5-80"></a>gamma <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> dur_inf</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="80" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 79;"><span id="cb5-80"><a href="#cb5-80"></a>gamma <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> dur_inf</span>
 <span id="cb5-81"><a href="#cb5-81"></a>dt <span class="op">=</span> <span class="fl">0.01</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-display">
 <div>
@@ -574,7 +607,7 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="cell">
-<details class="hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="85" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 84;"><span id="cb6-85"><a href="#cb6-85"></a><span class="im">import</span> {odeRK4} <span class="im">from</span> <span class="st">'@rreusser/integration@3064'</span></span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="85" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 84;"><span id="cb6-85"><a href="#cb6-85"></a><span class="im">import</span> {odeRK4} <span class="im">from</span> <span class="st">'@rreusser/integration@3064'</span></span>
 <span id="cb6-86"><a href="#cb6-86"></a><span class="im">import</span> { aq<span class="op">,</span> op } <span class="im">from</span> <span class="st">'@uwdata/arquero'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-display">
 <div>
@@ -592,7 +625,7 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="cell">
-<details class="hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="89" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 88;"><span id="cb7-89"><a href="#cb7-89"></a><span class="kw">function</span> <span class="fu">sir</span>(dydt<span class="op">,</span> y<span class="op">,</span> t) {</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="89" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 88;"><span id="cb7-89"><a href="#cb7-89"></a><span class="kw">function</span> <span class="fu">sir</span>(dydt<span class="op">,</span> y<span class="op">,</span> t) {</span>
 <span id="cb7-90"><a href="#cb7-90"></a>  dydt[<span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span> beta <span class="op">*</span> y[<span class="dv">0</span>] <span class="op">*</span> y[<span class="dv">1</span>] <span class="op">+</span> births <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> y[<span class="dv">0</span>])</span>
 <span id="cb7-91"><a href="#cb7-91"></a>  dydt[<span class="dv">1</span>] <span class="op">=</span> beta <span class="op">*</span> y[<span class="dv">0</span>] <span class="op">*</span> y[<span class="dv">1</span>] <span class="op">-</span> gamma <span class="op">*</span> y[<span class="dv">1</span>] <span class="op">-</span> births <span class="op">*</span> y[<span class="dv">1</span>]</span>
 <span id="cb7-92"><a href="#cb7-92"></a>  dydt[<span class="dv">2</span>] <span class="op">=</span> gamma <span class="op">*</span> y[<span class="dv">1</span>] <span class="op">-</span> births <span class="op">*</span> y[<span class="dv">2</span>]</span>
@@ -604,7 +637,7 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="cell">
-<details class="hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="97" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 96;"><span id="cb8-97"><a href="#cb8-97"></a><span class="kw">function</span> <span class="fu">simulate</span>(f<span class="op">,</span> t0<span class="op">,</span> y0<span class="op">,</span> dt<span class="op">,</span> tmax) {</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="97" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 96;"><span id="cb8-97"><a href="#cb8-97"></a><span class="kw">function</span> <span class="fu">simulate</span>(f<span class="op">,</span> t0<span class="op">,</span> y0<span class="op">,</span> dt<span class="op">,</span> tmax) {</span>
 <span id="cb8-98"><a href="#cb8-98"></a>  <span class="kw">var</span> t <span class="op">=</span> t0</span>
 <span id="cb8-99"><a href="#cb8-99"></a>  <span class="kw">var</span> y <span class="op">=</span> y0</span>
 <span id="cb8-100"><a href="#cb8-100"></a>  <span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span></span>
@@ -632,7 +665,7 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="cell">
-<details class="hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="122" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 121;"><span id="cb9-122"><a href="#cb9-122"></a>sir_sol <span class="op">=</span> <span class="fu">simulate</span>(sir<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> [<span class="fl">1.0</span><span class="op">-</span>I0<span class="op">,</span> I0<span class="op">,</span> <span class="fl">0.0</span>]<span class="op">,</span> dt<span class="op">,</span> tmax)</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="122" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 121;"><span id="cb9-122"><a href="#cb9-122"></a>sir_sol <span class="op">=</span> <span class="fu">simulate</span>(sir<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> [<span class="fl">1.0</span><span class="op">-</span>I0<span class="op">,</span> I0<span class="op">,</span> <span class="fl">0.0</span>]<span class="op">,</span> dt<span class="op">,</span> tmax)</span>
 <span id="cb9-123"><a href="#cb9-123"></a>sir_sol_long <span class="op">=</span> sir_sol<span class="op">.</span><span class="fu">fold</span>(aq<span class="op">.</span><span class="fu">not</span>(<span class="st">'Time'</span>)<span class="op">,</span> {<span class="dt">as</span><span class="op">:</span> [<span class="st">'State'</span><span class="op">,</span> <span class="st">'Fraction'</span>]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-display">
 <div>
@@ -650,7 +683,7 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="cell">
-<details class="hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="126" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 125;"><span id="cb10-126"><a href="#cb10-126"></a>SIRcolors <span class="op">=</span> [<span class="st">"#1f77b4"</span><span class="op">,</span> <span class="st">"#ff7f0e"</span><span class="op">,</span> <span class="st">"#FF3851"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="126" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 125;"><span id="cb10-126"><a href="#cb10-126"></a>SIRcolors <span class="op">=</span> [<span class="st">"#1f77b4"</span><span class="op">,</span> <span class="st">"#ff7f0e"</span><span class="op">,</span> <span class="st">"#FF3851"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-display">
 <div id="ojs-cell-9" data-nodetype="declaration">
 
@@ -658,7 +691,7 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="cell">
-<details class="hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="131" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 130;"><span id="cb11-131"><a href="#cb11-131"></a>R0 <span class="op">=</span> beta <span class="op">/</span> (gamma <span class="op">+</span> births)</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="131" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 130;"><span id="cb11-131"><a href="#cb11-131"></a>R0 <span class="op">=</span> beta <span class="op">/</span> (gamma <span class="op">+</span> births)</span>
 <span id="cb11-132"><a href="#cb11-132"></a>R0_str <span class="op">=</span> R0<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="kw">undefined</span><span class="op">,</span> {<span class="dt">minimumFractionDigits</span><span class="op">:</span> <span class="dv">2</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-display">
 <div>
@@ -676,7 +709,7 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="cell">
-<details class="hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="135" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 134;"><span id="cb12-135"><a href="#cb12-135"></a><span class="kw">function</span> <span class="fu">calculate_equil</span>(R0){</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="135" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 134;"><span id="cb12-135"><a href="#cb12-135"></a><span class="kw">function</span> <span class="fu">calculate_equil</span>(R0){</span>
 <span id="cb12-136"><a href="#cb12-136"></a>  <span class="cf">if</span> (births <span class="op">&gt;</span> <span class="dv">0</span>) {</span>
 <span id="cb12-137"><a href="#cb12-137"></a>    <span class="kw">var</span> eq_S <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> R0</span>
 <span id="cb12-138"><a href="#cb12-138"></a>    <span class="kw">var</span> eq_I <span class="op">=</span> births <span class="op">/</span> beta <span class="op">*</span> (R0 <span class="op">-</span> <span class="dv">1</span>)</span>
@@ -699,7 +732,7 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="cell">
-<details class="hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="154" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 153;"><span id="cb13-154"><a href="#cb13-154"></a>eq_vals <span class="op">=</span> <span class="fu">calculate_equil</span>(R0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="154" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 153;"><span id="cb13-154"><a href="#cb13-154"></a>eq_vals <span class="op">=</span> <span class="fu">calculate_equil</span>(R0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-display">
 <div id="ojs-cell-12" data-nodetype="declaration">
 
@@ -709,7 +742,7 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
 <div class="panel-fill panel-grid">
 <div class="g-col-24">
 <div class="cell panel-fill">
-<details class="hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb14" data-startfrom="159" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 158;"><span id="cb14-159"><a href="#cb14-159"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb14" data-startfrom="159" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 158;"><span id="cb14-159"><a href="#cb14-159"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
 <span id="cb14-160"><a href="#cb14-160"></a>  <span class="dt">color</span><span class="op">:</span> {</span>
 <span id="cb14-161"><a href="#cb14-161"></a>    <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
 <span id="cb14-162"><a href="#cb14-162"></a>    <span class="dt">domain</span><span class="op">:</span> [<span class="st">"S"</span><span class="op">,</span> <span class="st">"I"</span><span class="op">,</span> <span class="st">"R"</span>]<span class="op">,</span></span>
@@ -799,7 +832,7 @@ SET
 </div>
 <div class="callout-body-container callout-body">
 <p>Duration of infection = 8 days</p>
-<p>Transmission rate so you get the same <span class="math inline">\(R_0\)</span> in <a href="#sec-whatisr0"><span>Section&nbsp;3.2.1</span></a></p>
+<p>Transmission rate so you get the same <span class="math inline">\(R_0\)</span> in <a href="#sec-whatisr0" class="quarto-xref"><span>Section 3.2.1</span></a></p>
 </div>
 </div>
 </section><section id="how-does-the-epidemic-final-size-compare" class="level3" data-number="3.2.5"><h3 data-number="3.2.5" class="anchored" data-anchor-id="how-does-the-epidemic-final-size-compare">
@@ -922,13 +955,13 @@ SET
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Transmission rate so you get the same <span class="math inline">\(R_0\)</span> in <a href="#sec-demog-whatisr0"><span>Section&nbsp;3.3.1</span></a></p>
+<p>Transmission rate so you get the same <span class="math inline">\(R_0\)</span> in <a href="#sec-demog-whatisr0" class="quarto-xref"><span>Section 3.3.1</span></a></p>
 </div>
 </div>
 </section><section id="what-is-the-new-equilibrium-proportion-that-is-susceptible" class="level3" data-number="3.3.7"><h3 data-number="3.3.7" class="anchored" data-anchor-id="what-is-the-new-equilibrium-proportion-that-is-susceptible">
 <span class="header-section-number">3.3.7</span> What is the new equilibrium proportion that is susceptible?</h3>
 </section><section id="what-is-different-about-the-prevalence-of-infection-equilibrium-proportion-that-is-infected-in-the-scenarios-sec-demog-whatisr0-and-sec-demog-updatedr0-i.e.-higher-birth-rate-with-the-same-r_0" class="level3" data-number="3.3.8"><h3 data-number="3.3.8" class="anchored" data-anchor-id="what-is-different-about-the-prevalence-of-infection-equilibrium-proportion-that-is-infected-in-the-scenarios-sec-demog-whatisr0-and-sec-demog-updatedr0-i.e.-higher-birth-rate-with-the-same-r_0">
-<span class="header-section-number">3.3.8</span> What is different about the prevalence of infection (equilibrium proportion that is infected) in the scenarios <a href="#sec-demog-whatisr0"><span>Section&nbsp;3.3.1</span></a> and <a href="#sec-demog-updatedr0"><span>Section&nbsp;3.3.5</span></a> i.e.&nbsp;higher birth rate with the same <span class="math inline">\(R_0\)</span>?</h3>
+<span class="header-section-number">3.3.8</span> What is different about the prevalence of infection (equilibrium proportion that is infected) in the scenarios <a href="#sec-demog-whatisr0" class="quarto-xref"><span>Section 3.3.1</span></a> and <a href="#sec-demog-updatedr0" class="quarto-xref"><span>Section 3.3.5</span></a> i.e.&nbsp;higher birth rate with the same <span class="math inline">\(R_0\)</span>?</h3>
 </section></section><section id="model-building-with-r" class="level2 page-columns page-full" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="model-building-with-r">
 <span class="header-section-number">3.4</span> Model Building With R</h2>
 <section id="setting-up-a-script" class="level3 page-columns page-full" data-number="3.4.1"><h3 data-number="3.4.1" class="anchored" data-anchor-id="setting-up-a-script">
@@ -948,8 +981,8 @@ Instruction
 <p>Copy the code below into a new R script. This script should live in your SISMID directory, as described <a href="./project-management.html">previously</a>. Run it to check you get the same figure output as above.</p>
 </div>
 </div>
-<div class="cell page-columns page-full" data-hash="r-session-01_cache/html/unnamed-chunk-14_f474b81de358062524506791b9ca8a77">
-<details open=""><summary>Code</summary><div class="sourceCode cell-code" id="cb15" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">library</span>(tidyverse)</span>
+<div class="cell page-columns page-full">
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb15" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="fu">library</span>(deSolve)</span>
 <span id="cb15-3"><a href="#cb15-3"></a></span>
 <span id="cb15-4"><a href="#cb15-4"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span>
@@ -1023,8 +1056,11 @@ Instruction
 <span id="cb15-72"><a href="#cb15-72"></a>    <span class="at">color =</span> <span class="st">"State"</span></span>
 <span id="cb15-73"><a href="#cb15-73"></a>  ) <span class="sc">+</span></span>
 <span id="cb15-74"><a href="#cb15-74"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output-display column-body">
-<p><img src="r-session-01_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" style="width:100.0%"></p>
+</details><div class="cell-output-display page-columns page-full">
+<div class="page-columns page-full">
+<figure class="figure page-columns page-full"><p class="page-columns page-full"><img src="r-session-01_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img column-body" style="width:100.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 </section><section id="sec-ex-commenting-code" class="level3" data-number="3.4.2"><h3 data-number="3.4.2" class="anchored" data-anchor-id="sec-ex-commenting-code">
@@ -1047,7 +1083,7 @@ Note
 <p>As you’re going through the code, if you don’t understand what a particular function does, try looking up the documentation for it! You can do this by clicking on the function within the website (as described <a href="./index.html#tips-about-the-website">in the intro</a>), or by typing <code>?function_name</code> into the R console (Google also is your friend here!).</p>
 </section><section id="sec-ex-add-demographics" class="level3 page-columns page-full" data-number="3.4.3"><h3 data-number="3.4.3" class="anchored" data-anchor-id="sec-ex-add-demographics">
 <span class="header-section-number">3.4.3</span> Adding in demographics</h3>
-<p>Now we have a better sense of how the code works, let’s add in some demographic structure. To recreate the demographic model from the interactive plot in <a href="#sec-interactive-plots"><span>Section&nbsp;3.1</span></a>, we just need to add births and deaths to the system.</p>
+<p>Now we have a better sense of how the code works, let’s add in some demographic structure. To recreate the demographic model from the interactive plot in <a href="#sec-interactive-plots" class="quarto-xref"><span>Section 3.1</span></a>, we just need to add births and deaths to the system.</p>
 <p>Recall the equations for the demographic model:</p>
 <p><span id="eq-demographic-sir"><span class="math display">\[
 \begin{aligned}
@@ -1061,7 +1097,7 @@ Note
 </section><section id="rename-the-function-sir_model-to-demographic_sir_model-in-your-new-script-s01_demographic-sir.r." class="level4" data-number="3.4.3.2"><h4 data-number="3.4.3.2" class="anchored" data-anchor-id="rename-the-function-sir_model-to-demographic_sir_model-in-your-new-script-s01_demographic-sir.r.">
 <span class="header-section-number">3.4.3.2</span> Rename the function <code>sir_model()</code> to <code>demographic_sir_model()</code> in your new script (<code>S01_demographic-sir.R</code>).</h4>
 </section><section id="adapt-the-function-demographic_sir_model-to-match-the-above-equations-eq-demographic-sir." class="level4" data-number="3.4.3.3"><h4 data-number="3.4.3.3" class="anchored" data-anchor-id="adapt-the-function-demographic_sir_model-to-match-the-above-equations-eq-demographic-sir.">
-<span class="header-section-number">3.4.3.3</span> Adapt the function <code>demographic_sir_model()</code> to match the above equations (<a href="#eq-demographic-sir">Equation&nbsp;<span>3.1</span></a>).</h4>
+<span class="header-section-number">3.4.3.3</span> Adapt the function <code>demographic_sir_model()</code> to match the above equations (<a href="#eq-demographic-sir" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>).</h4>
 <div class="callout callout-style-default callout-note callout-titled" title="SET">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1079,9 +1115,12 @@ SET
 <span class="header-section-number">3.4.3.4</span> Rename the variables to reflect that we are now working with a demographic model, not the basic SIR model.</h4>
 </section><section id="plot-the-results-of-your-demographic-model.-does-it-look-like-this" class="level4 page-columns page-full" data-number="3.4.3.5"><h4 data-number="3.4.3.5" class="anchored" data-anchor-id="plot-the-results-of-your-demographic-model.-does-it-look-like-this">
 <span class="header-section-number">3.4.3.5</span> Plot the results of your demographic model. Does it look like this?</h4>
-<div class="cell page-columns page-full" data-hash="r-session-01_cache/html/unnamed-chunk-15_8cd7f5eaa386e3551936e5f55b3c5786">
-<div class="cell-output-display column-body">
-<p><img src="r-session-01_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" style="width:100.0%"></p>
+<div class="cell page-columns page-full">
+<div class="cell-output-display page-columns page-full">
+<div class="page-columns page-full">
+<figure class="figure page-columns page-full"><p class="page-columns page-full"><img src="r-session-01_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img column-body" style="width:100.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 </section><section id="update-the-comments-in-your-code-to-reflect-the-changes-you-have-made." class="level4" data-number="3.4.3.6"><h4 data-number="3.4.3.6" class="anchored" data-anchor-id="update-the-comments-in-your-code-to-reflect-the-changes-you-have-made.">
@@ -1102,9 +1141,9 @@ Note
 </div>
 </div>
 <section id="sec-ex-commenting-code-commented-basic-sir-code" class="level3" data-number="3.5.1"><h3 data-number="3.5.1" class="anchored" data-anchor-id="sec-ex-commenting-code-commented-basic-sir-code">
-<span class="header-section-number">3.5.1</span> <a href="#sec-ex-commenting-code"><span>Section&nbsp;3.4.2</span></a>: Commented basic SIR code</h3>
-<div class="cell" data-hash="r-session-01_cache/html/unnamed-chunk-16_057fe4a5c1e066e97291a27685d0af1d">
-<details><summary>Code</summary><div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Load packages</span></span>
+<span class="header-section-number">3.5.1</span> <a href="#sec-ex-commenting-code" class="quarto-xref"><span>Section 3.4.2</span></a>: Commented basic SIR code</h3>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Load packages</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb16-3"><a href="#cb16-3"></a><span class="fu">library</span>(deSolve)</span>
 <span id="cb16-4"><a href="#cb16-4"></a></span>
@@ -1214,9 +1253,9 @@ Note
 </details>
 </div>
 </section><section id="sec-ex-add-demographics-commented-demographic-sir-code" class="level3" data-number="3.5.2"><h3 data-number="3.5.2" class="anchored" data-anchor-id="sec-ex-add-demographics-commented-demographic-sir-code">
-<span class="header-section-number">3.5.2</span> <a href="#sec-ex-add-demographics"><span>Section&nbsp;3.4.3</span></a>: Commented demographic SIR code</h3>
-<div class="cell" data-hash="r-session-01_cache/html/unnamed-chunk-17_4d23771c5c060d0c23df65bcff5290d9">
-<details><summary>Code</summary><div class="sourceCode cell-code" id="cb17" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Load packages</span></span>
+<span class="header-section-number">3.5.2</span> <a href="#sec-ex-add-demographics" class="quarto-xref"><span>Section 3.4.3</span></a>: Commented demographic SIR code</h3>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb17" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Load packages</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb17-3"><a href="#cb17-3"></a><span class="fu">library</span>(deSolve)</span>
 <span id="cb17-4"><a href="#cb17-4"></a></span>
@@ -1325,7 +1364,7 @@ Note
 
 
 </section></section></main><!-- /main --><script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"init_beta = 0.3\ninit_dur_inf = 6.0\ninit_I0 = 0.01\ninit_births = 0.0\ninit_tmax = 200\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"function set(input, value) {\n  input.value = value;\n  input.dispatchEvent(new Event(\"input\", {bubbles: true}));\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"viewof reset = Inputs.button([\n  [\"Reset all sliders\", () => {\n    set(viewof beta, init_beta)\n    set(viewof dur_inf, init_dur_inf)\n    set(viewof I0, init_I0)\n    set(viewof births, init_births)\n    set(viewof tmax, init_tmax)\n  }]\n])\n\nviewof beta = Inputs.range(\n  [0.0, 2.0],\n  {value: init_beta, step: 0.01, label: \"Transmission rate (per day)\"}\n)\n\nviewof dur_inf = Inputs.range(\n  [0.0, 20],\n  {value: init_dur_inf, step: 0.5, label: \"Duration of Infection (days)\"}\n)\n\nviewof I0 = Inputs.range(\n  [0.0, 1.0],\n  {value: init_I0, step: 0.01, label: \"Initial fraction infected\"}\n)\n\nviewof births = Inputs.range(\n  [0, 0.05],\n  {value: init_births, step: 0.001, label: \"Birth rate\"}\n)\n\nviewof tmax = Inputs.range(\n  [200, 600],\n  {value: init_tmax, step: 10.0, label: \"Maximum simulation time (years)\"}\n)\n\nviewof area = Inputs.toggle(\n  {label: \"Cumulative Area plot\", value: false}\n)\n\nmd`${tex`R_0 = ${R0_str}`}`\n\n{\n  if (births == 0){\n    var finalsize = sir_sol.get(\"R\", sir_sol.numRows()-1)\n    var finalsize_str = finalsize.toLocaleString(undefined, {minimumFractionDigits: 2})\n\n    return md`${tex`\\text{Final size} = ${finalsize_str}`}`\n  } else {\n    return md``\n  }\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"gamma = 1 / dur_inf\ndt = 0.01\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"import {odeRK4} from '@rreusser/integration@3064'\nimport { aq, op } from '@uwdata/arquero'\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"function sir(dydt, y, t) {\n  dydt[0] = - beta * y[0] * y[1] + births * (1 - y[0])\n  dydt[1] = beta * y[0] * y[1] - gamma * y[1] - births * y[1]\n  dydt[2] = gamma * y[1] - births * y[2]\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"function simulate(f, t0, y0, dt, tmax) {\n  var t = t0\n  var y = y0\n  var i = 0\n\n  var tsim = [t0]\n  var ysim = [y0]\n\n  for (t = t0 + dt; t <= tmax; t += dt) {\n    ysim.push(odeRK4([], ysim[i], f, dt))\n    tsim.push(t)\n    i += 1\n  }\n  \n  return aq.table({\n    Time: tsim,\n    S: ysim.map(d => d[0]),\n    I: ysim.map(d => d[1]),\n    R: ysim.map(d => d[2])\n    })\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-8","inline":false,"source":"sir_sol = simulate(sir, 0, [1.0-I0, I0, 0.0], dt, tmax)\nsir_sol_long = sir_sol.fold(aq.not('Time'), {as: ['State', 'Fraction']})\n"},{"methodName":"interpret","cellName":"ojs-cell-9","inline":false,"source":"SIRcolors = [\"#1f77b4\", \"#ff7f0e\", \"#FF3851\"]\n"},{"methodName":"interpret","cellName":"ojs-cell-10","inline":false,"source":"R0 = beta / (gamma + births)\nR0_str = R0.toLocaleString(undefined, {minimumFractionDigits: 2})\n"},{"methodName":"interpret","cellName":"ojs-cell-11","inline":false,"source":"function calculate_equil(R0){\n  if (births > 0) {\n    var eq_S = 1 / R0\n    var eq_I = births / beta * (R0 - 1)\n    var eq_R = 1 - (eq_S + eq_I)\n\n    const eq_vals = aq.table({\n      State: [\"S\", \"I\", \"R\"],\n      Fraction: [eq_S, eq_I, eq_R]\n    })\n\n    return eq_vals\n  } else {\n    return null\n  }\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-12","inline":false,"source":"eq_vals = calculate_equil(R0)\n"},{"methodName":"interpret","cellName":"ojs-cell-13","inline":false,"source":"Plot.plot({\n  color: {\n    legend: true,\n    domain: [\"S\", \"I\", \"R\"],\n    range: SIRcolors\n  },\n  style: {fontSize: \"20px\"},\n  marginLeft: 65,\n  marginTop: 40,\n  marginBottom: 55,\n  grid: true,\n  width: 800,\n  height: 670,\n  y: {domain: [0, 1]},\n  marks: [\n    area ?\n      Plot.areaY(sir_sol_long, {x: \"Time\", y: \"Fraction\", fill: \"State\"}) :\n      [\n        R0 >= 1.0 && births > 0 ?\n        Plot.ruleY(\n          eq_vals,\n          {y: \"Fraction\", stroke: \"State\", strokeWidth: 2, strokeDasharray: [10]}\n        ) :\n        null,\n        Plot.lineY(\n          sir_sol_long,\n          {x: \"Time\", y: \"Fraction\", stroke: \"State\", strokeWidth: 6}\n        )\n      ]\n  ]\n})\n"},{"methodName":"interpretQuiet","source":"shinyInput('reset')"},{"methodName":"interpretQuiet","source":"shinyInput('beta')"},{"methodName":"interpretQuiet","source":"shinyInput('dur_inf')"},{"methodName":"interpretQuiet","source":"shinyInput('I0')"},{"methodName":"interpretQuiet","source":"shinyInput('births')"},{"methodName":"interpretQuiet","source":"shinyInput('tmax')"},{"methodName":"interpretQuiet","source":"shinyInput('area')"}]}
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImluaXRfYmV0YSA9IDAuM1xuaW5pdF9kdXJfaW5mID0gNi4wXG5pbml0X0kwID0gMC4wMVxuaW5pdF9iaXJ0aHMgPSAwLjBcbmluaXRfdG1heCA9IDIwMFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZnVuY3Rpb24gc2V0KGlucHV0LCB2YWx1ZSkge1xuICBpbnB1dC52YWx1ZSA9IHZhbHVlO1xuICBpbnB1dC5kaXNwYXRjaEV2ZW50KG5ldyBFdmVudChcImlucHV0XCIsIHtidWJibGVzOiB0cnVlfSkpO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIHJlc2V0ID0gSW5wdXRzLmJ1dHRvbihbXG4gIFtcIlJlc2V0IGFsbCBzbGlkZXJzXCIsICgpID0+IHtcbiAgICBzZXQodmlld29mIGJldGEsIGluaXRfYmV0YSlcbiAgICBzZXQodmlld29mIGR1cl9pbmYsIGluaXRfZHVyX2luZilcbiAgICBzZXQodmlld29mIEkwLCBpbml0X0kwKVxuICAgIHNldCh2aWV3b2YgYmlydGhzLCBpbml0X2JpcnRocylcbiAgICBzZXQodmlld29mIHRtYXgsIGluaXRfdG1heClcbiAgfV1cbl0pXG5cbnZpZXdvZiBiZXRhID0gSW5wdXRzLnJhbmdlKFxuICBbMC4wLCAyLjBdLFxuICB7dmFsdWU6IGluaXRfYmV0YSwgc3RlcDogMC4wMSwgbGFiZWw6IFwiVHJhbnNtaXNzaW9uIHJhdGUgKHBlciBkYXkpXCJ9XG4pXG5cbnZpZXdvZiBkdXJfaW5mID0gSW5wdXRzLnJhbmdlKFxuICBbMC4wLCAyMF0sXG4gIHt2YWx1ZTogaW5pdF9kdXJfaW5mLCBzdGVwOiAwLjUsIGxhYmVsOiBcIkR1cmF0aW9uIG9mIEluZmVjdGlvbiAoZGF5cylcIn1cbilcblxudmlld29mIEkwID0gSW5wdXRzLnJhbmdlKFxuICBbMC4wLCAxLjBdLFxuICB7dmFsdWU6IGluaXRfSTAsIHN0ZXA6IDAuMDEsIGxhYmVsOiBcIkluaXRpYWwgZnJhY3Rpb24gaW5mZWN0ZWRcIn1cbilcblxudmlld29mIGJpcnRocyA9IElucHV0cy5yYW5nZShcbiAgWzAsIDAuMDVdLFxuICB7dmFsdWU6IGluaXRfYmlydGhzLCBzdGVwOiAwLjAwMSwgbGFiZWw6IFwiQmlydGggcmF0ZVwifVxuKVxuXG52aWV3b2YgdG1heCA9IElucHV0cy5yYW5nZShcbiAgWzIwMCwgNjAwXSxcbiAge3ZhbHVlOiBpbml0X3RtYXgsIHN0ZXA6IDEwLjAsIGxhYmVsOiBcIk1heGltdW0gc2ltdWxhdGlvbiB0aW1lICh5ZWFycylcIn1cbilcblxudmlld29mIGFyZWEgPSBJbnB1dHMudG9nZ2xlKFxuICB7bGFiZWw6IFwiQ3VtdWxhdGl2ZSBBcmVhIHBsb3RcIiwgdmFsdWU6IGZhbHNlfVxuKVxuXG5tZGAke3RleGBSXzAgPSAke1IwX3N0cn1gfWBcblxue1xuICBpZiAoYmlydGhzID09IDApe1xuICAgIHZhciBmaW5hbHNpemUgPSBzaXJfc29sLmdldChcIlJcIiwgc2lyX3NvbC5udW1Sb3dzKCktMSlcbiAgICB2YXIgZmluYWxzaXplX3N0ciA9IGZpbmFsc2l6ZS50b0xvY2FsZVN0cmluZyh1bmRlZmluZWQsIHttaW5pbXVtRnJhY3Rpb25EaWdpdHM6IDJ9KVxuXG4gICAgcmV0dXJuIG1kYCR7dGV4YFxcdGV4dHtGaW5hbCBzaXplfSA9ICR7ZmluYWxzaXplX3N0cn1gfWBcbiAgfSBlbHNlIHtcbiAgICByZXR1cm4gbWRgYFxuICB9XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJnYW1tYSA9IDEgLyBkdXJfaW5mXG5kdCA9IDAuMDFcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImltcG9ydCB7b2RlUks0fSBmcm9tICdAcnJldXNzZXIvaW50ZWdyYXRpb25AMzA2NCdcbmltcG9ydCB7IGFxLCBvcCB9IGZyb20gJ0B1d2RhdGEvYXJxdWVybydcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZ1bmN0aW9uIHNpcihkeWR0LCB5LCB0KSB7XG4gIGR5ZHRbMF0gPSAtIGJldGEgKiB5WzBdICogeVsxXSArIGJpcnRocyAqICgxIC0geVswXSlcbiAgZHlkdFsxXSA9IGJldGEgKiB5WzBdICogeVsxXSAtIGdhbW1hICogeVsxXSAtIGJpcnRocyAqIHlbMV1cbiAgZHlkdFsyXSA9IGdhbW1hICogeVsxXSAtIGJpcnRocyAqIHlbMl1cbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZ1bmN0aW9uIHNpbXVsYXRlKGYsIHQwLCB5MCwgZHQsIHRtYXgpIHtcbiAgdmFyIHQgPSB0MFxuICB2YXIgeSA9IHkwXG4gIHZhciBpID0gMFxuXG4gIHZhciB0c2ltID0gW3QwXVxuICB2YXIgeXNpbSA9IFt5MF1cblxuICBmb3IgKHQgPSB0MCArIGR0OyB0IDw9IHRtYXg7IHQgKz0gZHQpIHtcbiAgICB5c2ltLnB1c2gob2RlUks0KFtdLCB5c2ltW2ldLCBmLCBkdCkpXG4gICAgdHNpbS5wdXNoKHQpXG4gICAgaSArPSAxXG4gIH1cbiAgXG4gIHJldHVybiBhcS50YWJsZSh7XG4gICAgVGltZTogdHNpbSxcbiAgICBTOiB5c2ltLm1hcChkID0+IGRbMF0pLFxuICAgIEk6IHlzaW0ubWFwKGQgPT4gZFsxXSksXG4gICAgUjogeXNpbS5tYXAoZCA9PiBkWzJdKVxuICAgIH0pXG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTgiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJzaXJfc29sID0gc2ltdWxhdGUoc2lyLCAwLCBbMS4wLUkwLCBJMCwgMC4wXSwgZHQsIHRtYXgpXG5zaXJfc29sX2xvbmcgPSBzaXJfc29sLmZvbGQoYXEubm90KCdUaW1lJyksIHthczogWydTdGF0ZScsICdGcmFjdGlvbiddfSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtOSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlNJUmNvbG9ycyA9IFtcIiMxZjc3YjRcIiwgXCIjZmY3ZjBlXCIsIFwiI0ZGMzg1MVwiXVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xMCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlIwID0gYmV0YSAvIChnYW1tYSArIGJpcnRocylcblIwX3N0ciA9IFIwLnRvTG9jYWxlU3RyaW5nKHVuZGVmaW5lZCwge21pbmltdW1GcmFjdGlvbkRpZ2l0czogMn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTExIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZnVuY3Rpb24gY2FsY3VsYXRlX2VxdWlsKFIwKXtcbiAgaWYgKGJpcnRocyA+IDApIHtcbiAgICB2YXIgZXFfUyA9IDEgLyBSMFxuICAgIHZhciBlcV9JID0gYmlydGhzIC8gYmV0YSAqIChSMCAtIDEpXG4gICAgdmFyIGVxX1IgPSAxIC0gKGVxX1MgKyBlcV9JKVxuXG4gICAgY29uc3QgZXFfdmFscyA9IGFxLnRhYmxlKHtcbiAgICAgIFN0YXRlOiBbXCJTXCIsIFwiSVwiLCBcIlJcIl0sXG4gICAgICBGcmFjdGlvbjogW2VxX1MsIGVxX0ksIGVxX1JdXG4gICAgfSlcblxuICAgIHJldHVybiBlcV92YWxzXG4gIH0gZWxzZSB7XG4gICAgcmV0dXJuIG51bGxcbiAgfVxufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImVxX3ZhbHMgPSBjYWxjdWxhdGVfZXF1aWwoUjApXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTEzIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiUGxvdC5wbG90KHtcbiAgY29sb3I6IHtcbiAgICBsZWdlbmQ6IHRydWUsXG4gICAgZG9tYWluOiBbXCJTXCIsIFwiSVwiLCBcIlJcIl0sXG4gICAgcmFuZ2U6IFNJUmNvbG9yc1xuICB9LFxuICBzdHlsZToge2ZvbnRTaXplOiBcIjIwcHhcIn0sXG4gIG1hcmdpbkxlZnQ6IDY1LFxuICBtYXJnaW5Ub3A6IDQwLFxuICBtYXJnaW5Cb3R0b206IDU1LFxuICBncmlkOiB0cnVlLFxuICB3aWR0aDogODAwLFxuICBoZWlnaHQ6IDY3MCxcbiAgeToge2RvbWFpbjogWzAsIDFdfSxcbiAgbWFya3M6IFtcbiAgICBhcmVhID9cbiAgICAgIFBsb3QuYXJlYVkoc2lyX3NvbF9sb25nLCB7eDogXCJUaW1lXCIsIHk6IFwiRnJhY3Rpb25cIiwgZmlsbDogXCJTdGF0ZVwifSkgOlxuICAgICAgW1xuICAgICAgICBSMCA+PSAxLjAgJiYgYmlydGhzID4gMCA/XG4gICAgICAgIFBsb3QucnVsZVkoXG4gICAgICAgICAgZXFfdmFscyxcbiAgICAgICAgICB7eTogXCJGcmFjdGlvblwiLCBzdHJva2U6IFwiU3RhdGVcIiwgc3Ryb2tlV2lkdGg6IDIsIHN0cm9rZURhc2hhcnJheTogWzEwXX1cbiAgICAgICAgKSA6XG4gICAgICAgIG51bGwsXG4gICAgICAgIFBsb3QubGluZVkoXG4gICAgICAgICAgc2lyX3NvbF9sb25nLFxuICAgICAgICAgIHt4OiBcIlRpbWVcIiwgeTogXCJGcmFjdGlvblwiLCBzdHJva2U6IFwiU3RhdGVcIiwgc3Ryb2tlV2lkdGg6IDZ9XG4gICAgICAgIClcbiAgICAgIF1cbiAgXVxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncmVzZXQnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnYmV0YScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdkdXJfaW5mJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ0kwJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2JpcnRocycpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCd0bWF4JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2FyZWEnKSJ9XX0=
 </script><script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
 window._ojs.paths.runtimeToDoc = "../..";
@@ -1374,6 +1413,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -1442,13 +1508,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1578,10 +1646,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1591,8 +1676,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1604,7 +1698,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1648,6 +1865,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1673,6 +1891,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1732,12 +1976,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./L02_sir-basics.html" class="pagination-link">
+      <a href="./L02_sir-basics.html" class="pagination-link" aria-label="Basics of SIR Models">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics of SIR Models</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./L03_hit-and-vaccinations.html" class="pagination-link">
+      <a href="./L03_hit-and-vaccinations.html" class="pagination-link" aria-label="Herd Immunity &amp; Vaccination">
         <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Herd Immunity &amp; Vaccination</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1751,187 +1995,187 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb18-7"><a href="#cb18-7"></a><span class="fu">## Interactive Plot {#sec-interactive-plots}</span></span>
 <span id="cb18-8"><a href="#cb18-8"></a></span>
 <span id="cb18-11"><a href="#cb18-11"></a><span class="in">```{ojs}</span></span>
-<span id="cb18-12"><a href="#cb18-12"></a>init_beta <span class="op">=</span> <span class="fl">0.3</span></span>
-<span id="cb18-13"><a href="#cb18-13"></a>init_dur_inf <span class="op">=</span> <span class="fl">6.0</span></span>
-<span id="cb18-14"><a href="#cb18-14"></a>init_I0 <span class="op">=</span> <span class="fl">0.01</span></span>
-<span id="cb18-15"><a href="#cb18-15"></a>init_births <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb18-16"><a href="#cb18-16"></a>init_tmax <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb18-12"><a href="#cb18-12"></a><span class="in">init_beta = 0.3</span></span>
+<span id="cb18-13"><a href="#cb18-13"></a><span class="in">init_dur_inf = 6.0</span></span>
+<span id="cb18-14"><a href="#cb18-14"></a><span class="in">init_I0 = 0.01</span></span>
+<span id="cb18-15"><a href="#cb18-15"></a><span class="in">init_births = 0.0</span></span>
+<span id="cb18-16"><a href="#cb18-16"></a><span class="in">init_tmax = 200</span></span>
 <span id="cb18-17"><a href="#cb18-17"></a><span class="in">```</span></span>
 <span id="cb18-18"><a href="#cb18-18"></a></span>
 <span id="cb18-21"><a href="#cb18-21"></a><span class="in">```{ojs}</span></span>
-<span id="cb18-22"><a href="#cb18-22"></a><span class="kw">function</span> <span class="fu">set</span>(input<span class="op">,</span> value) {</span>
-<span id="cb18-23"><a href="#cb18-23"></a>  input<span class="op">.</span><span class="at">value</span> <span class="op">=</span> value<span class="op">;</span></span>
-<span id="cb18-24"><a href="#cb18-24"></a>  input<span class="op">.</span><span class="fu">dispatchEvent</span>(<span class="kw">new</span> <span class="bu">Event</span>(<span class="st">"input"</span><span class="op">,</span> {<span class="dt">bubbles</span><span class="op">:</span> <span class="kw">true</span>}))<span class="op">;</span></span>
-<span id="cb18-25"><a href="#cb18-25"></a>}</span>
+<span id="cb18-22"><a href="#cb18-22"></a><span class="in">function set(input, value) {</span></span>
+<span id="cb18-23"><a href="#cb18-23"></a><span class="in">  input.value = value;</span></span>
+<span id="cb18-24"><a href="#cb18-24"></a><span class="in">  input.dispatchEvent(new Event("input", {bubbles: true}));</span></span>
+<span id="cb18-25"><a href="#cb18-25"></a><span class="in">}</span></span>
 <span id="cb18-26"><a href="#cb18-26"></a><span class="in">```</span></span>
 <span id="cb18-27"><a href="#cb18-27"></a></span>
 <span id="cb18-30"><a href="#cb18-30"></a><span class="in">```{ojs}</span></span>
-<span id="cb18-31"><a href="#cb18-31"></a><span class="co">//| panel: sidebar</span></span>
-<span id="cb18-32"><a href="#cb18-32"></a>viewof reset <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>([</span>
-<span id="cb18-33"><a href="#cb18-33"></a>  [<span class="st">"Reset all sliders"</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb18-34"><a href="#cb18-34"></a>    <span class="kw">set</span>(viewof beta<span class="op">,</span> init_beta)</span>
-<span id="cb18-35"><a href="#cb18-35"></a>    <span class="kw">set</span>(viewof dur_inf<span class="op">,</span> init_dur_inf)</span>
-<span id="cb18-36"><a href="#cb18-36"></a>    <span class="kw">set</span>(viewof I0<span class="op">,</span> init_I0)</span>
-<span id="cb18-37"><a href="#cb18-37"></a>    <span class="kw">set</span>(viewof births<span class="op">,</span> init_births)</span>
-<span id="cb18-38"><a href="#cb18-38"></a>    <span class="kw">set</span>(viewof tmax<span class="op">,</span> init_tmax)</span>
-<span id="cb18-39"><a href="#cb18-39"></a>  }]</span>
-<span id="cb18-40"><a href="#cb18-40"></a>])</span>
+<span id="cb18-31"><a href="#cb18-31"></a><span class="in">//| panel: sidebar</span></span>
+<span id="cb18-32"><a href="#cb18-32"></a><span class="in">viewof reset = Inputs.button([</span></span>
+<span id="cb18-33"><a href="#cb18-33"></a><span class="in">  ["Reset all sliders", () =&gt; {</span></span>
+<span id="cb18-34"><a href="#cb18-34"></a><span class="in">    set(viewof beta, init_beta)</span></span>
+<span id="cb18-35"><a href="#cb18-35"></a><span class="in">    set(viewof dur_inf, init_dur_inf)</span></span>
+<span id="cb18-36"><a href="#cb18-36"></a><span class="in">    set(viewof I0, init_I0)</span></span>
+<span id="cb18-37"><a href="#cb18-37"></a><span class="in">    set(viewof births, init_births)</span></span>
+<span id="cb18-38"><a href="#cb18-38"></a><span class="in">    set(viewof tmax, init_tmax)</span></span>
+<span id="cb18-39"><a href="#cb18-39"></a><span class="in">  }]</span></span>
+<span id="cb18-40"><a href="#cb18-40"></a><span class="in">])</span></span>
 <span id="cb18-41"><a href="#cb18-41"></a></span>
-<span id="cb18-42"><a href="#cb18-42"></a>viewof beta <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb18-43"><a href="#cb18-43"></a>  [<span class="fl">0.0</span><span class="op">,</span> <span class="fl">2.0</span>]<span class="op">,</span></span>
-<span id="cb18-44"><a href="#cb18-44"></a>  {<span class="dt">value</span><span class="op">:</span> init_beta<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Transmission rate (per day)"</span>}</span>
-<span id="cb18-45"><a href="#cb18-45"></a>)</span>
+<span id="cb18-42"><a href="#cb18-42"></a><span class="in">viewof beta = Inputs.range(</span></span>
+<span id="cb18-43"><a href="#cb18-43"></a><span class="in">  [0.0, 2.0],</span></span>
+<span id="cb18-44"><a href="#cb18-44"></a><span class="in">  {value: init_beta, step: 0.01, label: "Transmission rate (per day)"}</span></span>
+<span id="cb18-45"><a href="#cb18-45"></a><span class="in">)</span></span>
 <span id="cb18-46"><a href="#cb18-46"></a></span>
-<span id="cb18-47"><a href="#cb18-47"></a>viewof dur_inf <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb18-48"><a href="#cb18-48"></a>  [<span class="fl">0.0</span><span class="op">,</span> <span class="dv">20</span>]<span class="op">,</span></span>
-<span id="cb18-49"><a href="#cb18-49"></a>  {<span class="dt">value</span><span class="op">:</span> init_dur_inf<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Duration of Infection (days)"</span>}</span>
-<span id="cb18-50"><a href="#cb18-50"></a>)</span>
+<span id="cb18-47"><a href="#cb18-47"></a><span class="in">viewof dur_inf = Inputs.range(</span></span>
+<span id="cb18-48"><a href="#cb18-48"></a><span class="in">  [0.0, 20],</span></span>
+<span id="cb18-49"><a href="#cb18-49"></a><span class="in">  {value: init_dur_inf, step: 0.5, label: "Duration of Infection (days)"}</span></span>
+<span id="cb18-50"><a href="#cb18-50"></a><span class="in">)</span></span>
 <span id="cb18-51"><a href="#cb18-51"></a></span>
-<span id="cb18-52"><a href="#cb18-52"></a>viewof I0 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb18-53"><a href="#cb18-53"></a>  [<span class="fl">0.0</span><span class="op">,</span> <span class="fl">1.0</span>]<span class="op">,</span></span>
-<span id="cb18-54"><a href="#cb18-54"></a>  {<span class="dt">value</span><span class="op">:</span> init_I0<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Initial fraction infected"</span>}</span>
-<span id="cb18-55"><a href="#cb18-55"></a>)</span>
+<span id="cb18-52"><a href="#cb18-52"></a><span class="in">viewof I0 = Inputs.range(</span></span>
+<span id="cb18-53"><a href="#cb18-53"></a><span class="in">  [0.0, 1.0],</span></span>
+<span id="cb18-54"><a href="#cb18-54"></a><span class="in">  {value: init_I0, step: 0.01, label: "Initial fraction infected"}</span></span>
+<span id="cb18-55"><a href="#cb18-55"></a><span class="in">)</span></span>
 <span id="cb18-56"><a href="#cb18-56"></a></span>
-<span id="cb18-57"><a href="#cb18-57"></a>viewof births <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb18-58"><a href="#cb18-58"></a>  [<span class="dv">0</span><span class="op">,</span> <span class="fl">0.05</span>]<span class="op">,</span></span>
-<span id="cb18-59"><a href="#cb18-59"></a>  {<span class="dt">value</span><span class="op">:</span> init_births<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.001</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Birth rate"</span>}</span>
-<span id="cb18-60"><a href="#cb18-60"></a>)</span>
+<span id="cb18-57"><a href="#cb18-57"></a><span class="in">viewof births = Inputs.range(</span></span>
+<span id="cb18-58"><a href="#cb18-58"></a><span class="in">  [0, 0.05],</span></span>
+<span id="cb18-59"><a href="#cb18-59"></a><span class="in">  {value: init_births, step: 0.001, label: "Birth rate"}</span></span>
+<span id="cb18-60"><a href="#cb18-60"></a><span class="in">)</span></span>
 <span id="cb18-61"><a href="#cb18-61"></a></span>
-<span id="cb18-62"><a href="#cb18-62"></a>viewof tmax <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb18-63"><a href="#cb18-63"></a>  [<span class="dv">200</span><span class="op">,</span> <span class="dv">600</span>]<span class="op">,</span></span>
-<span id="cb18-64"><a href="#cb18-64"></a>  {<span class="dt">value</span><span class="op">:</span> init_tmax<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">10.0</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Maximum simulation time (years)"</span>}</span>
-<span id="cb18-65"><a href="#cb18-65"></a>)</span>
+<span id="cb18-62"><a href="#cb18-62"></a><span class="in">viewof tmax = Inputs.range(</span></span>
+<span id="cb18-63"><a href="#cb18-63"></a><span class="in">  [200, 600],</span></span>
+<span id="cb18-64"><a href="#cb18-64"></a><span class="in">  {value: init_tmax, step: 10.0, label: "Maximum simulation time (years)"}</span></span>
+<span id="cb18-65"><a href="#cb18-65"></a><span class="in">)</span></span>
 <span id="cb18-66"><a href="#cb18-66"></a></span>
-<span id="cb18-67"><a href="#cb18-67"></a>viewof area <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">toggle</span>(</span>
-<span id="cb18-68"><a href="#cb18-68"></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">"Cumulative Area plot"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="kw">false</span>}</span>
-<span id="cb18-69"><a href="#cb18-69"></a>)</span>
+<span id="cb18-67"><a href="#cb18-67"></a><span class="in">viewof area = Inputs.toggle(</span></span>
+<span id="cb18-68"><a href="#cb18-68"></a><span class="in">  {label: "Cumulative Area plot", value: false}</span></span>
+<span id="cb18-69"><a href="#cb18-69"></a><span class="in">)</span></span>
 <span id="cb18-70"><a href="#cb18-70"></a></span>
-<span id="cb18-71"><a href="#cb18-71"></a><span class="fu">md</span><span class="vs">`</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`R_0 = </span><span class="sc">${</span>R0_str<span class="sc">}</span><span class="vs">`</span><span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb18-71"><a href="#cb18-71"></a><span class="in">md`${tex`R_0 = ${R0_str}`}`</span></span>
 <span id="cb18-72"><a href="#cb18-72"></a></span>
-<span id="cb18-73"><a href="#cb18-73"></a>{</span>
-<span id="cb18-74"><a href="#cb18-74"></a>  <span class="cf">if</span> (births <span class="op">==</span> <span class="dv">0</span>){</span>
-<span id="cb18-75"><a href="#cb18-75"></a>    <span class="kw">var</span> finalsize <span class="op">=</span> sir_sol<span class="op">.</span><span class="fu">get</span>(<span class="st">"R"</span><span class="op">,</span> sir_sol<span class="op">.</span><span class="fu">numRows</span>()<span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb18-76"><a href="#cb18-76"></a>    <span class="kw">var</span> finalsize_str <span class="op">=</span> finalsize<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="kw">undefined</span><span class="op">,</span> {<span class="dt">minimumFractionDigits</span><span class="op">:</span> <span class="dv">2</span>})</span>
+<span id="cb18-73"><a href="#cb18-73"></a><span class="in">{</span></span>
+<span id="cb18-74"><a href="#cb18-74"></a><span class="in">  if (births == 0){</span></span>
+<span id="cb18-75"><a href="#cb18-75"></a><span class="in">    var finalsize = sir_sol.get("R", sir_sol.numRows()-1)</span></span>
+<span id="cb18-76"><a href="#cb18-76"></a><span class="in">    var finalsize_str = finalsize.toLocaleString(undefined, {minimumFractionDigits: 2})</span></span>
 <span id="cb18-77"><a href="#cb18-77"></a></span>
-<span id="cb18-78"><a href="#cb18-78"></a>    <span class="cf">return</span> <span class="fu">md</span><span class="vs">`</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`</span><span class="sc">\t</span><span class="vs">ext{Final size} = </span><span class="sc">${</span>finalsize_str<span class="sc">}</span><span class="vs">`</span><span class="sc">}</span><span class="vs">`</span></span>
-<span id="cb18-79"><a href="#cb18-79"></a>  } <span class="cf">else</span> {</span>
-<span id="cb18-80"><a href="#cb18-80"></a>    <span class="cf">return</span> <span class="fu">md</span><span class="vs">``</span></span>
-<span id="cb18-81"><a href="#cb18-81"></a>  }</span>
-<span id="cb18-82"><a href="#cb18-82"></a>}</span>
+<span id="cb18-78"><a href="#cb18-78"></a><span class="in">    return md`${tex`\text{Final size} = ${finalsize_str}`}`</span></span>
+<span id="cb18-79"><a href="#cb18-79"></a><span class="in">  } else {</span></span>
+<span id="cb18-80"><a href="#cb18-80"></a><span class="in">    return md``</span></span>
+<span id="cb18-81"><a href="#cb18-81"></a><span class="in">  }</span></span>
+<span id="cb18-82"><a href="#cb18-82"></a><span class="in">}</span></span>
 <span id="cb18-83"><a href="#cb18-83"></a><span class="in">```</span></span>
 <span id="cb18-84"><a href="#cb18-84"></a></span>
 <span id="cb18-87"><a href="#cb18-87"></a><span class="in">```{ojs}</span></span>
-<span id="cb18-88"><a href="#cb18-88"></a>gamma <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> dur_inf</span>
-<span id="cb18-89"><a href="#cb18-89"></a>dt <span class="op">=</span> <span class="fl">0.01</span></span>
+<span id="cb18-88"><a href="#cb18-88"></a><span class="in">gamma = 1 / dur_inf</span></span>
+<span id="cb18-89"><a href="#cb18-89"></a><span class="in">dt = 0.01</span></span>
 <span id="cb18-90"><a href="#cb18-90"></a><span class="in">```</span></span>
 <span id="cb18-91"><a href="#cb18-91"></a></span>
 <span id="cb18-94"><a href="#cb18-94"></a><span class="in">```{ojs}</span></span>
-<span id="cb18-95"><a href="#cb18-95"></a><span class="im">import</span> {odeRK4} <span class="im">from</span> <span class="st">'@rreusser/integration@3064'</span></span>
-<span id="cb18-96"><a href="#cb18-96"></a><span class="im">import</span> { aq<span class="op">,</span> op } <span class="im">from</span> <span class="st">'@uwdata/arquero'</span></span>
+<span id="cb18-95"><a href="#cb18-95"></a><span class="in">import {odeRK4} from '@rreusser/integration@3064'</span></span>
+<span id="cb18-96"><a href="#cb18-96"></a><span class="in">import { aq, op } from '@uwdata/arquero'</span></span>
 <span id="cb18-97"><a href="#cb18-97"></a><span class="in">```</span></span>
 <span id="cb18-98"><a href="#cb18-98"></a></span>
 <span id="cb18-101"><a href="#cb18-101"></a><span class="in">```{ojs}</span></span>
-<span id="cb18-102"><a href="#cb18-102"></a><span class="kw">function</span> <span class="fu">sir</span>(dydt<span class="op">,</span> y<span class="op">,</span> t) {</span>
-<span id="cb18-103"><a href="#cb18-103"></a>  dydt[<span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span> beta <span class="op">*</span> y[<span class="dv">0</span>] <span class="op">*</span> y[<span class="dv">1</span>] <span class="op">+</span> births <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> y[<span class="dv">0</span>])</span>
-<span id="cb18-104"><a href="#cb18-104"></a>  dydt[<span class="dv">1</span>] <span class="op">=</span> beta <span class="op">*</span> y[<span class="dv">0</span>] <span class="op">*</span> y[<span class="dv">1</span>] <span class="op">-</span> gamma <span class="op">*</span> y[<span class="dv">1</span>] <span class="op">-</span> births <span class="op">*</span> y[<span class="dv">1</span>]</span>
-<span id="cb18-105"><a href="#cb18-105"></a>  dydt[<span class="dv">2</span>] <span class="op">=</span> gamma <span class="op">*</span> y[<span class="dv">1</span>] <span class="op">-</span> births <span class="op">*</span> y[<span class="dv">2</span>]</span>
-<span id="cb18-106"><a href="#cb18-106"></a>}</span>
+<span id="cb18-102"><a href="#cb18-102"></a><span class="in">function sir(dydt, y, t) {</span></span>
+<span id="cb18-103"><a href="#cb18-103"></a><span class="in">  dydt[0] = - beta * y[0] * y[1] + births * (1 - y[0])</span></span>
+<span id="cb18-104"><a href="#cb18-104"></a><span class="in">  dydt[1] = beta * y[0] * y[1] - gamma * y[1] - births * y[1]</span></span>
+<span id="cb18-105"><a href="#cb18-105"></a><span class="in">  dydt[2] = gamma * y[1] - births * y[2]</span></span>
+<span id="cb18-106"><a href="#cb18-106"></a><span class="in">}</span></span>
 <span id="cb18-107"><a href="#cb18-107"></a><span class="in">```</span></span>
 <span id="cb18-108"><a href="#cb18-108"></a></span>
 <span id="cb18-111"><a href="#cb18-111"></a><span class="in">```{ojs}</span></span>
-<span id="cb18-112"><a href="#cb18-112"></a><span class="kw">function</span> <span class="fu">simulate</span>(f<span class="op">,</span> t0<span class="op">,</span> y0<span class="op">,</span> dt<span class="op">,</span> tmax) {</span>
-<span id="cb18-113"><a href="#cb18-113"></a>  <span class="kw">var</span> t <span class="op">=</span> t0</span>
-<span id="cb18-114"><a href="#cb18-114"></a>  <span class="kw">var</span> y <span class="op">=</span> y0</span>
-<span id="cb18-115"><a href="#cb18-115"></a>  <span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb18-112"><a href="#cb18-112"></a><span class="in">function simulate(f, t0, y0, dt, tmax) {</span></span>
+<span id="cb18-113"><a href="#cb18-113"></a><span class="in">  var t = t0</span></span>
+<span id="cb18-114"><a href="#cb18-114"></a><span class="in">  var y = y0</span></span>
+<span id="cb18-115"><a href="#cb18-115"></a><span class="in">  var i = 0</span></span>
 <span id="cb18-116"><a href="#cb18-116"></a></span>
-<span id="cb18-117"><a href="#cb18-117"></a>  <span class="kw">var</span> tsim <span class="op">=</span> [t0]</span>
-<span id="cb18-118"><a href="#cb18-118"></a>  <span class="kw">var</span> ysim <span class="op">=</span> [y0]</span>
+<span id="cb18-117"><a href="#cb18-117"></a><span class="in">  var tsim = [t0]</span></span>
+<span id="cb18-118"><a href="#cb18-118"></a><span class="in">  var ysim = [y0]</span></span>
 <span id="cb18-119"><a href="#cb18-119"></a></span>
-<span id="cb18-120"><a href="#cb18-120"></a>  <span class="cf">for</span> (t <span class="op">=</span> t0 <span class="op">+</span> dt<span class="op">;</span> t <span class="op">&lt;=</span> tmax<span class="op">;</span> t <span class="op">+=</span> dt) {</span>
-<span id="cb18-121"><a href="#cb18-121"></a>    ysim<span class="op">.</span><span class="fu">push</span>(<span class="fu">odeRK4</span>([]<span class="op">,</span> ysim[i]<span class="op">,</span> f<span class="op">,</span> dt))</span>
-<span id="cb18-122"><a href="#cb18-122"></a>    tsim<span class="op">.</span><span class="fu">push</span>(t)</span>
-<span id="cb18-123"><a href="#cb18-123"></a>    i <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb18-124"><a href="#cb18-124"></a>  }</span>
-<span id="cb18-125"><a href="#cb18-125"></a>  </span>
-<span id="cb18-126"><a href="#cb18-126"></a>  <span class="cf">return</span> aq<span class="op">.</span><span class="fu">table</span>({</span>
-<span id="cb18-127"><a href="#cb18-127"></a>    <span class="dt">Time</span><span class="op">:</span> tsim<span class="op">,</span></span>
-<span id="cb18-128"><a href="#cb18-128"></a>    <span class="dt">S</span><span class="op">:</span> ysim<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d[<span class="dv">0</span>])<span class="op">,</span></span>
-<span id="cb18-129"><a href="#cb18-129"></a>    <span class="dt">I</span><span class="op">:</span> ysim<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d[<span class="dv">1</span>])<span class="op">,</span></span>
-<span id="cb18-130"><a href="#cb18-130"></a>    <span class="dt">R</span><span class="op">:</span> ysim<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d[<span class="dv">2</span>])</span>
-<span id="cb18-131"><a href="#cb18-131"></a>    })</span>
-<span id="cb18-132"><a href="#cb18-132"></a>}</span>
+<span id="cb18-120"><a href="#cb18-120"></a><span class="in">  for (t = t0 + dt; t &lt;= tmax; t += dt) {</span></span>
+<span id="cb18-121"><a href="#cb18-121"></a><span class="in">    ysim.push(odeRK4([], ysim[i], f, dt))</span></span>
+<span id="cb18-122"><a href="#cb18-122"></a><span class="in">    tsim.push(t)</span></span>
+<span id="cb18-123"><a href="#cb18-123"></a><span class="in">    i += 1</span></span>
+<span id="cb18-124"><a href="#cb18-124"></a><span class="in">  }</span></span>
+<span id="cb18-125"><a href="#cb18-125"></a><span class="in">  </span></span>
+<span id="cb18-126"><a href="#cb18-126"></a><span class="in">  return aq.table({</span></span>
+<span id="cb18-127"><a href="#cb18-127"></a><span class="in">    Time: tsim,</span></span>
+<span id="cb18-128"><a href="#cb18-128"></a><span class="in">    S: ysim.map(d =&gt; d[0]),</span></span>
+<span id="cb18-129"><a href="#cb18-129"></a><span class="in">    I: ysim.map(d =&gt; d[1]),</span></span>
+<span id="cb18-130"><a href="#cb18-130"></a><span class="in">    R: ysim.map(d =&gt; d[2])</span></span>
+<span id="cb18-131"><a href="#cb18-131"></a><span class="in">    })</span></span>
+<span id="cb18-132"><a href="#cb18-132"></a><span class="in">}</span></span>
 <span id="cb18-133"><a href="#cb18-133"></a><span class="in">```</span></span>
 <span id="cb18-134"><a href="#cb18-134"></a></span>
 <span id="cb18-137"><a href="#cb18-137"></a><span class="in">```{ojs}</span></span>
-<span id="cb18-138"><a href="#cb18-138"></a>sir_sol <span class="op">=</span> <span class="fu">simulate</span>(sir<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> [<span class="fl">1.0</span><span class="op">-</span>I0<span class="op">,</span> I0<span class="op">,</span> <span class="fl">0.0</span>]<span class="op">,</span> dt<span class="op">,</span> tmax)</span>
-<span id="cb18-139"><a href="#cb18-139"></a>sir_sol_long <span class="op">=</span> sir_sol<span class="op">.</span><span class="fu">fold</span>(aq<span class="op">.</span><span class="fu">not</span>(<span class="st">'Time'</span>)<span class="op">,</span> {<span class="dt">as</span><span class="op">:</span> [<span class="st">'State'</span><span class="op">,</span> <span class="st">'Fraction'</span>]})</span>
+<span id="cb18-138"><a href="#cb18-138"></a><span class="in">sir_sol = simulate(sir, 0, [1.0-I0, I0, 0.0], dt, tmax)</span></span>
+<span id="cb18-139"><a href="#cb18-139"></a><span class="in">sir_sol_long = sir_sol.fold(aq.not('Time'), {as: ['State', 'Fraction']})</span></span>
 <span id="cb18-140"><a href="#cb18-140"></a><span class="in">```</span></span>
 <span id="cb18-141"><a href="#cb18-141"></a></span>
 <span id="cb18-144"><a href="#cb18-144"></a><span class="in">```{ojs}</span></span>
-<span id="cb18-145"><a href="#cb18-145"></a>SIRcolors <span class="op">=</span> [<span class="st">"#1f77b4"</span><span class="op">,</span> <span class="st">"#ff7f0e"</span><span class="op">,</span> <span class="st">"#FF3851"</span>]</span>
+<span id="cb18-145"><a href="#cb18-145"></a><span class="in">SIRcolors = ["#1f77b4", "#ff7f0e", "#FF3851"]</span></span>
 <span id="cb18-146"><a href="#cb18-146"></a><span class="in">```</span></span>
 <span id="cb18-147"><a href="#cb18-147"></a></span>
 <span id="cb18-150"><a href="#cb18-150"></a><span class="in">```{ojs}</span></span>
-<span id="cb18-151"><a href="#cb18-151"></a>R0 <span class="op">=</span> beta <span class="op">/</span> (gamma <span class="op">+</span> births)</span>
-<span id="cb18-152"><a href="#cb18-152"></a>R0_str <span class="op">=</span> R0<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="kw">undefined</span><span class="op">,</span> {<span class="dt">minimumFractionDigits</span><span class="op">:</span> <span class="dv">2</span>})</span>
+<span id="cb18-151"><a href="#cb18-151"></a><span class="in">R0 = beta / (gamma + births)</span></span>
+<span id="cb18-152"><a href="#cb18-152"></a><span class="in">R0_str = R0.toLocaleString(undefined, {minimumFractionDigits: 2})</span></span>
 <span id="cb18-153"><a href="#cb18-153"></a><span class="in">```</span></span>
 <span id="cb18-154"><a href="#cb18-154"></a></span>
 <span id="cb18-157"><a href="#cb18-157"></a><span class="in">```{ojs}</span></span>
-<span id="cb18-158"><a href="#cb18-158"></a><span class="kw">function</span> <span class="fu">calculate_equil</span>(R0){</span>
-<span id="cb18-159"><a href="#cb18-159"></a>  <span class="cf">if</span> (births <span class="op">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb18-160"><a href="#cb18-160"></a>    <span class="kw">var</span> eq_S <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> R0</span>
-<span id="cb18-161"><a href="#cb18-161"></a>    <span class="kw">var</span> eq_I <span class="op">=</span> births <span class="op">/</span> beta <span class="op">*</span> (R0 <span class="op">-</span> <span class="dv">1</span>)</span>
-<span id="cb18-162"><a href="#cb18-162"></a>    <span class="kw">var</span> eq_R <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> (eq_S <span class="op">+</span> eq_I)</span>
+<span id="cb18-158"><a href="#cb18-158"></a><span class="in">function calculate_equil(R0){</span></span>
+<span id="cb18-159"><a href="#cb18-159"></a><span class="in">  if (births &gt; 0) {</span></span>
+<span id="cb18-160"><a href="#cb18-160"></a><span class="in">    var eq_S = 1 / R0</span></span>
+<span id="cb18-161"><a href="#cb18-161"></a><span class="in">    var eq_I = births / beta * (R0 - 1)</span></span>
+<span id="cb18-162"><a href="#cb18-162"></a><span class="in">    var eq_R = 1 - (eq_S + eq_I)</span></span>
 <span id="cb18-163"><a href="#cb18-163"></a></span>
-<span id="cb18-164"><a href="#cb18-164"></a>    <span class="kw">const</span> eq_vals <span class="op">=</span> aq<span class="op">.</span><span class="fu">table</span>({</span>
-<span id="cb18-165"><a href="#cb18-165"></a>      <span class="dt">State</span><span class="op">:</span> [<span class="st">"S"</span><span class="op">,</span> <span class="st">"I"</span><span class="op">,</span> <span class="st">"R"</span>]<span class="op">,</span></span>
-<span id="cb18-166"><a href="#cb18-166"></a>      <span class="dt">Fraction</span><span class="op">:</span> [eq_S<span class="op">,</span> eq_I<span class="op">,</span> eq_R]</span>
-<span id="cb18-167"><a href="#cb18-167"></a>    })</span>
+<span id="cb18-164"><a href="#cb18-164"></a><span class="in">    const eq_vals = aq.table({</span></span>
+<span id="cb18-165"><a href="#cb18-165"></a><span class="in">      State: ["S", "I", "R"],</span></span>
+<span id="cb18-166"><a href="#cb18-166"></a><span class="in">      Fraction: [eq_S, eq_I, eq_R]</span></span>
+<span id="cb18-167"><a href="#cb18-167"></a><span class="in">    })</span></span>
 <span id="cb18-168"><a href="#cb18-168"></a></span>
-<span id="cb18-169"><a href="#cb18-169"></a>    <span class="cf">return</span> eq_vals</span>
-<span id="cb18-170"><a href="#cb18-170"></a>  } <span class="cf">else</span> {</span>
-<span id="cb18-171"><a href="#cb18-171"></a>    <span class="cf">return</span> <span class="kw">null</span></span>
-<span id="cb18-172"><a href="#cb18-172"></a>  }</span>
-<span id="cb18-173"><a href="#cb18-173"></a>}</span>
+<span id="cb18-169"><a href="#cb18-169"></a><span class="in">    return eq_vals</span></span>
+<span id="cb18-170"><a href="#cb18-170"></a><span class="in">  } else {</span></span>
+<span id="cb18-171"><a href="#cb18-171"></a><span class="in">    return null</span></span>
+<span id="cb18-172"><a href="#cb18-172"></a><span class="in">  }</span></span>
+<span id="cb18-173"><a href="#cb18-173"></a><span class="in">}</span></span>
 <span id="cb18-174"><a href="#cb18-174"></a><span class="in">```</span></span>
 <span id="cb18-175"><a href="#cb18-175"></a></span>
 <span id="cb18-178"><a href="#cb18-178"></a><span class="in">```{ojs}</span></span>
-<span id="cb18-179"><a href="#cb18-179"></a>eq_vals <span class="op">=</span> <span class="fu">calculate_equil</span>(R0)</span>
+<span id="cb18-179"><a href="#cb18-179"></a><span class="in">eq_vals = calculate_equil(R0)</span></span>
 <span id="cb18-180"><a href="#cb18-180"></a><span class="in">```</span></span>
 <span id="cb18-181"><a href="#cb18-181"></a></span>
 <span id="cb18-184"><a href="#cb18-184"></a><span class="in">```{ojs}</span></span>
-<span id="cb18-185"><a href="#cb18-185"></a><span class="co">//| panel: fill</span></span>
-<span id="cb18-186"><a href="#cb18-186"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb18-187"><a href="#cb18-187"></a>  <span class="dt">color</span><span class="op">:</span> {</span>
-<span id="cb18-188"><a href="#cb18-188"></a>    <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb18-189"><a href="#cb18-189"></a>    <span class="dt">domain</span><span class="op">:</span> [<span class="st">"S"</span><span class="op">,</span> <span class="st">"I"</span><span class="op">,</span> <span class="st">"R"</span>]<span class="op">,</span></span>
-<span id="cb18-190"><a href="#cb18-190"></a>    <span class="dt">range</span><span class="op">:</span> SIRcolors</span>
-<span id="cb18-191"><a href="#cb18-191"></a>  }<span class="op">,</span></span>
-<span id="cb18-192"><a href="#cb18-192"></a>  <span class="dt">style</span><span class="op">:</span> {<span class="dt">fontSize</span><span class="op">:</span> <span class="st">"20px"</span>}<span class="op">,</span></span>
-<span id="cb18-193"><a href="#cb18-193"></a>  <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">65</span><span class="op">,</span></span>
-<span id="cb18-194"><a href="#cb18-194"></a>  <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">40</span><span class="op">,</span></span>
-<span id="cb18-195"><a href="#cb18-195"></a>  <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">55</span><span class="op">,</span></span>
-<span id="cb18-196"><a href="#cb18-196"></a>  <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb18-197"><a href="#cb18-197"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
-<span id="cb18-198"><a href="#cb18-198"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">670</span><span class="op">,</span></span>
-<span id="cb18-199"><a href="#cb18-199"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]}<span class="op">,</span></span>
-<span id="cb18-200"><a href="#cb18-200"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb18-201"><a href="#cb18-201"></a>    area <span class="op">?</span></span>
-<span id="cb18-202"><a href="#cb18-202"></a>      Plot<span class="op">.</span><span class="fu">areaY</span>(sir_sol_long<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"Time"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"Fraction"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"State"</span>}) <span class="op">:</span></span>
-<span id="cb18-203"><a href="#cb18-203"></a>      [</span>
-<span id="cb18-204"><a href="#cb18-204"></a>        R0 <span class="op">&gt;=</span> <span class="fl">1.0</span> <span class="op">&amp;&amp;</span> births <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span></span>
-<span id="cb18-205"><a href="#cb18-205"></a>        Plot<span class="op">.</span><span class="fu">ruleY</span>(</span>
-<span id="cb18-206"><a href="#cb18-206"></a>          eq_vals<span class="op">,</span></span>
-<span id="cb18-207"><a href="#cb18-207"></a>          {<span class="dt">y</span><span class="op">:</span> <span class="st">"Fraction"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"State"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> [<span class="dv">10</span>]}</span>
-<span id="cb18-208"><a href="#cb18-208"></a>        ) <span class="op">:</span></span>
-<span id="cb18-209"><a href="#cb18-209"></a>        <span class="kw">null</span><span class="op">,</span></span>
-<span id="cb18-210"><a href="#cb18-210"></a>        Plot<span class="op">.</span><span class="fu">lineY</span>(</span>
-<span id="cb18-211"><a href="#cb18-211"></a>          sir_sol_long<span class="op">,</span></span>
-<span id="cb18-212"><a href="#cb18-212"></a>          {<span class="dt">x</span><span class="op">:</span> <span class="st">"Time"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"Fraction"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"State"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">6</span>}</span>
-<span id="cb18-213"><a href="#cb18-213"></a>        )</span>
-<span id="cb18-214"><a href="#cb18-214"></a>      ]</span>
-<span id="cb18-215"><a href="#cb18-215"></a>  ]</span>
-<span id="cb18-216"><a href="#cb18-216"></a>})</span>
+<span id="cb18-185"><a href="#cb18-185"></a><span class="in">//| panel: fill</span></span>
+<span id="cb18-186"><a href="#cb18-186"></a><span class="in">Plot.plot({</span></span>
+<span id="cb18-187"><a href="#cb18-187"></a><span class="in">  color: {</span></span>
+<span id="cb18-188"><a href="#cb18-188"></a><span class="in">    legend: true,</span></span>
+<span id="cb18-189"><a href="#cb18-189"></a><span class="in">    domain: ["S", "I", "R"],</span></span>
+<span id="cb18-190"><a href="#cb18-190"></a><span class="in">    range: SIRcolors</span></span>
+<span id="cb18-191"><a href="#cb18-191"></a><span class="in">  },</span></span>
+<span id="cb18-192"><a href="#cb18-192"></a><span class="in">  style: {fontSize: "20px"},</span></span>
+<span id="cb18-193"><a href="#cb18-193"></a><span class="in">  marginLeft: 65,</span></span>
+<span id="cb18-194"><a href="#cb18-194"></a><span class="in">  marginTop: 40,</span></span>
+<span id="cb18-195"><a href="#cb18-195"></a><span class="in">  marginBottom: 55,</span></span>
+<span id="cb18-196"><a href="#cb18-196"></a><span class="in">  grid: true,</span></span>
+<span id="cb18-197"><a href="#cb18-197"></a><span class="in">  width: 800,</span></span>
+<span id="cb18-198"><a href="#cb18-198"></a><span class="in">  height: 670,</span></span>
+<span id="cb18-199"><a href="#cb18-199"></a><span class="in">  y: {domain: [0, 1]},</span></span>
+<span id="cb18-200"><a href="#cb18-200"></a><span class="in">  marks: [</span></span>
+<span id="cb18-201"><a href="#cb18-201"></a><span class="in">    area ?</span></span>
+<span id="cb18-202"><a href="#cb18-202"></a><span class="in">      Plot.areaY(sir_sol_long, {x: "Time", y: "Fraction", fill: "State"}) :</span></span>
+<span id="cb18-203"><a href="#cb18-203"></a><span class="in">      [</span></span>
+<span id="cb18-204"><a href="#cb18-204"></a><span class="in">        R0 &gt;= 1.0 &amp;&amp; births &gt; 0 ?</span></span>
+<span id="cb18-205"><a href="#cb18-205"></a><span class="in">        Plot.ruleY(</span></span>
+<span id="cb18-206"><a href="#cb18-206"></a><span class="in">          eq_vals,</span></span>
+<span id="cb18-207"><a href="#cb18-207"></a><span class="in">          {y: "Fraction", stroke: "State", strokeWidth: 2, strokeDasharray: [10]}</span></span>
+<span id="cb18-208"><a href="#cb18-208"></a><span class="in">        ) :</span></span>
+<span id="cb18-209"><a href="#cb18-209"></a><span class="in">        null,</span></span>
+<span id="cb18-210"><a href="#cb18-210"></a><span class="in">        Plot.lineY(</span></span>
+<span id="cb18-211"><a href="#cb18-211"></a><span class="in">          sir_sol_long,</span></span>
+<span id="cb18-212"><a href="#cb18-212"></a><span class="in">          {x: "Time", y: "Fraction", stroke: "State", strokeWidth: 6}</span></span>
+<span id="cb18-213"><a href="#cb18-213"></a><span class="in">        )</span></span>
+<span id="cb18-214"><a href="#cb18-214"></a><span class="in">      ]</span></span>
+<span id="cb18-215"><a href="#cb18-215"></a><span class="in">  ]</span></span>
+<span id="cb18-216"><a href="#cb18-216"></a><span class="in">})</span></span>
 <span id="cb18-217"><a href="#cb18-217"></a><span class="in">```</span></span>
 <span id="cb18-218"><a href="#cb18-218"></a></span>
 <span id="cb18-219"><a href="#cb18-219"></a><span class="fu">## Closed Population Model Intuition</span></span>
@@ -2036,7 +2280,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb18-318"><a href="#cb18-318"></a>Below is some R code that implements the basic closed-population SIR model.</span>
 <span id="cb18-319"><a href="#cb18-319"></a>The purpose of the questions in this exercise is to guide you through the code and help you understand how it works so you can modify it to answer your own questions.</span>
 <span id="cb18-320"><a href="#cb18-320"></a></span>
-<span id="cb18-321"><a href="#cb18-321"></a><span class="kw">&lt;a</span> <span class="er">id</span><span class="ot">=</span><span class="st">"quarto-tips"</span><span class="kw">&gt;&lt;/a&gt;</span></span>
+<span id="cb18-321"><a href="#cb18-321"></a>&lt;a id="quarto-tips"&gt;&lt;/a&gt;</span>
 <span id="cb18-322"><a href="#cb18-322"></a></span>
 <span id="cb18-323"><a href="#cb18-323"></a>::: {.callout-note title="Instruction" appearance="minimal"}</span>
 <span id="cb18-324"><a href="#cb18-324"></a>Copy the code below into a new R script.</span>
@@ -2472,5 +2716,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/arnold-c/SISMID-Module-02_2023/edit/main/r-session-01.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer><script src="site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
 </body></html>
