@@ -1,4 +1,4 @@
-# SISMID Module 2 Materials (2023)
+# SISMID Module 2 Materials (2024)
 ## About This Project
 
 ### Who Is This For & Pre-Requisite Knowledge?
@@ -10,7 +10,7 @@
 
 ## Contact
 
-You can contact me via my email: "arnold dot crk at gmail dot com".
+You can contact me via my email: "callum *at* callumarnold *dot* com".
 
 ## Contributing
 
