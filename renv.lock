@@ -324,16 +324,6 @@
       ],
       "Hash": "3f038e5ac7f41d4ac41ce658c85e3042"
     },
-    "codetools": {
-      "Package": "codetools",
-      "Version": "0.2-19",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R"
-      ],
-      "Hash": "c089a619a7fae175d149d89164f8c7d8"
-    },
     "colorspace": {
       "Package": "colorspace",
       "Version": "2.1-0",
@@ -899,7 +889,7 @@
     },
     "httpgd": {
       "Package": "httpgd",
-      "Version": "2.0.1",
+      "Version": "2.0.2",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -908,7 +898,7 @@
         "cpp11",
         "unigd"
       ],
-      "Hash": "1db3dea2788722f773ca2ccecd242a5d"
+      "Hash": "c30fb41ccc97f7797735633dccb9fcae"
     },
     "httr": {
       "Package": "httr",
@@ -987,13 +977,6 @@
       ],
       "Hash": "3bcd11943da509341838da9399e18bce"
     },
-    "keypress": {
-      "Package": "keypress",
-      "Version": "1.3.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "bfe620382046f1dc82a584c424795f83"
-    },
     "knitr": {
       "Package": "knitr",
       "Version": "1.47",
@@ -1048,21 +1031,6 @@
         "rlang"
       ],
       "Hash": "b8552d117e1b808b09a832f589b79035"
-    },
-    "lobstr": {
-      "Package": "lobstr",
-      "Version": "1.1.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "cpp11",
-        "crayon",
-        "methods",
-        "prettyunits",
-        "rlang"
-      ],
-      "Hash": "f2a94f8fc9db382a642e965339635ad6"
     },
     "lubridate": {
       "Package": "lubridate",
@@ -1191,31 +1159,6 @@
       ],
       "Hash": "2bcca3848e4734eb3b16103bc9aa4b8e"
     },
-    "paint": {
-      "Package": "paint",
-      "Version": "0.2.0",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "paint",
-      "RemoteUsername": "MilesMcBain",
-      "RemotePkgRef": "MilesMcBain/paint",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "6dbbff1ef5b48839dbfbc9ccc8d6490e1bf7d32d",
-      "Requirements": [
-        "R",
-        "RColorBrewer",
-        "crayon",
-        "keypress",
-        "pryr",
-        "purrr",
-        "stringi",
-        "utils",
-        "vctrs",
-        "viridisLite"
-      ],
-      "Hash": "8eef46e8955692fb9c82d5525199ee6c"
-    },
     "pillar": {
       "Package": "pillar",
       "Version": "1.9.0",
@@ -1300,21 +1243,6 @@
         "prettyunits"
       ],
       "Hash": "f4625e061cb2865f111b47ff163a5ca6"
-    },
-    "pryr": {
-      "Package": "pryr",
-      "Version": "0.1.6",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "Rcpp",
-        "codetools",
-        "lobstr",
-        "methods",
-        "stringr"
-      ],
-      "Hash": "cfcbe960eca81ceca61df5fa622693de"
     },
     "ps": {
       "Package": "ps",
@@ -1833,7 +1761,7 @@
     },
     "unigd": {
       "Package": "unigd",
-      "Version": "0.1.1",
+      "Version": "0.1.2",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1841,7 +1769,7 @@
         "cpp11",
         "systemfonts"
       ],
-      "Hash": "00864724adac92ad5b901710870c16f1"
+      "Hash": "9ed4b1941002ff508006885c66b5e473"
     },
     "utf8": {
       "Package": "utf8",
