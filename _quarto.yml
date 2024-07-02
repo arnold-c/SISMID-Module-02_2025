@@ -45,6 +45,8 @@ book:
     search: true
     border: true
     pinned: true
+  search:
+    keyboard-shortcut: ["?", "s"]
   reader-mode: true
   favicon: ./images/sismid2023-logo-green.png
   google-analytics: "G-EVYBCCRZHE"
@@ -53,6 +55,10 @@ book:
 toc: true
 toc-title: Page Items
 toc-location: right
+
+# Placeholder text for search showing shortcuts
+language:
+  search-text-placeholder: "[s|?] Search Contents"
 
 # Default knitr options
 execute:
