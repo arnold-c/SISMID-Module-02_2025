@@ -3,12 +3,12 @@ title: Intro to Modeling
 format:
     html:
         page-layout: full
-metadata-files: 
+metadata-files:
   - metadata/micaelamartinez.yml
 ---
 
 ```{=html}
-<iframe class="slide-deck" src="https://docs.google.com/presentation/d/e/2PACX-1vTfoWBj95KHyq7ClrbPEsZz11Y8JKkaIa39JxefnmbyYLm54gDjsvT9nfTNp72WOQ/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1023" height="606" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe class="slide-deck" src="https://docs.google.com/presentation/d/e/2PACX-1vRMvGQzKRYf2CKFdeTJI9seM_CF7ZcJO9aUUFVuePk9BJ78OnIoM1211BBsGbHYiA/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1023" height="606" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 ```
 
 [Download slides](./slides/L01_Intro-to-modeling.pdf)
