@@ -21,20 +21,20 @@ book:
         - just-enough-r.qmd
         - project-management.qmd
     - part: "Day 1"
-      chapters: 
+      chapters:
         - L01_intro-to-modeling.qmd
         - L02_sir-basics.qmd
         - r-session-01.qmd
         - L03_hit-and-vaccinations.qmd
     - part: "Day 2"
-      chapters: 
+      chapters:
         - L04_heterogeneity.qmd
         - L05_age-structure.qmd
         - r-session-02.qmd
         - L06_parameter-estimation.qmd
         - r-session-03.qmd
     - part: "Day 3"
-      chapters: 
+      chapters:
         - L07_models-and-data.qmd
         - L08_stochastic-models.qmd
     - references.qmd
@@ -60,6 +60,7 @@ execute:
   message: true
   warning: true
   cache: true
+  freeze: auto
 
 # Default author
 author:

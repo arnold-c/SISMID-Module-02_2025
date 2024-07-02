@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.5.40">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Callum Arnold">
 <meta name="author" content="Matthew Ferrari">
-<title>SISMID Module 2 Materials (2024) - 7&nbsp; R Session 02</title>
+<title>SISMID Module 2 Materials (2024) – 7&nbsp; R Session 02</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +32,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -137,7 +137,7 @@ gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
       packages: {'[+]': ['physics']}
     }
   };
-</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -168,13 +168,13 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./L04_heterogeneity.html">Day 2</a></li><li class="breadcrumb-item"><a href="./r-session-02.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">R Session 02</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -217,9 +217,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Pre-Requisites</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -258,9 +258,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Day 1</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -293,9 +293,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Day 2</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -334,9 +334,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Day 3</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -2132,24 +2132,23 @@ Note about <code>map()</code>
 <span id="cb70-17"><a href="#cb70-17"></a>    <span class="fu">opt_horizontal_padding</span>(<span class="at">scale =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb70-18"><a href="#cb70-18"></a>    <span class="fu">cols_align</span>(<span class="st">"center"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display column-body">
-<div>
-<div id="xxhqmohdgw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xxhqmohdgw table {
+<div id="wxcsuvsaun" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wxcsuvsaun table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xxhqmohdgw thead, #xxhqmohdgw tbody, #xxhqmohdgw tfoot, #xxhqmohdgw tr, #xxhqmohdgw td, #xxhqmohdgw th {
+#wxcsuvsaun thead, #wxcsuvsaun tbody, #wxcsuvsaun tfoot, #wxcsuvsaun tr, #wxcsuvsaun td, #wxcsuvsaun th {
   border-style: none;
 }
 
-#xxhqmohdgw p {
+#wxcsuvsaun p {
   margin: 0;
   padding: 0;
 }
 
-#xxhqmohdgw .gt_table {
+#wxcsuvsaun .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2175,12 +2174,12 @@ Note about <code>map()</code>
   border-left-color: #D3D3D3;
 }
 
-#xxhqmohdgw .gt_caption {
+#wxcsuvsaun .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xxhqmohdgw .gt_title {
+#wxcsuvsaun .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2192,7 +2191,7 @@ Note about <code>map()</code>
   border-bottom-width: 0;
 }
 
-#xxhqmohdgw .gt_subtitle {
+#wxcsuvsaun .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2204,7 +2203,7 @@ Note about <code>map()</code>
   border-top-width: 0;
 }
 
-#xxhqmohdgw .gt_heading {
+#wxcsuvsaun .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2216,13 +2215,13 @@ Note about <code>map()</code>
   border-right-color: #D3D3D3;
 }
 
-#xxhqmohdgw .gt_bottom_border {
+#wxcsuvsaun .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
 }
 
-#xxhqmohdgw .gt_col_headings {
+#wxcsuvsaun .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -2237,7 +2236,7 @@ Note about <code>map()</code>
   border-right-color: #D3D3D3;
 }
 
-#xxhqmohdgw .gt_col_heading {
+#wxcsuvsaun .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2257,7 +2256,7 @@ Note about <code>map()</code>
   overflow-x: hidden;
 }
 
-#xxhqmohdgw .gt_column_spanner_outer {
+#wxcsuvsaun .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2269,15 +2268,15 @@ Note about <code>map()</code>
   padding-right: 4px;
 }
 
-#xxhqmohdgw .gt_column_spanner_outer:first-child {
+#wxcsuvsaun .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xxhqmohdgw .gt_column_spanner_outer:last-child {
+#wxcsuvsaun .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xxhqmohdgw .gt_column_spanner {
+#wxcsuvsaun .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
@@ -2289,11 +2288,11 @@ Note about <code>map()</code>
   width: 100%;
 }
 
-#xxhqmohdgw .gt_spanner_row {
+#wxcsuvsaun .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xxhqmohdgw .gt_group_heading {
+#wxcsuvsaun .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 15px;
@@ -2319,7 +2318,7 @@ Note about <code>map()</code>
   text-align: left;
 }
 
-#xxhqmohdgw .gt_empty_group_heading {
+#wxcsuvsaun .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2334,15 +2333,15 @@ Note about <code>map()</code>
   vertical-align: middle;
 }
 
-#xxhqmohdgw .gt_from_md > :first-child {
+#wxcsuvsaun .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xxhqmohdgw .gt_from_md > :last-child {
+#wxcsuvsaun .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xxhqmohdgw .gt_row {
+#wxcsuvsaun .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 15px;
@@ -2361,7 +2360,7 @@ Note about <code>map()</code>
   overflow-x: hidden;
 }
 
-#xxhqmohdgw .gt_stub {
+#wxcsuvsaun .gt_stub {
   color: #FFFFFF;
   background-color: #5F5F5F;
   font-size: 100%;
@@ -2374,7 +2373,7 @@ Note about <code>map()</code>
   padding-right: 15px;
 }
 
-#xxhqmohdgw .gt_stub_row_group {
+#wxcsuvsaun .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2388,15 +2387,15 @@ Note about <code>map()</code>
   vertical-align: top;
 }
 
-#xxhqmohdgw .gt_row_group_first td {
+#wxcsuvsaun .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xxhqmohdgw .gt_row_group_first th {
+#wxcsuvsaun .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xxhqmohdgw .gt_summary_row {
+#wxcsuvsaun .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2406,16 +2405,16 @@ Note about <code>map()</code>
   padding-right: 15px;
 }
 
-#xxhqmohdgw .gt_first_summary_row {
+#wxcsuvsaun .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #5F5F5F;
 }
 
-#xxhqmohdgw .gt_first_summary_row.thick {
+#wxcsuvsaun .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xxhqmohdgw .gt_last_summary_row {
+#wxcsuvsaun .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 15px;
@@ -2425,7 +2424,7 @@ Note about <code>map()</code>
   border-bottom-color: #5F5F5F;
 }
 
-#xxhqmohdgw .gt_grand_summary_row {
+#wxcsuvsaun .gt_grand_summary_row {
   color: #333333;
   background-color: #D5D5D5;
   text-transform: inherit;
@@ -2435,7 +2434,7 @@ Note about <code>map()</code>
   padding-right: 15px;
 }
 
-#xxhqmohdgw .gt_first_grand_summary_row {
+#wxcsuvsaun .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 15px;
@@ -2445,7 +2444,7 @@ Note about <code>map()</code>
   border-top-color: #5F5F5F;
 }
 
-#xxhqmohdgw .gt_last_grand_summary_row_top {
+#wxcsuvsaun .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 15px;
@@ -2455,11 +2454,11 @@ Note about <code>map()</code>
   border-bottom-color: #5F5F5F;
 }
 
-#xxhqmohdgw .gt_striped {
+#wxcsuvsaun .gt_striped {
   background-color: #F4F4F4;
 }
 
-#xxhqmohdgw .gt_table_body {
+#wxcsuvsaun .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -2468,7 +2467,7 @@ Note about <code>map()</code>
   border-bottom-color: #5F5F5F;
 }
 
-#xxhqmohdgw .gt_footnotes {
+#wxcsuvsaun .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2482,7 +2481,7 @@ Note about <code>map()</code>
   border-right-color: #D3D3D3;
 }
 
-#xxhqmohdgw .gt_footnote {
+#wxcsuvsaun .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2491,7 +2490,7 @@ Note about <code>map()</code>
   padding-right: 15px;
 }
 
-#xxhqmohdgw .gt_sourcenotes {
+#wxcsuvsaun .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2505,7 +2504,7 @@ Note about <code>map()</code>
   border-right-color: #D3D3D3;
 }
 
-#xxhqmohdgw .gt_sourcenote {
+#wxcsuvsaun .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2513,67 +2512,67 @@ Note about <code>map()</code>
   padding-right: 15px;
 }
 
-#xxhqmohdgw .gt_left {
+#wxcsuvsaun .gt_left {
   text-align: left;
 }
 
-#xxhqmohdgw .gt_center {
+#wxcsuvsaun .gt_center {
   text-align: center;
 }
 
-#xxhqmohdgw .gt_right {
+#wxcsuvsaun .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xxhqmohdgw .gt_font_normal {
+#wxcsuvsaun .gt_font_normal {
   font-weight: normal;
 }
 
-#xxhqmohdgw .gt_font_bold {
+#wxcsuvsaun .gt_font_bold {
   font-weight: bold;
 }
 
-#xxhqmohdgw .gt_font_italic {
+#wxcsuvsaun .gt_font_italic {
   font-style: italic;
 }
 
-#xxhqmohdgw .gt_super {
+#wxcsuvsaun .gt_super {
   font-size: 65%;
 }
 
-#xxhqmohdgw .gt_footnote_marks {
+#wxcsuvsaun .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xxhqmohdgw .gt_asterisk {
+#wxcsuvsaun .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xxhqmohdgw .gt_indent_1 {
+#wxcsuvsaun .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xxhqmohdgw .gt_indent_2 {
+#wxcsuvsaun .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xxhqmohdgw .gt_indent_3 {
+#wxcsuvsaun .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xxhqmohdgw .gt_indent_4 {
+#wxcsuvsaun .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xxhqmohdgw .gt_indent_5 {
+#wxcsuvsaun .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <colgroup>
 <col style="width: 25%">
 <col style="width: 25%">
@@ -2652,7 +2651,6 @@ between 15-35 years</strong></th>
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 </div>
 </div>
@@ -3161,18 +3159,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -3204,7 +3191,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -3263,7 +3272,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -5689,7 +5698,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb86-2253"><a href="#cb86-2253"></a>::: {.callout-note title="QUESTION"}</span>
 <span id="cb86-2254"><a href="#cb86-2254"></a>How does this R0 value compare to the R0 value obtained from @sec-ex-3?</span>
 <span id="cb86-2255"><a href="#cb86-2255"></a>:::</span>
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
