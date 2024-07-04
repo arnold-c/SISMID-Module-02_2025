@@ -116,7 +116,7 @@ Dr Ferrari's lab does research on both the application of quantitative modeling 
 <div class="box" style="--width: 50%">
 <h3 style="margin-top:0px; text-align: center">[Deepit Bhatia](https://sites.google.com/view/deepitbhatia/home)</h3>
 
-<img src="./images/Deepit Bhatia.jpg" style="width: 100%"/>
+<img src="./images/DeepitBhatia.jpg" style="width: 100%"/>
 
 Deepit is a 4th Year PhD student in Dr. Ferrari's lab at The Pennsylvania State University.
 
