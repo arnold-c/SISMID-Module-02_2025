@@ -2,7 +2,7 @@
 
 Hello!
 
-Welcome to this website that accompanies the [2023 Summer Institute in Modeling for Infectious Diseases (SISMID) Module 2: Mathematical Models of Infectious Diseases](https://si.biostat.washington.edu/suminst/archives/SISMID2023/MD2302).
+Welcome to this website that accompanies the [2024 Summer Institute in Modeling for Infectious Diseases (SISMID) Module 2: Mathematical Models of Infectious Diseases](https://si.biostat.washington.edu/suminst/archives/SISMID2023/MD2302).
 This website contains both the lecture notes, so you can refer back to them at a later date, and the exercises that we will be completing throughout the module.
 
 ## Workshop Pre-Requisites
@@ -114,13 +114,13 @@ Dr Ferrari's lab does research on both the application of quantitative modeling 
 <div style="width: 25%">
 </div>
 <div class="box" style="--width: 50%">
-<h3 style="margin-top:0px; text-align: center">[Callum Arnold](https://callumarnold.com)</h3>
+<h3 style="margin-top:0px; text-align: center">[Deepit Bhatia](https://sites.google.com/view/deepitbhatia/home)</h3>
 
-<img src="./images/CallumArnold.jpg" style="width: 100%"/>
+<img src="./images/Deepit Bhatia.jpg" style="width: 100%"/>
 
-Callum is a 3rd Year PhD student in Dr. Ferrari's lab at the Pennsylvania State University.
+Deepit is a 4th Year PhD student in Dr. Ferrari's lab at The Pennsylvania State University.
 
-Callum's work examines how the methods used to define groups and differences among individuals affect the understanding and detection of outbreaks.
+Deepit's work aims to understand how dynamics of vaccine-preventable disease outbreaks change as we approach elimination.
 </div>
 <div style="width: 25%">
 </div>
