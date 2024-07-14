@@ -1,9 +1,13 @@
 ---
 execute:
     echo: false
+editor: 
+  markdown: 
+    wrap: sentence
 ---
 
-# R Session 01 
+# R Session 01
+
 ## Interactive Plot {#sec-interactive-plots}
 
 ```{ojs}
@@ -203,7 +207,9 @@ Duration of infection = 4.
 :::
 
 ### What is $R_0$? {#sec-whatisr0}
+
 ### What is epidemic final size?
+
 ### Does this make sense given our definition of $R_0$?
 
 ::: {.callout-note title="Instruction" appearance="minimal"}
@@ -213,19 +219,18 @@ Toggle on the cumulative area button and see what the epidemic final size is (ap
 ### At approximately what time does the epidemic end?
 
 ::: {.callout-note title="SET"}
-
 Duration of infection = 8 days
 
 Transmission rate so you get the same $R_0$ in @sec-whatisr0
 :::
 
 ### How does the epidemic final size compare?
+
 ### At what time (approx) does the epidemic end?
 
-::: {.callout-note}
+::: callout-note
 Size is determined by $R_0$, duration is determined by recovery rate $\left(\gamma = \frac{1}{\text{duration of infection}}\right)$
 :::
-
 
 Now, imagine that we have a drug (or vaccine) available to everyone that either reduced transmission OR shortened the duration of infection.
 
@@ -247,7 +252,7 @@ Now, imagine everyone has access to a drug that reduces the duration of infectio
 
 ### Which assumption would you prefer and why?
 
-::: {.callout-note}
+::: callout-note
 This is the only really open ended question, but should be pretty straightforward discussion
 :::
 
@@ -262,10 +267,12 @@ Birth rate = .002
 :::
 
 ### What is $R_0$? {#sec-demog-whatisr0}
+
 ### What is the equilibrium proportion that is susceptible?
+
 ### If you were to test for antibodies against infection in the population, what proportion would you expect to be positive?
 
-::: {.callout-note}
+::: callout-note
 Assume a perfectly accurate serological test
 :::
 
@@ -276,6 +283,7 @@ Birth rate = 0.005
 :::
 
 ### What is the new $R_0$? {#sec-demog-updatedr0}
+
 ### At what time (approximately) does the system reach equilibrium?
 
 ::: {.callout-note title="SET"}
@@ -283,9 +291,11 @@ Transmission rate so you get the same $R_0$ in @sec-demog-whatisr0
 :::
 
 ### What is the new equilibrium proportion that is susceptible?
+
 ### What is different about the prevalence of infection (equilibrium proportion that is infected) in the scenarios @sec-demog-whatisr0 and @sec-demog-updatedr0 i.e. higher birth rate with the same $R_0$?
 
 ## Model Building With R
+
 ### Setting Up A Script
 
 Now we have some intuition behind how the different parameters affect the dynamics of the SIR system, let's look at how we can implement this in R.
@@ -296,10 +306,11 @@ The purpose of the questions in this exercise is to guide you through the code a
 
 ::: {.callout-note title="Instruction" appearance="minimal"}
 Copy the code below into a new R script.
+You can open a new script in RStudio using ctrl+shift+N (Windows) or cmd+shift+N (macOS).
+Save it with the name `S01_basic-sir.R`.
 This script should live in your SISMID directory, as described [previously](project-management.qmd).
 Run it to check you get the same figure output as above.
 :::
-
 
 ```{r}
 #| echo: true
@@ -382,13 +393,12 @@ ggplot(sir_sol_df, aes(x = time, y = proportion, color = state)) +
   theme(legend.position = "top")
 ```
 
-
 ### Commenting the code {#sec-ex-commenting-code}
 
 For this part of the exercise, go through the basic SIR code and add comments to each section of code explaining what it does.
 To get you started, we've added some comments to the creating of the dataframe object `sir_sol_df` between lines 32-62 in the code block above, as some of the functions used there are a bit more complicated.
 
-::: {.callout-note}
+::: callout-note
 Normally you would not use nearly as extensive comments.
 Here, we've gone overboard to help you understand what each line does, as some may not be familiar with all the functions used.
 We've also broken up the comments into multiple lines so that it is easier to read on this website.
@@ -397,7 +407,6 @@ For your code that you view in RStudio (or some other text editor), use one line
 Generally, you want to use comments to explain why you are doing something, not what you are doing.
 Sometimes that is unavoidable (e.g., you had to look up how to do a particular thing in R and need the hints to be able to understand the code), but try to stick to this guideline where possible.
 :::
-
 
 As you're going through the code, if you don't understand what a particular function does, try looking up the documentation for it!
 You can do this by clicking on the function within the website (as described [in the intro](index.qmd#tips-about-the-website)), or by typing `?function_name` into the R console (Google also is your friend here!).
@@ -417,9 +426,9 @@ $$
 \end{aligned}
 $$ {#eq-demographic-sir}
 
-#### Create a new R script called `01_demographic-sir.R` and copy the code from `S01_basic-sir.R` into it.
+#### Create a new R script called `S01_demographic-sir.R` and copy the code from `S01_basic-sir.R` into it.
 
-#### Rename the function `sir_model()` to `demographic_sir_model()` in your new script (`S01_demographic-sir.R`). 
+#### Rename the function `sir_model()` to `demographic_sir_model()` in your new script (`S01_demographic-sir.R`).
 
 #### Adapt the function `demographic_sir_model()` to match the above equations (@eq-demographic-sir).
 
@@ -429,7 +438,7 @@ birth rate = 0.05
 
 #### Rename the variables to reflect that we are now working with a demographic model, not the basic SIR model.
 
-#### Plot the results of your demographic model. Does it look like this?
+#### Run the code in the `S01_demographic-sir.R file`. Plot the results of your demographic model. Does it look like this?
 
 ```{r}
 #| message: false
@@ -490,7 +499,7 @@ ggplot(sir_demog_sol_df, aes(x = time, y = proportion, color = state)) +
 
 ## Exercise Solutions {.appendix}
 
-::: {.callout-note}
+::: callout-note
 Here, we're using the `{roxygen2}` package to create the comments for the functions we've created, i.e., `sir_model <- function(...)`.
 This provides a consistent framework for commenting functions, and if we wanted, we could use the comments to create documentation for our functions.
 The main benefit for our purposes is that the framework allows us to quickly understand exactly what the function does, as well as the context it should be used in.
