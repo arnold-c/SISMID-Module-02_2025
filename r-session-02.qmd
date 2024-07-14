@@ -804,8 +804,9 @@ aging_mat[25:30, 25:30]
 ```
 
 ```{r}
-#| column: body
-#| out-width: 100%
+#| eval: false
+#| echo: false
+
 aging_mat %>%
     as.data.frame.table() %>%
     mutate(
@@ -820,6 +821,27 @@ aging_mat %>%
         drop = FALSE
     ) +
     labs(x = "Source Age Group", y = "Recipient Age Group")
+
+```
+
+```{r}
+#| column: body
+#| out-width: 100%
+
+
+aging_mat %>%
+    as.data.frame.table() %>%
+    mutate(
+        age_recipient = rep(ages, 30),
+        # Repeat each age in ages vector 30 times before moving to next
+        age_source = rep(ages, each = 30)
+    ) %>%
+    ggplot(aes(x = as.factor(age_source), y = as.factor(age_recipient), z = Freq)) +
+    geom_tile(colour = "grey", size = 0.4, aes(fill=Freq))  + scale_fill_gradientn(
+    colours = c("red", "white", "blue")
+  ) + 
+    labs(x = "Source Age Group", y = "Recipient Age Group")
+
 ```
 
 <div class="exercise">
