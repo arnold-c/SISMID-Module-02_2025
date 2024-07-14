@@ -2,7 +2,7 @@
 
 Hello!
 
-Welcome to this website that accompanies the [2024 Summer Institute in Modeling for Infectious Diseases (SISMID) Module 2: Mathematical Models of Infectious Diseases](https://si.biostat.washington.edu/suminst/archives/SISMID2023/MD2302).
+Welcome to this website that accompanies the [2024 Summer Institute in Modeling for Infectious Diseases (SISMID) Module 2: Mathematical Models of Infectious Diseases](https://sph.emory.edu/SISMID/modules/math-models/index.html).
 This website contains both the lecture notes, so you can refer back to them at a later date, and the exercises that we will be completing throughout the module.
 
 ## Workshop Pre-Requisites
@@ -89,7 +89,7 @@ This is an example of a collapsible callout that defaults to being collapsed.
 
 <img src="./images/MicaelaMartinez.jpg" style="width: 100%"/>
 
-Dr. Matinez is the Director of Environmental Health at WE ACT for Environmental Justice.
+Dr. Martinez is the Director of Environmental Health at WE ACT for Environmental Justice.
 
 Dr. Martinez earned her Ph.D. in Ecology & Evolution in 2015 at the University of Michigan, and did her postdoctoral training at Princeton University.
 Before joining WE ACT, she served as an Assistant Professor at Columbia University Mailman School of Public Health, followed by Emory University, in the Dept. of Biology.
