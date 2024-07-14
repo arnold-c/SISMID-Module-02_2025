@@ -89,7 +89,7 @@ This is an example of a collapsible callout that defaults to being collapsed.
 
 <img src="./images/MicaelaMartinez.jpg" style="width: 100%"/>
 
-Dr. Matinez is the Director of Environmental Health at WE ACT for Environmental Justice.
+Dr. Martinez is the Director of Environmental Health at WE ACT for Environmental Justice.
 
 Dr. Martinez earned her Ph.D. in Ecology & Evolution in 2015 at the University of Michigan, and did her postdoctoral training at Princeton University.
 Before joining WE ACT, she served as an Assistant Professor at Columbia University Mailman School of Public Health, followed by Emory University, in the Dept. of Biology.
