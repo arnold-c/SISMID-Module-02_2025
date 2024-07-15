@@ -8,7 +8,7 @@ metadata-files:
 ---
 
 ```{=html}
-<iframe class="slide-deck" src="https://docs.google.com/presentation/d/e/2PACX-1vQl4itG0h6LdmEm4ZAPvYAVSpzCgQ02DN2a3nItOb7X3XKjka-J_vUhV6wxRh2-xQ/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1023" height="606" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe src="https://drive.google.com/file/d/1Na0lSTkYc5TBM7krOplUBMTWwnHQ0RI9/preview" width="640" height="480" allow="autoplay"></iframe>
 ```
 
 [Download slides](./slides/L03_Herd-immunity-vaccination.pdf)
