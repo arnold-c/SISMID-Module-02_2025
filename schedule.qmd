@@ -14,11 +14,11 @@ author: ""
 
 **General workshop times**:
 
-July 15, Monday: 8:30 a.m. - 5 p.m. PST
+July 15, Monday: 8:30 a.m. - 5 p.m. EDT
 
-July 16, Tuesday: 8:30 a.m. - 5 p.m. PST
+July 16, Tuesday: 8:30 a.m. - 5 p.m. EDT
 
-July 17, Wednesday: 8:30 a.m. - 12 p.m. PST
+July 17, Wednesday: 8:30 a.m. - 12 p.m. EDT
 
 ::: {.callout-important}
 All times are in local time EDT (Eastern Daylight Time).
