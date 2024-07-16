@@ -7,7 +7,11 @@ execute:
     warning: false
 metadata-files: 
     - metadata/matthewferrari.yml
+    - metadata/deepitbhatia.yml
     - metadata/mathjax-packages.yml
+editor: 
+  markdown: 
+    wrap: sentence
 ---
 
 # R Session 03
@@ -37,7 +41,8 @@ niamey <- rio::import("https://raw.githubusercontent.com/arnold-c/SISMID-Module-
 
 ## Estimating $R_0$ Problem Background
 
-So far in this class we have focused on the **theory** of infectious disease. Often, however, we will want to apply this theory to particular situations.
+So far in this class we have focused on the **theory** of infectious disease.
+Often, however, we will want to apply this theory to particular situations.
 One of the key applied problems in epidemic modeling is the estimation of $R_0$ from outbreak data.
 In this session, we study two methods for estimating $R_0$ from an epidemic curve.
 As a running example, we will use the data on influenza in a British boarding school.
@@ -51,9 +56,9 @@ ggplot(flu, aes(x = day, y = flu)) +
     labs(x = "Day", y = "Active Influenza Cases")
 ```
 
-## Estimating $R_0$ From The Final Outbreak Size 
+## Estimating $R_0$ From The Final Outbreak Size
 
-Our first approach is to estimate $R_0$ from the final outbreak size. 
+Our first approach is to estimate $R_0$ from the final outbreak size.
 Although unhelpful at the early stages of an epidemic (before the final epidemic size is observed), this method is nonetheless a useful tool for *post hoc* analysis.
 The method is general and can be motivated by the argument listed in [@keelingIntroductionSimpleEpidemic2008]:
 
@@ -69,13 +74,15 @@ $S(\infty) = e^{-R(\infty) R_0}$ can be calculated by acknowledging that at equi
 
 It could also be calculated by dividing $\frac{\dd{S}}{\dd{t}}$ by $\frac{\dd{R}}{\dd{t}}$:
 
+```{=tex}
 \begin{aligned}
 \frac{\dd{S}}{\dd{R}} &= - \frac{\beta S}{\gamma} \\
 &= - R_0 S
 \end{aligned}
-
+```
 which is a [separable differential equation](https://tutorial.math.lamar.edu/classes/de/separable.aspx), so can be integrated as follows:
 
+```{=tex}
 \begin{aligned}
 - \int_{0}^{t} \frac{1}{R_0 S} \dd{S} &= \int_{0}^{t} \dd{R} \\
 - \frac{1}{R_0} \left(\ln{S(t)} - \ln{S(0)} \right) &= R(t) - \cancelto{0}{R(0)} \\
@@ -83,6 +90,7 @@ which is a [separable differential equation](https://tutorial.math.lamar.edu/cla
 S(t) &= S(0) e^{-R_0 R(t)}
 
 \end{aligned}
+```
 :::
 
 Putting this together, we get:
@@ -99,22 +107,21 @@ $$
 
 which, in this case, evaluates to $\frac{\ln(1 - 512 / 764)}{-512 / 764} = 1.655$.
 
-<div class="exercise">
-
-### Exercise 1 
-
-</div>
+::: exercise
+### Exercise 1
+:::
 
 This equation shows the important one-to-one relationship between $R_0$ and the final epidemic size.
 Plot the relationship between the total epidemic size and $R_0$ for the complete range of values between 0 and 1.
 
-## Linear Approximation 
+## Linear Approximation
 
 The next method we introduce takes advantage of the fact that during the early stages of an outbreak, the number of infected individuals is given approximately as $I(t) \approx I_0 e^{((R_0 - 1)(\gamma + \mu)t)}$.
 Taking logarithms of both sides, we have $\ln(I(t)) \approx \ln(I_0) + (R_0 - 1)(\gamma + \mu)t$, showing that the log of the number of infected individuals is approximately linear in time with a slope that reflects both $R_0$ and the recovery rate.
 
 This suggests that a simple linear regression fit to the first several data points on a log-scale, corrected to account for $\gamma$ and $\mu$, provides a rough and ready estimate of $R_0$.
-For flu, we can assume $\mu =0$ because the epidemic occurred over a time period during which natural mortality is negligible. Further, assuming an infectious period  of about 2.5 days, we use $\gamma = (2.5)^{-1} = 0.4$ for the correction.
+For flu, we can assume $\mu =0$ because the epidemic occurred over a time period during which natural mortality is negligible.
+Further, assuming an infectious period of about 2.5 days, we use $\gamma = (2.5)^{-1} = 0.4$ for the correction.
 Fitting to the first four data points, we obtain the slope as follows.
 
 ```{r}
@@ -130,39 +137,33 @@ coef(linear_model)[2]
 
 Rearranging the linear equation above and denoting the slope coefficient by $\hat \beta_1$ we have the estimator $\hat R_0 = \hat \beta_1 / \gamma + 1$ giving $\hat R_0 = 1.094913 / 0.4 + 1 \approx 3.7$.
 
-<div class="exercise">
-
+::: exercise
 ### Exercise 2
-
-</div>
+:::
 
 Our estimate assumes that boys remained infectious during the natural course of infection.
 The original report on this epidemic indicates that boys found to have symptoms were immediately confined to bed in the infirmary.
 The report also indicates that only 1 out of 130 adults at the school exhibited any symptoms.
 It is reasonable, then, to suppose that transmission in each case ceased once he had been admitted to the infirmary.
 Supposing admission happened within 24 hours of the onset of symptoms.
-How does this affect our estimate of $R_0$? Twelve hours?
+How does this affect our estimate of $R_0$?
+Twelve hours?
 
-<div class="exercise">
-
+::: exercise
 ### Exercise 3
-
-</div>
+:::
 
 Biweekly data for outbreaks of measles in three communities in Niamey, Niger are provided in the dataframe `niamey`.
 Use this method to obtain estimates of $R_0$ for measles from the first community assuming that the infectious period is approximately two weeks or $\frac{14}{365} \approx 0.0384$ years.
 
-<div class="exercise">
-
+::: exercise
 ### Exercise 4
-
-</div>
+:::
 
 A defect with this method is that it uses only a small fraction of the information that might be available, i.e., the first few data points.
 Indeed, there is nothing in the method that tells one how many data points to use--this is a matter of judgment.
 Further, there is a tradeoff in that as more and more data points are used the precision of the estimate increases, but this comes at a cost of additional bias.
 Plot the estimate of $R_0$ obtained from $n=3, 4, 5, ...$ data points against the standard error of the slope from the regression analysis to show this tradeoff.
-
 
 ## Estimating dynamical parameters with least squares
 
@@ -303,7 +304,6 @@ function set(input, value) {
   input.dispatchEvent(new Event("input", {bubbles: true}));
 }
 ```
-
 
 ```{ojs}
 //| echo: false
@@ -550,10 +550,11 @@ sse_sir <- function(params, data){
 
 Notice that the code for `sse_sir()` makes use of the following modeling trick.
 We know that $\beta$, $S_0$, and $I_0$ must be positive, but our search to optimize these parameters will be over the entire number line.
-We could constrain the search using a more sophisticated algorithm, but this might introduce other problems (i.e., stability at the boundaries). Instead, we parameterize our objective function (`sse_sir`) in terms of some alternative variables $\ln(\beta)$, $\ln(S_0)$, and $\ln(I_0)$.
+We could constrain the search using a more sophisticated algorithm, but this might introduce other problems (i.e., stability at the boundaries).
+Instead, we parameterize our objective function (`sse_sir`) in terms of some alternative variables $\ln(\beta)$, $\ln(S_0)$, and $\ln(I_0)$.
 While these numbers range from $-\infty$ to $\infty$ (the range of our search) they map to our model parameters on a range from $0$ to $\infty$ (the range that is biologically meaningful).
 
-## Optimization 
+## Optimization
 
 Our final step is to use the function `optim` to find the values of $\beta$, $S_0$, and $I_0$ that minimize the sum of squared errors as calculated using our function.
 
@@ -601,7 +602,7 @@ niamey_optims %>%
     cols_align("center")
 ```
 
-::: {.callout-note}
+::: callout-note
 You may have noticed that you can achieve slightly different results for the optimal parameter values using the interactive plot than are being presented here (though they are very similar).
 This is because while the optimization code is running in `R`, the interactive plot and the calculation of the SSE is implemented using JavaScript.
 Therefore, despite using the same underlying model structure, the answers will vary slightly, because the ODE solvers are different, resulting in different model simulations.
@@ -642,7 +643,7 @@ niamey_predictions <- niamey_optims %>%
     unnest(c(data, predictions))
 ```
 
-::: {.callout-important}
+::: callout-important
 An important point to note is that our data is biweekly **incidence** (new cases in time period), whereas out SIR model produces **prevalence** (total cases at any time point).
 To account for this, our SIR model returns the cumulative incidence (line 32 of the model code), and our objective function extracts the biweekly incidence (lines 41-54), to ensure we are fitting the same data!
 This is a common source of error in interpretation when people fit models to data.
@@ -708,20 +709,251 @@ ggplot(niamey_predictions, aes(x = biweek, group = site)) +
     )
 ```
 
-<div class="exercise">
-
-### Exercise 5 
-
-</div>
+::: exercise
+### Exercise 5
+:::
 
 To make things easier, we have assumed the infectious period is known to be 14 days.
 In terms of years, $\text{D} = \frac{14}{365} \approx 0.0384$, and the recovery rate is the inverse i.e., $\gamma = \frac{14}{365}$.
 Now, modify the code above to estimate $\gamma$ and $\beta$ simultaneously.
 
-<div class="exercise">
-
-### Exercise 6  
-
-</div>
+::: exercise
+### Exercise 6
+:::
 
 What happens if one or both of the other unknowns ($S_0$ and $I_0$) is fixed instead of $\gamma$?
+
+## Solutions
+
+### Exercise 1
+
+```{r}
+#| code-fold: true
+p_infec <- (seq(0, 1, by=0.001))
+r0_p <- (log(1 - p_infec))/(-p_infec)
+plot(x = p_infec, y=r0_p,
+     main = "Relationship between final proportion infected and R0",
+     xlab = "Final proportion infected",
+     ylab = "R0")
+```
+
+### Exercise 2
+
+```{r}
+#| code-fold: true
+#A: If the cases were isolated after 24 hours, then gamma would be 1/1 = 1, and if the cases were isolated after 12 hours, gamma would be 1/0.5 = 2. R0 would be calculated as the beta coefficient over gamma, below:
+
+r0_g1 <- 1.094913/1 + 1
+r0_g1
+
+r0_g2 <- 1.094913/2 + 1
+r0_g2
+
+```
+
+### Exercise 3
+
+```{r}
+#| code-fold: true
+niamey[5,3]<-0  #replace a "NA"
+#the command below organizes the data so it can be plotted and analyzed
+niamey<-data.frame(biweek=rep(seq(1,16),3),site=c(rep(1,16),rep(2,16),rep(3,16)),
+                   cases=c(niamey[,1],niamey[,2],niamey[,3])) #define "biweeks"
+
+# As the data are reported every two weeks, this corresponds to the 10th observation. Let’s fit a linear model
+```
+
+```{r}
+#| code-fold: true
+
+# First let's see what the outbreak looks like for the first community on a linear scale
+plot(niamey$biweek[niamey$site==1],niamey$cases[niamey$site==1],type='p',col=niamey$site,xlab='Biweek',ylab='Cases')
+lines(niamey$biweek[niamey$site==1],niamey$cases[niamey$site==1])
+
+```
+
+```{r}
+#| code-fold: true
+
+# Now let’s try it on a log scale to see until when the outbreak is roughly linear
+plot(niamey$biweek[niamey$site==1],niamey$cases[niamey$site==1],type='p',col=niamey$site,xlab='Biweek',ylab='Cases', log='y')
+lines(niamey$biweek[niamey$site==1],niamey$cases[niamey$site==1])
+```
+
+```{r}
+#| code-fold: true
+# here we create a "week" variable to run the analysis on a weekly
+niamey$week <- niamey$biweek*2
+# we use the `head` command to take the first N values of a vector. In this case, we're taking the first 10 values of our outcome (cases) and predictor (time) variables.
+model<-lm(log(head(niamey$cases[niamey$site==1], 10))~(head(niamey$week[niamey$site==1], 10)))
+summary(model) #summary statistics for fit model
+
+```
+
+```{r}
+#| code-fold: true
+# Now let's get the slope and display it
+slope<-coef(model)[2] #extract slope parameter
+slope #print to screen
+```
+
+As we ran the model by weeks, the $\gamma$ value is $2^{-1}$ and $\hat R_0 = \hat \beta_1 / \gamma +1$ giving $\hat R_0=0.2196041/0.5+1 \approx 1.44$.
+
+### Exercise 4
+
+Here, we can use a loop and repeat the regression procedure we used above for varying numbers of initial data points in our model.
+
+```{r}
+#| code-fold: true
+slope <- NULL
+se <- NULL
+for(i in 3:18){
+model<-lm(log(head(niamey$cases[niamey$site==1], i))~(head(niamey$week[niamey$site==1], i)))
+slope<-c(slope,as.numeric(coef(model)[2]))
+se <- c(se, summary(model)$coefficients[4])
+}
+R0 <- slope/0.5 + 1
+plot(R0, se, ylab='Standard error')
+
+```
+
+### Exercise 5
+
+First, let's add in $\gamma$ estimation into the ``sse.sir`` function and create a new ``sse.sir`` function called ``sse.sir.g``
+```{r}
+#| code-fold: true
+closed.sir.model.g <- function (t, x, params) {  #SIR model equations
+  X <- x[1]
+  Y <- x[2]
+  beta <- params[1]
+  gamma <- params[2]
+  dX <- -beta*X*Y
+  dY <- beta*X*Y-gamma*Y
+  list(c(dX,dY))
+}
+
+sse.sir.g <- function(params0,data,site){  #function to calculate squared errors
+  data<-data[data$site==site,]    #working dataset, based on site
+  t <- data[,1]*14/365            #time in biweeks
+  cases <- data[,3]               #number of cases
+  beta <- exp(params0[1])            #parameter beta
+  X0 <- exp(params0[2])           #initial susceptibles
+  Y0 <- exp(params0[3])           #initial infected        
+  gamma <- exp(params0[4])        #initial gamma
+  out <- as.data.frame(ode(c(X=X0,Y=Y0),times=t,closed.sir.model.g,c(beta, gamma), hmax=1/120))
+  sum((out$Y-cases)^2)       #sum of squared errors that is returned to the optim function
+}
+```
+
+Then, let's create a new vector `params0` that now has **4** initial values, for $\beta$, $X_0$, $Y_0$, **and** $\gamma$.
+
+```{r}
+#| code-fold: true
+params0<-c(-3.2,7.3,-2.6, log(14/365)) # initial guess
+print("Site 1")
+fit1.g <- optim(params0,sse.sir.g,data=niamey,site=1, hessian=TRUE) #fit
+exp(fit1.g$par) #back-transform parameters
+print("Site 2")
+fit2.g <- optim(params0,sse.sir.g,data=niamey,site=2, hessian=TRUE) #fit
+exp(fit2.g$par) #back-transform parameters
+print("Site 3")
+fit3.g <- optim(params0,sse.sir.g,data=niamey,site=3, hessian=TRUE) #fit
+exp(fit3.g$par) #back-transform parameters
+```
+Now let's plot the data
+```{r}
+#| code-fold: true
+par(mfrow=c(2,2)) #set up plotting area for multiple panels
+plot(cases~biweek,data=subset(niamey,site==1),type='p',pch=21) #plot site 1
+t <- subset(niamey,site==1)[,1]*14/365
+mod.pred.g1<-as.data.frame(ode(c(X=exp(fit1.g$par[2]),Y=exp(fit1.g$par[3])),times=t,
+closed.sir.model.g,c(exp(fit1.g$par[1]),exp(fit1.g$par[4])),hmax=1/120))
+#obtain model predictions
+lines(mod.pred.g1$Y~subset(niamey,site==1)[,1]) #and plot as a line
+
+plot(cases~biweek,data=subset(niamey,site==2),type='b',col=site) #site 2
+t <- subset(niamey,site==2)[,1]*14/365
+mod.pred.g2<-as.data.frame(ode(c(X=exp(fit2.g$par[2]),Y=exp(fit2.g$par[3])),times=t,
+closed.sir.model.g,c(exp(fit2.g$par[1]),exp(fit2.g$par[4])),hmax=1/120))
+#obtain model predictions
+lines(mod.pred.g2$Y~subset(niamey,site==2)[,1]) #and plot as a line
+
+plot(cases~biweek,data=subset(niamey,site==3),type='b',col=site) #site 3
+t <- subset(niamey,site==3)[,1]*14/365
+mod.pred.g3<-as.data.frame(ode(c(X=exp(fit3.g$par[2]),Y=exp(fit3.g$par[3])),times=t,
+closed.sir.model.g,c(exp(fit3.g$par[1]),exp(fit3.g$par[4])),hmax=1/120))
+lines(mod.pred.g3$Y~subset(niamey,site==3)[,1])
+```
+
+### Exercise 6
+What happens if one or both of the other unknowns ($X_0$ and $Y_0$) is fixed instead of $\gamma$?
+
+Here we modify the ``sse.sir`` function again to fix $X_0$ or $Y_0$ or both:
+```{r}
+#| code-fold: true
+
+sse.sir.x0 <- function(params0,data,site){  #function to calculate squared errors
+  data<-data[data$site==site,]    #working dataset, based on site
+  t <- data[,1]*14/365            #time in biweeks
+  cases <- data[,3]               #number of cases
+  beta <- exp(params0[1])            #parameter beta
+  X0 <- 12500          #initial susceptibles (FIXED)
+  Y0 <- exp(params0[2])           #initial infected   
+  gamma <- exp(params0[3])      
+  out <- as.data.frame(ode(c(X=X0, Y=Y0),times=t,closed.sir.model.g,c(beta, gamma),hmax=1/120))
+  sum((out$Y-cases)^2)       #sum of squared errors that is returned to the optim function
+}
+
+
+sse.sir.y0 <- function(params0,data,site){  #function to calculate squared errors
+  data<-data[data$site==site,]    #working dataset, based on site
+  t <- data[,1]*14/365            #time in biweeks
+  cases <- data[,3]               #number of cases
+  beta <- exp(params0[1])            #parameter beta
+  X0 <- exp(params0[2])          #initial susceptibles (FIXED)
+  Y0 <- 1000         #initial infected   
+  gamma <- exp(params0[3])      
+  out <- as.data.frame(ode(c(X=X0,Y=Y0),times=t,closed.sir.model.g,c(beta, gamma),hmax=1/120))
+  sum((out$Y-cases)^2)       #sum of squared errors that is returned to the optim function
+}
+
+
+
+sse.sir.x0y0 <- function(params0,data,site){  #function to calculate squared errors
+  data<-data[data$site==site,]    #working dataset, based on site
+  t <- data[,1]*14/365            #time in biweeks
+  cases <- data[,3]               #number of cases
+  beta <- exp(params0[1])            #parameter beta
+  X0 <- 12500          #initial susceptibles (FIXED)
+  Y0 <- 1000          #initial infected (FIXED)
+  gamma <- exp(params0[2])      
+  out <- as.data.frame(ode(c(X=X0,Y=Y0),times=t,closed.sir.model.g,c(beta, gamma),hmax=1/120))
+  sum((out$Y-cases)^2)       #sum of squared errors that is returned to the optim function
+}
+
+
+
+```
+
+Now let's pass these models through ``optim`` and fit the models:
+
+```{r}
+#| code-fold: true
+
+# Fixing X0
+params0<-c(-3.2, 1, log(14/365)) #initial guess of beta, Y0, and gamma
+fit1.x0 <- optim(params0,sse.sir.x0,data=niamey,site=1, hessian=TRUE) #fit
+exp(fit1.x0$par) #back-transform parameters
+
+#Fixing Y0
+params0<-c(-3.2, 3, log(14/365)) #initial guess of beta, X0, and gamma
+fit1.y0 <- optim(params0,sse.sir.y0,data=niamey,site=1, hessian=TRUE) #fit
+exp(fit1.y0$par) #back-transform parameters
+
+#Fixing X0 and Y0
+params0<-c(-3.2, log(14/365)) #initial guess of beta and gamma
+fit1.x0y0 <- optim(params0,sse.sir.x0y0,data=niamey,site=1, hessian=TRUE) #fit
+exp(fit1.x0y0$par) #back-transform parameters
+
+```
+
