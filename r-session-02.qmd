@@ -1084,16 +1084,6 @@ We have highlighted the relevant lines in the code chunks, so hopefully you won'
 
 #### Change the juvenile-juvenile contact rate to be 0.025.
 
-
-```{r}
-#| echo: false
-update_age_beta_mat <- ages_beta_mat
-update_age_beta_mat[1:20, 1:20] <- 0.025
-
-update_age_params <- multistage_params
-update_age_params[["beta_mat"]] <- update_age_beta_mat
-```
-
 ```{r}
 #| eval: false
 #| source-line-numbers: "2"
@@ -1104,35 +1094,17 @@ update_age_params <- multistage_params
 update_age_params[["beta_mat"]] <- update_age_beta_mat
 ```
 
-#### Simulate and plot the age-structured SIR dynamics under your assumptions and record how the age-specific seroprevalence has changed.
 
+##### Answer: Change the juvenile-juvenile contact rate to be 0.025.
 ```{r}
-#| echo: false
-update_age_sol <- deSolve::ode(
-    y = demog_yinit_ages,
-    times = seq(0, 400, by = 0.1),
-    func = multistage_model,
-    parms = update_age_params
-)
+update_age_beta_mat <- ages_beta_mat
+update_age_beta_mat[1:20, 1:20] <- 0.025
 
-# Get the time series for each infectious age group
-update_age_infecteds <- update_age_sol[, 1 + iindex]
-
-update_age_equil <- drop(tail(update_age_sol, 1))[-1]
-
-update_age_equil_n <- update_age_equil[sindex] +
-    update_age_equil[iindex] +
-    update_age_equil[rindex]
-
-update_age_equil_seroprev <- update_age_equil[rindex] / update_age_equil_n
-
-update_age_equil_seroprev_df <- tibble(
-    age = ages,
-    seroprev = update_age_equil_seroprev,
-    width = da_ages
-)
+update_age_params <- multistage_params
+update_age_params[["beta_mat"]] <- update_age_beta_mat
 ```
 
+#### Simulate and plot the age-structured SIR dynamics under your assumptions and record how the age-specific seroprevalence has changed.
 
 ```{r}
 #| eval: false
@@ -1183,6 +1155,35 @@ ggplot(update_age_equil_seroprev_df, aes(x = age, y = seroprev, fill = age)) +
     )
 ```
 
+##### Answer: Simulate and plot the age-structured SIR dynamics under your assumptions and record how the age-specific seroprevalence has changed.
+```{r}
+update_age_sol <- deSolve::ode(
+    y = demog_yinit_ages,
+    times = seq(0, 400, by = 0.1),
+    func = multistage_model,
+    parms = update_age_params
+)
+
+# Get the time series for each infectious age group
+update_age_infecteds <- update_age_sol[, 1 + iindex]
+
+update_age_equil <- drop(tail(update_age_sol, 1))[-1]
+
+update_age_equil_n <- update_age_equil[sindex] +
+    update_age_equil[iindex] +
+    update_age_equil[rindex]
+
+update_age_equil_seroprev <- update_age_equil[rindex] / update_age_equil_n
+
+update_age_equil_seroprev_df <- tibble(
+    age = ages,
+    seroprev = update_age_equil_seroprev,
+    width = da_ages
+)
+```
+
+
+
 ::: {.callout-note title="QUESTION"}
 At what age does the seroprevalence reach 75%?
 How does this compare to the answer in @sec-ex-3?
@@ -1204,8 +1205,10 @@ calculate_R0(
 )
 ```
 
+
+##### Answer: Compute $R_0$ for your assumptions.
+
 ```{r}
-#| echo: false
 update_age_R0 <- round(
     calculate_R0(
         beta_mat = update_age_params[["beta_mat"]],
