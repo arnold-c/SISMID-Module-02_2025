@@ -3,6 +3,8 @@ title: Heterogeneity in Models
 format:
     html:
         page-layout: full
+metadata-files:
+  - metadata/amywinter.yml
 ---
 
 ```{=html}

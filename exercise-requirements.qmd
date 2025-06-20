@@ -2,7 +2,7 @@
 
 ## R Packages
 
-If you use `{renv}` to manage package dependencies in your projects, you can visit the [GitHub repository](https://github.com/arnold-c/SISMID-Module-02_2024) for this project and download the ***renv.lock***, ***.Rprofile***, and ***renv/activate.R*** files, before running the command `renv::restore()`.
+If you use `{renv}` to manage package dependencies in your projects, you can visit the [GitHub repository](https://github.com/arnold-c/SISMID-Module-02_2025) for this project and download the ***renv.lock***, ***.Rprofile***, and ***renv/activate.R*** files, before running the command `renv::restore()`.
 Alternatively, if you already use GitHub, you could clone the project and just run `renv::restore()`.
 
 If you would prefer to just install the packages manually to avoid the complications associated with using `{renv}`, you can install the packages printed below.
@@ -10,13 +10,13 @@ If you would prefer to just install the packages manually to avoid the complicat
 ```{r}
 #| eval: false
 install.packages(c(
-    "tidyverse",
-    "deSolve",
-    "diagram",
-    "gt",
-    "ggtext",
-    "here",
-    "rio"
+  "tidyverse",
+  "deSolve",
+  "diagram",
+  "gt",
+  "ggtext",
+  "here",
+  "rio"
 ))
 ```
 

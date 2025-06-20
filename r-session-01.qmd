@@ -1,8 +1,8 @@
 ---
 execute:
     echo: false
-editor: 
-  markdown: 
+editor:
+  markdown:
     wrap: sentence
 ---
 
@@ -112,7 +112,7 @@ function simulate(f, t0, y0, dt, tmax) {
     tsim.push(t)
     i += 1
   }
-  
+
   return aq.table({
     Time: tsim,
     S: ysim.map(d => d[0]),
@@ -316,13 +316,13 @@ Run it to check you get the same figure output as above.
 #| echo: true
 #| message: false
 #| out-width: 100%
-#| column: body 
+#| column: body
 library(tidyverse)
 library(deSolve)
 
 theme_set(theme_minimal())
 
-sir_model <- function(time, state, params, ... ){
+sir_model <- function(time, state, params, ...) {
   transmission <- params["transmission"]
   recovery <- 1 / params["duration"]
 
@@ -445,7 +445,7 @@ birth rate = 0.05
 #| echo: false
 #| out-width: 100%
 #| column: body
-sir_demog_model <- function(time, state, params, ... ){
+sir_demog_model <- function(time, state, params, ...) {
   transmission <- params["transmission"]
   recovery <- 1 / params["duration"]
   birth_rate <- params["birth_rate"]
@@ -533,14 +533,14 @@ theme_set(theme_minimal())
 #' sir_params <- c(transmission = 0.3, duration = 6)
 #' sir_init_states <- c(S = 0.99, I = 0.01, R = 0)
 #' sim_times <- seq(0, 200, by = 0.1)
-#' 
+#'
 #' sir_sol <- deSolve::ode(
 #'    y = sir_init_states,
 #'    times = sim_times,
 #'    func = sir_model,
 #'    parms = sir_params
 #' ))
-sir_model <- function(time, state, params, ... ){
+sir_model <- function(time, state, params, ...) {
   # Extract parameters for cleaner calculations
   transmission <- params["transmission"]
   recovery <- 1 / params["duration"]
@@ -649,14 +649,14 @@ theme_set(theme_minimal())
 #' sir_params <- c(transmission = 0.3, duration = 6, birth_rate = 0.05)
 #' sir_init_states <- c(S = 0.99, I = 0.01, R = 0)
 #' sim_times <- seq(0, 200, by = 0.1)
-#' 
+#'
 #' sir_sol <- deSolve::ode(
 #'    y = sir_init_states,
 #'    times = sim_times,
 #'    func = sir_demog_model,
 #'    parms = sir_params
 #' ))
-sir_demog_model <- function(time, state, params, ... ){
+sir_demog_model <- function(time, state, params, ...) {
   transmission <- params["transmission"]
   recovery <- 1 / params["duration"]
   birth_rate <- params["birth_rate"]
@@ -665,7 +665,7 @@ sir_demog_model <- function(time, state, params, ... ){
   I <- state["I"]
   R <- state["R"]
 
-  dSdt <- birth_rate -transmission * S * I - (birth_rate * S)
+  dSdt <- birth_rate - transmission * S * I - (birth_rate * S)
   dIdt <- (transmission * S * I) - (recovery * I) - (birth_rate * I)
   dRdt <- (recovery * I) - (birth_rate * R)
 

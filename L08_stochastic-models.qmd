@@ -5,7 +5,7 @@ format:
         page-layout: full
 metadata-files:
   - metadata/matthewferrari.yml
-  - metadata/micaelamartinez.yml
+  - metadata/amywinter.yml
 ---
 
 ```{=html}

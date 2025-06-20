@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.53">
+<meta name="generator" content="quarto-1.8.4">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Callum Arnold">
 <meta name="author" content="Matthew Ferrari">
-<title>7&nbsp; R Session 02 – SISMID Module 2 Materials (2024)</title>
+<title>7&nbsp; R Session 02 – SISMID Module 2 Materials (2025)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,8 +20,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -32,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -83,18 +84,21 @@ div.csl-indent {
 <meta name="quarto:offset" content="./">
 <link href="./L06_parameter-estimation.html" rel="next">
 <link href="./L05_age-structure.html" rel="prev">
-<link href="././images/sismid2024-logo-blue.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<link href="././images/sismid2025-logo-blue.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-19cd9126a9a9c64aacb03dc90954a64a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-c68da94286011e9302a35de07ef23a9e.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-19cd9126a9a9c64aacb03dc90954a64a.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-726386cc3f69a7490c113a4bd0355c68.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-bcf2ea6b8363dae1913c42ee6a512f3f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-726386cc3f69a7490c113a4bd0355c68.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -146,7 +150,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -162,7 +166,169 @@ window.Quarto = {
 };
 </script>
 </head>
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
@@ -180,11 +346,11 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="././images/sismid2024-logo-blue.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+      <img src="././images/sismid2025-logo-blue.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">SISMID Module 2 Materials (2024)</a> 
+      <a href="./">SISMID Module 2 Materials (2025)</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/arnold-c/SISMID-Module-02_2024" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/arnold-c/SISMID-Module-02_2025" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -397,7 +563,7 @@ window.Quarto = {
   <li><a href="#what-do-real-contact-networks-look-like" id="toc-what-do-real-contact-networks-look-like" class="nav-link" data-scroll-target="#what-do-real-contact-networks-look-like"><span class="header-section-number">7.6.3</span> What do real contact networks look like?</a></li>
   </ul>
 </li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/arnold-c/SISMID-Module-02_2024/edit/main/r-session-02.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/arnold-c/SISMID-Module-02_2025/edit/main/r-session-02.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./L04_heterogeneity.html">Day 2</a></li><li class="breadcrumb-item"><a href="./r-session-02.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">R Session 02</span></a></li></ol></nav><div class="quarto-title">
@@ -2627,7 +2793,7 @@ Note about <code>map()</code>
 <col style="width: 25%">
 <col style="width: 25%">
 </colgroup>
-<thead><tr class="header gt_col_headings">
+<thead><tr class="gt_col_headings header">
 <th id="<strong>R0</strong>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>R0</strong></th>
 <th id="<strong>Mean age of<br>infection</strong>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Mean age of<br>
 infection</strong></th>
@@ -3029,434 +3195,306 @@ window._ojs.paths.docToRoot = "";
 window._ojs.selfContained = false;
 window._ojs.runtime.interpretFromScriptTags();
 </script><script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
     }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
     }
-  }
-  toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
     }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
     }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
       }
     }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
     }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
       });
     }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        return container.innerHTML
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -3464,185 +3502,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="./L05_age-structure.html" class="pagination-link" aria-label="Age Structured Models">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Age Structured Models</span></span>
       </a>          
@@ -4154,11 +4168,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb89-527"><a href="#cb89-527"></a>    )</span>
 <span id="cb89-528"><a href="#cb89-528"></a><span class="in">```</span></span>
 <span id="cb89-529"><a href="#cb89-529"></a></span>
-<span id="cb89-530"><a href="#cb89-530"></a>&lt;div class="exercise"&gt;</span>
+<span id="cb89-530"><a href="#cb89-530"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"exercise"</span><span class="dt">&gt;</span></span>
 <span id="cb89-531"><a href="#cb89-531"></a></span>
 <span id="cb89-532"><a href="#cb89-532"></a><span class="fu">### Exercise 1: Use this code to plot the number of susceptible, infected, and recovered individuals over time</span></span>
 <span id="cb89-533"><a href="#cb89-533"></a></span>
-<span id="cb89-534"><a href="#cb89-534"></a>&lt;/div&gt;</span>
+<span id="cb89-534"><a href="#cb89-534"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
 <span id="cb89-535"><a href="#cb89-535"></a></span>
 <span id="cb89-538"><a href="#cb89-538"></a><span class="in">```{r}</span></span>
 <span id="cb89-539"><a href="#cb89-539"></a><span class="co">#| column: body</span></span>
@@ -4354,7 +4368,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb89-741"><a href="#cb89-741"></a>ages_beta_mat[<span class="dv">21</span><span class="sc">:</span><span class="dv">30</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>] <span class="ot">&lt;-</span> ages_params[<span class="st">"beta_aj"</span>]</span>
 <span id="cb89-742"><a href="#cb89-742"></a><span class="in">```</span></span>
 <span id="cb89-743"><a href="#cb89-743"></a></span>
-<span id="cb89-744"><a href="#cb89-744"></a>&lt;a id="fig-beta-mat"&gt;&lt;/a&gt;</span>
+<span id="cb89-744"><a href="#cb89-744"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> id</span><span class="op">=</span><span class="st">"fig-beta-mat"</span><span class="dt">&gt;&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
 <span id="cb89-745"><a href="#cb89-745"></a></span>
 <span id="cb89-748"><a href="#cb89-748"></a><span class="in">```{r}</span></span>
 <span id="cb89-749"><a href="#cb89-749"></a><span class="co">#| column: body</span></span>
@@ -4499,11 +4513,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb89-904"><a href="#cb89-904"></a></span>
 <span id="cb89-905"><a href="#cb89-905"></a><span class="in">```</span></span>
 <span id="cb89-906"><a href="#cb89-906"></a></span>
-<span id="cb89-907"><a href="#cb89-907"></a>&lt;div class="exercise"&gt;</span>
+<span id="cb89-907"><a href="#cb89-907"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"exercise"</span><span class="dt">&gt;</span></span>
 <span id="cb89-908"><a href="#cb89-908"></a></span>
 <span id="cb89-909"><a href="#cb89-909"></a><span class="fu">### Exercise 2: What can you say about its structure? How are the different age groups in contact with each other?</span></span>
 <span id="cb89-910"><a href="#cb89-910"></a></span>
-<span id="cb89-911"><a href="#cb89-911"></a>&lt;/div&gt;</span>
+<span id="cb89-911"><a href="#cb89-911"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
 <span id="cb89-912"><a href="#cb89-912"></a></span>
 <span id="cb89-913"><a href="#cb89-913"></a>Now we can put the pieces together to write a simulator for the age-structured SIR dynamics.</span>
 <span id="cb89-914"><a href="#cb89-914"></a></span>
@@ -4608,11 +4622,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb89-1021"><a href="#cb89-1021"></a>Let's mimic a situation where we have cross-sectional seroprevalence data (e.g. measures of antibodies that tell you someone is in the R class).</span>
 <span id="cb89-1022"><a href="#cb89-1022"></a>In using such data, we'd typically assume that the system was at equilibrium.</span>
 <span id="cb89-1023"><a href="#cb89-1023"></a></span>
-<span id="cb89-1024"><a href="#cb89-1024"></a>&lt;div class="exercise"&gt;</span>
+<span id="cb89-1024"><a href="#cb89-1024"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"exercise"</span><span class="dt">&gt;</span></span>
 <span id="cb89-1025"><a href="#cb89-1025"></a></span>
 <span id="cb89-1026"><a href="#cb89-1026"></a><span class="fu">### Exercise 3: What does the equilibrium age-specific seroprevalence look like in this example? {#sec-ex-3}</span></span>
 <span id="cb89-1027"><a href="#cb89-1027"></a></span>
-<span id="cb89-1028"><a href="#cb89-1028"></a>&lt;/div&gt;</span>
+<span id="cb89-1028"><a href="#cb89-1028"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
 <span id="cb89-1029"><a href="#cb89-1029"></a></span>
 <span id="cb89-1030"><a href="#cb89-1030"></a>Use the code below to display the age-specific seroprevalence (i.e., the seroprevalence for each age group at equilibrium)</span>
 <span id="cb89-1031"><a href="#cb89-1031"></a></span>
@@ -4675,7 +4689,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb89-1094"><a href="#cb89-1094"></a>)</span>
 <span id="cb89-1095"><a href="#cb89-1095"></a><span class="in">```</span></span>
 <span id="cb89-1096"><a href="#cb89-1096"></a></span>
-<span id="cb89-1097"><a href="#cb89-1097"></a>&lt;a id="ngm-function"&gt;&lt;/a&gt;</span>
+<span id="cb89-1097"><a href="#cb89-1097"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> id</span><span class="op">=</span><span class="st">"ngm-function"</span><span class="dt">&gt;&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
 <span id="cb89-1098"><a href="#cb89-1098"></a></span>
 <span id="cb89-1101"><a href="#cb89-1101"></a><span class="in">```{r}</span></span>
 <span id="cb89-1102"><a href="#cb89-1102"></a><span class="co">#' Calculate R0</span></span>
@@ -4726,11 +4740,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb89-1149"><a href="#cb89-1149"></a>)</span>
 <span id="cb89-1150"><a href="#cb89-1150"></a><span class="in">```</span></span>
 <span id="cb89-1151"><a href="#cb89-1151"></a></span>
-<span id="cb89-1152"><a href="#cb89-1152"></a>&lt;div class="exercise"&gt;</span>
+<span id="cb89-1152"><a href="#cb89-1152"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"exercise"</span><span class="dt">&gt;</span></span>
 <span id="cb89-1153"><a href="#cb89-1153"></a></span>
 <span id="cb89-1154"><a href="#cb89-1154"></a><span class="fu">### Exercise 4: Updating the contact matrix</span></span>
 <span id="cb89-1155"><a href="#cb89-1155"></a></span>
-<span id="cb89-1156"><a href="#cb89-1156"></a>&lt;/div&gt;</span>
+<span id="cb89-1156"><a href="#cb89-1156"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
 <span id="cb89-1157"><a href="#cb89-1157"></a></span>
 <span id="cb89-1158"><a href="#cb89-1158"></a>::: {.callout-important}</span>
 <span id="cb89-1159"><a href="#cb89-1159"></a>You will need to read and edit the following code carefully so that it runs with your updated parameters.</span>
@@ -4897,11 +4911,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb89-1332"><a href="#cb89-1332"></a>See @sec-mean-age-r-code for code you can run in <span class="in">`R`</span> to investigate the relationship between $R_0$, vaccination coverage, life expectancy, and the mean age of infection.</span>
 <span id="cb89-1333"><a href="#cb89-1333"></a>:::</span>
 <span id="cb89-1334"><a href="#cb89-1334"></a></span>
-<span id="cb89-1335"><a href="#cb89-1335"></a>&lt;div class="exercise"&gt;</span>
+<span id="cb89-1335"><a href="#cb89-1335"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"exercise"</span><span class="dt">&gt;</span></span>
 <span id="cb89-1336"><a href="#cb89-1336"></a></span>
 <span id="cb89-1337"><a href="#cb89-1337"></a><span class="fu">### Exercise 5: mean age of infection interactions</span></span>
 <span id="cb89-1338"><a href="#cb89-1338"></a></span>
-<span id="cb89-1339"><a href="#cb89-1339"></a>&lt;/div&gt;</span>
+<span id="cb89-1339"><a href="#cb89-1339"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
 <span id="cb89-1340"><a href="#cb89-1340"></a></span>
 <span id="cb89-1341"><a href="#cb89-1341"></a><span class="fu">#### When you increase $R_0$ from 2.0 to 4.0, what happens to the mean age of infection?</span></span>
 <span id="cb89-1342"><a href="#cb89-1342"></a><span class="fu">##### Is there a linear change? If not, why not?</span></span>
@@ -4909,184 +4923,184 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb89-1344"><a href="#cb89-1344"></a><span class="fu">#### Leaving $R_0$ and vaccination coverage the same, decrease the life expectancy to 50 years. What happens to the mean age of infection?</span></span>
 <span id="cb89-1345"><a href="#cb89-1345"></a><span class="fu">##### If it changed, why do you think it did?</span></span>
 <span id="cb89-1346"><a href="#cb89-1346"></a></span>
-<span id="cb89-1347"><a href="#cb89-1347"></a>&lt;br&gt;</span>
+<span id="cb89-1347"><a href="#cb89-1347"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
 <span id="cb89-1348"><a href="#cb89-1348"></a></span>
 <span id="cb89-1351"><a href="#cb89-1351"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1352"><a href="#cb89-1352"></a><span class="in">//| echo: false</span></span>
-<span id="cb89-1353"><a href="#cb89-1353"></a><span class="in">init_R0 = 2.0</span></span>
-<span id="cb89-1354"><a href="#cb89-1354"></a><span class="in">init_vacc = 0.0</span></span>
-<span id="cb89-1355"><a href="#cb89-1355"></a><span class="in">init_lifeexp = 75</span></span>
+<span id="cb89-1352"><a href="#cb89-1352"></a><span class="co">//| echo: false</span></span>
+<span id="cb89-1353"><a href="#cb89-1353"></a>init_R0 <span class="op">=</span> <span class="fl">2.0</span></span>
+<span id="cb89-1354"><a href="#cb89-1354"></a>init_vacc <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb89-1355"><a href="#cb89-1355"></a>init_lifeexp <span class="op">=</span> <span class="dv">75</span></span>
 <span id="cb89-1356"><a href="#cb89-1356"></a><span class="in">```</span></span>
 <span id="cb89-1357"><a href="#cb89-1357"></a></span>
 <span id="cb89-1360"><a href="#cb89-1360"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1361"><a href="#cb89-1361"></a><span class="in">//| echo: false</span></span>
-<span id="cb89-1362"><a href="#cb89-1362"></a><span class="in">function set(input, value) {</span></span>
-<span id="cb89-1363"><a href="#cb89-1363"></a><span class="in">  input.value = value;</span></span>
-<span id="cb89-1364"><a href="#cb89-1364"></a><span class="in">  input.dispatchEvent(new Event("input", {bubbles: true}));</span></span>
-<span id="cb89-1365"><a href="#cb89-1365"></a><span class="in">}</span></span>
+<span id="cb89-1361"><a href="#cb89-1361"></a><span class="co">//| echo: false</span></span>
+<span id="cb89-1362"><a href="#cb89-1362"></a><span class="kw">function</span> <span class="fu">set</span>(input<span class="op">,</span> value) {</span>
+<span id="cb89-1363"><a href="#cb89-1363"></a>  input<span class="op">.</span><span class="at">value</span> <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb89-1364"><a href="#cb89-1364"></a>  input<span class="op">.</span><span class="fu">dispatchEvent</span>(<span class="kw">new</span> <span class="bu">Event</span>(<span class="st">"input"</span><span class="op">,</span> {<span class="dt">bubbles</span><span class="op">:</span> <span class="kw">true</span>}))<span class="op">;</span></span>
+<span id="cb89-1365"><a href="#cb89-1365"></a>}</span>
 <span id="cb89-1366"><a href="#cb89-1366"></a><span class="in">```</span></span>
 <span id="cb89-1367"><a href="#cb89-1367"></a></span>
 <span id="cb89-1370"><a href="#cb89-1370"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1371"><a href="#cb89-1371"></a><span class="in">//| echo: false</span></span>
-<span id="cb89-1372"><a href="#cb89-1372"></a><span class="in">//| panel: sidebar</span></span>
-<span id="cb89-1373"><a href="#cb89-1373"></a><span class="in">viewof reset = Inputs.button([</span></span>
-<span id="cb89-1374"><a href="#cb89-1374"></a><span class="in">  ["Reset all sliders", () =&gt; {</span></span>
-<span id="cb89-1375"><a href="#cb89-1375"></a><span class="in">    set(viewof R0, init_R0)</span></span>
-<span id="cb89-1376"><a href="#cb89-1376"></a><span class="in">    set(viewof vacc, init_vacc)</span></span>
-<span id="cb89-1377"><a href="#cb89-1377"></a><span class="in">    set(viewof lifeexp, init_lifeexp)</span></span>
-<span id="cb89-1378"><a href="#cb89-1378"></a><span class="in">  }]</span></span>
-<span id="cb89-1379"><a href="#cb89-1379"></a><span class="in">])</span></span>
-<span id="cb89-1380"><a href="#cb89-1380"></a><span class="in">viewof R0 = Inputs.range(</span></span>
-<span id="cb89-1381"><a href="#cb89-1381"></a><span class="in">    [1.0, 10.0],</span></span>
-<span id="cb89-1382"><a href="#cb89-1382"></a><span class="in">    {value: 2.0, step: 0.01, label: md`${tex`R_0`}`}</span></span>
-<span id="cb89-1383"><a href="#cb89-1383"></a><span class="in">)</span></span>
+<span id="cb89-1371"><a href="#cb89-1371"></a><span class="co">//| echo: false</span></span>
+<span id="cb89-1372"><a href="#cb89-1372"></a><span class="co">//| panel: sidebar</span></span>
+<span id="cb89-1373"><a href="#cb89-1373"></a>viewof reset <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>([</span>
+<span id="cb89-1374"><a href="#cb89-1374"></a>  [<span class="st">"Reset all sliders"</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb89-1375"><a href="#cb89-1375"></a>    <span class="kw">set</span>(viewof R0<span class="op">,</span> init_R0)</span>
+<span id="cb89-1376"><a href="#cb89-1376"></a>    <span class="kw">set</span>(viewof vacc<span class="op">,</span> init_vacc)</span>
+<span id="cb89-1377"><a href="#cb89-1377"></a>    <span class="kw">set</span>(viewof lifeexp<span class="op">,</span> init_lifeexp)</span>
+<span id="cb89-1378"><a href="#cb89-1378"></a>  }]</span>
+<span id="cb89-1379"><a href="#cb89-1379"></a>])</span>
+<span id="cb89-1380"><a href="#cb89-1380"></a>viewof R0 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb89-1381"><a href="#cb89-1381"></a>    [<span class="fl">1.0</span><span class="op">,</span> <span class="fl">10.0</span>]<span class="op">,</span></span>
+<span id="cb89-1382"><a href="#cb89-1382"></a>    {<span class="dt">value</span><span class="op">:</span> <span class="fl">2.0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="fu">md</span><span class="vs">`</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`R_0`</span><span class="sc">}</span><span class="vs">`</span>}</span>
+<span id="cb89-1383"><a href="#cb89-1383"></a>)</span>
 <span id="cb89-1384"><a href="#cb89-1384"></a></span>
-<span id="cb89-1385"><a href="#cb89-1385"></a><span class="in">viewof vacc = Inputs.range(</span></span>
-<span id="cb89-1386"><a href="#cb89-1386"></a><span class="in">    [0.0, 1.0],</span></span>
-<span id="cb89-1387"><a href="#cb89-1387"></a><span class="in">    {value: 0.0, step: 0.01, label: "Vaccination coverage"}</span></span>
-<span id="cb89-1388"><a href="#cb89-1388"></a><span class="in">)</span></span>
+<span id="cb89-1385"><a href="#cb89-1385"></a>viewof vacc <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb89-1386"><a href="#cb89-1386"></a>    [<span class="fl">0.0</span><span class="op">,</span> <span class="fl">1.0</span>]<span class="op">,</span></span>
+<span id="cb89-1387"><a href="#cb89-1387"></a>    {<span class="dt">value</span><span class="op">:</span> <span class="fl">0.0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Vaccination coverage"</span>}</span>
+<span id="cb89-1388"><a href="#cb89-1388"></a>)</span>
 <span id="cb89-1389"><a href="#cb89-1389"></a></span>
-<span id="cb89-1390"><a href="#cb89-1390"></a><span class="in">viewof lifeexp = Inputs.range(</span></span>
-<span id="cb89-1391"><a href="#cb89-1391"></a><span class="in">    [50, 100],</span></span>
-<span id="cb89-1392"><a href="#cb89-1392"></a><span class="in">    {value: 75, step: 1, label: "Life expectancy"}</span></span>
-<span id="cb89-1393"><a href="#cb89-1393"></a><span class="in">)</span></span>
+<span id="cb89-1390"><a href="#cb89-1390"></a>viewof lifeexp <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb89-1391"><a href="#cb89-1391"></a>    [<span class="dv">50</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span></span>
+<span id="cb89-1392"><a href="#cb89-1392"></a>    {<span class="dt">value</span><span class="op">:</span> <span class="dv">75</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Life expectancy"</span>}</span>
+<span id="cb89-1393"><a href="#cb89-1393"></a>)</span>
 <span id="cb89-1394"><a href="#cb89-1394"></a></span>
-<span id="cb89-1395"><a href="#cb89-1395"></a><span class="in">md`${tex`R_E = ${Re_str}`}`</span></span>
-<span id="cb89-1396"><a href="#cb89-1396"></a><span class="in">md`${tex`\text{Mean age of infection} = ${Re_mean_age_str}`}`</span></span>
+<span id="cb89-1395"><a href="#cb89-1395"></a><span class="fu">md</span><span class="vs">`</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`R_E = </span><span class="sc">${</span>Re_str<span class="sc">}</span><span class="vs">`</span><span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb89-1396"><a href="#cb89-1396"></a><span class="fu">md</span><span class="vs">`</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`</span><span class="sc">\t</span><span class="vs">ext{Mean age of infection} = </span><span class="sc">${</span>Re_mean_age_str<span class="sc">}</span><span class="vs">`</span><span class="sc">}</span><span class="vs">`</span></span>
 <span id="cb89-1397"><a href="#cb89-1397"></a><span class="in">```</span></span>
 <span id="cb89-1398"><a href="#cb89-1398"></a></span>
 <span id="cb89-1401"><a href="#cb89-1401"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1402"><a href="#cb89-1402"></a><span class="in">//| echo: false</span></span>
-<span id="cb89-1403"><a href="#cb89-1403"></a><span class="in">Re = R0 * (1 - vacc)</span></span>
-<span id="cb89-1404"><a href="#cb89-1404"></a><span class="in">Re_str = Re.toPrecision(4).toLocaleString()</span></span>
+<span id="cb89-1402"><a href="#cb89-1402"></a><span class="co">//| echo: false</span></span>
+<span id="cb89-1403"><a href="#cb89-1403"></a>Re <span class="op">=</span> R0 <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> vacc)</span>
+<span id="cb89-1404"><a href="#cb89-1404"></a>Re_str <span class="op">=</span> Re<span class="op">.</span><span class="fu">toPrecision</span>(<span class="dv">4</span>)<span class="op">.</span><span class="fu">toLocaleString</span>()</span>
 <span id="cb89-1405"><a href="#cb89-1405"></a><span class="in">```</span></span>
 <span id="cb89-1406"><a href="#cb89-1406"></a></span>
 <span id="cb89-1409"><a href="#cb89-1409"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1410"><a href="#cb89-1410"></a><span class="in">//| echo: false</span></span>
-<span id="cb89-1411"><a href="#cb89-1411"></a><span class="in">function calc_mean_age(Re, lifeexp) {</span></span>
-<span id="cb89-1412"><a href="#cb89-1412"></a><span class="in">    if(Re &gt;= 1) {</span></span>
-<span id="cb89-1413"><a href="#cb89-1413"></a><span class="in">        var mean_age = (lifeexp / (Re - 1))</span></span>
-<span id="cb89-1414"><a href="#cb89-1414"></a><span class="in">    } else {</span></span>
-<span id="cb89-1415"><a href="#cb89-1415"></a><span class="in">        var mean_age = Infinity</span></span>
-<span id="cb89-1416"><a href="#cb89-1416"></a><span class="in">    }</span></span>
-<span id="cb89-1417"><a href="#cb89-1417"></a><span class="in">    return mean_age</span></span>
-<span id="cb89-1418"><a href="#cb89-1418"></a><span class="in">}</span></span>
+<span id="cb89-1410"><a href="#cb89-1410"></a><span class="co">//| echo: false</span></span>
+<span id="cb89-1411"><a href="#cb89-1411"></a><span class="kw">function</span> <span class="fu">calc_mean_age</span>(Re<span class="op">,</span> lifeexp) {</span>
+<span id="cb89-1412"><a href="#cb89-1412"></a>    <span class="cf">if</span>(Re <span class="op">&gt;=</span> <span class="dv">1</span>) {</span>
+<span id="cb89-1413"><a href="#cb89-1413"></a>        <span class="kw">var</span> mean_age <span class="op">=</span> (lifeexp <span class="op">/</span> (Re <span class="op">-</span> <span class="dv">1</span>))</span>
+<span id="cb89-1414"><a href="#cb89-1414"></a>    } <span class="cf">else</span> {</span>
+<span id="cb89-1415"><a href="#cb89-1415"></a>        <span class="kw">var</span> mean_age <span class="op">=</span> <span class="kw">Infinity</span></span>
+<span id="cb89-1416"><a href="#cb89-1416"></a>    }</span>
+<span id="cb89-1417"><a href="#cb89-1417"></a>    <span class="cf">return</span> mean_age</span>
+<span id="cb89-1418"><a href="#cb89-1418"></a>}</span>
 <span id="cb89-1419"><a href="#cb89-1419"></a><span class="in">```</span></span>
 <span id="cb89-1420"><a href="#cb89-1420"></a></span>
 <span id="cb89-1421"><a href="#cb89-1421"></a></span>
 <span id="cb89-1424"><a href="#cb89-1424"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1425"><a href="#cb89-1425"></a><span class="in">//| echo: false</span></span>
-<span id="cb89-1426"><a href="#cb89-1426"></a><span class="in">R0_mean_age = calc_mean_age(R0, lifeexp)</span></span>
-<span id="cb89-1427"><a href="#cb89-1427"></a><span class="in">Re_mean_age = calc_mean_age(Re, lifeexp)</span></span>
-<span id="cb89-1428"><a href="#cb89-1428"></a><span class="in">Re_mean_age_str = Re_mean_age.toPrecision(4).toLocaleString()</span></span>
+<span id="cb89-1425"><a href="#cb89-1425"></a><span class="co">//| echo: false</span></span>
+<span id="cb89-1426"><a href="#cb89-1426"></a>R0_mean_age <span class="op">=</span> <span class="fu">calc_mean_age</span>(R0<span class="op">,</span> lifeexp)</span>
+<span id="cb89-1427"><a href="#cb89-1427"></a>Re_mean_age <span class="op">=</span> <span class="fu">calc_mean_age</span>(Re<span class="op">,</span> lifeexp)</span>
+<span id="cb89-1428"><a href="#cb89-1428"></a>Re_mean_age_str <span class="op">=</span> Re_mean_age<span class="op">.</span><span class="fu">toPrecision</span>(<span class="dv">4</span>)<span class="op">.</span><span class="fu">toLocaleString</span>()</span>
 <span id="cb89-1429"><a href="#cb89-1429"></a><span class="in">```</span></span>
 <span id="cb89-1430"><a href="#cb89-1430"></a></span>
 <span id="cb89-1431"><a href="#cb89-1431"></a></span>
 <span id="cb89-1434"><a href="#cb89-1434"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1435"><a href="#cb89-1435"></a><span class="in">//| echo: false</span></span>
-<span id="cb89-1436"><a href="#cb89-1436"></a><span class="in">import { aq, op } from '@uwdata/arquero'</span></span>
+<span id="cb89-1435"><a href="#cb89-1435"></a><span class="co">//| echo: false</span></span>
+<span id="cb89-1436"><a href="#cb89-1436"></a><span class="im">import</span> { aq<span class="op">,</span> op } <span class="im">from</span> <span class="st">'@uwdata/arquero'</span></span>
 <span id="cb89-1437"><a href="#cb89-1437"></a><span class="in">```</span></span>
 <span id="cb89-1438"><a href="#cb89-1438"></a></span>
 <span id="cb89-1441"><a href="#cb89-1441"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1442"><a href="#cb89-1442"></a><span class="in">//| echo: false</span></span>
-<span id="cb89-1443"><a href="#cb89-1443"></a><span class="in">function calc_mean_age_arr(vacc, lifeexp, R0_min, R0_max, dR0) {</span></span>
-<span id="cb89-1444"><a href="#cb89-1444"></a><span class="in">    var R0_sim = R0_min</span></span>
+<span id="cb89-1442"><a href="#cb89-1442"></a><span class="co">//| echo: false</span></span>
+<span id="cb89-1443"><a href="#cb89-1443"></a><span class="kw">function</span> <span class="fu">calc_mean_age_arr</span>(vacc<span class="op">,</span> lifeexp<span class="op">,</span> R0_min<span class="op">,</span> R0_max<span class="op">,</span> dR0) {</span>
+<span id="cb89-1444"><a href="#cb89-1444"></a>    <span class="kw">var</span> R0_sim <span class="op">=</span> R0_min</span>
 <span id="cb89-1445"><a href="#cb89-1445"></a></span>
-<span id="cb89-1446"><a href="#cb89-1446"></a><span class="in">    var R0 = []</span></span>
-<span id="cb89-1447"><a href="#cb89-1447"></a><span class="in">    var Re = []</span></span>
-<span id="cb89-1448"><a href="#cb89-1448"></a><span class="in">    var R0_mean_age = []</span></span>
-<span id="cb89-1449"><a href="#cb89-1449"></a><span class="in">    var Re_mean_age = []</span></span>
+<span id="cb89-1446"><a href="#cb89-1446"></a>    <span class="kw">var</span> R0 <span class="op">=</span> []</span>
+<span id="cb89-1447"><a href="#cb89-1447"></a>    <span class="kw">var</span> Re <span class="op">=</span> []</span>
+<span id="cb89-1448"><a href="#cb89-1448"></a>    <span class="kw">var</span> R0_mean_age <span class="op">=</span> []</span>
+<span id="cb89-1449"><a href="#cb89-1449"></a>    <span class="kw">var</span> Re_mean_age <span class="op">=</span> []</span>
 <span id="cb89-1450"><a href="#cb89-1450"></a></span>
-<span id="cb89-1451"><a href="#cb89-1451"></a><span class="in">    for (R0_sim = R0_min; R0_sim &lt;= R0_max; R0_sim += dR0) {</span></span>
-<span id="cb89-1452"><a href="#cb89-1452"></a><span class="in">        var Re_sim = R0_sim * (1 - vacc)</span></span>
-<span id="cb89-1453"><a href="#cb89-1453"></a><span class="in">        var R0_mean_age_sim = calc_mean_age(R0_sim, lifeexp)</span></span>
-<span id="cb89-1454"><a href="#cb89-1454"></a><span class="in">        var Re_mean_age_sim = calc_mean_age(Re_sim, lifeexp)</span></span>
+<span id="cb89-1451"><a href="#cb89-1451"></a>    <span class="cf">for</span> (R0_sim <span class="op">=</span> R0_min<span class="op">;</span> R0_sim <span class="op">&lt;=</span> R0_max<span class="op">;</span> R0_sim <span class="op">+=</span> dR0) {</span>
+<span id="cb89-1452"><a href="#cb89-1452"></a>        <span class="kw">var</span> Re_sim <span class="op">=</span> R0_sim <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> vacc)</span>
+<span id="cb89-1453"><a href="#cb89-1453"></a>        <span class="kw">var</span> R0_mean_age_sim <span class="op">=</span> <span class="fu">calc_mean_age</span>(R0_sim<span class="op">,</span> lifeexp)</span>
+<span id="cb89-1454"><a href="#cb89-1454"></a>        <span class="kw">var</span> Re_mean_age_sim <span class="op">=</span> <span class="fu">calc_mean_age</span>(Re_sim<span class="op">,</span> lifeexp)</span>
 <span id="cb89-1455"><a href="#cb89-1455"></a></span>
-<span id="cb89-1456"><a href="#cb89-1456"></a><span class="in">        R0.push(R0_sim)</span></span>
-<span id="cb89-1457"><a href="#cb89-1457"></a><span class="in">        Re.push(Re_sim)</span></span>
-<span id="cb89-1458"><a href="#cb89-1458"></a><span class="in">        R0_mean_age.push(R0_mean_age_sim)</span></span>
-<span id="cb89-1459"><a href="#cb89-1459"></a><span class="in">        Re_mean_age.push(Re_mean_age_sim)</span></span>
-<span id="cb89-1460"><a href="#cb89-1460"></a><span class="in">    }</span></span>
+<span id="cb89-1456"><a href="#cb89-1456"></a>        R0<span class="op">.</span><span class="fu">push</span>(R0_sim)</span>
+<span id="cb89-1457"><a href="#cb89-1457"></a>        Re<span class="op">.</span><span class="fu">push</span>(Re_sim)</span>
+<span id="cb89-1458"><a href="#cb89-1458"></a>        R0_mean_age<span class="op">.</span><span class="fu">push</span>(R0_mean_age_sim)</span>
+<span id="cb89-1459"><a href="#cb89-1459"></a>        Re_mean_age<span class="op">.</span><span class="fu">push</span>(Re_mean_age_sim)</span>
+<span id="cb89-1460"><a href="#cb89-1460"></a>    }</span>
 <span id="cb89-1461"><a href="#cb89-1461"></a></span>
-<span id="cb89-1462"><a href="#cb89-1462"></a><span class="in">    return {</span></span>
-<span id="cb89-1463"><a href="#cb89-1463"></a><span class="in">        Re: aq.table({</span></span>
-<span id="cb89-1464"><a href="#cb89-1464"></a><span class="in">                R0: R0,</span></span>
-<span id="cb89-1465"><a href="#cb89-1465"></a><span class="in">                mean_age: Re_mean_age</span></span>
-<span id="cb89-1466"><a href="#cb89-1466"></a><span class="in">            }).filter((d) =&gt; d.mean_age &lt;= 100),</span></span>
-<span id="cb89-1467"><a href="#cb89-1467"></a><span class="in">        R0: aq.table({</span></span>
-<span id="cb89-1468"><a href="#cb89-1468"></a><span class="in">                R0: R0,</span></span>
-<span id="cb89-1469"><a href="#cb89-1469"></a><span class="in">                mean_age: R0_mean_age</span></span>
-<span id="cb89-1470"><a href="#cb89-1470"></a><span class="in">            }).filter((d) =&gt; d.mean_age &lt;= 100)</span></span>
-<span id="cb89-1471"><a href="#cb89-1471"></a><span class="in">    }</span></span>
-<span id="cb89-1472"><a href="#cb89-1472"></a><span class="in">}</span></span>
+<span id="cb89-1462"><a href="#cb89-1462"></a>    <span class="cf">return</span> {</span>
+<span id="cb89-1463"><a href="#cb89-1463"></a>        <span class="dt">Re</span><span class="op">:</span> aq<span class="op">.</span><span class="fu">table</span>({</span>
+<span id="cb89-1464"><a href="#cb89-1464"></a>                <span class="dt">R0</span><span class="op">:</span> R0<span class="op">,</span></span>
+<span id="cb89-1465"><a href="#cb89-1465"></a>                <span class="dt">mean_age</span><span class="op">:</span> Re_mean_age</span>
+<span id="cb89-1466"><a href="#cb89-1466"></a>            })<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">mean_age</span> <span class="op">&lt;=</span> <span class="dv">100</span>)<span class="op">,</span></span>
+<span id="cb89-1467"><a href="#cb89-1467"></a>        <span class="dt">R0</span><span class="op">:</span> aq<span class="op">.</span><span class="fu">table</span>({</span>
+<span id="cb89-1468"><a href="#cb89-1468"></a>                <span class="dt">R0</span><span class="op">:</span> R0<span class="op">,</span></span>
+<span id="cb89-1469"><a href="#cb89-1469"></a>                <span class="dt">mean_age</span><span class="op">:</span> R0_mean_age</span>
+<span id="cb89-1470"><a href="#cb89-1470"></a>            })<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">mean_age</span> <span class="op">&lt;=</span> <span class="dv">100</span>)</span>
+<span id="cb89-1471"><a href="#cb89-1471"></a>    }</span>
+<span id="cb89-1472"><a href="#cb89-1472"></a>}</span>
 <span id="cb89-1473"><a href="#cb89-1473"></a><span class="in">```</span></span>
 <span id="cb89-1474"><a href="#cb89-1474"></a></span>
 <span id="cb89-1477"><a href="#cb89-1477"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1478"><a href="#cb89-1478"></a><span class="in">//| echo: false</span></span>
-<span id="cb89-1479"><a href="#cb89-1479"></a><span class="in">mean_age_arrs = calc_mean_age_arr(vacc, lifeexp, 1.0, 10.0, 0.01)</span></span>
+<span id="cb89-1478"><a href="#cb89-1478"></a><span class="co">//| echo: false</span></span>
+<span id="cb89-1479"><a href="#cb89-1479"></a>mean_age_arrs <span class="op">=</span> <span class="fu">calc_mean_age_arr</span>(vacc<span class="op">,</span> lifeexp<span class="op">,</span> <span class="fl">1.0</span><span class="op">,</span> <span class="fl">10.0</span><span class="op">,</span> <span class="fl">0.01</span>)</span>
 <span id="cb89-1480"><a href="#cb89-1480"></a><span class="in">```</span></span>
 <span id="cb89-1481"><a href="#cb89-1481"></a></span>
 <span id="cb89-1484"><a href="#cb89-1484"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1485"><a href="#cb89-1485"></a><span class="in">//| echo: false</span></span>
-<span id="cb89-1486"><a href="#cb89-1486"></a><span class="in">mean_age_dots = [({</span></span>
-<span id="cb89-1487"><a href="#cb89-1487"></a><span class="in">    arrow_start: R0_mean_age &lt;= 100 ? R0_mean_age : 100,</span></span>
-<span id="cb89-1488"><a href="#cb89-1488"></a><span class="in">    arrow_end: Re_mean_age &lt;= 100 ? Re_mean_age : 100,</span></span>
-<span id="cb89-1489"><a href="#cb89-1489"></a><span class="in">    R0: R0.toPrecision(3),</span></span>
-<span id="cb89-1490"><a href="#cb89-1490"></a><span class="in">    Re: Re.toPrecision(3),</span></span>
-<span id="cb89-1491"><a href="#cb89-1491"></a><span class="in">    R0_mean_age,</span></span>
-<span id="cb89-1492"><a href="#cb89-1492"></a><span class="in">    Re_mean_age</span></span>
-<span id="cb89-1493"><a href="#cb89-1493"></a><span class="in">})]</span></span>
+<span id="cb89-1485"><a href="#cb89-1485"></a><span class="co">//| echo: false</span></span>
+<span id="cb89-1486"><a href="#cb89-1486"></a>mean_age_dots <span class="op">=</span> [({</span>
+<span id="cb89-1487"><a href="#cb89-1487"></a>    <span class="dt">arrow_start</span><span class="op">:</span> R0_mean_age <span class="op">&lt;=</span> <span class="dv">100</span> <span class="op">?</span> R0_mean_age <span class="op">:</span> <span class="dv">100</span><span class="op">,</span></span>
+<span id="cb89-1488"><a href="#cb89-1488"></a>    <span class="dt">arrow_end</span><span class="op">:</span> Re_mean_age <span class="op">&lt;=</span> <span class="dv">100</span> <span class="op">?</span> Re_mean_age <span class="op">:</span> <span class="dv">100</span><span class="op">,</span></span>
+<span id="cb89-1489"><a href="#cb89-1489"></a>    <span class="dt">R0</span><span class="op">:</span> R0<span class="op">.</span><span class="fu">toPrecision</span>(<span class="dv">3</span>)<span class="op">,</span></span>
+<span id="cb89-1490"><a href="#cb89-1490"></a>    <span class="dt">Re</span><span class="op">:</span> Re<span class="op">.</span><span class="fu">toPrecision</span>(<span class="dv">3</span>)<span class="op">,</span></span>
+<span id="cb89-1491"><a href="#cb89-1491"></a>    R0_mean_age<span class="op">,</span></span>
+<span id="cb89-1492"><a href="#cb89-1492"></a>    Re_mean_age</span>
+<span id="cb89-1493"><a href="#cb89-1493"></a>})]</span>
 <span id="cb89-1494"><a href="#cb89-1494"></a><span class="in">```</span></span>
 <span id="cb89-1495"><a href="#cb89-1495"></a></span>
 <span id="cb89-1498"><a href="#cb89-1498"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1499"><a href="#cb89-1499"></a><span class="in">//| echo: false</span></span>
-<span id="cb89-1500"><a href="#cb89-1500"></a><span class="in">//| panel: fill</span></span>
-<span id="cb89-1501"><a href="#cb89-1501"></a><span class="in">{</span></span>
-<span id="cb89-1502"><a href="#cb89-1502"></a><span class="in">    let R0Color = "#1f77b4"</span></span>
-<span id="cb89-1503"><a href="#cb89-1503"></a><span class="in">    let ReColor = "#ff7f0e"</span></span>
+<span id="cb89-1499"><a href="#cb89-1499"></a><span class="co">//| echo: false</span></span>
+<span id="cb89-1500"><a href="#cb89-1500"></a><span class="co">//| panel: fill</span></span>
+<span id="cb89-1501"><a href="#cb89-1501"></a>{</span>
+<span id="cb89-1502"><a href="#cb89-1502"></a>    <span class="kw">let</span> R0Color <span class="op">=</span> <span class="st">"#1f77b4"</span></span>
+<span id="cb89-1503"><a href="#cb89-1503"></a>    <span class="kw">let</span> ReColor <span class="op">=</span> <span class="st">"#ff7f0e"</span></span>
 <span id="cb89-1504"><a href="#cb89-1504"></a></span>
-<span id="cb89-1505"><a href="#cb89-1505"></a><span class="in">    let plot = Plot.plot({</span></span>
-<span id="cb89-1506"><a href="#cb89-1506"></a><span class="in">        color: {</span></span>
-<span id="cb89-1507"><a href="#cb89-1507"></a><span class="in">            legend: true,</span></span>
-<span id="cb89-1508"><a href="#cb89-1508"></a><span class="in">            domain: ["Unvaccinated", "Vaccinated"],</span></span>
-<span id="cb89-1509"><a href="#cb89-1509"></a><span class="in">            range: ["#1f77b4", "#ff7f0e"]</span></span>
-<span id="cb89-1510"><a href="#cb89-1510"></a><span class="in">        },</span></span>
-<span id="cb89-1511"><a href="#cb89-1511"></a><span class="in">        style: {fontSize: "20px"},</span></span>
-<span id="cb89-1512"><a href="#cb89-1512"></a><span class="in">        marginLeft: 65,</span></span>
-<span id="cb89-1513"><a href="#cb89-1513"></a><span class="in">        marginTop: 40,</span></span>
-<span id="cb89-1514"><a href="#cb89-1514"></a><span class="in">        marginBottom: 55,</span></span>
-<span id="cb89-1515"><a href="#cb89-1515"></a><span class="in">        grid: true,</span></span>
-<span id="cb89-1516"><a href="#cb89-1516"></a><span class="in">        width: 800,</span></span>
-<span id="cb89-1517"><a href="#cb89-1517"></a><span class="in">        height: 670,</span></span>
-<span id="cb89-1518"><a href="#cb89-1518"></a><span class="in">        x: {label: "R0", domain: [0, 10]},</span></span>
-<span id="cb89-1519"><a href="#cb89-1519"></a><span class="in">        y: {label: "Mean Age of Infection", domain: [0, 100]},</span></span>
-<span id="cb89-1520"><a href="#cb89-1520"></a><span class="in">        marks: [</span></span>
-<span id="cb89-1521"><a href="#cb89-1521"></a><span class="in">            Plot.line(mean_age_arrs.Re, {x: "R0", y: "mean_age", stroke: ReColor, strokeWidth: 6}),</span></span>
-<span id="cb89-1522"><a href="#cb89-1522"></a><span class="in">            Plot.line(mean_age_arrs.R0, {x: "R0", y: "mean_age", stroke: R0Color, strokeWidth: 6}),</span></span>
-<span id="cb89-1523"><a href="#cb89-1523"></a><span class="in">            Re_mean_age &lt;= 100 ?</span></span>
-<span id="cb89-1524"><a href="#cb89-1524"></a><span class="in">                [</span></span>
-<span id="cb89-1525"><a href="#cb89-1525"></a><span class="in">                    vacc &gt; 0.00 ? Plot.dot(mean_age_dots, {x: "R0", y: "Re_mean_age", r: 12, stroke: ReColor, fill:     ReColor,  fillOpacity: 0.6}) : null,</span></span>
-<span id="cb89-1526"><a href="#cb89-1526"></a><span class="in">                    Plot.text(</span></span>
-<span id="cb89-1527"><a href="#cb89-1527"></a><span class="in">                        mean_age_dots,</span></span>
-<span id="cb89-1528"><a href="#cb89-1528"></a><span class="in">                        {x: "R0", y: "Re_mean_age", text: (d) =&gt; `Re = ${d.Re}`, dx: 55, dy: -25, fontWeight: "bold", fill: ReColor}</span></span>
-<span id="cb89-1529"><a href="#cb89-1529"></a><span class="in">                    )</span></span>
-<span id="cb89-1530"><a href="#cb89-1530"></a><span class="in">                ] :</span></span>
-<span id="cb89-1531"><a href="#cb89-1531"></a><span class="in">            null,</span></span>
-<span id="cb89-1532"><a href="#cb89-1532"></a><span class="in">            R0_mean_age &lt;= 100 ?</span></span>
-<span id="cb89-1533"><a href="#cb89-1533"></a><span class="in">                [</span></span>
-<span id="cb89-1534"><a href="#cb89-1534"></a><span class="in">                Plot.dot(mean_age_dots, {x: "R0", y: "R0_mean_age", r: 12, stroke: R0Color, fill: R0Color, fillOpacity: 0.6}),</span></span>
-<span id="cb89-1535"><a href="#cb89-1535"></a><span class="in">                Plot.text(</span></span>
-<span id="cb89-1536"><a href="#cb89-1536"></a><span class="in">                    mean_age_dots,</span></span>
-<span id="cb89-1537"><a href="#cb89-1537"></a><span class="in">                    {x: "R0", y: "R0_mean_age", text: (d) =&gt; `R0 = ${d.R0}`, dx: -60, dy: 30, fontWeight: "bold", fill: R0Color}</span></span>
-<span id="cb89-1538"><a href="#cb89-1538"></a><span class="in">                )</span></span>
-<span id="cb89-1539"><a href="#cb89-1539"></a><span class="in">                ] :</span></span>
-<span id="cb89-1540"><a href="#cb89-1540"></a><span class="in">            null,</span></span>
-<span id="cb89-1541"><a href="#cb89-1541"></a><span class="in">            Plot.arrow(mean_age_dots, {x1: "R0", x2: "R0", y1: "arrow_start", y2: "arrow_end", strokeWidth: 4, headLength: 5, inset: 15}),</span></span>
-<span id="cb89-1542"><a href="#cb89-1542"></a><span class="in">        ]</span></span>
-<span id="cb89-1543"><a href="#cb89-1543"></a><span class="in">    });</span></span>
+<span id="cb89-1505"><a href="#cb89-1505"></a>    <span class="kw">let</span> plot <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb89-1506"><a href="#cb89-1506"></a>        <span class="dt">color</span><span class="op">:</span> {</span>
+<span id="cb89-1507"><a href="#cb89-1507"></a>            <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb89-1508"><a href="#cb89-1508"></a>            <span class="dt">domain</span><span class="op">:</span> [<span class="st">"Unvaccinated"</span><span class="op">,</span> <span class="st">"Vaccinated"</span>]<span class="op">,</span></span>
+<span id="cb89-1509"><a href="#cb89-1509"></a>            <span class="dt">range</span><span class="op">:</span> [<span class="st">"#1f77b4"</span><span class="op">,</span> <span class="st">"#ff7f0e"</span>]</span>
+<span id="cb89-1510"><a href="#cb89-1510"></a>        }<span class="op">,</span></span>
+<span id="cb89-1511"><a href="#cb89-1511"></a>        <span class="dt">style</span><span class="op">:</span> {<span class="dt">fontSize</span><span class="op">:</span> <span class="st">"20px"</span>}<span class="op">,</span></span>
+<span id="cb89-1512"><a href="#cb89-1512"></a>        <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">65</span><span class="op">,</span></span>
+<span id="cb89-1513"><a href="#cb89-1513"></a>        <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">40</span><span class="op">,</span></span>
+<span id="cb89-1514"><a href="#cb89-1514"></a>        <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">55</span><span class="op">,</span></span>
+<span id="cb89-1515"><a href="#cb89-1515"></a>        <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb89-1516"><a href="#cb89-1516"></a>        <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb89-1517"><a href="#cb89-1517"></a>        <span class="dt">height</span><span class="op">:</span> <span class="dv">670</span><span class="op">,</span></span>
+<span id="cb89-1518"><a href="#cb89-1518"></a>        <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"R0"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">10</span>]}<span class="op">,</span></span>
+<span id="cb89-1519"><a href="#cb89-1519"></a>        <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Mean Age of Infection"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>]}<span class="op">,</span></span>
+<span id="cb89-1520"><a href="#cb89-1520"></a>        <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb89-1521"><a href="#cb89-1521"></a>            Plot<span class="op">.</span><span class="fu">line</span>(mean_age_arrs<span class="op">.</span><span class="at">Re</span><span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"R0"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"mean_age"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> ReColor<span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">6</span>})<span class="op">,</span></span>
+<span id="cb89-1522"><a href="#cb89-1522"></a>            Plot<span class="op">.</span><span class="fu">line</span>(mean_age_arrs<span class="op">.</span><span class="at">R0</span><span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"R0"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"mean_age"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> R0Color<span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">6</span>})<span class="op">,</span></span>
+<span id="cb89-1523"><a href="#cb89-1523"></a>            Re_mean_age <span class="op">&lt;=</span> <span class="dv">100</span> <span class="op">?</span></span>
+<span id="cb89-1524"><a href="#cb89-1524"></a>                [</span>
+<span id="cb89-1525"><a href="#cb89-1525"></a>                    vacc <span class="op">&gt;</span> <span class="fl">0.00</span> <span class="op">?</span> Plot<span class="op">.</span><span class="fu">dot</span>(mean_age_dots<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"R0"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"Re_mean_age"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">12</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> ReColor<span class="op">,</span> <span class="dt">fill</span><span class="op">:</span>     ReColor<span class="op">,</span>  <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.6</span>}) <span class="op">:</span> <span class="kw">null</span><span class="op">,</span></span>
+<span id="cb89-1526"><a href="#cb89-1526"></a>                    Plot<span class="op">.</span><span class="fu">text</span>(</span>
+<span id="cb89-1527"><a href="#cb89-1527"></a>                        mean_age_dots<span class="op">,</span></span>
+<span id="cb89-1528"><a href="#cb89-1528"></a>                        {<span class="dt">x</span><span class="op">:</span> <span class="st">"R0"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"Re_mean_age"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> (d) <span class="kw">=&gt;</span> <span class="vs">`Re = </span><span class="sc">${</span>d<span class="op">.</span><span class="at">Re</span><span class="sc">}</span><span class="vs">`</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">55</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="op">-</span><span class="dv">25</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> ReColor}</span>
+<span id="cb89-1529"><a href="#cb89-1529"></a>                    )</span>
+<span id="cb89-1530"><a href="#cb89-1530"></a>                ] <span class="op">:</span></span>
+<span id="cb89-1531"><a href="#cb89-1531"></a>            <span class="kw">null</span><span class="op">,</span></span>
+<span id="cb89-1532"><a href="#cb89-1532"></a>            R0_mean_age <span class="op">&lt;=</span> <span class="dv">100</span> <span class="op">?</span></span>
+<span id="cb89-1533"><a href="#cb89-1533"></a>                [</span>
+<span id="cb89-1534"><a href="#cb89-1534"></a>                Plot<span class="op">.</span><span class="fu">dot</span>(mean_age_dots<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"R0"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"R0_mean_age"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">12</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> R0Color<span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> R0Color<span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.6</span>})<span class="op">,</span></span>
+<span id="cb89-1535"><a href="#cb89-1535"></a>                Plot<span class="op">.</span><span class="fu">text</span>(</span>
+<span id="cb89-1536"><a href="#cb89-1536"></a>                    mean_age_dots<span class="op">,</span></span>
+<span id="cb89-1537"><a href="#cb89-1537"></a>                    {<span class="dt">x</span><span class="op">:</span> <span class="st">"R0"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"R0_mean_age"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> (d) <span class="kw">=&gt;</span> <span class="vs">`R0 = </span><span class="sc">${</span>d<span class="op">.</span><span class="at">R0</span><span class="sc">}</span><span class="vs">`</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="op">-</span><span class="dv">60</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="dv">30</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> R0Color}</span>
+<span id="cb89-1538"><a href="#cb89-1538"></a>                )</span>
+<span id="cb89-1539"><a href="#cb89-1539"></a>                ] <span class="op">:</span></span>
+<span id="cb89-1540"><a href="#cb89-1540"></a>            <span class="kw">null</span><span class="op">,</span></span>
+<span id="cb89-1541"><a href="#cb89-1541"></a>            Plot<span class="op">.</span><span class="fu">arrow</span>(mean_age_dots<span class="op">,</span> {<span class="dt">x1</span><span class="op">:</span> <span class="st">"R0"</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> <span class="st">"R0"</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="st">"arrow_start"</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> <span class="st">"arrow_end"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">headLength</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">inset</span><span class="op">:</span> <span class="dv">15</span>})<span class="op">,</span></span>
+<span id="cb89-1542"><a href="#cb89-1542"></a>        ]</span>
+<span id="cb89-1543"><a href="#cb89-1543"></a>    })<span class="op">;</span></span>
 <span id="cb89-1544"><a href="#cb89-1544"></a></span>
-<span id="cb89-1545"><a href="#cb89-1545"></a><span class="in">  return plot;</span></span>
-<span id="cb89-1546"><a href="#cb89-1546"></a><span class="in">}</span></span>
+<span id="cb89-1545"><a href="#cb89-1545"></a>  <span class="cf">return</span> plot<span class="op">;</span></span>
+<span id="cb89-1546"><a href="#cb89-1546"></a>}</span>
 <span id="cb89-1547"><a href="#cb89-1547"></a><span class="in">```</span></span>
 <span id="cb89-1548"><a href="#cb89-1548"></a></span>
 <span id="cb89-1549"><a href="#cb89-1549"></a><span class="fu">## Bonus Materials</span></span>
@@ -5777,5 +5791,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/arnold-c/SISMID-Module-02_2024/edit/main/r-session-02.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer><script src="site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/arnold-c/SISMID-Module-02_2025/edit/main/r-session-02.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer><script src="site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
 </body></html>

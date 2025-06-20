@@ -2,7 +2,7 @@
 
 Hello!
 
-Welcome to this website that accompanies the [2024 Summer Institute in Modeling for Infectious Diseases (SISMID) Module 2: Mathematical Models of Infectious Diseases](https://sph.emory.edu/SISMID/modules/math-models/index.html).
+Welcome to this website that accompanies the [2025 Summer Institute in Modeling for Infectious Diseases (SISMID) Module 2: Mathematical Models of Infectious Diseases](https://sph.emory.edu/SISMID/modules/math-models/index.html).
 This website contains both the lecture notes, so you can refer back to them at a later date, and the exercises that we will be completing throughout the module.
 
 ## Workshop Pre-Requisites
@@ -77,7 +77,7 @@ This is an example of a collapsible callout that defaults to being collapsed.
 - `{package::function()}` will be used to denote a specific package and function, e.g., `{dplyr::mutate()}` denotes the `mutate()` function from the `{dplyr}` package.
     - Often the `function()` will be listed without the package, as there are `library()` calls at the top of each page indicating the packages used in that page, and the majority of functions will not cause conflicts, i.e., there are not packages with functions of the same name.
 - **Bold** will be used to highlight keywords and phrases, e.g., **Git** or **GitHub**.
-    - **Bold** will also be highlighted in this way, e.g., **commits** or **pushed** being the result of the code `git commit` or `git push` 
+    - **Bold** will also be highlighted in this way, e.g., **commits** or **pushed** being the result of the code `git commit` or `git push`
 - ***Bold-italics*** will be used to highlight file names, e.g., ***README.md*** or ***LICENSE***.
 - *Italics* will be used for emphasis in certain circumstances, e.g., signifying a question from an interactive terminal command.
 
@@ -85,16 +85,14 @@ This is an example of a collapsible callout that defaults to being collapsed.
 
 <div class="container">
 <div class="box" style="--width: 50%">
-<h3 style="margin-top:0px; text-align: center">[Dr. Micaela Martinez](https://www.weact.org/person/micaela-martinez)</h3>
+<h3 style="margin-top:0px; text-align: center">[Dr. Amy Winter](https://publichealth.uga.edu/faculty-member/amy-k-winter/)</h3>
 
-<img src="./images/MicaelaMartinez.jpg" style="width: 100%"/>
+<img src="./images/AmyWinter.jpg" style="width: 100%"/>
 
-Dr. Martinez is the Director of Environmental Health at WE ACT for Environmental Justice.
+Dr. Winter is an Assistant Professor of Epidemiology & Biostatistics at the University of Georgia College of Public Health.
 
-Dr. Martinez earned her Ph.D. in Ecology & Evolution in 2015 at the University of Michigan, and did her postdoctoral training at Princeton University.
-Before joining WE ACT, she served as an Assistant Professor at Columbia University Mailman School of Public Health, followed by Emory University, in the Dept. of Biology.
-Since 2017, Dr. Martinez has been supported by the prestigious NIH Director’s Early Independence Award.
-Over the past decade, her research has focused on infectious disease ecology, climate change, maternal and infant health, social justice, and environmental impacts on health (including biological rhythms). 
+Dr. Winter's research group adopts an interdisciplinary approach to tackle policy-relevant challenges in the transmission and control of infectious diseases within human populations.
+Her work focuses on understanding the spatiotemporal spread of infectious diseases, particularly through the analysis of serological data, developing predictive models to assess outbreak risks, and using scenario modeling to design effective strategies for disease control.
 </div>
 
 <div class="box" style="--width: 50%">
@@ -112,16 +110,4 @@ Dr Ferrari's lab does research on both the application of quantitative modeling 
 
 <div class="container">
 <div style="width: 25%">
-</div>
-<div class="box" style="--width: 50%">
-<h3 style="margin-top:0px; text-align: center">[Deepit Bhatia](https://sites.google.com/view/deepitbhatia/home)</h3>
-
-<img src="./images/DeepitBhatia.jpg" style="width: 100%"/>
-
-Deepit is a 4th Year PhD student in Dr. Ferrari's lab at The Pennsylvania State University.
-
-Deepit's work aims to understand how dynamics of vaccine-preventable disease outbreaks change as we approach elimination.
-</div>
-<div style="width: 25%">
-</div>
 </div>
