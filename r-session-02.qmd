@@ -1097,6 +1097,7 @@ update_age_params[["beta_mat"]] <- update_age_beta_mat
 
 ##### Answer: Change the juvenile-juvenile contact rate to be 0.025.
 ```{r}
+#| code-fold: true
 update_age_beta_mat <- ages_beta_mat
 update_age_beta_mat[1:20, 1:20] <- 0.025
 
