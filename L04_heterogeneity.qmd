@@ -8,7 +8,7 @@ metadata-files:
 ---
 
 ```{=html}
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQX_M8DBvudSUm3o5mNJ8Pt4DPNkmzI-rMyxKm_K4vzri2MjPrZ5Quw9Hxj6QqlT4duqTwsoTOHxJzT/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1023" height="606" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe class="slide-deck" src="https://docs.google.com/presentation/d/e/2PACX-1vSLDrsnpBDY8ClMbR3aepil2zoe2A1imNVkkW4bBhIpdpiP5APgI0AzDJ9gvrlWY1YcSKviylOdZF22/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="1023" height="606" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 ```
 
 [Download slides](./slides/L04_Heterogeneity-in-models.pdf)

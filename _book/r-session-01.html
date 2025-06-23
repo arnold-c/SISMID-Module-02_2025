@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.4">
 <meta name="generator" content="quarto-1.5.57">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Callum Arnold">
-
 <title>3&nbsp; R Session 01 – SISMID Module 2 Materials (2025)</title>
 <style>
 code{white-space: pre-wrap;}
@@ -57,7 +56,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -72,14 +70,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-71f524eee1dc5ed9e55699206ad9d6f5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-4c0fb4a9f49e9c425cadb25d7a35c2be.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-71f524eee1dc5ed9e55699206ad9d6f5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-726386cc3f69a7490c113a4bd0355c68.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-bcf2ea6b8363dae1913c42ee6a512f3f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-726386cc3f69a7490c113a4bd0355c68.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -103,23 +107,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EVYBCCRZHE"></script>
-
-<script type="text/javascript">
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EVYBCCRZHE"></script><script type="text/javascript">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-EVYBCCRZHE', { 'anonymize_ip': true});
-</script>
-<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
-<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
+</script><script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script><link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -145,15 +140,11 @@ window.Quarto = {
   typesetMath
 };
 </script>
-
 </head>
-
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -164,16 +155,11 @@ window.Quarto = {
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="././images/sismid2025-logo-blue.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
+      <img src="././images/sismid2025-logo-blue.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">SISMID Module 2 Materials (2025)</a> 
         <div class="sidebar-tools-main tools-wide">
@@ -194,7 +180,7 @@ window.Quarto = {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><strong>Welcome</strong></span></a>
@@ -214,8 +200,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exercise-requirements.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise Requirements</span></a>
@@ -246,7 +232,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
@@ -255,8 +241,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./L01_intro-to-modeling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Intro to Modeling</span></span></a>
@@ -281,7 +267,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
@@ -290,8 +276,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./L04_heterogeneity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneity in Models</span></span></a>
@@ -322,7 +308,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
@@ -331,8 +317,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./L07_models-and-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Confronting Models with Data</span></span></a>
@@ -345,7 +331,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
@@ -353,19 +339,18 @@ window.Quarto = {
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Page Items</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Page Items</h2>
    
   <ul>
-  <li><a href="#sec-interactive-plots" id="toc-sec-interactive-plots" class="nav-link active" data-scroll-target="#sec-interactive-plots"><span class="header-section-number">3.1</span> Interactive Plot</a></li>
-  <li><a href="#closed-population-model-intuition" id="toc-closed-population-model-intuition" class="nav-link" data-scroll-target="#closed-population-model-intuition"><span class="header-section-number">3.2</span> Closed Population Model Intuition</a>
+<li><a href="#sec-interactive-plots" id="toc-sec-interactive-plots" class="nav-link active" data-scroll-target="#sec-interactive-plots"><span class="header-section-number">3.1</span> Interactive Plot</a></li>
+  <li>
+<a href="#closed-population-model-intuition" id="toc-closed-population-model-intuition" class="nav-link" data-scroll-target="#closed-population-model-intuition"><span class="header-section-number">3.2</span> Closed Population Model Intuition</a>
   <ul class="collapse">
-  <li><a href="#sec-whatisr0" id="toc-sec-whatisr0" class="nav-link" data-scroll-target="#sec-whatisr0"><span class="header-section-number">3.2.1</span> What is <span class="math inline">\(R_0\)</span>?</a></li>
+<li><a href="#sec-whatisr0" id="toc-sec-whatisr0" class="nav-link" data-scroll-target="#sec-whatisr0"><span class="header-section-number">3.2.1</span> What is <span class="math inline">\(R_0\)</span>?</a></li>
   <li><a href="#what-is-epidemic-final-size" id="toc-what-is-epidemic-final-size" class="nav-link" data-scroll-target="#what-is-epidemic-final-size"><span class="header-section-number">3.2.2</span> What is epidemic final size?</a></li>
   <li><a href="#does-this-make-sense-given-our-definition-of-r_0" id="toc-does-this-make-sense-given-our-definition-of-r_0" class="nav-link" data-scroll-target="#does-this-make-sense-given-our-definition-of-r_0"><span class="header-section-number">3.2.3</span> Does this make sense given our definition of <span class="math inline">\(R_0\)</span>?</a></li>
   <li><a href="#at-approximately-what-time-does-the-epidemic-end" id="toc-at-approximately-what-time-does-the-epidemic-end" class="nav-link" data-scroll-target="#at-approximately-what-time-does-the-epidemic-end"><span class="header-section-number">3.2.4</span> At approximately what time does the epidemic end?</a></li>
@@ -375,10 +360,12 @@ window.Quarto = {
   <li><a href="#what-happens-to-the-final-size-and-outbreak-duration" id="toc-what-happens-to-the-final-size-and-outbreak-duration" class="nav-link" data-scroll-target="#what-happens-to-the-final-size-and-outbreak-duration"><span class="header-section-number">3.2.8</span> What happens to the final size and outbreak duration?</a></li>
   <li><a href="#what-happens-to-the-final-size-and-outbreak-duration-1" id="toc-what-happens-to-the-final-size-and-outbreak-duration-1" class="nav-link" data-scroll-target="#what-happens-to-the-final-size-and-outbreak-duration-1"><span class="header-section-number">3.2.9</span> What happens to the final size and outbreak duration?</a></li>
   <li><a href="#which-assumption-would-you-prefer-and-why" id="toc-which-assumption-would-you-prefer-and-why" class="nav-link" data-scroll-target="#which-assumption-would-you-prefer-and-why"><span class="header-section-number">3.2.10</span> Which assumption would you prefer and why?</a></li>
-  </ul></li>
-  <li><a href="#demographic-model-intuition" id="toc-demographic-model-intuition" class="nav-link" data-scroll-target="#demographic-model-intuition"><span class="header-section-number">3.3</span> Demographic Model Intuition</a>
+  </ul>
+</li>
+  <li>
+<a href="#demographic-model-intuition" id="toc-demographic-model-intuition" class="nav-link" data-scroll-target="#demographic-model-intuition"><span class="header-section-number">3.3</span> Demographic Model Intuition</a>
   <ul class="collapse">
-  <li><a href="#sec-demog-whatisr0" id="toc-sec-demog-whatisr0" class="nav-link" data-scroll-target="#sec-demog-whatisr0"><span class="header-section-number">3.3.1</span> What is <span class="math inline">\(R_0\)</span>?</a></li>
+<li><a href="#sec-demog-whatisr0" id="toc-sec-demog-whatisr0" class="nav-link" data-scroll-target="#sec-demog-whatisr0"><span class="header-section-number">3.3.1</span> What is <span class="math inline">\(R_0\)</span>?</a></li>
   <li><a href="#what-is-the-equilibrium-proportion-that-is-susceptible" id="toc-what-is-the-equilibrium-proportion-that-is-susceptible" class="nav-link" data-scroll-target="#what-is-the-equilibrium-proportion-that-is-susceptible"><span class="header-section-number">3.3.2</span> What is the equilibrium proportion that is susceptible?</a></li>
   <li><a href="#if-you-were-to-test-for-antibodies-against-infection-in-the-population-what-proportion-would-you-expect-to-be-positive" id="toc-if-you-were-to-test-for-antibodies-against-infection-in-the-population-what-proportion-would-you-expect-to-be-positive" class="nav-link" data-scroll-target="#if-you-were-to-test-for-antibodies-against-infection-in-the-population-what-proportion-would-you-expect-to-be-positive"><span class="header-section-number">3.3.3</span> If you were to test for antibodies against infection in the population, what proportion would you expect to be positive?</a></li>
   <li><a href="#at-what-time-approximately-does-the-system-reach-equilibrium" id="toc-at-what-time-approximately-does-the-system-reach-equilibrium" class="nav-link" data-scroll-target="#at-what-time-approximately-does-the-system-reach-equilibrium"><span class="header-section-number">3.3.4</span> At what time (approximately) does the system reach equilibrium?</a></li>
@@ -386,27 +373,30 @@ window.Quarto = {
   <li><a href="#at-what-time-approximately-does-the-system-reach-equilibrium-1" id="toc-at-what-time-approximately-does-the-system-reach-equilibrium-1" class="nav-link" data-scroll-target="#at-what-time-approximately-does-the-system-reach-equilibrium-1"><span class="header-section-number">3.3.6</span> At what time (approximately) does the system reach equilibrium?</a></li>
   <li><a href="#what-is-the-new-equilibrium-proportion-that-is-susceptible" id="toc-what-is-the-new-equilibrium-proportion-that-is-susceptible" class="nav-link" data-scroll-target="#what-is-the-new-equilibrium-proportion-that-is-susceptible"><span class="header-section-number">3.3.7</span> What is the new equilibrium proportion that is susceptible?</a></li>
   <li><a href="#what-is-different-about-the-prevalence-of-infection-equilibrium-proportion-that-is-infected-in-the-scenarios-sec-demog-whatisr0-and-sec-demog-updatedr0-i.e.-higher-birth-rate-with-the-same-r_0" id="toc-what-is-different-about-the-prevalence-of-infection-equilibrium-proportion-that-is-infected-in-the-scenarios-sec-demog-whatisr0-and-sec-demog-updatedr0-i.e.-higher-birth-rate-with-the-same-r_0" class="nav-link" data-scroll-target="#what-is-different-about-the-prevalence-of-infection-equilibrium-proportion-that-is-infected-in-the-scenarios-sec-demog-whatisr0-and-sec-demog-updatedr0-i.e.-higher-birth-rate-with-the-same-r_0"><span class="header-section-number">3.3.8</span> What is different about the prevalence of infection (equilibrium proportion that is infected) in the scenarios <span>Section 3.3.1</span> and <span>Section 3.3.5</span> i.e.&nbsp;higher birth rate with the same <span class="math inline">\(R_0\)</span>?</a></li>
-  </ul></li>
-  <li><a href="#model-building-with-r" id="toc-model-building-with-r" class="nav-link" data-scroll-target="#model-building-with-r"><span class="header-section-number">3.4</span> Model Building With R</a>
+  </ul>
+</li>
+  <li>
+<a href="#model-building-with-r" id="toc-model-building-with-r" class="nav-link" data-scroll-target="#model-building-with-r"><span class="header-section-number">3.4</span> Model Building With R</a>
   <ul class="collapse">
-  <li><a href="#setting-up-a-script" id="toc-setting-up-a-script" class="nav-link" data-scroll-target="#setting-up-a-script"><span class="header-section-number">3.4.1</span> Setting Up A Script</a></li>
+<li><a href="#setting-up-a-script" id="toc-setting-up-a-script" class="nav-link" data-scroll-target="#setting-up-a-script"><span class="header-section-number">3.4.1</span> Setting Up A Script</a></li>
   <li><a href="#sec-ex-commenting-code" id="toc-sec-ex-commenting-code" class="nav-link" data-scroll-target="#sec-ex-commenting-code"><span class="header-section-number">3.4.2</span> Commenting the code</a></li>
   <li><a href="#sec-ex-add-demographics" id="toc-sec-ex-add-demographics" class="nav-link" data-scroll-target="#sec-ex-add-demographics"><span class="header-section-number">3.4.3</span> Adding in demographics</a></li>
-  </ul></li>
-  <li><a href="#exercise-solutions" id="toc-exercise-solutions" class="nav-link" data-scroll-target="#exercise-solutions"><span class="header-section-number">3.5</span> Exercise Solutions</a>
-  <ul class="collapse">
-  <li><a href="#sec-ex-commenting-code-commented-basic-sir-code" id="toc-sec-ex-commenting-code-commented-basic-sir-code" class="nav-link" data-scroll-target="#sec-ex-commenting-code-commented-basic-sir-code"><span class="header-section-number">3.5.1</span> <span>Section 3.4.2</span>: Commented basic SIR code</a></li>
-  <li><a href="#sec-ex-add-demographics-commented-demographic-sir-code" id="toc-sec-ex-add-demographics-commented-demographic-sir-code" class="nav-link" data-scroll-target="#sec-ex-add-demographics-commented-demographic-sir-code"><span class="header-section-number">3.5.2</span> <span>Section 3.4.3</span>: Commented demographic SIR code</a></li>
-  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/arnold-c/SISMID-Module-02_2025/edit/main/r-session-01.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+</li>
+  <li>
+<a href="#exercise-solutions" id="toc-exercise-solutions" class="nav-link" data-scroll-target="#exercise-solutions"><span class="header-section-number">3.5</span> Exercise Solutions</a>
+  <ul class="collapse">
+<li><a href="#sec-ex-commenting-code-commented-basic-sir-code" id="toc-sec-ex-commenting-code-commented-basic-sir-code" class="nav-link" data-scroll-target="#sec-ex-commenting-code-commented-basic-sir-code"><span class="header-section-number">3.5.1</span> <span>Section 3.4.2</span>: Commented basic SIR code</a></li>
+  <li><a href="#sec-ex-add-demographics-commented-demographic-sir-code" id="toc-sec-ex-add-demographics-commented-demographic-sir-code" class="nav-link" data-scroll-target="#sec-ex-add-demographics-commented-demographic-sir-code"><span class="header-section-number">3.5.2</span> <span>Section 3.4.3</span>: Commented demographic SIR code</a></li>
+  </ul>
+</li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/arnold-c/SISMID-Module-02_2025/edit/main/r-session-01.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./L01_intro-to-modeling.html">Day 1</a></li><li class="breadcrumb-item"><a href="./r-session-01.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Session 01</span></a></li></ol></nav>
-<div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Session 01</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./L01_intro-to-modeling.html">Day 1</a></li><li class="breadcrumb-item"><a href="./r-session-01.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Session 01</span></a></li></ol></nav><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">
+<span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Session 01</span>
+</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -433,21 +423,15 @@ window.Quarto = {
   
 
 
-</header>
-
-
-<section id="sec-interactive-plots" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="sec-interactive-plots"><span class="header-section-number">3.1</span> Interactive Plot</h2>
+</header><section id="sec-interactive-plots" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="sec-interactive-plots">
+<span class="header-section-number">3.1</span> Interactive Plot</h2>
 <div class="cell">
-<details class="code-fold hidden">
-<summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="14" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 13;"><span id="cb1-14"><a href="#cb1-14"></a>init_beta <span class="op">=</span> <span class="fl">0.3</span></span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="14" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 13;"><span id="cb1-14"><a href="#cb1-14"></a>init_beta <span class="op">=</span> <span class="fl">0.3</span></span>
 <span id="cb1-15"><a href="#cb1-15"></a>init_dur_inf <span class="op">=</span> <span class="fl">6.0</span></span>
 <span id="cb1-16"><a href="#cb1-16"></a>init_I0 <span class="op">=</span> <span class="fl">0.01</span></span>
 <span id="cb1-17"><a href="#cb1-17"></a>init_births <span class="op">=</span> <span class="fl">0.0</span></span>
 <span id="cb1-18"><a href="#cb1-18"></a>init_tmax <span class="op">=</span> <span class="dv">200</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
+</details><div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
 
@@ -484,14 +468,11 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<details class="code-fold hidden">
-<summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="21" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 20;"><span id="cb2-21"><a href="#cb2-21"></a><span class="kw">function</span> <span class="fu">set</span>(input<span class="op">,</span> value) {</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="21" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 20;"><span id="cb2-21"><a href="#cb2-21"></a><span class="kw">function</span> <span class="fu">set</span>(input<span class="op">,</span> value) {</span>
 <span id="cb2-22"><a href="#cb2-22"></a>  input<span class="op">.</span><span class="at">value</span> <span class="op">=</span> value<span class="op">;</span></span>
 <span id="cb2-23"><a href="#cb2-23"></a>  input<span class="op">.</span><span class="fu">dispatchEvent</span>(<span class="kw">new</span> <span class="bu">Event</span>(<span class="st">"input"</span><span class="op">,</span> {<span class="dt">bubbles</span><span class="op">:</span> <span class="kw">true</span>}))<span class="op">;</span></span>
 <span id="cb2-24"><a href="#cb2-24"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
+</details><div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="declaration">
 
 </div>
@@ -499,9 +480,7 @@ window.Quarto = {
 </div>
 <div class="panel-grid layout-sidebar ms-md-0 layout-sidebar-left">
 <div class="cell panel-sidebar card bg-light p-2 g-col-24 g-col-lg-7">
-<details class="code-fold hidden">
-<summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="30" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 29;"><span id="cb3-30"><a href="#cb3-30"></a>viewof reset <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>([</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="30" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 29;"><span id="cb3-30"><a href="#cb3-30"></a>viewof reset <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>([</span>
 <span id="cb3-31"><a href="#cb3-31"></a>  [<span class="st">"Reset all sliders"</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
 <span id="cb3-32"><a href="#cb3-32"></a>    <span class="kw">set</span>(viewof beta<span class="op">,</span> init_beta)</span>
 <span id="cb3-33"><a href="#cb3-33"></a>    <span class="kw">set</span>(viewof dur_inf<span class="op">,</span> init_dur_inf)</span>
@@ -541,8 +520,7 @@ window.Quarto = {
 <span id="cb3-67"><a href="#cb3-67"></a>)</span>
 <span id="cb3-68"><a href="#cb3-68"></a></span>
 <span id="cb3-69"><a href="#cb3-69"></a><span class="fu">md</span><span class="vs">`</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`R_0 = </span><span class="sc">${</span>R0_str<span class="sc">}</span><span class="vs">`</span><span class="sc">}</span><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
+</details><div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-3-1" data-nodetype="declaration">
 
@@ -598,9 +576,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<details class="code-fold hidden">
-<summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="71" data-source-offset="-917" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 70;"><span id="cb4-71"><a href="#cb4-71"></a>{</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="71" data-source-offset="-917" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 70;"><span id="cb4-71"><a href="#cb4-71"></a>{</span>
 <span id="cb4-72"><a href="#cb4-72"></a>  <span class="cf">if</span> (births <span class="op">==</span> <span class="dv">0</span>){</span>
 <span id="cb4-73"><a href="#cb4-73"></a>    <span class="kw">var</span> finalsize <span class="op">=</span> sir_sol<span class="op">.</span><span class="fu">get</span>(<span class="st">"R"</span><span class="op">,</span> sir_sol<span class="op">.</span><span class="fu">numRows</span>()<span class="op">-</span><span class="dv">1</span>)</span>
 <span id="cb4-74"><a href="#cb4-74"></a>    <span class="kw">var</span> finalsize_str <span class="op">=</span> finalsize<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="kw">undefined</span><span class="op">,</span> {<span class="dt">minimumFractionDigits</span><span class="op">:</span> <span class="dv">2</span>})</span>
@@ -610,8 +586,7 @@ window.Quarto = {
 <span id="cb4-78"><a href="#cb4-78"></a>    <span class="cf">return</span> <span class="fu">md</span><span class="vs">``</span></span>
 <span id="cb4-79"><a href="#cb4-79"></a>  }</span>
 <span id="cb4-80"><a href="#cb4-80"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
+</details><div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-3-9" data-nodetype="expression">
 
@@ -621,12 +596,9 @@ window.Quarto = {
 </div>
 <div class="panel-fill g-col-24 g-col-lg-17 pt-3 pt-lg-0">
 <div class="cell">
-<details class="code-fold hidden">
-<summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="84" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 83;"><span id="cb5-84"><a href="#cb5-84"></a>gamma <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> dur_inf</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="84" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 83;"><span id="cb5-84"><a href="#cb5-84"></a>gamma <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> dur_inf</span>
 <span id="cb5-85"><a href="#cb5-85"></a>dt <span class="op">=</span> <span class="fl">0.01</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
+</details><div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-4-1" data-nodetype="declaration">
 
@@ -642,12 +614,9 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<details class="code-fold hidden">
-<summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="89" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 88;"><span id="cb6-89"><a href="#cb6-89"></a><span class="im">import</span> {odeRK4} <span class="im">from</span> <span class="st">'@rreusser/integration@3064'</span></span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="89" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 88;"><span id="cb6-89"><a href="#cb6-89"></a><span class="im">import</span> {odeRK4} <span class="im">from</span> <span class="st">'@rreusser/integration@3064'</span></span>
 <span id="cb6-90"><a href="#cb6-90"></a><span class="im">import</span> { aq<span class="op">,</span> op } <span class="im">from</span> <span class="st">'@uwdata/arquero'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
+</details><div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-5-1" data-nodetype="declaration">
 
@@ -663,24 +632,19 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<details class="code-fold hidden">
-<summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="93" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 92;"><span id="cb7-93"><a href="#cb7-93"></a><span class="kw">function</span> <span class="fu">sir</span>(dydt<span class="op">,</span> y<span class="op">,</span> t) {</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="93" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 92;"><span id="cb7-93"><a href="#cb7-93"></a><span class="kw">function</span> <span class="fu">sir</span>(dydt<span class="op">,</span> y<span class="op">,</span> t) {</span>
 <span id="cb7-94"><a href="#cb7-94"></a>  dydt[<span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span> beta <span class="op">*</span> y[<span class="dv">0</span>] <span class="op">*</span> y[<span class="dv">1</span>] <span class="op">+</span> births <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> y[<span class="dv">0</span>])</span>
 <span id="cb7-95"><a href="#cb7-95"></a>  dydt[<span class="dv">1</span>] <span class="op">=</span> beta <span class="op">*</span> y[<span class="dv">0</span>] <span class="op">*</span> y[<span class="dv">1</span>] <span class="op">-</span> gamma <span class="op">*</span> y[<span class="dv">1</span>] <span class="op">-</span> births <span class="op">*</span> y[<span class="dv">1</span>]</span>
 <span id="cb7-96"><a href="#cb7-96"></a>  dydt[<span class="dv">2</span>] <span class="op">=</span> gamma <span class="op">*</span> y[<span class="dv">1</span>] <span class="op">-</span> births <span class="op">*</span> y[<span class="dv">2</span>]</span>
 <span id="cb7-97"><a href="#cb7-97"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
+</details><div class="cell-output cell-output-display">
 <div id="ojs-cell-6" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell">
-<details class="code-fold hidden">
-<summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="101" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 100;"><span id="cb8-101"><a href="#cb8-101"></a><span class="kw">function</span> <span class="fu">simulate</span>(f<span class="op">,</span> t0<span class="op">,</span> y0<span class="op">,</span> dt<span class="op">,</span> tmax) {</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="101" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 100;"><span id="cb8-101"><a href="#cb8-101"></a><span class="kw">function</span> <span class="fu">simulate</span>(f<span class="op">,</span> t0<span class="op">,</span> y0<span class="op">,</span> dt<span class="op">,</span> tmax) {</span>
 <span id="cb8-102"><a href="#cb8-102"></a>  <span class="kw">var</span> t <span class="op">=</span> t0</span>
 <span id="cb8-103"><a href="#cb8-103"></a>  <span class="kw">var</span> y <span class="op">=</span> y0</span>
 <span id="cb8-104"><a href="#cb8-104"></a>  <span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span></span>
@@ -701,20 +665,16 @@ window.Quarto = {
 <span id="cb8-119"><a href="#cb8-119"></a>    <span class="dt">R</span><span class="op">:</span> ysim<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d[<span class="dv">2</span>])</span>
 <span id="cb8-120"><a href="#cb8-120"></a>    })</span>
 <span id="cb8-121"><a href="#cb8-121"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
+</details><div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell">
-<details class="code-fold hidden">
-<summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="126" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 125;"><span id="cb9-126"><a href="#cb9-126"></a>sir_sol <span class="op">=</span> <span class="fu">simulate</span>(sir<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> [<span class="fl">1.0</span><span class="op">-</span>I0<span class="op">,</span> I0<span class="op">,</span> <span class="fl">0.0</span>]<span class="op">,</span> dt<span class="op">,</span> tmax)</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="126" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 125;"><span id="cb9-126"><a href="#cb9-126"></a>sir_sol <span class="op">=</span> <span class="fu">simulate</span>(sir<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> [<span class="fl">1.0</span><span class="op">-</span>I0<span class="op">,</span> I0<span class="op">,</span> <span class="fl">0.0</span>]<span class="op">,</span> dt<span class="op">,</span> tmax)</span>
 <span id="cb9-127"><a href="#cb9-127"></a>sir_sol_long <span class="op">=</span> sir_sol<span class="op">.</span><span class="fu">fold</span>(aq<span class="op">.</span><span class="fu">not</span>(<span class="st">'Time'</span>)<span class="op">,</span> {<span class="dt">as</span><span class="op">:</span> [<span class="st">'State'</span><span class="op">,</span> <span class="st">'Fraction'</span>]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
+</details><div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-8-1" data-nodetype="declaration">
 
@@ -730,23 +690,17 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<details class="code-fold hidden">
-<summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="130" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 129;"><span id="cb10-130"><a href="#cb10-130"></a>SIRcolors <span class="op">=</span> [<span class="st">"#1f77b4"</span><span class="op">,</span> <span class="st">"#ff7f0e"</span><span class="op">,</span> <span class="st">"#FF3851"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="130" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 129;"><span id="cb10-130"><a href="#cb10-130"></a>SIRcolors <span class="op">=</span> [<span class="st">"#1f77b4"</span><span class="op">,</span> <span class="st">"#ff7f0e"</span><span class="op">,</span> <span class="st">"#FF3851"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-display">
 <div id="ojs-cell-9" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell">
-<details class="code-fold hidden">
-<summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="135" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 134;"><span id="cb11-135"><a href="#cb11-135"></a>R0 <span class="op">=</span> beta <span class="op">/</span> (gamma <span class="op">+</span> births)</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="135" data-source-offset="-0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 134;"><span id="cb11-135"><a href="#cb11-135"></a>R0 <span class="op">=</span> beta <span class="op">/</span> (gamma <span class="op">+</span> births)</span>
 <span id="cb11-136"><a href="#cb11-136"></a>R0_str <span class="op">=</span> R0<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="kw">undefined</span><span class="op">,</span> {<span class="dt">minimumFractionDigits</span><span class="op">:</span> <span class="dv">2</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
+</details><div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-10-1" data-nodetype="declaration">
 
@@ -762,9 +716,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<details class="code-fold hidden">
-<summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="139" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 138;"><span id="cb12-139"><a href="#cb12-139"></a><span class="kw">function</span> <span class="fu">calculate_equil</span>(R0){</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="139" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 138;"><span id="cb12-139"><a href="#cb12-139"></a><span class="kw">function</span> <span class="fu">calculate_equil</span>(R0){</span>
 <span id="cb12-140"><a href="#cb12-140"></a>  <span class="cf">if</span> (births <span class="op">&gt;</span> <span class="dv">0</span>) {</span>
 <span id="cb12-141"><a href="#cb12-141"></a>    <span class="kw">var</span> eq_S <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> R0</span>
 <span id="cb12-142"><a href="#cb12-142"></a>    <span class="kw">var</span> eq_I <span class="op">=</span> births <span class="op">/</span> beta <span class="op">*</span> (R0 <span class="op">-</span> <span class="dv">1</span>)</span>
@@ -780,19 +732,15 @@ window.Quarto = {
 <span id="cb12-152"><a href="#cb12-152"></a>    <span class="cf">return</span> <span class="kw">null</span></span>
 <span id="cb12-153"><a href="#cb12-153"></a>  }</span>
 <span id="cb12-154"><a href="#cb12-154"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
+</details><div class="cell-output cell-output-display">
 <div id="ojs-cell-11" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell">
-<details class="code-fold hidden">
-<summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="158" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 157;"><span id="cb13-158"><a href="#cb13-158"></a>eq_vals <span class="op">=</span> <span class="fu">calculate_equil</span>(R0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="158" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 157;"><span id="cb13-158"><a href="#cb13-158"></a>eq_vals <span class="op">=</span> <span class="fu">calculate_equil</span>(R0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-display">
 <div id="ojs-cell-12" data-nodetype="declaration">
 
 </div>
@@ -801,9 +749,7 @@ window.Quarto = {
 <div class="panel-fill panel-grid">
 <div class="g-col-24">
 <div class="cell panel-fill">
-<details class="code-fold hidden">
-<summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb14" data-startfrom="163" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 162;"><span id="cb14-163"><a href="#cb14-163"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<details class="code-fold hidden"><summary>Code</summary><div class="sourceCode cell-code hidden" id="cb14" data-startfrom="163" data-source-offset="0" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 162;"><span id="cb14-163"><a href="#cb14-163"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
 <span id="cb14-164"><a href="#cb14-164"></a>  <span class="dt">color</span><span class="op">:</span> {</span>
 <span id="cb14-165"><a href="#cb14-165"></a>    <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
 <span id="cb14-166"><a href="#cb14-166"></a>    <span class="dt">domain</span><span class="op">:</span> [<span class="st">"S"</span><span class="op">,</span> <span class="st">"I"</span><span class="op">,</span> <span class="st">"R"</span>]<span class="op">,</span></span>
@@ -834,8 +780,7 @@ window.Quarto = {
 <span id="cb14-191"><a href="#cb14-191"></a>      ]</span>
 <span id="cb14-192"><a href="#cb14-192"></a>  ]</span>
 <span id="cb14-193"><a href="#cb14-193"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
+</details><div class="cell-output cell-output-display">
 <div id="ojs-cell-13" data-nodetype="expression">
 
 </div>
@@ -845,9 +790,8 @@ window.Quarto = {
 </div>
 </div>
 </div>
-</section>
-<section id="closed-population-model-intuition" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="closed-population-model-intuition"><span class="header-section-number">3.2</span> Closed Population Model Intuition</h2>
+</section><section id="closed-population-model-intuition" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="closed-population-model-intuition">
+<span class="header-section-number">3.2</span> Closed Population Model Intuition</h2>
 <p>We’ll first get develop an intuition for the closed population model. We’ll then extend this intuition to the open population model. When the <code>Birth rate</code> slider in the side panel of the interactive figure is set to 0, we have no births or deaths, so their is no replenishment of the susceptible population i.e., it is a closed population.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="SET">
 <div class="callout-header d-flex align-content-center">
@@ -863,14 +807,12 @@ SET
 <p>Duration of infection = 4.</p>
 </div>
 </div>
-<section id="sec-whatisr0" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="sec-whatisr0"><span class="header-section-number">3.2.1</span> What is <span class="math inline">\(R_0\)</span>?</h3>
-</section>
-<section id="what-is-epidemic-final-size" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="what-is-epidemic-final-size"><span class="header-section-number">3.2.2</span> What is epidemic final size?</h3>
-</section>
-<section id="does-this-make-sense-given-our-definition-of-r_0" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="does-this-make-sense-given-our-definition-of-r_0"><span class="header-section-number">3.2.3</span> Does this make sense given our definition of <span class="math inline">\(R_0\)</span>?</h3>
+<section id="sec-whatisr0" class="level3" data-number="3.2.1"><h3 data-number="3.2.1" class="anchored" data-anchor-id="sec-whatisr0">
+<span class="header-section-number">3.2.1</span> What is <span class="math inline">\(R_0\)</span>?</h3>
+</section><section id="what-is-epidemic-final-size" class="level3" data-number="3.2.2"><h3 data-number="3.2.2" class="anchored" data-anchor-id="what-is-epidemic-final-size">
+<span class="header-section-number">3.2.2</span> What is epidemic final size?</h3>
+</section><section id="does-this-make-sense-given-our-definition-of-r_0" class="level3" data-number="3.2.3"><h3 data-number="3.2.3" class="anchored" data-anchor-id="does-this-make-sense-given-our-definition-of-r_0">
+<span class="header-section-number">3.2.3</span> Does this make sense given our definition of <span class="math inline">\(R_0\)</span>?</h3>
 <div class="callout callout-style-simple callout-note no-icon callout-titled" title="Instruction">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -884,9 +826,8 @@ Instruction
 <p>Toggle on the cumulative area button and see what the epidemic final size is (approximately)</p>
 </div>
 </div>
-</section>
-<section id="at-approximately-what-time-does-the-epidemic-end" class="level3" data-number="3.2.4">
-<h3 data-number="3.2.4" class="anchored" data-anchor-id="at-approximately-what-time-does-the-epidemic-end"><span class="header-section-number">3.2.4</span> At approximately what time does the epidemic end?</h3>
+</section><section id="at-approximately-what-time-does-the-epidemic-end" class="level3" data-number="3.2.4"><h3 data-number="3.2.4" class="anchored" data-anchor-id="at-approximately-what-time-does-the-epidemic-end">
+<span class="header-section-number">3.2.4</span> At approximately what time does the epidemic end?</h3>
 <div class="callout callout-style-default callout-note callout-titled" title="SET">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -901,12 +842,10 @@ SET
 <p>Transmission rate so you get the same <span class="math inline">\(R_0\)</span> in <a href="#sec-whatisr0" class="quarto-xref"><span>Section 3.2.1</span></a></p>
 </div>
 </div>
-</section>
-<section id="how-does-the-epidemic-final-size-compare" class="level3" data-number="3.2.5">
-<h3 data-number="3.2.5" class="anchored" data-anchor-id="how-does-the-epidemic-final-size-compare"><span class="header-section-number">3.2.5</span> How does the epidemic final size compare?</h3>
-</section>
-<section id="at-what-time-approx-does-the-epidemic-end" class="level3" data-number="3.2.6">
-<h3 data-number="3.2.6" class="anchored" data-anchor-id="at-what-time-approx-does-the-epidemic-end"><span class="header-section-number">3.2.6</span> At what time (approx) does the epidemic end?</h3>
+</section><section id="how-does-the-epidemic-final-size-compare" class="level3" data-number="3.2.5"><h3 data-number="3.2.5" class="anchored" data-anchor-id="how-does-the-epidemic-final-size-compare">
+<span class="header-section-number">3.2.5</span> How does the epidemic final size compare?</h3>
+</section><section id="at-what-time-approx-does-the-epidemic-end" class="level3" data-number="3.2.6"><h3 data-number="3.2.6" class="anchored" data-anchor-id="at-what-time-approx-does-the-epidemic-end">
+<span class="header-section-number">3.2.6</span> At what time (approx) does the epidemic end?</h3>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -935,20 +874,16 @@ SET
 <p>Duration of infection = 8 days</p>
 </div>
 </div>
-</section>
-<section id="note-the-epidemic-final-size-and-the-time-until-the-epidemic-is-over." class="level3" data-number="3.2.7">
-<h3 data-number="3.2.7" class="anchored" data-anchor-id="note-the-epidemic-final-size-and-the-time-until-the-epidemic-is-over."><span class="header-section-number">3.2.7</span> Note the epidemic final size and the time until the epidemic is over.</h3>
+</section><section id="note-the-epidemic-final-size-and-the-time-until-the-epidemic-is-over." class="level3" data-number="3.2.7"><h3 data-number="3.2.7" class="anchored" data-anchor-id="note-the-epidemic-final-size-and-the-time-until-the-epidemic-is-over.">
+<span class="header-section-number">3.2.7</span> Note the epidemic final size and the time until the epidemic is over.</h3>
 <p>Now, imagine everyone has access to the drug (unrealistic) that reduces transmission by <span class="math inline">\(P \%\)</span></p>
-</section>
-<section id="what-happens-to-the-final-size-and-outbreak-duration" class="level3" data-number="3.2.8">
-<h3 data-number="3.2.8" class="anchored" data-anchor-id="what-happens-to-the-final-size-and-outbreak-duration"><span class="header-section-number">3.2.8</span> What happens to the final size and outbreak duration?</h3>
+</section><section id="what-happens-to-the-final-size-and-outbreak-duration" class="level3" data-number="3.2.8"><h3 data-number="3.2.8" class="anchored" data-anchor-id="what-happens-to-the-final-size-and-outbreak-duration">
+<span class="header-section-number">3.2.8</span> What happens to the final size and outbreak duration?</h3>
 <p>Now, imagine everyone has access to a drug that reduces the duration of infection from 8 to 2 days (75% reduction).</p>
-</section>
-<section id="what-happens-to-the-final-size-and-outbreak-duration-1" class="level3" data-number="3.2.9">
-<h3 data-number="3.2.9" class="anchored" data-anchor-id="what-happens-to-the-final-size-and-outbreak-duration-1"><span class="header-section-number">3.2.9</span> What happens to the final size and outbreak duration?</h3>
-</section>
-<section id="which-assumption-would-you-prefer-and-why" class="level3" data-number="3.2.10">
-<h3 data-number="3.2.10" class="anchored" data-anchor-id="which-assumption-would-you-prefer-and-why"><span class="header-section-number">3.2.10</span> Which assumption would you prefer and why?</h3>
+</section><section id="what-happens-to-the-final-size-and-outbreak-duration-1" class="level3" data-number="3.2.9"><h3 data-number="3.2.9" class="anchored" data-anchor-id="what-happens-to-the-final-size-and-outbreak-duration-1">
+<span class="header-section-number">3.2.9</span> What happens to the final size and outbreak duration?</h3>
+</section><section id="which-assumption-would-you-prefer-and-why" class="level3" data-number="3.2.10"><h3 data-number="3.2.10" class="anchored" data-anchor-id="which-assumption-would-you-prefer-and-why">
+<span class="header-section-number">3.2.10</span> Which assumption would you prefer and why?</h3>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -962,10 +897,8 @@ Note
 <p>This is the only really open ended question, but should be pretty straightforward discussion</p>
 </div>
 </div>
-</section>
-</section>
-<section id="demographic-model-intuition" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="demographic-model-intuition"><span class="header-section-number">3.3</span> Demographic Model Intuition</h2>
+</section></section><section id="demographic-model-intuition" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="demographic-model-intuition">
+<span class="header-section-number">3.3</span> Demographic Model Intuition</h2>
 <div class="callout callout-style-default callout-note callout-titled" title="SET">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -981,14 +914,12 @@ SET
 <p>Birth rate = .002</p>
 </div>
 </div>
-<section id="sec-demog-whatisr0" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="sec-demog-whatisr0"><span class="header-section-number">3.3.1</span> What is <span class="math inline">\(R_0\)</span>?</h3>
-</section>
-<section id="what-is-the-equilibrium-proportion-that-is-susceptible" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="what-is-the-equilibrium-proportion-that-is-susceptible"><span class="header-section-number">3.3.2</span> What is the equilibrium proportion that is susceptible?</h3>
-</section>
-<section id="if-you-were-to-test-for-antibodies-against-infection-in-the-population-what-proportion-would-you-expect-to-be-positive" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="if-you-were-to-test-for-antibodies-against-infection-in-the-population-what-proportion-would-you-expect-to-be-positive"><span class="header-section-number">3.3.3</span> If you were to test for antibodies against infection in the population, what proportion would you expect to be positive?</h3>
+<section id="sec-demog-whatisr0" class="level3" data-number="3.3.1"><h3 data-number="3.3.1" class="anchored" data-anchor-id="sec-demog-whatisr0">
+<span class="header-section-number">3.3.1</span> What is <span class="math inline">\(R_0\)</span>?</h3>
+</section><section id="what-is-the-equilibrium-proportion-that-is-susceptible" class="level3" data-number="3.3.2"><h3 data-number="3.3.2" class="anchored" data-anchor-id="what-is-the-equilibrium-proportion-that-is-susceptible">
+<span class="header-section-number">3.3.2</span> What is the equilibrium proportion that is susceptible?</h3>
+</section><section id="if-you-were-to-test-for-antibodies-against-infection-in-the-population-what-proportion-would-you-expect-to-be-positive" class="level3" data-number="3.3.3"><h3 data-number="3.3.3" class="anchored" data-anchor-id="if-you-were-to-test-for-antibodies-against-infection-in-the-population-what-proportion-would-you-expect-to-be-positive">
+<span class="header-section-number">3.3.3</span> If you were to test for antibodies against infection in the population, what proportion would you expect to be positive?</h3>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1002,9 +933,8 @@ Note
 <p>Assume a perfectly accurate serological test</p>
 </div>
 </div>
-</section>
-<section id="at-what-time-approximately-does-the-system-reach-equilibrium" class="level3" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="at-what-time-approximately-does-the-system-reach-equilibrium"><span class="header-section-number">3.3.4</span> At what time (approximately) does the system reach equilibrium?</h3>
+</section><section id="at-what-time-approximately-does-the-system-reach-equilibrium" class="level3" data-number="3.3.4"><h3 data-number="3.3.4" class="anchored" data-anchor-id="at-what-time-approximately-does-the-system-reach-equilibrium">
+<span class="header-section-number">3.3.4</span> At what time (approximately) does the system reach equilibrium?</h3>
 <div class="callout callout-style-default callout-note callout-titled" title="SET">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1018,12 +948,10 @@ SET
 <p>Birth rate = 0.005</p>
 </div>
 </div>
-</section>
-<section id="sec-demog-updatedr0" class="level3" data-number="3.3.5">
-<h3 data-number="3.3.5" class="anchored" data-anchor-id="sec-demog-updatedr0"><span class="header-section-number">3.3.5</span> What is the new <span class="math inline">\(R_0\)</span>?</h3>
-</section>
-<section id="at-what-time-approximately-does-the-system-reach-equilibrium-1" class="level3" data-number="3.3.6">
-<h3 data-number="3.3.6" class="anchored" data-anchor-id="at-what-time-approximately-does-the-system-reach-equilibrium-1"><span class="header-section-number">3.3.6</span> At what time (approximately) does the system reach equilibrium?</h3>
+</section><section id="sec-demog-updatedr0" class="level3" data-number="3.3.5"><h3 data-number="3.3.5" class="anchored" data-anchor-id="sec-demog-updatedr0">
+<span class="header-section-number">3.3.5</span> What is the new <span class="math inline">\(R_0\)</span>?</h3>
+</section><section id="at-what-time-approximately-does-the-system-reach-equilibrium-1" class="level3" data-number="3.3.6"><h3 data-number="3.3.6" class="anchored" data-anchor-id="at-what-time-approximately-does-the-system-reach-equilibrium-1">
+<span class="header-section-number">3.3.6</span> At what time (approximately) does the system reach equilibrium?</h3>
 <div class="callout callout-style-default callout-note callout-titled" title="SET">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1037,18 +965,14 @@ SET
 <p>Transmission rate so you get the same <span class="math inline">\(R_0\)</span> in <a href="#sec-demog-whatisr0" class="quarto-xref"><span>Section 3.3.1</span></a></p>
 </div>
 </div>
-</section>
-<section id="what-is-the-new-equilibrium-proportion-that-is-susceptible" class="level3" data-number="3.3.7">
-<h3 data-number="3.3.7" class="anchored" data-anchor-id="what-is-the-new-equilibrium-proportion-that-is-susceptible"><span class="header-section-number">3.3.7</span> What is the new equilibrium proportion that is susceptible?</h3>
-</section>
-<section id="what-is-different-about-the-prevalence-of-infection-equilibrium-proportion-that-is-infected-in-the-scenarios-sec-demog-whatisr0-and-sec-demog-updatedr0-i.e.-higher-birth-rate-with-the-same-r_0" class="level3" data-number="3.3.8">
-<h3 data-number="3.3.8" class="anchored" data-anchor-id="what-is-different-about-the-prevalence-of-infection-equilibrium-proportion-that-is-infected-in-the-scenarios-sec-demog-whatisr0-and-sec-demog-updatedr0-i.e.-higher-birth-rate-with-the-same-r_0"><span class="header-section-number">3.3.8</span> What is different about the prevalence of infection (equilibrium proportion that is infected) in the scenarios <a href="#sec-demog-whatisr0" class="quarto-xref"><span>Section 3.3.1</span></a> and <a href="#sec-demog-updatedr0" class="quarto-xref"><span>Section 3.3.5</span></a> i.e.&nbsp;higher birth rate with the same <span class="math inline">\(R_0\)</span>?</h3>
-</section>
-</section>
-<section id="model-building-with-r" class="level2 page-columns page-full" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="model-building-with-r"><span class="header-section-number">3.4</span> Model Building With R</h2>
-<section id="setting-up-a-script" class="level3 page-columns page-full" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="setting-up-a-script"><span class="header-section-number">3.4.1</span> Setting Up A Script</h3>
+</section><section id="what-is-the-new-equilibrium-proportion-that-is-susceptible" class="level3" data-number="3.3.7"><h3 data-number="3.3.7" class="anchored" data-anchor-id="what-is-the-new-equilibrium-proportion-that-is-susceptible">
+<span class="header-section-number">3.3.7</span> What is the new equilibrium proportion that is susceptible?</h3>
+</section><section id="what-is-different-about-the-prevalence-of-infection-equilibrium-proportion-that-is-infected-in-the-scenarios-sec-demog-whatisr0-and-sec-demog-updatedr0-i.e.-higher-birth-rate-with-the-same-r_0" class="level3" data-number="3.3.8"><h3 data-number="3.3.8" class="anchored" data-anchor-id="what-is-different-about-the-prevalence-of-infection-equilibrium-proportion-that-is-infected-in-the-scenarios-sec-demog-whatisr0-and-sec-demog-updatedr0-i.e.-higher-birth-rate-with-the-same-r_0">
+<span class="header-section-number">3.3.8</span> What is different about the prevalence of infection (equilibrium proportion that is infected) in the scenarios <a href="#sec-demog-whatisr0" class="quarto-xref"><span>Section 3.3.1</span></a> and <a href="#sec-demog-updatedr0" class="quarto-xref"><span>Section 3.3.5</span></a> i.e.&nbsp;higher birth rate with the same <span class="math inline">\(R_0\)</span>?</h3>
+</section></section><section id="model-building-with-r" class="level2 page-columns page-full" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="model-building-with-r">
+<span class="header-section-number">3.4</span> Model Building With R</h2>
+<section id="setting-up-a-script" class="level3 page-columns page-full" data-number="3.4.1"><h3 data-number="3.4.1" class="anchored" data-anchor-id="setting-up-a-script">
+<span class="header-section-number">3.4.1</span> Setting Up A Script</h3>
 <p>Now we have some intuition behind how the different parameters affect the dynamics of the SIR system, let’s look at how we can implement this in R. Below is some R code that implements the basic closed-population SIR model. The purpose of the questions in this exercise is to guide you through the code and help you understand how it works so you can modify it to answer your own questions.</p>
 <p><a id="quarto-tips"></a></p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled" title="Instruction">
@@ -1065,9 +989,7 @@ Instruction
 </div>
 </div>
 <div class="cell page-columns page-full">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">library</span>(tidyverse)</span>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb15" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="fu">library</span>(deSolve)</span>
 <span id="cb15-3"><a href="#cb15-3"></a></span>
 <span id="cb15-4"><a href="#cb15-4"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span>
@@ -1141,18 +1063,15 @@ Instruction
 <span id="cb15-72"><a href="#cb15-72"></a>    <span class="at">color =</span> <span class="st">"State"</span></span>
 <span id="cb15-73"><a href="#cb15-73"></a>  ) <span class="sc">+</span></span>
 <span id="cb15-74"><a href="#cb15-74"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display page-columns page-full">
+</details><div class="cell-output-display page-columns page-full">
 <div class="page-columns page-full">
-<figure class="figure page-columns page-full">
-<p class="page-columns page-full"><img src="r-session-01_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img column-body" style="width:100.0%"></p>
+<figure class="figure page-columns page-full"><p class="page-columns page-full"><img src="r-session-01_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img column-body" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-<section id="sec-ex-commenting-code" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="sec-ex-commenting-code"><span class="header-section-number">3.4.2</span> Commenting the code</h3>
+</section><section id="sec-ex-commenting-code" class="level3" data-number="3.4.2"><h3 data-number="3.4.2" class="anchored" data-anchor-id="sec-ex-commenting-code">
+<span class="header-section-number">3.4.2</span> Commenting the code</h3>
 <p>For this part of the exercise, go through the basic SIR code and add comments to each section of code explaining what it does. To get you started, we’ve added some comments to the creating of the dataframe object <code>sir_sol_df</code> between lines 32-62 in the code block above, as some of the functions used there are a bit more complicated.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1169,9 +1088,8 @@ Note
 </div>
 </div>
 <p>As you’re going through the code, if you don’t understand what a particular function does, try looking up the documentation for it! You can do this by clicking on the function within the website (as described <a href="./index.html#tips-about-the-website">in the intro</a>), or by typing <code>?function_name</code> into the R console (Google also is your friend here!).</p>
-</section>
-<section id="sec-ex-add-demographics" class="level3 page-columns page-full" data-number="3.4.3">
-<h3 data-number="3.4.3" class="anchored" data-anchor-id="sec-ex-add-demographics"><span class="header-section-number">3.4.3</span> Adding in demographics</h3>
+</section><section id="sec-ex-add-demographics" class="level3 page-columns page-full" data-number="3.4.3"><h3 data-number="3.4.3" class="anchored" data-anchor-id="sec-ex-add-demographics">
+<span class="header-section-number">3.4.3</span> Adding in demographics</h3>
 <p>Now we have a better sense of how the code works, let’s add in some demographic structure. To recreate the demographic model from the interactive plot in <a href="#sec-interactive-plots" class="quarto-xref"><span>Section 3.1</span></a>, we just need to add births and deaths to the system.</p>
 <p>Recall the equations for the demographic model:</p>
 <p><span id="eq-demographic-sir"><span class="math display">\[
@@ -1181,14 +1099,12 @@ Note
 \frac{dR}{dt} &amp;= \gamma I - \mu R
 \end{aligned}
 \tag{3.1}\]</span></span></p>
-<section id="create-a-new-r-script-called-s01_demographic-sir.r-and-copy-the-code-from-s01_basic-sir.r-into-it." class="level4" data-number="3.4.3.1">
-<h4 data-number="3.4.3.1" class="anchored" data-anchor-id="create-a-new-r-script-called-s01_demographic-sir.r-and-copy-the-code-from-s01_basic-sir.r-into-it."><span class="header-section-number">3.4.3.1</span> Create a new R script called <code>S01_demographic-sir.R</code> and copy the code from <code>S01_basic-sir.R</code> into it.</h4>
-</section>
-<section id="rename-the-function-sir_model-to-demographic_sir_model-in-your-new-script-s01_demographic-sir.r." class="level4" data-number="3.4.3.2">
-<h4 data-number="3.4.3.2" class="anchored" data-anchor-id="rename-the-function-sir_model-to-demographic_sir_model-in-your-new-script-s01_demographic-sir.r."><span class="header-section-number">3.4.3.2</span> Rename the function <code>sir_model()</code> to <code>demographic_sir_model()</code> in your new script (<code>S01_demographic-sir.R</code>).</h4>
-</section>
-<section id="adapt-the-function-demographic_sir_model-to-match-the-above-equations-eq-demographic-sir." class="level4" data-number="3.4.3.3">
-<h4 data-number="3.4.3.3" class="anchored" data-anchor-id="adapt-the-function-demographic_sir_model-to-match-the-above-equations-eq-demographic-sir."><span class="header-section-number">3.4.3.3</span> Adapt the function <code>demographic_sir_model()</code> to match the above equations (<a href="#eq-demographic-sir" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>).</h4>
+<section id="create-a-new-r-script-called-s01_demographic-sir.r-and-copy-the-code-from-s01_basic-sir.r-into-it." class="level4" data-number="3.4.3.1"><h4 data-number="3.4.3.1" class="anchored" data-anchor-id="create-a-new-r-script-called-s01_demographic-sir.r-and-copy-the-code-from-s01_basic-sir.r-into-it.">
+<span class="header-section-number">3.4.3.1</span> Create a new R script called <code>S01_demographic-sir.R</code> and copy the code from <code>S01_basic-sir.R</code> into it.</h4>
+</section><section id="rename-the-function-sir_model-to-demographic_sir_model-in-your-new-script-s01_demographic-sir.r." class="level4" data-number="3.4.3.2"><h4 data-number="3.4.3.2" class="anchored" data-anchor-id="rename-the-function-sir_model-to-demographic_sir_model-in-your-new-script-s01_demographic-sir.r.">
+<span class="header-section-number">3.4.3.2</span> Rename the function <code>sir_model()</code> to <code>demographic_sir_model()</code> in your new script (<code>S01_demographic-sir.R</code>).</h4>
+</section><section id="adapt-the-function-demographic_sir_model-to-match-the-above-equations-eq-demographic-sir." class="level4" data-number="3.4.3.3"><h4 data-number="3.4.3.3" class="anchored" data-anchor-id="adapt-the-function-demographic_sir_model-to-match-the-above-equations-eq-demographic-sir.">
+<span class="header-section-number">3.4.3.3</span> Adapt the function <code>demographic_sir_model()</code> to match the above equations (<a href="#eq-demographic-sir" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>).</h4>
 <div class="callout callout-style-default callout-note callout-titled" title="SET">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1202,29 +1118,22 @@ SET
 <p>birth rate = 0.05</p>
 </div>
 </div>
-</section>
-<section id="rename-the-variables-to-reflect-that-we-are-now-working-with-a-demographic-model-not-the-basic-sir-model." class="level4" data-number="3.4.3.4">
-<h4 data-number="3.4.3.4" class="anchored" data-anchor-id="rename-the-variables-to-reflect-that-we-are-now-working-with-a-demographic-model-not-the-basic-sir-model."><span class="header-section-number">3.4.3.4</span> Rename the variables to reflect that we are now working with a demographic model, not the basic SIR model.</h4>
-</section>
-<section id="run-the-code-in-the-s01_demographic-sir.r-file.-plot-the-results-of-your-demographic-model.-does-it-look-like-this" class="level4 page-columns page-full" data-number="3.4.3.5">
-<h4 data-number="3.4.3.5" class="anchored" data-anchor-id="run-the-code-in-the-s01_demographic-sir.r-file.-plot-the-results-of-your-demographic-model.-does-it-look-like-this"><span class="header-section-number">3.4.3.5</span> Run the code in the <code>S01_demographic-sir.R file</code>. Plot the results of your demographic model. Does it look like this?</h4>
+</section><section id="rename-the-variables-to-reflect-that-we-are-now-working-with-a-demographic-model-not-the-basic-sir-model." class="level4" data-number="3.4.3.4"><h4 data-number="3.4.3.4" class="anchored" data-anchor-id="rename-the-variables-to-reflect-that-we-are-now-working-with-a-demographic-model-not-the-basic-sir-model.">
+<span class="header-section-number">3.4.3.4</span> Rename the variables to reflect that we are now working with a demographic model, not the basic SIR model.</h4>
+</section><section id="run-the-code-in-the-s01_demographic-sir.r-file.-plot-the-results-of-your-demographic-model.-does-it-look-like-this" class="level4 page-columns page-full" data-number="3.4.3.5"><h4 data-number="3.4.3.5" class="anchored" data-anchor-id="run-the-code-in-the-s01_demographic-sir.r-file.-plot-the-results-of-your-demographic-model.-does-it-look-like-this">
+<span class="header-section-number">3.4.3.5</span> Run the code in the <code>S01_demographic-sir.R file</code>. Plot the results of your demographic model. Does it look like this?</h4>
 <div class="cell page-columns page-full">
 <div class="cell-output-display page-columns page-full">
 <div class="page-columns page-full">
-<figure class="figure page-columns page-full">
-<p class="page-columns page-full"><img src="r-session-01_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img column-body" style="width:100.0%"></p>
+<figure class="figure page-columns page-full"><p class="page-columns page-full"><img src="r-session-01_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img column-body" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-<section id="update-the-comments-in-your-code-to-reflect-the-changes-you-have-made." class="level4" data-number="3.4.3.6">
-<h4 data-number="3.4.3.6" class="anchored" data-anchor-id="update-the-comments-in-your-code-to-reflect-the-changes-you-have-made."><span class="header-section-number">3.4.3.6</span> Update the comments in your code to reflect the changes you have made.</h4>
-</section>
-</section>
-</section>
-<section id="exercise-solutions" class="level2 appendix" data-number="3.5">
-<h2 class="appendix anchored" data-number="3.5" data-anchor-id="exercise-solutions"><span class="header-section-number">3.5</span> Exercise Solutions</h2>
+</section><section id="update-the-comments-in-your-code-to-reflect-the-changes-you-have-made." class="level4" data-number="3.4.3.6"><h4 data-number="3.4.3.6" class="anchored" data-anchor-id="update-the-comments-in-your-code-to-reflect-the-changes-you-have-made.">
+<span class="header-section-number">3.4.3.6</span> Update the comments in your code to reflect the changes you have made.</h4>
+</section></section></section><section id="exercise-solutions" class="level2 appendix" data-number="3.5"><h2 class="appendix anchored" data-number="3.5" data-anchor-id="exercise-solutions">
+<span class="header-section-number">3.5</span> Exercise Solutions</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1235,15 +1144,13 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Here, we’re using the <code>{roxygen2}</code> package to create the comments for the functions we’ve created, i.e., <code>sir_model &lt;- function(...)</code>. This provides a consistent framework for commenting functions, and if we wanted, we could use the comments to create documentation for our functions. The main benefit for our purposes is that the framework allows us to quickly understand exactly what the function does, as well as the context it should be used in.</p>
+<p>Here, we’re using the <a href="https://roxygen2.r-lib.org/">roxygen2</a> package to create the comments for the functions we’ve created, i.e., <code>sir_model &lt;- function(...)</code>. This provides a consistent framework for commenting functions, and if we wanted, we could use the comments to create documentation for our functions. The main benefit for our purposes is that the framework allows us to quickly understand exactly what the function does, as well as the context it should be used in.</p>
 </div>
 </div>
-<section id="sec-ex-commenting-code-commented-basic-sir-code" class="level3" data-number="3.5.1">
-<h3 data-number="3.5.1" class="anchored" data-anchor-id="sec-ex-commenting-code-commented-basic-sir-code"><span class="header-section-number">3.5.1</span> <a href="#sec-ex-commenting-code" class="quarto-xref"><span>Section 3.4.2</span></a>: Commented basic SIR code</h3>
+<section id="sec-ex-commenting-code-commented-basic-sir-code" class="level3" data-number="3.5.1"><h3 data-number="3.5.1" class="anchored" data-anchor-id="sec-ex-commenting-code-commented-basic-sir-code">
+<span class="header-section-number">3.5.1</span> <a href="#sec-ex-commenting-code" class="quarto-xref"><span>Section 3.4.2</span></a>: Commented basic SIR code</h3>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Load packages</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Load packages</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb16-3"><a href="#cb16-3"></a><span class="fu">library</span>(deSolve)</span>
 <span id="cb16-4"><a href="#cb16-4"></a></span>
@@ -1352,13 +1259,10 @@ Note
 <span id="cb16-107"><a href="#cb16-107"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section>
-<section id="sec-ex-add-demographics-commented-demographic-sir-code" class="level3" data-number="3.5.2">
-<h3 data-number="3.5.2" class="anchored" data-anchor-id="sec-ex-add-demographics-commented-demographic-sir-code"><span class="header-section-number">3.5.2</span> <a href="#sec-ex-add-demographics" class="quarto-xref"><span>Section 3.4.3</span></a>: Commented demographic SIR code</h3>
+</section><section id="sec-ex-add-demographics-commented-demographic-sir-code" class="level3" data-number="3.5.2"><h3 data-number="3.5.2" class="anchored" data-anchor-id="sec-ex-add-demographics-commented-demographic-sir-code">
+<span class="header-section-number">3.5.2</span> <a href="#sec-ex-add-demographics" class="quarto-xref"><span>Section 3.4.3</span></a>: Commented demographic SIR code</h3>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Load packages</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb17" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Load packages</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb17-3"><a href="#cb17-3"></a><span class="fu">library</span>(deSolve)</span>
 <span id="cb17-4"><a href="#cb17-4"></a></span>
@@ -1466,22 +1370,16 @@ Note
 
 
 
-</section>
-</section>
-
-</main> <!-- /main -->
-<script type="ojs-module-contents">
+</section></section></main><!-- /main --><script type="ojs-module-contents">
 eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImluaXRfYmV0YSA9IDAuM1xuaW5pdF9kdXJfaW5mID0gNi4wXG5pbml0X0kwID0gMC4wMVxuaW5pdF9iaXJ0aHMgPSAwLjBcbmluaXRfdG1heCA9IDIwMFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZnVuY3Rpb24gc2V0KGlucHV0LCB2YWx1ZSkge1xuICBpbnB1dC52YWx1ZSA9IHZhbHVlO1xuICBpbnB1dC5kaXNwYXRjaEV2ZW50KG5ldyBFdmVudChcImlucHV0XCIsIHtidWJibGVzOiB0cnVlfSkpO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIHJlc2V0ID0gSW5wdXRzLmJ1dHRvbihbXG4gIFtcIlJlc2V0IGFsbCBzbGlkZXJzXCIsICgpID0+IHtcbiAgICBzZXQodmlld29mIGJldGEsIGluaXRfYmV0YSlcbiAgICBzZXQodmlld29mIGR1cl9pbmYsIGluaXRfZHVyX2luZilcbiAgICBzZXQodmlld29mIEkwLCBpbml0X0kwKVxuICAgIHNldCh2aWV3b2YgYmlydGhzLCBpbml0X2JpcnRocylcbiAgICBzZXQodmlld29mIHRtYXgsIGluaXRfdG1heClcbiAgfV1cbl0pXG5cbnZpZXdvZiBiZXRhID0gSW5wdXRzLnJhbmdlKFxuICBbMC4wLCAyLjBdLFxuICB7dmFsdWU6IGluaXRfYmV0YSwgc3RlcDogMC4wMSwgbGFiZWw6IFwiVHJhbnNtaXNzaW9uIHJhdGUgKHBlciBkYXkpXCJ9XG4pXG5cbnZpZXdvZiBkdXJfaW5mID0gSW5wdXRzLnJhbmdlKFxuICBbMC4wLCAyMF0sXG4gIHt2YWx1ZTogaW5pdF9kdXJfaW5mLCBzdGVwOiAwLjUsIGxhYmVsOiBcIkR1cmF0aW9uIG9mIEluZmVjdGlvbiAoZGF5cylcIn1cbilcblxudmlld29mIEkwID0gSW5wdXRzLnJhbmdlKFxuICBbMC4wLCAxLjBdLFxuICB7dmFsdWU6IGluaXRfSTAsIHN0ZXA6IDAuMDEsIGxhYmVsOiBcIkluaXRpYWwgZnJhY3Rpb24gaW5mZWN0ZWRcIn1cbilcblxudmlld29mIGJpcnRocyA9IElucHV0cy5yYW5nZShcbiAgWzAsIDAuMDVdLFxuICB7dmFsdWU6IGluaXRfYmlydGhzLCBzdGVwOiAwLjAwMSwgbGFiZWw6IFwiQmlydGggcmF0ZVwifVxuKVxuXG52aWV3b2YgdG1heCA9IElucHV0cy5yYW5nZShcbiAgWzIwMCwgNjAwXSxcbiAge3ZhbHVlOiBpbml0X3RtYXgsIHN0ZXA6IDEwLjAsIGxhYmVsOiBcIk1heGltdW0gc2ltdWxhdGlvbiB0aW1lICh5ZWFycylcIn1cbilcblxudmlld29mIGFyZWEgPSBJbnB1dHMudG9nZ2xlKFxuICB7bGFiZWw6IFwiQ3VtdWxhdGl2ZSBBcmVhIHBsb3RcIiwgdmFsdWU6IGZhbHNlfVxuKVxuXG5tZGAke3RleGBSXzAgPSAke1IwX3N0cn1gfWBcblxue1xuICBpZiAoYmlydGhzID09IDApe1xuICAgIHZhciBmaW5hbHNpemUgPSBzaXJfc29sLmdldChcIlJcIiwgc2lyX3NvbC5udW1Sb3dzKCktMSlcbiAgICB2YXIgZmluYWxzaXplX3N0ciA9IGZpbmFsc2l6ZS50b0xvY2FsZVN0cmluZyh1bmRlZmluZWQsIHttaW5pbXVtRnJhY3Rpb25EaWdpdHM6IDJ9KVxuXG4gICAgcmV0dXJuIG1kYCR7dGV4YFxcdGV4dHtGaW5hbCBzaXplfSA9ICR7ZmluYWxzaXplX3N0cn1gfWBcbiAgfSBlbHNlIHtcbiAgICByZXR1cm4gbWRgYFxuICB9XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJnYW1tYSA9IDEgLyBkdXJfaW5mXG5kdCA9IDAuMDFcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImltcG9ydCB7b2RlUks0fSBmcm9tICdAcnJldXNzZXIvaW50ZWdyYXRpb25AMzA2NCdcbmltcG9ydCB7IGFxLCBvcCB9IGZyb20gJ0B1d2RhdGEvYXJxdWVybydcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZ1bmN0aW9uIHNpcihkeWR0LCB5LCB0KSB7XG4gIGR5ZHRbMF0gPSAtIGJldGEgKiB5WzBdICogeVsxXSArIGJpcnRocyAqICgxIC0geVswXSlcbiAgZHlkdFsxXSA9IGJldGEgKiB5WzBdICogeVsxXSAtIGdhbW1hICogeVsxXSAtIGJpcnRocyAqIHlbMV1cbiAgZHlkdFsyXSA9IGdhbW1hICogeVsxXSAtIGJpcnRocyAqIHlbMl1cbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZ1bmN0aW9uIHNpbXVsYXRlKGYsIHQwLCB5MCwgZHQsIHRtYXgpIHtcbiAgdmFyIHQgPSB0MFxuICB2YXIgeSA9IHkwXG4gIHZhciBpID0gMFxuXG4gIHZhciB0c2ltID0gW3QwXVxuICB2YXIgeXNpbSA9IFt5MF1cblxuICBmb3IgKHQgPSB0MCArIGR0OyB0IDw9IHRtYXg7IHQgKz0gZHQpIHtcbiAgICB5c2ltLnB1c2gob2RlUks0KFtdLCB5c2ltW2ldLCBmLCBkdCkpXG4gICAgdHNpbS5wdXNoKHQpXG4gICAgaSArPSAxXG4gIH1cblxuICByZXR1cm4gYXEudGFibGUoe1xuICAgIFRpbWU6IHRzaW0sXG4gICAgUzogeXNpbS5tYXAoZCA9PiBkWzBdKSxcbiAgICBJOiB5c2ltLm1hcChkID0+IGRbMV0pLFxuICAgIFI6IHlzaW0ubWFwKGQgPT4gZFsyXSlcbiAgICB9KVxufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC04IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoic2lyX3NvbCA9IHNpbXVsYXRlKHNpciwgMCwgWzEuMC1JMCwgSTAsIDAuMF0sIGR0LCB0bWF4KVxuc2lyX3NvbF9sb25nID0gc2lyX3NvbC5mb2xkKGFxLm5vdCgnVGltZScpLCB7YXM6IFsnU3RhdGUnLCAnRnJhY3Rpb24nXX0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTkiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJTSVJjb2xvcnMgPSBbXCIjMWY3N2I0XCIsIFwiI2ZmN2YwZVwiLCBcIiNGRjM4NTFcIl1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTAiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJSMCA9IGJldGEgLyAoZ2FtbWEgKyBiaXJ0aHMpXG5SMF9zdHIgPSBSMC50b0xvY2FsZVN0cmluZyh1bmRlZmluZWQsIHttaW5pbXVtRnJhY3Rpb25EaWdpdHM6IDJ9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZ1bmN0aW9uIGNhbGN1bGF0ZV9lcXVpbChSMCl7XG4gIGlmIChiaXJ0aHMgPiAwKSB7XG4gICAgdmFyIGVxX1MgPSAxIC8gUjBcbiAgICB2YXIgZXFfSSA9IGJpcnRocyAvIGJldGEgKiAoUjAgLSAxKVxuICAgIHZhciBlcV9SID0gMSAtIChlcV9TICsgZXFfSSlcblxuICAgIGNvbnN0IGVxX3ZhbHMgPSBhcS50YWJsZSh7XG4gICAgICBTdGF0ZTogW1wiU1wiLCBcIklcIiwgXCJSXCJdLFxuICAgICAgRnJhY3Rpb246IFtlcV9TLCBlcV9JLCBlcV9SXVxuICAgIH0pXG5cbiAgICByZXR1cm4gZXFfdmFsc1xuICB9IGVsc2Uge1xuICAgIHJldHVybiBudWxsXG4gIH1cbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJlcV92YWxzID0gY2FsY3VsYXRlX2VxdWlsKFIwKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlBsb3QucGxvdCh7XG4gIGNvbG9yOiB7XG4gICAgbGVnZW5kOiB0cnVlLFxuICAgIGRvbWFpbjogW1wiU1wiLCBcIklcIiwgXCJSXCJdLFxuICAgIHJhbmdlOiBTSVJjb2xvcnNcbiAgfSxcbiAgc3R5bGU6IHtmb250U2l6ZTogXCIyMHB4XCJ9LFxuICBtYXJnaW5MZWZ0OiA2NSxcbiAgbWFyZ2luVG9wOiA0MCxcbiAgbWFyZ2luQm90dG9tOiA1NSxcbiAgZ3JpZDogdHJ1ZSxcbiAgd2lkdGg6IDgwMCxcbiAgaGVpZ2h0OiA2NzAsXG4gIHk6IHtkb21haW46IFswLCAxXX0sXG4gIG1hcmtzOiBbXG4gICAgYXJlYSA/XG4gICAgICBQbG90LmFyZWFZKHNpcl9zb2xfbG9uZywge3g6IFwiVGltZVwiLCB5OiBcIkZyYWN0aW9uXCIsIGZpbGw6IFwiU3RhdGVcIn0pIDpcbiAgICAgIFtcbiAgICAgICAgUjAgPj0gMS4wICYmIGJpcnRocyA+IDAgP1xuICAgICAgICBQbG90LnJ1bGVZKFxuICAgICAgICAgIGVxX3ZhbHMsXG4gICAgICAgICAge3k6IFwiRnJhY3Rpb25cIiwgc3Ryb2tlOiBcIlN0YXRlXCIsIHN0cm9rZVdpZHRoOiAyLCBzdHJva2VEYXNoYXJyYXk6IFsxMF19XG4gICAgICAgICkgOlxuICAgICAgICBudWxsLFxuICAgICAgICBQbG90LmxpbmVZKFxuICAgICAgICAgIHNpcl9zb2xfbG9uZyxcbiAgICAgICAgICB7eDogXCJUaW1lXCIsIHk6IFwiRnJhY3Rpb25cIiwgc3Ryb2tlOiBcIlN0YXRlXCIsIHN0cm9rZVdpZHRoOiA2fVxuICAgICAgICApXG4gICAgICBdXG4gIF1cbn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3Jlc2V0JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2JldGEnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnZHVyX2luZicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdJMCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdiaXJ0aHMnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgndG1heCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdhcmVhJykifV19
-</script>
-<script type="module">
+</script><script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
 window._ojs.paths.runtimeToDoc = "../..";
 window._ojs.paths.runtimeToRoot = "../..";
 window._ojs.paths.docToRoot = "";
 window._ojs.selfContained = false;
 window._ojs.runtime.interpretFromScriptTags();
-</script>
-<script id="quarto-html-after-body" type="application/javascript">
+</script><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -2095,9 +1993,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="./L02_sir-basics.html" class="pagination-link" aria-label="Basics of SIR Models">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basics of SIR Models</span></span>
       </a>          
@@ -2844,7 +2740,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-
 
 
 

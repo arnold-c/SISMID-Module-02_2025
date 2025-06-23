@@ -9,7 +9,7 @@ metadata-files:
 ---
 
 ```{=html}
-<iframe class="slide-deck" src="https://docs.google.com/presentation/d/e/2PACX-1vTKxpd3HRdIgvj5dt4Jrvk4pRXDYvNip1HmgPHS0vnva_ahBGIWXA5_4h-8Yo6RdA/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1023" height="606" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe class="slide-deck" src="https://docs.google.com/presentation/d/e/2PACX-1vQqYcTOKW4THleaXc4Uw0RvK2Q_57f8piNBDFSxaykyh2gU0qEoqLMOpdtD6d-q2A/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="1023" height="606" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 ```
 
 [Download slides](./slides/L08_Stochastic-models.pdf)
