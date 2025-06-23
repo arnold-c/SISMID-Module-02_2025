@@ -8,7 +8,7 @@ metadata-files:
 ---
 
 ```{=html}
-<iframe class="slide-deck" src="https://docs.google.com/presentation/d/e/2PACX-1vRsTQwTCKPl6u4cX0QjS9AEDkNrBQFDl04etHczWvA6FmjC_fpZHhUdCWx2FvJmQg/embed?start=false&loop=false&delayms=3000" frameborder="0" width="1023" height="606" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe class="slide-deck" src="https://docs.google.com/presentation/d/e/2PACX-1vSYtlxJZr53x-PNO7bpq-5uFtVU677AcLao_7q6j_wFe6F2hXqppcqCzdiLmP4OIQ/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="1023" height="606" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 ```
 
 [Download slides](./slides/L06_Parameter-estimation.pdf)
