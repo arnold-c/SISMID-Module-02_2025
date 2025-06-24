@@ -104,6 +104,17 @@ Dr. Ferrari is the Director of the Center for Infectious Disease Dynamics at The
 
 Dr Ferrari's lab does research on both the application of quantitative modeling and analysis to inform public health policy and the basic ecology of parasites and infectious diseases at the Center for Infectious Disease Dynamics at The Pennsylvania State University.
 </div>
+
+<div class="box" style="--width: 50%">
+<h3 style="margin-top:0px; text-align: center">[Dr. Alpha Forna](https://ecology.uga.edu/directory/alpha-forna/)</h3>
+
+<img src="./images/alpha-forna.jpg" style="width: 100%"/>
+
+Dr. Forna is a Post-doctoral Researcher Associate in the Drake and Rohani Labs at the University of Georgia.
+
+Dr Forna's research focuses on the adaptation and application of machine learning methods to biological and epidemiological data, with an aim to positively inform efficient and cost-effective infectious disease prevention and intervention efforts (vaccines and antimicrobials, especially).
+</div>
+
 </div>
 
 <br>
