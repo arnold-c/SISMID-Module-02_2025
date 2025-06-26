@@ -206,7 +206,7 @@ sir_sol_df <- as_tibble(sir_sol_storage) %>%
 SIRcolors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851")
 
 ggplot(sir_sol_df, aes(x = time, y = proportion, color = state)) +
-  geom_line(linewidth = 1.5) +
+  geom_line(linewidth = 1.5, alpha=.1) +
   scale_color_manual(values = SIRcolors) +
   labs(
     x = "Time",
