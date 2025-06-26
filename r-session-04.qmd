@@ -48,7 +48,7 @@ Much of the world is uncertain (i.e. we don't know exactly how things work, what
 Some of that uncertainty is, at least theoretically, knowable and some is not. 
 For example, in our discussion of estimating $R_0$, there may be a very real $R_0$ for a given population and pathogen, even if we don't know it. 
 Thus, our estimate of $R_0$ may be "uncertain" (e.g. has a confidence interval around it, reflecting our certainty), but the models we've been developing so far are "deterministic", so conditional on a given value of $R_0$ the resulting epidemic curve is exactly specified by the model.
-If we return to the code from R-session 1, we can plot a single deterministic realization of a model with $R_0 = 2$.
+If we return to the code from R-session 1, we can plot a single deterministic realization of a model with $R_0 = 1.8$.
 
 ```{r}
 #| echo: true
@@ -131,8 +131,8 @@ ggplot(sir_sol_df, aes(x = time, y = proportion, color = state)) +
   theme(legend.position = "top")
 ```
 
-Now, perhaps we used the tools from R-session 3 to estimate $R_0$ and we think a reasonable $95\%$ confidence interval for $R_0$ is $(1.75,2.25)$. 
-If we're quite certain the duration of infection is 6 days, then that means our corresponding confidence interval on the transmission rate is $(.291,.375)$.
+Now, perhaps we used the tools from R-session 3 to estimate $R_0$ and we think a reasonable $95\%$ confidence interval for $R_0$ is $(1.7,1.9)$. 
+If we're quite certain the duration of infection is 6 days, then that means our corresponding confidence interval on the transmission rate is $(.283,.317)$.
 An entirely reasonble way to represent this uncertainty in the estimate of the transmission rate is to generate many random draws from within the confidence interval for the transmission rate and examine the resulting epidemic curves.
 For this we can modify the code above with a loop that does this $M$ times. 
 
@@ -152,7 +152,7 @@ M = 100 # the number of times we want to do this.
 #since we're going to do this M times we need a place to store the results
 
 for(m in 1:M){
-  sir_params <- c(transmission = runif(1,.291,.375), duration = 6) # each time take a random draw of the transmission rate from the confidence interval
+  sir_params <- c(transmission = runif(1,.283,.317), duration = 6) # each time take a random draw of the transmission rate from the confidence interval
   sir_init_states <- c(S = 0.99, I = 0.01, R = 0)
   sim_times <- seq(0, 200, by = 0.1)
 
@@ -215,6 +215,12 @@ ggplot(sir_sol_df, aes(x = time, y = proportion, color = state)) +
   ) +
   theme(legend.position = "top")
 ```
+
+Here note that we are still using our original code for the SIR model, so first we randomly draw the transmission rate, then conditional on that value, we run the deterministic model. Note that each run of the model still has the smooth curves, but each draw is a different set of smooth curves. 
+
+There are lots of ways you could extend this. Note that since we are drawing the transmission rate and fixing the duration of infection, the $R_0$ is slightly different in each simulation. You could make each run have the same $R_0$ by recalculating the duration of infection based on the random draw of transmission rate; e.g. $R_0=1.8 = 0.29 * L$ means that $L=5.5$, so to ensure $R_0$ is the same in each run, you would to change $L$ for each random draw. Alternatively, you might have uncertainty about \emph{both} transmission and duration, so could for e.g. make random draws for both (which would again give a setting where $R_0$ varies from run to run). None of these are more correct than another, the use case depends on which elements $R_0$, transmission, duration of infection, you are uncertain about. 
+
+
 
 
 ## Estimating $R_0$ From The Final Outbreak Size
