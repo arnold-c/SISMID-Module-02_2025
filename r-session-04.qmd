@@ -231,29 +231,46 @@ Unlike a deterministic model, to fully understand the behavior of a stochastic m
 There are many, many ways to make stochastic models and the steps can be way more complicated than flipping coins. 
 But there some foundational versions of these models that illustrate the trade-offs between exact representaitons of the random processes we think are happening and the computational time it takes to generate outputs. For what we'll do here, everythind will be kind of fast, but in practice, for models of realistic scale, even a signle stochastic run can take a while. And if you have to do thousands of runs, even shaving a few seconds or minutes can be important. 
 
-## Estimating $R_0$ From The Final Outbreak Size
+## The Gillespie Algorithm
 
-Our first approach is to estimate $R_0$ from the final outbreak size.
-Although unhelpful at the early stages of an epidemic (before the final epidemic size is observed), this method is nonetheless a useful tool for *post hoc* analysis.
-The method is general and can be motivated by the argument listed in [@keelingIntroductionSimpleEpidemic2008]:
+CHANGE THIS Text to motivate the Gillespie Algorithm
 
-First, we assume that the epidemic is started by a single infectious individual in a completely susceptible population.
-On average, this individual infects $R_0$ others.
-The probability a particular individual escaped infection is therefore $e^{-R_0 / N}$.
 
-If $Z$ individuals have been infected, the probability of an individual escaping infection from all potential sources is $e^{-Z R_0 / N}$.
-It follows that at the end of the epidemic a proportion $R(\infty) = Z / N$ have been infected and the fraction remaining susceptible is $S(\infty) = e^{-R(\infty) R_0}$, which is equal to $2 - R(\infty)$.
+```{r}
+#| echo: true
+#| message: false
+#| out-width: 100%
+#| column: body
 
-::: {.callout-note collapse="true"}
-$S(\infty) = e^{-R(\infty) R_0}$ can be calculated by acknowledging that at equilibrium ($t = \infty$), $S(\infty) = 1 - R(\infty) = Z / N$, so substituting $R(\infty)$ into $1 - e^{-Z R_0 / N}$ gives the desired result.
+###############################################################################
+# Parameters and initial conditions                                            #
+###############################################################################
 
-It could also be calculated by dividing $\frac{\dd{S}}{\dd{t}}$ by $\frac{\dd{R}}{\dd{t}}$:
+S <- 998           # number susceptible
+I <- 1              # number infected
+R <- 1              # number recovered
+time <- 0
 
-```{=tex}
-\begin{aligned}
-\frac{\dd{S}}{\dd{R}} &= - \frac{\beta S}{\gamma} \\
-&= - R_0 S
-\end{aligned}
+beta <- .5           # transmission rate
+gamma <- 1/7        # recovery rate
+
+###############################################################################
+# Gillespie Step                                                              #
+###############################################################################
+gilstep <- function(SIR, beta, gamma){
+  #S
+  #I
+  #R 
+  # time
+  # beta = transmission rate
+  # gamma = recovery rate
+  
+  times <- rexp(2, c(beta * SIR[1] * SIR[2]/sum(SIR[1:3]),
+                     SIR[2] * gamma))
+  
+  return(list(change_state = which.min(times),
+              timestep = min(times)))
+}
 ```
 which is a [separable differential equation](https://tutorial.math.lamar.edu/classes/de/separable.aspx), so can be integrated as follows:
 
