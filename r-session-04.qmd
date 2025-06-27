@@ -234,6 +234,7 @@ But there some foundational versions of these models that illustrate the trade-o
 ## The Gillespie Algorithm
 
 CHANGE THIS Text to motivate the Gillespie Algorithm
+Explain the steps
 
 
 ```{r}
@@ -258,21 +259,221 @@ gamma <- 1/7        # recovery rate
 # Gillespie Step                                                              #
 ###############################################################################
 gilstep <- function(SIR, beta, gamma){
-  #S
-  #I
-  #R 
-  # time
+  # SIR is a vector containing 4 elements 
+  #   S = scalar number of susceptibles now
+  #   I = scalar number of infecteds now
+  #   R = scalar number of recovereds now
+  #   time = current time
   # beta = transmission rate
   # gamma = recovery rate
   
-  times <- rexp(2, c(beta * SIR[1] * SIR[2]/sum(SIR[1:3]),
-                     SIR[2] * gamma))
+  times <- rexp(2, # draw two random exponential variables
+                c(beta * SIR[1] * SIR[2]/sum(SIR[1:3]),  # the first is the rate of new infections: S*Beta*I/N
+                     SIR[2] * gamma)) # the second is the rate of new recoveries: I*gamma
   
-  return(list(change_state = which.min(times),
-              timestep = min(times)))
+  return(list(
+    change_state = which.min(times), # which.min identifies which of the two random variables is smallest, and thus the first to happen: this is the transition that we'll mae
+              timestep = min(times))) # this identfies how much time elapsed before the transition occured, so we can increment time forward
 }
 ```
-which is a [separable differential equation](https://tutorial.math.lamar.edu/classes/de/separable.aspx), so can be integrated as follows:
+
+The gilstep() function increments the states forward by 1 event. Which event happens first, and the time it takes for that event to happen are both random varaibles. We then need to do this many times. 
+
+```{r}
+#| echo: true
+#| message: false
+#| out-width: 100%
+#| column: body
+
+###############################################################################
+# Simulate over time                                                          #
+###############################################################################
+counter <- 0                # set counter at 0
+while(all(I>0)){            #continue until I is depleted
+  counter <- counter + 1    #counter for number of transitions: we don't know how many transitions will happen until the simualtion is over
+  # 
+  SIRtmp <- c(S[counter], I[counter], R[counter], time[counter])       #current SIR states
+  step <- gilstep(SIRtmp, beta, gamma)
+  if(step$change_state ==1){    # if transition is an infection, reduce S and increase I
+    SIRtmp[1] <- SIRtmp[1] - 1
+    SIRtmp[2] <- SIRtmp[2] + 1 
+  }
+  if(step$change_state ==2){    # if transition is an recovery, reduce I and increase R
+    SIRtmp[2] <- SIRtmp[2] - 1
+    SIRtmp[3] <- SIRtmp[3] + 1 
+  }
+  SIRtmp[4] <- SIRtmp[4] + step$timestep      # increment time
+    
+#Append changes
+  S <- c(S,SIRtmp[1])
+  I <- c(I,SIRtmp[2])
+  R <- c(R,SIRtmp[3])
+  time <- c(time,SIRtmp[4])
+
+  #cat(S[counter],"-",I[counter],"-",R[counter],"-",time[counter], ".\n"). # this prints the output as it goes
+}
+```
+
+We can now plot the one realization of this stochastic outbreak. Notice that it has the same general shape as the deterministic outbreak, but is no longer smooth because each individual event over time happens randomly. 
+
+```{r}
+#| echo: true
+#| message: false
+#| out-width: 100%
+#| column: body
+
+# Reuse the plotting code from above
+
+# Turn the output from gilstep() into a tibble (dataframe)
+# so we can manipulate and plot it easily
+gil_df <- tibble(time, S, I, R) %>%  # put elements in a data frame 
+  # Convert all columns to numeric (they are currently type
+  # deSolve so will produce warnings when plotting etc)
+  mutate(
+    # Rather than repeatedly type the same function for every
+    # column, use the across() function to apply the function
+    # to a selection of columns
+    across(
+      # The cols argument takes a selection of columns to apply
+      # a function to. Here, we want to apply the as.numeric()
+      # function to all columns, so we use the function
+      # everything() to select all columns.
+      .cols = everything(),
+      .fns = as.numeric
+    )
+  ) %>%
+  # Convert the dataframe from wide to long format, so we have a
+  # column for the time, a column for the state, and a column
+  # for the proportion of the population in that state at that
+  # time
+  pivot_longer(
+    # Don't pivot the time column
+    cols = -c(time),
+    names_to = "state",
+    values_to = "proportion"
+  ) %>%
+  # Update the state column to be a factor, so the plot will
+  # show the states in the correct order
+  mutate(state = factor(state, levels = c("S", "I", "R")))
+
+SIRcolors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851")
+
+ggplot(gil_df, aes(x = time, y = proportion, color = state)) +
+  geom_line(linewidth = 1.5) +
+  scale_color_manual(values = SIRcolors) +
+  labs(
+    x = "Time",
+    y = "Fraction",
+    color = "State"
+  ) +
+  theme(legend.position = "top")
+```
+
+Because each realiztion is stochastic, we need to generate many runs to see the general behavior.
+
+```{r}
+#| echo: true
+#| message: false
+#| out-width: 100%
+#| column: body
+
+###############################################################################
+# Simulate over time                                                          #
+M = 10  # number of realizations to simulate 
+
+for(m in 1:M){
+  ###############################################################################
+  # Parameters and initial conditions                                            #
+  ###############################################################################
+  
+  S <- 998           # number susceptible
+  I <- 1              # number infected
+  R <- 1              # number recovered
+  time <- 0
+  iteration = m    #initialize iteration counter
+
+  beta <- .5           # transmission rate
+  gamma <- 1/7        # recovery rate
+  
+  ###############################################################################
+  # Simulate over time                                                          #
+  ###############################################################################
+  counter <- 0                # set counter at 0
+  while(all(I>0)){            #continue until I is depleted
+    counter <- counter + 1    #counter for number of transitions: we don't know how many transitions will happen until the simualtion is over
+    # 
+    SIRtmp <- c(S[counter], I[counter], R[counter], time[counter])       #current SIR states
+    step <- gilstep(SIRtmp, beta, gamma)
+    if(step$change_state ==1){    # if transition is an infection, reduce S and increase I
+      SIRtmp[1] <- SIRtmp[1] - 1
+      SIRtmp[2] <- SIRtmp[2] + 1 
+    }
+    if(step$change_state ==2){    # if transition is an recovery, reduce I and increase R
+      SIRtmp[2] <- SIRtmp[2] - 1
+      SIRtmp[3] <- SIRtmp[3] + 1 
+    }
+    SIRtmp[4] <- SIRtmp[4] + step$timestep      # increment time
+    
+    #Append changes
+    S <- c(S,SIRtmp[1])
+    I <- c(I,SIRtmp[2])
+    R <- c(R,SIRtmp[3])
+    time <- c(time,SIRtmp[4])
+    iteration <- c(iteration, m)
+    
+    #cat(S[counter],"-",I[counter],"-",R[counter],"-",time[counter], ".\n"). # this prints the output as it goes
+  }
+  if(m==1){sir_gil_storage = tibble(S, I, R, time, iteration)}
+  if(m>1){sir_gil_storage = bind_rows(sir_gil_storage, tibble(S, I, R, time, iteration))}
+}
+
+# Reuse the plotting code from above
+
+# Turn the output from gilstep() into a tibble (dataframe)
+# so we can manipulate and plot it easily
+gil_df <- sir_gil_storage %>%  # put elements in a data frame 
+  # Convert all columns to numeric (they are currently type
+  # deSolve so will produce warnings when plotting etc)
+  mutate(
+    # Rather than repeatedly type the same function for every
+    # column, use the across() function to apply the function
+    # to a selection of columns
+    across(
+      # The cols argument takes a selection of columns to apply
+      # a function to. Here, we want to apply the as.numeric()
+      # function to all columns, so we use the function
+      # everything() to select all columns.
+      .cols = everything(),
+      .fns = as.numeric
+    )
+  ) %>%
+  # Convert the dataframe from wide to long format, so we have a
+  # column for the time, a column for the state, and a column
+  # for the proportion of the population in that state at that
+  # time
+  pivot_longer(
+    # Don't pivot the time column
+    cols = -c(time,iteration),
+    names_to = "state",
+    values_to = "proportion"
+  ) %>%
+  # Update the state column to be a factor, so the plot will
+  # show the states in the correct order
+  mutate(state = factor(state, levels = c("S", "I", "R")))
+
+SIRcolors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851")
+
+ggplot(gil_df, aes(x = time, y = proportion, color = state)) +
+  geom_line(linewidth = 1.5,alpha = .1) +
+  scale_color_manual(values = SIRcolors) +
+  labs(
+    x = "Time",
+    y = "Fraction",
+    color = "State"
+  ) +
+  theme(legend.position = "top")
+```
+
 
 ```{=tex}
 \begin{aligned}
