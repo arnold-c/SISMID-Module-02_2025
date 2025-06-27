@@ -350,7 +350,7 @@ gil_df <- tibble(time, S, I, R) %>%  # put elements in a data frame
     # Don't pivot the time column
     cols = -c(time),
     names_to = "state",
-    values_to = "proportion"
+    values_to = "number"
   ) %>%
   # Update the state column to be a factor, so the plot will
   # show the states in the correct order
@@ -358,12 +358,12 @@ gil_df <- tibble(time, S, I, R) %>%  # put elements in a data frame
 
 SIRcolors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851")
 
-ggplot(gil_df, aes(x = time, y = proportion, color = state)) +
+ggplot(gil_df, aes(x = time, y = number, color = state)) +
   geom_line(linewidth = 1.5) +
   scale_color_manual(values = SIRcolors) +
   labs(
     x = "Time",
-    y = "Fraction",
+    y = "Number",
     color = "State"
   ) +
   theme(legend.position = "top")
@@ -461,7 +461,7 @@ gil_df <- sir_gil_storage %>%  # put elements in a data frame
     # Don't pivot the time column
     cols = -c(time,iteration),
     names_to = "state",
-    values_to = "proportion"
+    values_to = "number"
   ) %>%
   # Update the state column to be a factor, so the plot will
   # show the states in the correct order
@@ -469,12 +469,12 @@ gil_df <- sir_gil_storage %>%  # put elements in a data frame
 
 SIRcolors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851")
 
-ggplot(gil_df, aes(x = time, y = proportion, color = state)) +
+ggplot(gil_df, aes(x = time, y = number, color = state, group=interaction(iteration, state))) +
   geom_line(linewidth = 1.5,alpha = .1) +
   scale_color_manual(values = SIRcolors) +
   labs(
     x = "Time",
-    y = "Fraction",
+    y = "Number",
     color = "State"
   ) +
   theme(legend.position = "top")
