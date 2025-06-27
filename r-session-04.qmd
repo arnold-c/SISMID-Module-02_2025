@@ -369,11 +369,17 @@ ggplot(gil_df, aes(x = time, y = proportion, color = state)) +
   theme(legend.position = "top")
 ```
 
-Because each realiztion is stochastic, we need to generate many runs to see the general behavior.
+Because each realiztion is stochastic, we need to generate many runs to see the general behavior. 
+The code below runs 10 iterations. 
+Generally, this would be considered a very small number of iterations. 
+But even for this very small model, running 100 or more means you'll be waiting for output. 
+Note that this code is designed to be transparent not to be fast. 
+Making these run fast is beyond the scope of this assignment. 
 
 ```{r}
 #| echo: true
-#| message: false
+#| eval: false
+#| #| message: false
 #| out-width: 100%
 #| column: body
 
