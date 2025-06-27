@@ -480,16 +480,129 @@ ggplot(gil_df, aes(x = time, y = proportion, color = state)) +
   theme(legend.position = "top")
 ```
 
+## The Tau Leaping Algorithm
 
-```{=tex}
-\begin{aligned}
-- \int_{0}^{t} \frac{1}{R_0 S} \dd{S} &= \int_{0}^{t} \dd{R} \\
-- \frac{1}{R_0} \left(\ln{S(t)} - \ln{S(0)} \right) &= R(t) - \cancelto{0}{R(0)} \\
-\ln{S(t)} &= \ln{S(0)} - R_0 R(t) \\
-S(t) &= S(0) e^{-R_0 R(t)}
 
-\end{aligned}
+
+```{r}
+#| echo: true
+#| message: false
+#| out-width: 100%
+#| column: body
+
+###############################################################################
+# Parameters and initial conditions                                           #
+###############################################################################
+
+S <- 998           # number susceptible
+I <- 1              # number infected
+R <- 1              # number recovered
+time <- 0
+
+beta <- .5           # transmission rate
+gamma <- 1/7        # recovery rate
+
+###############################################################################
+# Tau Leaping Single time step                                                            #
+###############################################################################
+tau_sir_step <- function (sims, S, I, R, beta, gamma, delta.t, ...) {
+  # adapted from Aaron King's code
+  # sims = number of simulations
+  # S = initial susceptible population
+  # I = initial infected population
+  # R = initial recovered population
+  # beta = transmission rate
+  # gamma = recovery rate
+  
+  N <- S+I+R    # total population size
+  dSI <- rpois(n=sims,beta*S*(I/N)*delta.t)  # new incident infections
+  dIR <- rpois(n=sims,gamma*I*delta.t)       # recoveries
+  # note that this can be done with a binomial step as well
+  #dSI <- rbinom(n=sims,size=S,prob=1-exp(-beta*(I/N)*delta.t))  # new incident infections
+  #dIR <- rbinom(n=sims,size=I,prob=1-exp(-gamma*delta.t))       # recoveries
+  
+  #since it is possible for the transitions to drirve the states negative, we have to prevent that
+  S <- pmax(S - dSI,0)            # change in S
+  I <- pmax(I + dSI - dIR,0)      # change in I
+  R <- R + dIR            # change in R
+  cbind(S, I, R, dSI) # note that dSI are the new incident infections
+}
+
 ```
+
+TEXT
+
+```{r}
+#| echo: true
+#| message: false
+#| out-width: 100%
+#| column: body
+
+###############################################################################
+# set up and storage for states                                               #
+###############################################################################
+T <- 100        # time to simulate over. With Tau Leaping the random draws scales with time not with population size, so this is much more efficient than Gillespie for large populations
+sims <- 2    # number of simulations: notice that we can do WAY more now
+
+Smat <- matrix(S,1,sims)      # storage item for S for all simulations
+Imat <- matrix(I,1,sims)      # storage item for I for all simulations
+Rmat <- matrix(R,1,sims)      # storage item for R for all simulations
+new_cases <- matrix(0,1,sims) # storage item for new cases (i.e. incidence) for all simulations
+Nmat <- S+I+R                 # storage item for N for all simulations  
+
+# run over a time from 2 to T
+for(ts in 2:T){     #loop over time, ts is the index
+  
+  out <- tau_sir_step(sims, Smat[ts-1,], Imat[ts-1,], Rmat[ts-1,], beta, gamma, delta.t=1) # call to SIR step function above
+
+  Smat <- rbind(Smat,out[,1])  # update state
+  Imat <- rbind(Imat,out[,2])  # update state
+  Rmat <- rbind(Rmat,out[,3])  # update state
+  Nmat <- rbind(Nmat,out[,1]+out[,2]+out[,3])  # update state -- note population size isn't changing, but this could be updated with births/deaths
+  new_cases <- rbind(new_cases,out[,4])  # update state
+}
+```
+
+```{r}
+#| echo: true
+#| message: false
+#| out-width: 100%
+#| column: body
+
+###############################################################################
+# plotting                                                                   #
+###############################################################################
+# put output in a data frame
+tau_df <- data_frame(S=array(Smat), I=array(Imat), R=array(Rmat), N=array(Nmat), cases=array(new_cases), time = rep(1:T,sims), iteration = rep(1:sims,each=T))
+
+tau_df = tau_df %>%
+  pivot_longer(
+    # Don't pivot the time column
+    cols = -c(time,iteration),
+    names_to = "state",
+    values_to = "number"
+  ) %>%
+  mutate(state = factor(state, levels = c("S", "I", "R","N", "cases")))
+
+SIRcolors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851", cases = "green") # fix this color
+
+# NOT CURRENTLY WORKING
+# NOT PLOTTING AS INDIVIDUAL LINES
+
+tau_df %>%
+  mutate(iteration = as.factor(iteration)) %>%
+#  filter(iteration==1) %>%
+  ggplot( aes(x = time, y = number, color = state)) +
+    geom_line(linewidth = 1.5,alpha = .1) +
+    scale_color_manual(values = SIRcolors) +
+    labs(
+      x = "Time",
+    y = "Number",
+      color = "State"
+    ) +
+    theme(legend.position = "top")
+```
+
 :::
 
 Putting this together, we get:
