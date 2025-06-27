@@ -542,7 +542,7 @@ TEXT
 # set up and storage for states                                               #
 ###############################################################################
 T <- 100        # time to simulate over. With Tau Leaping the random draws scales with time not with population size, so this is much more efficient than Gillespie for large populations
-sims <- 2    # number of simulations: notice that we can do WAY more now
+sims <- 1000    # number of simulations: notice that we can do WAY more now
 
 Smat <- matrix(S,1,sims)      # storage item for S for all simulations
 Imat <- matrix(I,1,sims)      # storage item for I for all simulations
@@ -591,8 +591,8 @@ SIRcolors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851", cases = "green") # f
 
 tau_df %>%
   mutate(iteration = as.factor(iteration)) %>%
-#  filter(iteration==1) %>%
-  ggplot( aes(x = time, y = number, color = state)) +
+  filter(state %in% c("S", "I","R")) %>%
+  ggplot( aes(x = time, y = number, group = interaction(iteration, state), color = state)) +
     geom_line(linewidth = 1.5,alpha = .1) +
     scale_color_manual(values = SIRcolors) +
     labs(
