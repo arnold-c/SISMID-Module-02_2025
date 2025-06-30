@@ -647,4 +647,98 @@ tau_df %>%
     theme(legend.position = "top")
 ```
 
+## The Chain Binomial Algorithm
 
+In the last section, we saw that by moving from continuous time to discrete time steps, we limit the complexity (the number of stochastic evaluations scales with time and the number of states, instead of population size and the number of states). 
+You may have also noticed that the individual steps in the Tau Leaping algorithm can be modeled as Poisson or Binomial random variables.
+Combining these two gives us another common algorithm for stochastic simulation, the Chain Binomial model. 
+Here, we simplify further and use a time step that is equal to the infectious generation period; e.g. 2 weeks for measles, or 1 week for flu. 
+If we assume that time progresses in discrete, non-overlapping generations, then those that get infected at the start of one time step, recover at the end of that time step. 
+This simplification means that we only have to model the infection process as stochastic, and the recovery process at the end of the time step is now deterministic. 
+This is obviously unrealistic, but makes the model much simpler for formal statistical model fitting using likelihood and Bayesian methods. 
+So while it is imperfect, it remains as a common method for "first-pass" analyses. 
+
+```{r}
+#| echo: true
+#| message: false
+#| out-width: 100%
+#| column: body
+
+###############################################################################
+# Parameters and initial conditions                                           #
+###############################################################################
+S <- 998           # number susceptible
+I <- 1              # number infected
+R <- 1              # number recovered
+time <- 0
+
+beta <- 3.5           # transmission rate -- note the change in value
+
+
+```
+
+TEXT
+
+```{r}
+#| echo: true
+#| message: false
+#| out-width: 100%
+#| column: body
+
+###############################################################################
+# Single time step                                                            #
+###############################################################################
+cb_step <- function (sims, S, I, R, beta, ...) {
+  # adapted from Aaron King's code
+  # S = initial susceptible population
+  # I = initial infected population
+  # R = initial recovered population
+  # beta is transmission rate
+  
+  N <- S+I+R    # total population size
+  newI <- rbinom(n=sims, S, 1-exp(-beta * I/N))
+  newS <- S - newI
+  newR <- I
+
+  cbind(newS, newI, newR) 
+}
+
+```
+
+TEXT
+
+```{r}
+#| echo: true
+#| message: false
+#| out-width: 100%
+#| column: body
+
+###############################################################################
+# Run over many steps                                                         #
+###############################################################################
+
+T <- 20 # note here that the time step is one infectious generation time, so 7 days from gamma above
+Smat <- matrix(S,1,sims)      # storage item for S for all simulations
+Imat <- matrix(I,1,sims)      # storage item for I for all simulations
+Rmat <- matrix(R,1,sims)      # storage item for R for all simulations
+Nmat <- S+I+R
+
+for(ts in 2:T){
+  out <- cb_step(sims, Smat[ts-1,], Imat[ts-1,], Rmat[ts-1,], beta)
+  Smat <- rbind(Smat,out[,1])  # update state
+  Imat <- rbind(Imat,out[,2])  # update state
+  Rmat <- rbind(Rmat,out[,3])  # update state
+  Nmat <- rbind(Nmat,out[,1]+out[,2]+out[,3])  # update state -- note population size isn't changing, but this could be updated with births/deaths
+  
+}
+```
+
+TEXT
+
+```{r}
+#| echo: true
+#| message: false
+#| out-width: 100%
+#| column: body
+
+```
