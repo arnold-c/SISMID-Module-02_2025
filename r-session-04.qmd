@@ -472,6 +472,18 @@ ggplot(gil_df, aes(x = time, y = number, color = state, group=interaction(iterat
 
 ## The Tau Leaping Algorithm
 
+The Gillespie algorithm is great because it is an exact interpretation of the transitions in teh ODE model: every change of state (e.g. infection or recovery) changes the rates for the next transition.
+Doing this comes at a computational cost. 
+One reasonable approximation is the Tau Leaping algorithm. 
+Here, we move in discrete chunks of time and make random draws for multiple events occurring within that chunk. 
+Here the computation scales with the number of time steps (and the number of states requiring transitions). 
+But, we rely on the result that, if rates stay constant, the number events that occur in a discrete chunk of time can be approximated by a Poisson random variable.
+Thus, we don't need to make random draws for every event. 
+Instead we can make 1 draw for the multiple events that will occur in 1 day, or 1 week, etc. 
+The key here is the assumption that the rates stay constant; since each new infection or recovery will change the rates, we don't want \emph{too many} to occur (in which case the rate at the start of the time step will be very different than the rate at the end of the time step). 
+So we are faced with a trade-off; very small time steps don't violate the assumptions, but the smaller the steps, the closer we are Gillespie and the smaller the computational savings. 
+There's not right answer to what time step to use. 
+Here we'll use 1 day, for convenience. 
 
 ```{r}
 #| echo: true
@@ -519,7 +531,12 @@ tau_sir_step <- function (sims, S, I, R, beta, gamma, delta.t, ...) {
 
 ```
 
-TEXT
+Note in the code above that we're taking Poisson random draws, but there is some code commented out that uses binomial draws. 
+The former is exact for the theory, but it can give rise to settings where the transitions "get ahead of themselves" and you have more recoveries than infecteds, or more infections than susceptibles, which drives the states negative. 
+We can fix this by checking if the states go negative and disallowing this ... which is inelegant. 
+We can also fix this by using binomial draws, which are naturally constrained not to go negative. 
+The reason we don't automatically start with binomial draws is that they are computationally slower than Poisson draws (this occurs because the binomial distribution includes some combinatorial terms that are slow to compute). 
+As computers have gotten faster, this is less of an issue. 
 
 ```{r}
 #| echo: true
@@ -552,7 +569,7 @@ for(ts in 2:T){     #loop over time, ts is the index
 }
 ```
 
-SOME TEXT
+Hopefully you can easily see that simulating 1000 iterations of Tau Leaping is \emph{way} faster than Gillespie. 
 
 ```{r}
 #| echo: true
@@ -593,6 +610,9 @@ tau_df %>%
     ) +
     theme(legend.position = "top")
 ```
+
+And plotting the simulated trajectories should look pretty close to what we got with Gillespie. 
+But, because we can simulate many more iterations, we can start to observe some of the rarer behavior; e.g. even for simulations iwth $R_0 = 3.5$ there are some simulation runs for which the epidemic doesn't take off (S stays at 1000). 
 
 Note that because we have stored the newly infected individuals as "new cases" then we can plot both the incidence (new cases) and prevalence (I) each day. 
 
@@ -635,6 +655,11 @@ tau_df %>%
     ) +
     theme(legend.position = "top")
 ```
+
+Note that the time series of new incident cases is very different than the time series of prevalent cases.
+Recall from our earlier discussion that the former are more likely to be what we would see in clinical surveillance. 
+The latter are what we might see if we did random testing in the population.
+Which one would you expect to correspond best to environmental wastewater surveillance?
 
 ## The Chain Binomial Algorithm
 
