@@ -30,17 +30,7 @@ library(gt)
 theme_set(theme_minimal())
 ```
 
-```{r}
-# Loads the datasets: flu, measles, niamey, plauge
-flu <- rio::import(
-  "https://raw.githubusercontent.com/arnold-c/SISMID-Module-02_2025/main/data/flu.csv"
-)
-niamey <- rio::import(
-  "https://raw.githubusercontent.com/arnold-c/SISMID-Module-02_2025/main/data/niamey.csv"
-)
-# flu <- rio::import(here::here("data", "flu.csv"))
-# niamey <- rio::import(here::here("data", "niamey.csv"))
-```
+
 
 ## What is stochasticity and where does it come from?
 
@@ -369,7 +359,7 @@ ggplot(gil_df, aes(x = time, y = number, color = state)) +
   theme(legend.position = "top")
 ```
 
-Because each realiztion is stochastic, we need to generate many runs to see the general behavior. 
+Because each realization is stochastic, we need to generate many runs to see the general behavior. 
 The code below runs 10 iterations. 
 Generally, this would be considered a very small number of iterations. 
 But even for this very small model, running 100 or more means you'll be waiting for output. 
@@ -481,7 +471,6 @@ ggplot(gil_df, aes(x = time, y = number, color = state, group=interaction(iterat
 ```
 
 ## The Tau Leaping Algorithm
-
 
 
 ```{r}
@@ -656,7 +645,13 @@ Here, we simplify further and use a time step that is equal to the infectious ge
 If we assume that time progresses in discrete, non-overlapping generations, then those that get infected at the start of one time step, recover at the end of that time step. 
 This simplification means that we only have to model the infection process as stochastic, and the recovery process at the end of the time step is now deterministic. 
 This is obviously unrealistic, but makes the model much simpler for formal statistical model fitting using likelihood and Bayesian methods. 
-So while it is imperfect, it remains as a common method for "first-pass" analyses. 
+So while it is imperfect, it remains as a common method for "first-pass" analyses.
+
+As before, we start with initial conditions.
+Here we initialize with the same population as before, but notice that the transmission rate, $\beta$ is different.
+Time is rescaled here to units of epidemic generation time, so $\beta$ is scaled correspondingly and now, for this formulation, $\beta$ is $R_0$. 
+
+TO DO: ADD A CALLOUT HERE TO THE FACT THAT R0 IS NOT FIXED, IT DEPENDS ON THE PATHOGEN, THE POPULATION, AND THE MODEL. 
 
 ```{r}
 #| echo: true
@@ -677,7 +672,12 @@ beta <- 3.5           # transmission rate -- note the change in value
 
 ```
 
-TEXT
+When we implement the forward simulation, we now only have to generate random draws for the infection process, which again simplifies the amount of stochastic simulation we have to do, and speeds up run times. 
+While this might not be limiting in the scale of this activity, this DOES become an issue when we have to fit stochastic models. 
+Recall from the lecture on parameter estimation that the basic recipe has us build a model and test out all, or many, values of the parameters (here $\beta$) to find which one is closest to the data. 
+Here, because each run of the stochastic simulation is different, we need to run simulations over many possible parameters, and for each parameter, we need to run many stochastic runs to characterize the average, or most likely, behavior. 
+So, the number of simulations can rapidly increase into the millions (bigger for models with more parameters), so every bit of savings in computational time can be valuable. 
+
 
 ```{r}
 #| echo: true
@@ -689,23 +689,23 @@ TEXT
 # Single time step                                                            #
 ###############################################################################
 cb_step <- function (sims, S, I, R, beta, ...) {
-  # adapted from Aaron King's code
   # S = initial susceptible population
   # I = initial infected population
   # R = initial recovered population
   # beta is transmission rate
   
   N <- S+I+R    # total population size
-  newI <- rbinom(n=sims, S, 1-exp(-beta * I/N))
-  newS <- S - newI
-  newR <- I
+  newI <- rbinom(n=sims, pmax(S,0), 1-exp(-beta * pmax(I,0)/N)) # this is the only stochastic step; only do draw if I >0
+  newS <- S - newI    #this step is now deterministic, because everyone from the past time step recovers   
+  newR <- R + I
 
   cbind(newS, newI, newR) 
 }
 
 ```
 
-TEXT
+Then we can run the simulation over a set of discrete time steps, T. 
+Note again that T is now the number of infectious generation times, since time is rescaled relative to the models above. 
 
 ```{r}
 #| echo: true
@@ -718,6 +718,8 @@ TEXT
 ###############################################################################
 
 T <- 20 # note here that the time step is one infectious generation time, so 7 days from gamma above
+sims <- 1000
+  
 Smat <- matrix(S,1,sims)      # storage item for S for all simulations
 Imat <- matrix(I,1,sims)      # storage item for I for all simulations
 Rmat <- matrix(R,1,sims)      # storage item for R for all simulations
@@ -733,7 +735,7 @@ for(ts in 2:T){
 }
 ```
 
-TEXT
+We can plot, but note again, that this is plotted in terms of epidemic generations on the X-axis, rather than days (as in the previous sections).
 
 ```{r}
 #| echo: true
@@ -741,4 +743,33 @@ TEXT
 #| out-width: 100%
 #| column: body
 
+# put output in a data frame
+bin_df <- data_frame(S=array(Smat), I=array(Imat), R=array(Rmat), N=array(matrix(Nmat)), time = rep(1:T,sims), iteration = rep(1:sims,each=T))
+
+bin_df = bin_df %>%
+  pivot_longer(
+    # Don't pivot the time column
+    cols = -c(time,iteration),
+    names_to = "state",
+    values_to = "number"
+  ) %>%
+  mutate(state = factor(state, levels = c("S", "I", "R","N")))
+
+SIRcolors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851") # fix this color
+
+# NOT CURRENTLY WORKING
+# NOT PLOTTING AS INDIVIDUAL LINES
+
+bin_df %>%
+  mutate(iteration = as.factor(iteration)) %>%
+  filter(state %in% c("S","I","R")) %>%
+  ggplot( aes(x = time, y = number, group = interaction(iteration, state), color = state)) +
+    geom_line(linewidth = 1.5,alpha = .1) +
+    scale_color_manual(values = SIRcolors) +
+    labs(
+      x = "Time",
+    y = "Number",
+      color = "State"
+    ) +
+    theme(legend.position = "top")
 ```
