@@ -13,7 +13,7 @@ editor:
     wrap: sentence
 ---
 
-# R Session 03
+# R Session 04
 
 ## Setup
 
@@ -45,10 +45,6 @@ If we return to the code from R-session 1, we can plot a single deterministic re
 #| message: false
 #| out-width: 100%
 #| column: body
-library(tidyverse)
-library(deSolve)
-
-theme_set(theme_minimal())
 
 sir_model <- function(time, state, params, ...) {
   transmission <- params["transmission"]
@@ -64,7 +60,9 @@ sir_model <- function(time, state, params, ...) {
 
   return(list(c(dSdt, dIdt, dRdt)))
 }
+```
 
+```{r}
 sir_params <- c(transmission = 0.3, duration = 6)
 sir_init_states <- c(S = 0.99, I = 0.01, R = 0)
 sim_times <- seq(0, 200, by = 0.1)
@@ -76,6 +74,9 @@ sir_sol <- deSolve::ode(
   parms = sir_params
 )
 
+```
+
+```{r}
 # Turn the output from the ODE solver into a tibble (dataframe)
 # so we can manipulate and plot it easily
 sir_sol_df <- as_tibble(sir_sol) %>%
@@ -131,10 +132,6 @@ For this we can modify the code above with a loop that does this $M$ times.
 #| message: false
 #| out-width: 100%
 #| column: body
-library(tidyverse)
-library(deSolve)
-
-theme_set(theme_minimal())
 
 M = 100 # the number of times we want to do this. 
         # This is a mater of choice and computational capacity (this model is small and quick, but that won't always be the case)
@@ -159,7 +156,9 @@ for(m in 1:M){
   if(m==1){sir_sol_storage <- sir_sol}
   if(m>1){sir_sol_storage <- rbind(sir_sol_storage,sir_sol)}
 }
+```
 
+```{r}
 # Turn the output from the ODE solver into a tibble (dataframe)
 # so we can manipulate and plot it easily
 sir_sol_df <- as_tibble(sir_sol_storage) %>%
@@ -195,7 +194,7 @@ sir_sol_df <- as_tibble(sir_sol_storage) %>%
 
 SIRcolors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851")
 
-ggplot(sir_sol_df, aes(x = time, y = proportion, color = state)) +
+ggplot(sir_sol_df, aes(x = time, y = proportion, color = state, group=interaction(iteration, state))) +
   geom_line(linewidth = 1.5, alpha=.1) +
   scale_color_manual(values = SIRcolors) +
   labs(
@@ -244,7 +243,9 @@ time <- 0
 
 beta <- .5           # transmission rate
 gamma <- 1/7        # recovery rate
+```
 
+```{r}
 ###############################################################################
 # Gillespie Step                                                              #
 ###############################################################################
@@ -422,7 +423,9 @@ for(m in 1:M){
   if(m==1){sir_gil_storage = tibble(S, I, R, time, iteration)}
   if(m>1){sir_gil_storage = bind_rows(sir_gil_storage, tibble(S, I, R, time, iteration))}
 }
+```
 
+```{r}
 # Reuse the plotting code from above
 
 # Turn the output from gilstep() into a tibble (dataframe)
@@ -502,7 +505,9 @@ time <- 0
 
 beta <- .5           # transmission rate
 gamma <- 1/7        # recovery rate
+```
 
+```{r}
 ###############################################################################
 # Tau Leaping Single time step                                                            #
 ###############################################################################
@@ -555,8 +560,13 @@ Imat <- matrix(I,1,sims)      # storage item for I for all simulations
 Rmat <- matrix(R,1,sims)      # storage item for R for all simulations
 new_cases <- matrix(0,1,sims) # storage item for new cases (i.e. incidence) for all simulations
 Nmat <- S+I+R                 # storage item for N for all simulations  
+```
 
-# run over a time from 2 to T
+```{r}
+###############################################################################
+# run over a time from 2 to T                                               #
+###############################################################################
+# 
 for(ts in 2:T){     #loop over time, ts is the index
   
   out <- tau_sir_step(sims, Smat[ts-1,], Imat[ts-1,], Rmat[ts-1,], beta, gamma, delta.t=1) # call to SIR step function above
@@ -593,9 +603,6 @@ tau_df = tau_df %>%
   mutate(state = factor(state, levels = c("S", "I", "R","N", "cases")))
 
 SIRcolors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851", cases = "#2ca02c") # fix this color
-
-# NOT CURRENTLY WORKING
-# NOT PLOTTING AS INDIVIDUAL LINES
 
 tau_df %>%
   mutate(iteration = as.factor(iteration)) %>%
@@ -638,9 +645,6 @@ tau_df = tau_df %>%
   mutate(state = factor(state, levels = c("S", "I", "R","N", "cases")))
 
 SIRcolors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851", cases = "#2ca02c") # fix this color
-
-# NOT CURRENTLY WORKING
-# NOT PLOTTING AS INDIVIDUAL LINES
 
 tau_df %>%
   mutate(iteration = as.factor(iteration)) %>%
