@@ -41,11 +41,6 @@ Thus, our estimate of $R_0$ may be "uncertain" (e.g. has a confidence interval a
 If we return to the code from R-session 1, we can plot a single deterministic realization of a model with $R_0 = 1.8$.
 
 ```{r}
-#| echo: true
-#| message: false
-#| out-width: 100%
-#| column: body
-
 sir_model <- function(time, state, params, ...) {
   transmission <- params["transmission"]
   recovery <- 1 / params["duration"]
@@ -77,6 +72,9 @@ sir_sol <- deSolve::ode(
 ```
 
 ```{r}
+#| out-width: 100%
+#| column: body
+
 # Turn the output from the ODE solver into a tibble (dataframe)
 # so we can manipulate and plot it easily
 sir_sol_df <- as_tibble(sir_sol) %>%
@@ -128,12 +126,7 @@ An entirely reasonble way to represent this uncertainty in the estimate of the t
 For this we can modify the code above with a loop that does this $M$ times. 
 
 ```{r}
-#| echo: true
-#| message: false
-#| out-width: 100%
-#| column: body
-
-M = 100 # the number of times we want to do this. 
+M <- 100 # the number of times we want to do this. 
         # This is a mater of choice and computational capacity (this model is small and quick, but that won't always be the case)
 
 #since we're going to do this M times we need a place to store the results
@@ -227,11 +220,6 @@ Explain the steps
 
 
 ```{r}
-#| echo: true
-#| message: false
-#| out-width: 100%
-#| column: body
-
 ###############################################################################
 # Parameters and initial conditions                                            #
 ###############################################################################
@@ -271,11 +259,6 @@ gilstep <- function(SIR, beta, gamma){
 The gilstep() function increments the states forward by 1 event. Which event happens first, and the time it takes for that event to happen are both random varaibles. We then need to do this many times. 
 
 ```{r}
-#| echo: true
-#| message: false
-#| out-width: 100%
-#| column: body
-
 ###############################################################################
 # Simulate over time                                                          #
 ###############################################################################
@@ -308,8 +291,6 @@ while(all(I>0)){            #continue until I is depleted
 We can now plot the one realization of this stochastic outbreak. Notice that it has the same general shape as the deterministic outbreak, but is no longer smooth because each individual event over time happens randomly. 
 
 ```{r}
-#| echo: true
-#| message: false
 #| out-width: 100%
 #| column: body
 
@@ -368,15 +349,9 @@ Note that this code is designed to be transparent not to be fast.
 Making these run fast is beyond the scope of this assignment. 
 
 ```{r}
-#| echo: true
-#| eval: false
-#| #| message: false
-#| out-width: 100%
-#| column: body
-
 ###############################################################################
 # Simulate over time                                                          #
-M = 10  # number of realizations to simulate 
+M <- 10  # number of realizations to simulate 
 
 for(m in 1:M){
   ###############################################################################
@@ -452,7 +427,7 @@ gil_df <- sir_gil_storage %>%  # put elements in a data frame
   # time
   pivot_longer(
     # Don't pivot the time column
-    cols = -c(time,iteration),
+    cols = -c(time, iteration),
     names_to = "state",
     values_to = "number"
   ) %>%
@@ -462,7 +437,7 @@ gil_df <- sir_gil_storage %>%  # put elements in a data frame
 
 SIRcolors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851")
 
-ggplot(gil_df, aes(x = time, y = number, color = state, group=interaction(iteration, state))) +
+ggplot(gil_df, aes(x = time, y = number, color = state, group = interaction(iteration, state))) +
   geom_line(linewidth = 1.5,alpha = .1) +
   scale_color_manual(values = SIRcolors) +
   labs(
@@ -489,11 +464,6 @@ There's not right answer to what time step to use.
 Here we'll use 1 day, for convenience. 
 
 ```{r}
-#| echo: true
-#| message: false
-#| out-width: 100%
-#| column: body
-
 ###############################################################################
 # Parameters and initial conditions                                           #
 ###############################################################################
@@ -521,15 +491,15 @@ tau_sir_step <- function (sims, S, I, R, beta, gamma, delta.t, ...) {
   # gamma = recovery rate
   
   N <- S+I+R    # total population size
-  dSI <- rpois(n=sims,beta*S*(I/N)*delta.t)  # new incident infections
-  dIR <- rpois(n=sims,gamma*I*delta.t)       # recoveries
+  dSI <- rpois(n = sims, beta*S*(I/N)*delta.t)  # new incident infections
+  dIR <- rpois(n = sims, gamma*I*delta.t)       # recoveries
   # note that this can be done with a binomial step as well
   #dSI <- rbinom(n=sims,size=S,prob=1-exp(-beta*(I/N)*delta.t))  # new incident infections
   #dIR <- rbinom(n=sims,size=I,prob=1-exp(-gamma*delta.t))       # recoveries
   
   #since it is possible for the transitions to drirve the states negative, we have to prevent that
-  S <- pmax(S - dSI,0)            # change in S
-  I <- pmax(I + dSI - dIR,0)      # change in I
+  S <- pmax(S - dSI, 0)            # change in S
+  I <- pmax(I + dSI - dIR, 0)      # change in I
   R <- R + dIR            # change in R
   cbind(S, I, R, dSI) # note that dSI are the new incident infections
 }
@@ -544,21 +514,16 @@ The reason we don't automatically start with binomial draws is that they are com
 As computers have gotten faster, this is less of an issue. 
 
 ```{r}
-#| echo: true
-#| message: false
-#| out-width: 100%
-#| column: body
-
 ###############################################################################
 # set up and storage for states                                               #
 ###############################################################################
 T <- 100        # time to simulate over. With Tau Leaping the random draws scales with time not with population size, so this is much more efficient than Gillespie for large populations
 sims <- 1000    # number of simulations: notice that we can do WAY more now
 
-Smat <- matrix(S,1,sims)      # storage item for S for all simulations
-Imat <- matrix(I,1,sims)      # storage item for I for all simulations
-Rmat <- matrix(R,1,sims)      # storage item for R for all simulations
-new_cases <- matrix(0,1,sims) # storage item for new cases (i.e. incidence) for all simulations
+Smat <- matrix(S, 1, sims)      # storage item for S for all simulations
+Imat <- matrix(I, 1, sims)      # storage item for I for all simulations
+Rmat <- matrix(R, 1, sims)      # storage item for R for all simulations
+new_cases <- matrix(0, 1, sims) # storage item for new cases (i.e. incidence) for all simulations
 Nmat <- S+I+R                 # storage item for N for all simulations  
 ```
 
@@ -571,19 +536,17 @@ for(ts in 2:T){     #loop over time, ts is the index
   
   out <- tau_sir_step(sims, Smat[ts-1,], Imat[ts-1,], Rmat[ts-1,], beta, gamma, delta.t=1) # call to SIR step function above
 
-  Smat <- rbind(Smat,out[,1])  # update state
-  Imat <- rbind(Imat,out[,2])  # update state
-  Rmat <- rbind(Rmat,out[,3])  # update state
-  Nmat <- rbind(Nmat,out[,1]+out[,2]+out[,3])  # update state -- note population size isn't changing, but this could be updated with births/deaths
-  new_cases <- rbind(new_cases,out[,4])  # update state
+  Smat <- rbind(Smat, out[,1])  # update state
+  Imat <- rbind(Imat, out[,2])  # update state
+  Rmat <- rbind(Rmat, out[,3])  # update state
+  Nmat <- rbind(Nmat, out[,1]+out[,2]+out[,3])  # update state -- note population size isn't changing, but this could be updated with births/deaths
+  new_cases <- rbind(new_cases, out[,4])  # update state
 }
 ```
 
 Hopefully you can easily see that simulating 1000 iterations of Tau Leaping is \emph{way} faster than Gillespie. 
 
 ```{r}
-#| echo: true
-#| message: false
 #| out-width: 100%
 #| column: body
 
@@ -591,9 +554,9 @@ Hopefully you can easily see that simulating 1000 iterations of Tau Leaping is \
 # plotting                                                                   #
 ###############################################################################
 # put output in a data frame
-tau_df <- data_frame(S=array(Smat), I=array(Imat), R=array(Rmat), N=array(Nmat), cases=array(new_cases), time = rep(1:T,sims), iteration = rep(1:sims,each=T))
+tau_df <- tibble(S=array(Smat), I=array(Imat), R=array(Rmat), N=array(Nmat), cases=array(new_cases), time = rep(1:T,sims), iteration = rep(1:sims,each=T))
 
-tau_df = tau_df %>%
+tau_df <- tau_df %>%
   pivot_longer(
     # Don't pivot the time column
     cols = -c(time,iteration),
@@ -624,18 +587,15 @@ But, because we can simulate many more iterations, we can start to observe some 
 Note that because we have stored the newly infected individuals as "new cases" then we can plot both the incidence (new cases) and prevalence (I) each day. 
 
 ```{r}
-#| echo: true
-#| message: false
 #| out-width: 100%
 #| column: body
-
 ###############################################################################
 # plotting                                                                   #
 ###############################################################################
 # put output in a data frame
-tau_df <- data_frame(S=array(Smat), I=array(Imat), R=array(Rmat), N=array(Nmat), cases=array(new_cases), time = rep(1:T,sims), iteration = rep(1:sims,each=T))
+tau_df <- tibble(S=array(Smat), I=array(Imat), R=array(Rmat), N=array(Nmat), cases=array(new_cases), time = rep(1:T,sims), iteration = rep(1:sims,each=T))
 
-tau_df = tau_df %>%
+tau_df <- tau_df %>%
   pivot_longer(
     # Don't pivot the time column
     cols = -c(time,iteration),
@@ -683,11 +643,6 @@ Time is rescaled here to units of epidemic generation time, so $\beta$ is scaled
 TO DO: ADD A CALLOUT HERE TO THE FACT THAT R0 IS NOT FIXED, IT DEPENDS ON THE PATHOGEN, THE POPULATION, AND THE MODEL. 
 
 ```{r}
-#| echo: true
-#| message: false
-#| out-width: 100%
-#| column: body
-
 ###############################################################################
 # Parameters and initial conditions                                           #
 ###############################################################################
@@ -709,11 +664,6 @@ So, the number of simulations can rapidly increase into the millions (bigger for
 
 
 ```{r}
-#| echo: true
-#| message: false
-#| out-width: 100%
-#| column: body
-
 ###############################################################################
 # Single time step                                                            #
 ###############################################################################
@@ -737,11 +687,6 @@ Then we can run the simulation over a set of discrete time steps, T.
 Note again that T is now the number of infectious generation times, since time is rescaled relative to the models above. 
 
 ```{r}
-#| echo: true
-#| message: false
-#| out-width: 100%
-#| column: body
-
 ###############################################################################
 # Run over many steps                                                         #
 ###############################################################################
@@ -756,10 +701,10 @@ Nmat <- S+I+R
 
 for(ts in 2:T){
   out <- cb_step(sims, Smat[ts-1,], Imat[ts-1,], Rmat[ts-1,], beta)
-  Smat <- rbind(Smat,out[,1])  # update state
-  Imat <- rbind(Imat,out[,2])  # update state
-  Rmat <- rbind(Rmat,out[,3])  # update state
-  Nmat <- rbind(Nmat,out[,1]+out[,2]+out[,3])  # update state -- note population size isn't changing, but this could be updated with births/deaths
+  Smat <- rbind(Smat, out[,1])  # update state
+  Imat <- rbind(Imat, out[,2])  # update state
+  Rmat <- rbind(Rmat, out[,3])  # update state
+  Nmat <- rbind(Nmat, out[,1]+out[,2]+out[,3])  # update state -- note population size isn't changing, but this could be updated with births/deaths
   
 }
 ```
@@ -773,7 +718,7 @@ We can plot, but note again, that this is plotted in terms of epidemic generatio
 #| column: body
 
 # put output in a data frame
-bin_df <- data_frame(S=array(Smat), I=array(Imat), R=array(Rmat), N=array(matrix(Nmat)), time = rep(1:T,sims), iteration = rep(1:sims,each=T))
+bin_df <- tibble(S=array(Smat), I=array(Imat), R=array(Rmat), N=array(matrix(Nmat)), time = rep(1:T,sims), iteration = rep(1:sims,each=T))
 
 bin_df = bin_df %>%
   pivot_longer(
