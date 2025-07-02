@@ -2,8 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
-<meta name="generator" content="quarto-1.8.4">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Callum Arnold">
@@ -91,22 +89,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-19cd9126a9a9c64aacb03dc90954a64a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-c68da94286011e9302a35de07ef23a9e.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-19cd9126a9a9c64aacb03dc90954a64a.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-71f524eee1dc5ed9e55699206ad9d6f5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-4c0fb4a9f49e9c425cadb25d7a35c2be.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-71f524eee1dc5ed9e55699206ad9d6f5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-726386cc3f69a7490c113a4bd0355c68.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-bcf2ea6b8363dae1913c42ee6a512f3f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-726386cc3f69a7490c113a4bd0355c68.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
@@ -355,14 +341,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./L07_models-and-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Confronting Models with Data</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./L08_stochastic-models.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Stochastic Models</span></span></a>
+  <a href="./r-session-04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R Session 04</span></span></a>
   </div>
 </li>
       </ul>
@@ -2650,27 +2630,11 @@ Note about <code>map()</code>
 <col style="width: 25%">
 <col style="width: 25%">
 </colgroup>
-<thead><tr class="gt_col_headings header">
+<thead><tr class="header gt_col_headings">
 <th id="R0" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>R0</strong></th>
 <th id="mean_age" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Mean age of<br>infection</strong></th>
 <th id="sum_cases" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Total cases between<br>15-35 years</strong></th>
 <th id="prev_perc" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Prevalence (per 100_000) <br> between 15-35 years</strong></th>
-<thead><tr class="gt_col_headings header">
-<th id="<strong>R0</strong>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>R0</strong></th>
-<th id="<strong>Mean age of<br>infection</strong>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Mean age of<br>
-infection</strong></th>
-<th id="<strong>Total cases between<br>15-35 years</strong>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Total cases between<br>
-15-35 years</strong></th>
-<th id="<strong>Prevalence (per 100_000) <br> between 15-35 years</strong>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Prevalence (per 100_000)<br>
-between 15-35 years</strong></th>
-<thead><tr class="header gt_col_headings">
-<th id="<strong>R0</strong>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>R0</strong></th>
-<th id="<strong>Mean age of<br>infection</strong>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Mean age of<br>
-infection</strong></th>
-<th id="<strong>Total cases between<br>15-35 years</strong>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Total cases between<br>
-15-35 years</strong></th>
-<th id="<strong>Prevalence (per 100_000) <br> between 15-35 years</strong>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Prevalence (per 100_000)<br>
-between 15-35 years</strong></th>
 </tr></thead>
 <tbody class="gt_table_body">
 <tr class="odd">
@@ -4934,11 +4898,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb89-1333"><a href="#cb89-1333"></a>See @sec-mean-age-r-code for code you can run in <span class="in">`R`</span> to investigate the relationship between $R_0$, vaccination coverage, life expectancy, and the mean age of infection.</span>
 <span id="cb89-1334"><a href="#cb89-1334"></a>:::</span>
 <span id="cb89-1335"><a href="#cb89-1335"></a></span>
-<span id="cb89-1336"><a href="#cb89-1336"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"exercise"</span><span class="dt">&gt;</span></span>
+<span id="cb89-1336"><a href="#cb89-1336"></a>&lt;div class="exercise"&gt;</span>
 <span id="cb89-1337"><a href="#cb89-1337"></a></span>
 <span id="cb89-1338"><a href="#cb89-1338"></a><span class="fu">### Exercise 5: mean age of infection interactions</span></span>
 <span id="cb89-1339"><a href="#cb89-1339"></a></span>
-<span id="cb89-1340"><a href="#cb89-1340"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb89-1340"><a href="#cb89-1340"></a>&lt;/div&gt;</span>
 <span id="cb89-1341"><a href="#cb89-1341"></a></span>
 <span id="cb89-1342"><a href="#cb89-1342"></a><span class="fu">#### When you increase $R_0$ from 2.0 to 4.0, what happens to the mean age of infection?</span></span>
 <span id="cb89-1343"><a href="#cb89-1343"></a><span class="fu">##### Is there a linear change? If not, why not?</span></span>
@@ -4946,408 +4910,184 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb89-1345"><a href="#cb89-1345"></a><span class="fu">#### Leaving $R_0$ and vaccination coverage the same, decrease the life expectancy to 50 years. What happens to the mean age of infection?</span></span>
 <span id="cb89-1346"><a href="#cb89-1346"></a><span class="fu">##### If it changed, why do you think it did?</span></span>
 <span id="cb89-1347"><a href="#cb89-1347"></a></span>
-<span id="cb89-1348"><a href="#cb89-1348"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb89-1348"><a href="#cb89-1348"></a>&lt;br&gt;</span>
 <span id="cb89-1349"><a href="#cb89-1349"></a></span>
 <span id="cb89-1352"><a href="#cb89-1352"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1353"><a href="#cb89-1353"></a><span class="co">//| echo: false</span></span>
-<span id="cb89-1354"><a href="#cb89-1354"></a>init_R0 <span class="op">=</span> <span class="fl">2.0</span></span>
-<span id="cb89-1355"><a href="#cb89-1355"></a>init_vacc <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb89-1356"><a href="#cb89-1356"></a>init_lifeexp <span class="op">=</span> <span class="dv">75</span></span>
+<span id="cb89-1353"><a href="#cb89-1353"></a><span class="in">//| echo: false</span></span>
+<span id="cb89-1354"><a href="#cb89-1354"></a><span class="in">init_R0 = 2.0</span></span>
+<span id="cb89-1355"><a href="#cb89-1355"></a><span class="in">init_vacc = 0.0</span></span>
+<span id="cb89-1356"><a href="#cb89-1356"></a><span class="in">init_lifeexp = 75</span></span>
 <span id="cb89-1357"><a href="#cb89-1357"></a><span class="in">```</span></span>
 <span id="cb89-1358"><a href="#cb89-1358"></a></span>
 <span id="cb89-1361"><a href="#cb89-1361"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1362"><a href="#cb89-1362"></a><span class="co">//| echo: false</span></span>
-<span id="cb89-1363"><a href="#cb89-1363"></a><span class="kw">function</span> <span class="fu">set</span>(input<span class="op">,</span> value) {</span>
-<span id="cb89-1364"><a href="#cb89-1364"></a>  input<span class="op">.</span><span class="at">value</span> <span class="op">=</span> value<span class="op">;</span></span>
-<span id="cb89-1365"><a href="#cb89-1365"></a>  input<span class="op">.</span><span class="fu">dispatchEvent</span>(<span class="kw">new</span> <span class="bu">Event</span>(<span class="st">"input"</span><span class="op">,</span> {<span class="dt">bubbles</span><span class="op">:</span> <span class="kw">true</span>}))<span class="op">;</span></span>
-<span id="cb89-1366"><a href="#cb89-1366"></a>}</span>
+<span id="cb89-1362"><a href="#cb89-1362"></a><span class="in">//| echo: false</span></span>
+<span id="cb89-1363"><a href="#cb89-1363"></a><span class="in">function set(input, value) {</span></span>
+<span id="cb89-1364"><a href="#cb89-1364"></a><span class="in">  input.value = value;</span></span>
+<span id="cb89-1365"><a href="#cb89-1365"></a><span class="in">  input.dispatchEvent(new Event("input", {bubbles: true}));</span></span>
+<span id="cb89-1366"><a href="#cb89-1366"></a><span class="in">}</span></span>
 <span id="cb89-1367"><a href="#cb89-1367"></a><span class="in">```</span></span>
 <span id="cb89-1368"><a href="#cb89-1368"></a></span>
 <span id="cb89-1371"><a href="#cb89-1371"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1372"><a href="#cb89-1372"></a><span class="co">//| echo: false</span></span>
-<span id="cb89-1373"><a href="#cb89-1373"></a><span class="co">//| panel: sidebar</span></span>
-<span id="cb89-1374"><a href="#cb89-1374"></a>viewof reset <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>([</span>
-<span id="cb89-1375"><a href="#cb89-1375"></a>  [<span class="st">"Reset all sliders"</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb89-1376"><a href="#cb89-1376"></a>    <span class="kw">set</span>(viewof R0<span class="op">,</span> init_R0)</span>
-<span id="cb89-1377"><a href="#cb89-1377"></a>    <span class="kw">set</span>(viewof vacc<span class="op">,</span> init_vacc)</span>
-<span id="cb89-1378"><a href="#cb89-1378"></a>    <span class="kw">set</span>(viewof lifeexp<span class="op">,</span> init_lifeexp)</span>
-<span id="cb89-1379"><a href="#cb89-1379"></a>  }]</span>
-<span id="cb89-1380"><a href="#cb89-1380"></a>])</span>
-<span id="cb89-1381"><a href="#cb89-1381"></a>viewof R0 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb89-1382"><a href="#cb89-1382"></a>    [<span class="fl">1.0</span><span class="op">,</span> <span class="fl">10.0</span>]<span class="op">,</span></span>
-<span id="cb89-1383"><a href="#cb89-1383"></a>    {<span class="dt">value</span><span class="op">:</span> <span class="fl">2.0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="fu">md</span><span class="vs">`</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`R_0`</span><span class="sc">}</span><span class="vs">`</span>}</span>
-<span id="cb89-1384"><a href="#cb89-1384"></a>)</span>
+<span id="cb89-1372"><a href="#cb89-1372"></a><span class="in">//| echo: false</span></span>
+<span id="cb89-1373"><a href="#cb89-1373"></a><span class="in">//| panel: sidebar</span></span>
+<span id="cb89-1374"><a href="#cb89-1374"></a><span class="in">viewof reset = Inputs.button([</span></span>
+<span id="cb89-1375"><a href="#cb89-1375"></a><span class="in">  ["Reset all sliders", () =&gt; {</span></span>
+<span id="cb89-1376"><a href="#cb89-1376"></a><span class="in">    set(viewof R0, init_R0)</span></span>
+<span id="cb89-1377"><a href="#cb89-1377"></a><span class="in">    set(viewof vacc, init_vacc)</span></span>
+<span id="cb89-1378"><a href="#cb89-1378"></a><span class="in">    set(viewof lifeexp, init_lifeexp)</span></span>
+<span id="cb89-1379"><a href="#cb89-1379"></a><span class="in">  }]</span></span>
+<span id="cb89-1380"><a href="#cb89-1380"></a><span class="in">])</span></span>
+<span id="cb89-1381"><a href="#cb89-1381"></a><span class="in">viewof R0 = Inputs.range(</span></span>
+<span id="cb89-1382"><a href="#cb89-1382"></a><span class="in">    [1.0, 10.0],</span></span>
+<span id="cb89-1383"><a href="#cb89-1383"></a><span class="in">    {value: 2.0, step: 0.01, label: md`${tex`R_0`}`}</span></span>
+<span id="cb89-1384"><a href="#cb89-1384"></a><span class="in">)</span></span>
 <span id="cb89-1385"><a href="#cb89-1385"></a></span>
-<span id="cb89-1386"><a href="#cb89-1386"></a>viewof vacc <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb89-1387"><a href="#cb89-1387"></a>    [<span class="fl">0.0</span><span class="op">,</span> <span class="fl">1.0</span>]<span class="op">,</span></span>
-<span id="cb89-1388"><a href="#cb89-1388"></a>    {<span class="dt">value</span><span class="op">:</span> <span class="fl">0.0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Vaccination coverage"</span>}</span>
-<span id="cb89-1389"><a href="#cb89-1389"></a>)</span>
+<span id="cb89-1386"><a href="#cb89-1386"></a><span class="in">viewof vacc = Inputs.range(</span></span>
+<span id="cb89-1387"><a href="#cb89-1387"></a><span class="in">    [0.0, 1.0],</span></span>
+<span id="cb89-1388"><a href="#cb89-1388"></a><span class="in">    {value: 0.0, step: 0.01, label: "Vaccination coverage"}</span></span>
+<span id="cb89-1389"><a href="#cb89-1389"></a><span class="in">)</span></span>
 <span id="cb89-1390"><a href="#cb89-1390"></a></span>
-<span id="cb89-1391"><a href="#cb89-1391"></a>viewof lifeexp <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb89-1392"><a href="#cb89-1392"></a>    [<span class="dv">50</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span></span>
-<span id="cb89-1393"><a href="#cb89-1393"></a>    {<span class="dt">value</span><span class="op">:</span> <span class="dv">75</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Life expectancy"</span>}</span>
-<span id="cb89-1394"><a href="#cb89-1394"></a>)</span>
+<span id="cb89-1391"><a href="#cb89-1391"></a><span class="in">viewof lifeexp = Inputs.range(</span></span>
+<span id="cb89-1392"><a href="#cb89-1392"></a><span class="in">    [50, 100],</span></span>
+<span id="cb89-1393"><a href="#cb89-1393"></a><span class="in">    {value: 75, step: 1, label: "Life expectancy"}</span></span>
+<span id="cb89-1394"><a href="#cb89-1394"></a><span class="in">)</span></span>
 <span id="cb89-1395"><a href="#cb89-1395"></a></span>
-<span id="cb89-1396"><a href="#cb89-1396"></a><span class="fu">md</span><span class="vs">`</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`R_E = </span><span class="sc">${</span>Re_str<span class="sc">}</span><span class="vs">`</span><span class="sc">}</span><span class="vs">`</span></span>
-<span id="cb89-1397"><a href="#cb89-1397"></a><span class="fu">md</span><span class="vs">`</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`</span><span class="sc">\t</span><span class="vs">ext{Mean age of infection} = </span><span class="sc">${</span>Re_mean_age_str<span class="sc">}</span><span class="vs">`</span><span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb89-1396"><a href="#cb89-1396"></a><span class="in">md`${tex`R_E = ${Re_str}`}`</span></span>
+<span id="cb89-1397"><a href="#cb89-1397"></a><span class="in">md`${tex`\text{Mean age of infection} = ${Re_mean_age_str}`}`</span></span>
 <span id="cb89-1398"><a href="#cb89-1398"></a><span class="in">```</span></span>
 <span id="cb89-1399"><a href="#cb89-1399"></a></span>
 <span id="cb89-1402"><a href="#cb89-1402"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1403"><a href="#cb89-1403"></a><span class="co">//| echo: false</span></span>
-<span id="cb89-1404"><a href="#cb89-1404"></a>Re <span class="op">=</span> R0 <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> vacc)</span>
-<span id="cb89-1405"><a href="#cb89-1405"></a>Re_str <span class="op">=</span> Re<span class="op">.</span><span class="fu">toPrecision</span>(<span class="dv">4</span>)<span class="op">.</span><span class="fu">toLocaleString</span>()</span>
+<span id="cb89-1403"><a href="#cb89-1403"></a><span class="in">//| echo: false</span></span>
+<span id="cb89-1404"><a href="#cb89-1404"></a><span class="in">Re = R0 * (1 - vacc)</span></span>
+<span id="cb89-1405"><a href="#cb89-1405"></a><span class="in">Re_str = Re.toPrecision(4).toLocaleString()</span></span>
 <span id="cb89-1406"><a href="#cb89-1406"></a><span class="in">```</span></span>
 <span id="cb89-1407"><a href="#cb89-1407"></a></span>
 <span id="cb89-1410"><a href="#cb89-1410"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1411"><a href="#cb89-1411"></a><span class="co">//| echo: false</span></span>
-<span id="cb89-1412"><a href="#cb89-1412"></a><span class="kw">function</span> <span class="fu">calc_mean_age</span>(Re<span class="op">,</span> lifeexp) {</span>
-<span id="cb89-1413"><a href="#cb89-1413"></a>    <span class="cf">if</span>(Re <span class="op">&gt;=</span> <span class="dv">1</span>) {</span>
-<span id="cb89-1414"><a href="#cb89-1414"></a>        <span class="kw">var</span> mean_age <span class="op">=</span> (lifeexp <span class="op">/</span> (Re <span class="op">-</span> <span class="dv">1</span>))</span>
-<span id="cb89-1415"><a href="#cb89-1415"></a>    } <span class="cf">else</span> {</span>
-<span id="cb89-1416"><a href="#cb89-1416"></a>        <span class="kw">var</span> mean_age <span class="op">=</span> <span class="kw">Infinity</span></span>
-<span id="cb89-1417"><a href="#cb89-1417"></a>    }</span>
-<span id="cb89-1418"><a href="#cb89-1418"></a>    <span class="cf">return</span> mean_age</span>
-<span id="cb89-1419"><a href="#cb89-1419"></a>}</span>
+<span id="cb89-1411"><a href="#cb89-1411"></a><span class="in">//| echo: false</span></span>
+<span id="cb89-1412"><a href="#cb89-1412"></a><span class="in">function calc_mean_age(Re, lifeexp) {</span></span>
+<span id="cb89-1413"><a href="#cb89-1413"></a><span class="in">    if(Re &gt;= 1) {</span></span>
+<span id="cb89-1414"><a href="#cb89-1414"></a><span class="in">        var mean_age = (lifeexp / (Re - 1))</span></span>
+<span id="cb89-1415"><a href="#cb89-1415"></a><span class="in">    } else {</span></span>
+<span id="cb89-1416"><a href="#cb89-1416"></a><span class="in">        var mean_age = Infinity</span></span>
+<span id="cb89-1417"><a href="#cb89-1417"></a><span class="in">    }</span></span>
+<span id="cb89-1418"><a href="#cb89-1418"></a><span class="in">    return mean_age</span></span>
+<span id="cb89-1419"><a href="#cb89-1419"></a><span class="in">}</span></span>
 <span id="cb89-1420"><a href="#cb89-1420"></a><span class="in">```</span></span>
-<span id="cb89-1297"><a href="#cb89-1297"></a><span class="fu">##### Answer: Compute $R_0$ for your assumptions.</span></span>
-<span id="cb89-1298"><a href="#cb89-1298"></a></span>
-<span id="cb89-1301"><a href="#cb89-1301"></a><span class="in">```{r}</span></span>
-<span id="cb89-1302"><a href="#cb89-1302"></a>update_age_R0 <span class="ot">&lt;-</span> <span class="fu">round</span>(</span>
-<span id="cb89-1303"><a href="#cb89-1303"></a>    <span class="fu">calculate_R0</span>(</span>
-<span id="cb89-1304"><a href="#cb89-1304"></a>        <span class="at">beta_mat =</span> update_age_params[[<span class="st">"beta_mat"</span>]],</span>
-<span id="cb89-1305"><a href="#cb89-1305"></a>        <span class="at">stable_n_mat =</span> multistage_stable_n,</span>
-<span id="cb89-1306"><a href="#cb89-1306"></a>        <span class="at">aging_mat =</span> update_age_params[[<span class="st">"aging_mat"</span>]],</span>
-<span id="cb89-1307"><a href="#cb89-1307"></a>        <span class="at">recovery_rate =</span> update_age_params[[<span class="st">"recovery"</span>]]</span>
-<span id="cb89-1308"><a href="#cb89-1308"></a>    ),</span>
-<span id="cb89-1309"><a href="#cb89-1309"></a>    <span class="at">digits =</span> <span class="dv">2</span></span>
-<span id="cb89-1310"><a href="#cb89-1310"></a>)</span>
-<span id="cb89-1311"><a href="#cb89-1311"></a><span class="in">```</span></span>
-<span id="cb89-1312"><a href="#cb89-1312"></a></span>
-<span id="cb89-1313"><a href="#cb89-1313"></a>If you've done everything correctly, you should get $R_0 =$ <span class="in">`r update_age_R0`</span>.</span>
-<span id="cb89-1314"><a href="#cb89-1314"></a>This is higher than previously.</span>
-<span id="cb89-1315"><a href="#cb89-1315"></a>Does this match your intuition, given our changes to the beta matrix?</span>
-<span id="cb89-1316"><a href="#cb89-1316"></a></span>
-<span id="cb89-1317"><a href="#cb89-1317"></a><span class="fu">## R0 and the Mean Age of Infection</span></span>
-<span id="cb89-1318"><a href="#cb89-1318"></a></span>
-<span id="cb89-1319"><a href="#cb89-1319"></a>To develop some intuition about the relationship between $R_0$ and the mean age of infection, let's play with an interactive plot.</span>
-<span id="cb89-1320"><a href="#cb89-1320"></a>We will assume that the population is completely susceptible and that the force of infection is constant.</span>
-<span id="cb89-1321"><a href="#cb89-1321"></a>We'll also assume that there is heterogenous mixing i.e. no age structure.</span>
-<span id="cb89-1322"><a href="#cb89-1322"></a></span>
-<span id="cb89-1323"><a href="#cb89-1323"></a>As we've seen in <span class="co">[</span><span class="ot">Matt's lecture on age structure</span><span class="co">](L05_age-structure.qmd)</span>, we can calculate the mean age of infection using the equation below:</span>
-<span id="cb89-1324"><a href="#cb89-1324"></a></span>
-<span id="cb89-1325"><a href="#cb89-1325"></a>$$</span>
-<span id="cb89-1326"><a href="#cb89-1326"></a>A \approx \frac{L}{R_E - 1}</span>
-<span id="cb89-1327"><a href="#cb89-1327"></a>$${#eq-mean-age}</span>
-<span id="cb89-1328"><a href="#cb89-1328"></a></span>
-<span id="cb89-1329"><a href="#cb89-1329"></a>where $L$ is the life expectancy $\left(L = \frac{1}{\mu}\right)$ and $R_E$ is the effective reproductive number ($R_E = R_0 * (1 - p)$ where $p$ is the fraction of individuals vaccinated).</span>
-<span id="cb89-1330"><a href="#cb89-1330"></a></span>
-<span id="cb89-1331"><a href="#cb89-1331"></a>::: {.callout-note collapse="false"}</span>
-<span id="cb89-1332"><a href="#cb89-1332"></a>See @sec-mean-age-r-code for code you can run in <span class="in">`R`</span> to investigate the relationship between $R_0$, vaccination coverage, life expectancy, and the mean age of infection.</span>
-<span id="cb89-1333"><a href="#cb89-1333"></a>:::</span>
-<span id="cb89-1334"><a href="#cb89-1334"></a></span>
-<span id="cb89-1335"><a href="#cb89-1335"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"exercise"</span><span class="dt">&gt;</span></span>
-<span id="cb89-1336"><a href="#cb89-1336"></a></span>
-<span id="cb89-1337"><a href="#cb89-1337"></a><span class="fu">### Exercise 5: mean age of infection interactions</span></span>
-<span id="cb89-1338"><a href="#cb89-1338"></a></span>
-<span id="cb89-1339"><a href="#cb89-1339"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
-<span id="cb89-1340"><a href="#cb89-1340"></a></span>
-<span id="cb89-1341"><a href="#cb89-1341"></a><span class="fu">#### When you increase $R_0$ from 2.0 to 4.0, what happens to the mean age of infection?</span></span>
-<span id="cb89-1342"><a href="#cb89-1342"></a><span class="fu">##### Is there a linear change? If not, why not?</span></span>
-<span id="cb89-1343"><a href="#cb89-1343"></a><span class="fu">#### With $R_0$ to 4.0, approximately what level of vaccination coverage is required for a mean age of infection of 40 years?</span></span>
-<span id="cb89-1344"><a href="#cb89-1344"></a><span class="fu">#### Leaving $R_0$ and vaccination coverage the same, decrease the life expectancy to 50 years. What happens to the mean age of infection?</span></span>
-<span id="cb89-1345"><a href="#cb89-1345"></a><span class="fu">##### If it changed, why do you think it did?</span></span>
-<span id="cb89-1346"><a href="#cb89-1346"></a></span>
-<span id="cb89-1347"><a href="#cb89-1347"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
-<span id="cb89-1348"><a href="#cb89-1348"></a></span>
-<span id="cb89-1351"><a href="#cb89-1351"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1352"><a href="#cb89-1352"></a><span class="co">//| echo: false</span></span>
-<span id="cb89-1353"><a href="#cb89-1353"></a>init_R0 <span class="op">=</span> <span class="fl">2.0</span></span>
-<span id="cb89-1354"><a href="#cb89-1354"></a>init_vacc <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb89-1355"><a href="#cb89-1355"></a>init_lifeexp <span class="op">=</span> <span class="dv">75</span></span>
-<span id="cb89-1356"><a href="#cb89-1356"></a><span class="in">```</span></span>
-<span id="cb89-1357"><a href="#cb89-1357"></a></span>
-<span id="cb89-1360"><a href="#cb89-1360"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1361"><a href="#cb89-1361"></a><span class="co">//| echo: false</span></span>
-<span id="cb89-1362"><a href="#cb89-1362"></a><span class="kw">function</span> <span class="fu">set</span>(input<span class="op">,</span> value) {</span>
-<span id="cb89-1363"><a href="#cb89-1363"></a>  input<span class="op">.</span><span class="at">value</span> <span class="op">=</span> value<span class="op">;</span></span>
-<span id="cb89-1364"><a href="#cb89-1364"></a>  input<span class="op">.</span><span class="fu">dispatchEvent</span>(<span class="kw">new</span> <span class="bu">Event</span>(<span class="st">"input"</span><span class="op">,</span> {<span class="dt">bubbles</span><span class="op">:</span> <span class="kw">true</span>}))<span class="op">;</span></span>
-<span id="cb89-1365"><a href="#cb89-1365"></a>}</span>
-<span id="cb89-1366"><a href="#cb89-1366"></a><span class="in">```</span></span>
-<span id="cb89-1367"><a href="#cb89-1367"></a></span>
-<span id="cb89-1370"><a href="#cb89-1370"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1371"><a href="#cb89-1371"></a><span class="co">//| echo: false</span></span>
-<span id="cb89-1372"><a href="#cb89-1372"></a><span class="co">//| panel: sidebar</span></span>
-<span id="cb89-1373"><a href="#cb89-1373"></a>viewof reset <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>([</span>
-<span id="cb89-1374"><a href="#cb89-1374"></a>  [<span class="st">"Reset all sliders"</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb89-1375"><a href="#cb89-1375"></a>    <span class="kw">set</span>(viewof R0<span class="op">,</span> init_R0)</span>
-<span id="cb89-1376"><a href="#cb89-1376"></a>    <span class="kw">set</span>(viewof vacc<span class="op">,</span> init_vacc)</span>
-<span id="cb89-1377"><a href="#cb89-1377"></a>    <span class="kw">set</span>(viewof lifeexp<span class="op">,</span> init_lifeexp)</span>
-<span id="cb89-1378"><a href="#cb89-1378"></a>  }]</span>
-<span id="cb89-1379"><a href="#cb89-1379"></a>])</span>
-<span id="cb89-1380"><a href="#cb89-1380"></a>viewof R0 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb89-1381"><a href="#cb89-1381"></a>    [<span class="fl">1.0</span><span class="op">,</span> <span class="fl">10.0</span>]<span class="op">,</span></span>
-<span id="cb89-1382"><a href="#cb89-1382"></a>    {<span class="dt">value</span><span class="op">:</span> <span class="fl">2.0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="fu">md</span><span class="vs">`</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`R_0`</span><span class="sc">}</span><span class="vs">`</span>}</span>
-<span id="cb89-1383"><a href="#cb89-1383"></a>)</span>
-<span id="cb89-1384"><a href="#cb89-1384"></a></span>
-<span id="cb89-1385"><a href="#cb89-1385"></a>viewof vacc <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb89-1386"><a href="#cb89-1386"></a>    [<span class="fl">0.0</span><span class="op">,</span> <span class="fl">1.0</span>]<span class="op">,</span></span>
-<span id="cb89-1387"><a href="#cb89-1387"></a>    {<span class="dt">value</span><span class="op">:</span> <span class="fl">0.0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Vaccination coverage"</span>}</span>
-<span id="cb89-1388"><a href="#cb89-1388"></a>)</span>
-<span id="cb89-1389"><a href="#cb89-1389"></a></span>
-<span id="cb89-1390"><a href="#cb89-1390"></a>viewof lifeexp <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb89-1391"><a href="#cb89-1391"></a>    [<span class="dv">50</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span></span>
-<span id="cb89-1392"><a href="#cb89-1392"></a>    {<span class="dt">value</span><span class="op">:</span> <span class="dv">75</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Life expectancy"</span>}</span>
-<span id="cb89-1393"><a href="#cb89-1393"></a>)</span>
-<span id="cb89-1394"><a href="#cb89-1394"></a></span>
-<span id="cb89-1395"><a href="#cb89-1395"></a><span class="fu">md</span><span class="vs">`</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`R_E = </span><span class="sc">${</span>Re_str<span class="sc">}</span><span class="vs">`</span><span class="sc">}</span><span class="vs">`</span></span>
-<span id="cb89-1396"><a href="#cb89-1396"></a><span class="fu">md</span><span class="vs">`</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`</span><span class="sc">\t</span><span class="vs">ext{Mean age of infection} = </span><span class="sc">${</span>Re_mean_age_str<span class="sc">}</span><span class="vs">`</span><span class="sc">}</span><span class="vs">`</span></span>
-<span id="cb89-1397"><a href="#cb89-1397"></a><span class="in">```</span></span>
-<span id="cb89-1398"><a href="#cb89-1398"></a></span>
-<span id="cb89-1401"><a href="#cb89-1401"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1402"><a href="#cb89-1402"></a><span class="co">//| echo: false</span></span>
-<span id="cb89-1403"><a href="#cb89-1403"></a>Re <span class="op">=</span> R0 <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> vacc)</span>
-<span id="cb89-1404"><a href="#cb89-1404"></a>Re_str <span class="op">=</span> Re<span class="op">.</span><span class="fu">toPrecision</span>(<span class="dv">4</span>)<span class="op">.</span><span class="fu">toLocaleString</span>()</span>
-<span id="cb89-1405"><a href="#cb89-1405"></a><span class="in">```</span></span>
-<span id="cb89-1406"><a href="#cb89-1406"></a></span>
-<span id="cb89-1409"><a href="#cb89-1409"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1410"><a href="#cb89-1410"></a><span class="co">//| echo: false</span></span>
-<span id="cb89-1411"><a href="#cb89-1411"></a><span class="kw">function</span> <span class="fu">calc_mean_age</span>(Re<span class="op">,</span> lifeexp) {</span>
-<span id="cb89-1412"><a href="#cb89-1412"></a>    <span class="cf">if</span>(Re <span class="op">&gt;=</span> <span class="dv">1</span>) {</span>
-<span id="cb89-1413"><a href="#cb89-1413"></a>        <span class="kw">var</span> mean_age <span class="op">=</span> (lifeexp <span class="op">/</span> (Re <span class="op">-</span> <span class="dv">1</span>))</span>
-<span id="cb89-1414"><a href="#cb89-1414"></a>    } <span class="cf">else</span> {</span>
-<span id="cb89-1415"><a href="#cb89-1415"></a>        <span class="kw">var</span> mean_age <span class="op">=</span> <span class="kw">Infinity</span></span>
-<span id="cb89-1416"><a href="#cb89-1416"></a>    }</span>
-<span id="cb89-1417"><a href="#cb89-1417"></a>    <span class="cf">return</span> mean_age</span>
-<span id="cb89-1418"><a href="#cb89-1418"></a>}</span>
-<span id="cb89-1419"><a href="#cb89-1419"></a><span class="in">```</span></span>
-<span id="cb89-1420"><a href="#cb89-1420"></a></span>
-<span id="cb89-1297"><a href="#cb89-1297"></a><span class="fu">##### Answer: Compute $R_0$ for your assumptions.</span></span>
-<span id="cb89-1298"><a href="#cb89-1298"></a></span>
-<span id="cb89-1301"><a href="#cb89-1301"></a><span class="in">```{r}</span></span>
-<span id="cb89-1302"><a href="#cb89-1302"></a>update_age_R0 <span class="ot">&lt;-</span> <span class="fu">round</span>(</span>
-<span id="cb89-1303"><a href="#cb89-1303"></a>    <span class="fu">calculate_R0</span>(</span>
-<span id="cb89-1304"><a href="#cb89-1304"></a>        <span class="at">beta_mat =</span> update_age_params[[<span class="st">"beta_mat"</span>]],</span>
-<span id="cb89-1305"><a href="#cb89-1305"></a>        <span class="at">stable_n_mat =</span> multistage_stable_n,</span>
-<span id="cb89-1306"><a href="#cb89-1306"></a>        <span class="at">aging_mat =</span> update_age_params[[<span class="st">"aging_mat"</span>]],</span>
-<span id="cb89-1307"><a href="#cb89-1307"></a>        <span class="at">recovery_rate =</span> update_age_params[[<span class="st">"recovery"</span>]]</span>
-<span id="cb89-1308"><a href="#cb89-1308"></a>    ),</span>
-<span id="cb89-1309"><a href="#cb89-1309"></a>    <span class="at">digits =</span> <span class="dv">2</span></span>
-<span id="cb89-1310"><a href="#cb89-1310"></a>)</span>
-<span id="cb89-1311"><a href="#cb89-1311"></a><span class="in">```</span></span>
-<span id="cb89-1312"><a href="#cb89-1312"></a></span>
-<span id="cb89-1313"><a href="#cb89-1313"></a>If you've done everything correctly, you should get $R_0 =$ <span class="in">`r update_age_R0`</span>.</span>
-<span id="cb89-1314"><a href="#cb89-1314"></a>This is higher than previously.</span>
-<span id="cb89-1315"><a href="#cb89-1315"></a>Does this match your intuition, given our changes to the beta matrix?</span>
-<span id="cb89-1316"><a href="#cb89-1316"></a></span>
-<span id="cb89-1317"><a href="#cb89-1317"></a><span class="fu">## R0 and the Mean Age of Infection</span></span>
-<span id="cb89-1318"><a href="#cb89-1318"></a></span>
-<span id="cb89-1319"><a href="#cb89-1319"></a>To develop some intuition about the relationship between $R_0$ and the mean age of infection, let's play with an interactive plot.</span>
-<span id="cb89-1320"><a href="#cb89-1320"></a>We will assume that the population is completely susceptible and that the force of infection is constant.</span>
-<span id="cb89-1321"><a href="#cb89-1321"></a>We'll also assume that there is heterogenous mixing i.e. no age structure.</span>
-<span id="cb89-1322"><a href="#cb89-1322"></a></span>
-<span id="cb89-1323"><a href="#cb89-1323"></a>As we've seen in <span class="co">[</span><span class="ot">Matt's lecture on age structure</span><span class="co">](L05_age-structure.qmd)</span>, we can calculate the mean age of infection using the equation below:</span>
-<span id="cb89-1324"><a href="#cb89-1324"></a></span>
-<span id="cb89-1325"><a href="#cb89-1325"></a>$$</span>
-<span id="cb89-1326"><a href="#cb89-1326"></a>A \approx \frac{L}{R_E - 1}</span>
-<span id="cb89-1327"><a href="#cb89-1327"></a>$${#eq-mean-age}</span>
-<span id="cb89-1328"><a href="#cb89-1328"></a></span>
-<span id="cb89-1329"><a href="#cb89-1329"></a>where $L$ is the life expectancy $\left(L = \frac{1}{\mu}\right)$ and $R_E$ is the effective reproductive number ($R_E = R_0 * (1 - p)$ where $p$ is the fraction of individuals vaccinated).</span>
-<span id="cb89-1330"><a href="#cb89-1330"></a></span>
-<span id="cb89-1331"><a href="#cb89-1331"></a>::: {.callout-note collapse="false"}</span>
-<span id="cb89-1332"><a href="#cb89-1332"></a>See @sec-mean-age-r-code for code you can run in <span class="in">`R`</span> to investigate the relationship between $R_0$, vaccination coverage, life expectancy, and the mean age of infection.</span>
-<span id="cb89-1333"><a href="#cb89-1333"></a>:::</span>
-<span id="cb89-1334"><a href="#cb89-1334"></a></span>
-<span id="cb89-1335"><a href="#cb89-1335"></a>&lt;div class="exercise"&gt;</span>
-<span id="cb89-1336"><a href="#cb89-1336"></a></span>
-<span id="cb89-1337"><a href="#cb89-1337"></a><span class="fu">### Exercise 5: mean age of infection interactions</span></span>
-<span id="cb89-1338"><a href="#cb89-1338"></a></span>
-<span id="cb89-1339"><a href="#cb89-1339"></a>&lt;/div&gt;</span>
-<span id="cb89-1340"><a href="#cb89-1340"></a></span>
-<span id="cb89-1341"><a href="#cb89-1341"></a><span class="fu">#### When you increase $R_0$ from 2.0 to 4.0, what happens to the mean age of infection?</span></span>
-<span id="cb89-1342"><a href="#cb89-1342"></a><span class="fu">##### Is there a linear change? If not, why not?</span></span>
-<span id="cb89-1343"><a href="#cb89-1343"></a><span class="fu">#### With $R_0$ to 4.0, approximately what level of vaccination coverage is required for a mean age of infection of 40 years?</span></span>
-<span id="cb89-1344"><a href="#cb89-1344"></a><span class="fu">#### Leaving $R_0$ and vaccination coverage the same, decrease the life expectancy to 50 years. What happens to the mean age of infection?</span></span>
-<span id="cb89-1345"><a href="#cb89-1345"></a><span class="fu">##### If it changed, why do you think it did?</span></span>
-<span id="cb89-1346"><a href="#cb89-1346"></a></span>
-<span id="cb89-1347"><a href="#cb89-1347"></a>&lt;br&gt;</span>
-<span id="cb89-1348"><a href="#cb89-1348"></a></span>
-<span id="cb89-1351"><a href="#cb89-1351"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1352"><a href="#cb89-1352"></a><span class="in">//| echo: false</span></span>
-<span id="cb89-1353"><a href="#cb89-1353"></a><span class="in">init_R0 = 2.0</span></span>
-<span id="cb89-1354"><a href="#cb89-1354"></a><span class="in">init_vacc = 0.0</span></span>
-<span id="cb89-1355"><a href="#cb89-1355"></a><span class="in">init_lifeexp = 75</span></span>
-<span id="cb89-1356"><a href="#cb89-1356"></a><span class="in">```</span></span>
-<span id="cb89-1357"><a href="#cb89-1357"></a></span>
-<span id="cb89-1360"><a href="#cb89-1360"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1361"><a href="#cb89-1361"></a><span class="in">//| echo: false</span></span>
-<span id="cb89-1362"><a href="#cb89-1362"></a><span class="in">function set(input, value) {</span></span>
-<span id="cb89-1363"><a href="#cb89-1363"></a><span class="in">  input.value = value;</span></span>
-<span id="cb89-1364"><a href="#cb89-1364"></a><span class="in">  input.dispatchEvent(new Event("input", {bubbles: true}));</span></span>
-<span id="cb89-1365"><a href="#cb89-1365"></a><span class="in">}</span></span>
-<span id="cb89-1366"><a href="#cb89-1366"></a><span class="in">```</span></span>
-<span id="cb89-1367"><a href="#cb89-1367"></a></span>
-<span id="cb89-1370"><a href="#cb89-1370"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1371"><a href="#cb89-1371"></a><span class="in">//| echo: false</span></span>
-<span id="cb89-1372"><a href="#cb89-1372"></a><span class="in">//| panel: sidebar</span></span>
-<span id="cb89-1373"><a href="#cb89-1373"></a><span class="in">viewof reset = Inputs.button([</span></span>
-<span id="cb89-1374"><a href="#cb89-1374"></a><span class="in">  ["Reset all sliders", () =&gt; {</span></span>
-<span id="cb89-1375"><a href="#cb89-1375"></a><span class="in">    set(viewof R0, init_R0)</span></span>
-<span id="cb89-1376"><a href="#cb89-1376"></a><span class="in">    set(viewof vacc, init_vacc)</span></span>
-<span id="cb89-1377"><a href="#cb89-1377"></a><span class="in">    set(viewof lifeexp, init_lifeexp)</span></span>
-<span id="cb89-1378"><a href="#cb89-1378"></a><span class="in">  }]</span></span>
-<span id="cb89-1379"><a href="#cb89-1379"></a><span class="in">])</span></span>
-<span id="cb89-1380"><a href="#cb89-1380"></a><span class="in">viewof R0 = Inputs.range(</span></span>
-<span id="cb89-1381"><a href="#cb89-1381"></a><span class="in">    [1.0, 10.0],</span></span>
-<span id="cb89-1382"><a href="#cb89-1382"></a><span class="in">    {value: 2.0, step: 0.01, label: md`${tex`R_0`}`}</span></span>
-<span id="cb89-1383"><a href="#cb89-1383"></a><span class="in">)</span></span>
-<span id="cb89-1384"><a href="#cb89-1384"></a></span>
-<span id="cb89-1385"><a href="#cb89-1385"></a><span class="in">viewof vacc = Inputs.range(</span></span>
-<span id="cb89-1386"><a href="#cb89-1386"></a><span class="in">    [0.0, 1.0],</span></span>
-<span id="cb89-1387"><a href="#cb89-1387"></a><span class="in">    {value: 0.0, step: 0.01, label: "Vaccination coverage"}</span></span>
-<span id="cb89-1388"><a href="#cb89-1388"></a><span class="in">)</span></span>
-<span id="cb89-1389"><a href="#cb89-1389"></a></span>
-<span id="cb89-1390"><a href="#cb89-1390"></a><span class="in">viewof lifeexp = Inputs.range(</span></span>
-<span id="cb89-1391"><a href="#cb89-1391"></a><span class="in">    [50, 100],</span></span>
-<span id="cb89-1392"><a href="#cb89-1392"></a><span class="in">    {value: 75, step: 1, label: "Life expectancy"}</span></span>
-<span id="cb89-1393"><a href="#cb89-1393"></a><span class="in">)</span></span>
-<span id="cb89-1394"><a href="#cb89-1394"></a></span>
-<span id="cb89-1395"><a href="#cb89-1395"></a><span class="in">md`${tex`R_E = ${Re_str}`}`</span></span>
-<span id="cb89-1396"><a href="#cb89-1396"></a><span class="in">md`${tex`\text{Mean age of infection} = ${Re_mean_age_str}`}`</span></span>
-<span id="cb89-1397"><a href="#cb89-1397"></a><span class="in">```</span></span>
-<span id="cb89-1398"><a href="#cb89-1398"></a></span>
-<span id="cb89-1401"><a href="#cb89-1401"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1402"><a href="#cb89-1402"></a><span class="in">//| echo: false</span></span>
-<span id="cb89-1403"><a href="#cb89-1403"></a><span class="in">Re = R0 * (1 - vacc)</span></span>
-<span id="cb89-1404"><a href="#cb89-1404"></a><span class="in">Re_str = Re.toPrecision(4).toLocaleString()</span></span>
-<span id="cb89-1405"><a href="#cb89-1405"></a><span class="in">```</span></span>
-<span id="cb89-1406"><a href="#cb89-1406"></a></span>
-<span id="cb89-1409"><a href="#cb89-1409"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1410"><a href="#cb89-1410"></a><span class="in">//| echo: false</span></span>
-<span id="cb89-1411"><a href="#cb89-1411"></a><span class="in">function calc_mean_age(Re, lifeexp) {</span></span>
-<span id="cb89-1412"><a href="#cb89-1412"></a><span class="in">    if(Re &gt;= 1) {</span></span>
-<span id="cb89-1413"><a href="#cb89-1413"></a><span class="in">        var mean_age = (lifeexp / (Re - 1))</span></span>
-<span id="cb89-1414"><a href="#cb89-1414"></a><span class="in">    } else {</span></span>
-<span id="cb89-1415"><a href="#cb89-1415"></a><span class="in">        var mean_age = Infinity</span></span>
-<span id="cb89-1416"><a href="#cb89-1416"></a><span class="in">    }</span></span>
-<span id="cb89-1417"><a href="#cb89-1417"></a><span class="in">    return mean_age</span></span>
-<span id="cb89-1418"><a href="#cb89-1418"></a><span class="in">}</span></span>
-<span id="cb89-1419"><a href="#cb89-1419"></a><span class="in">```</span></span>
-<span id="cb89-1420"><a href="#cb89-1420"></a></span>
 <span id="cb89-1421"><a href="#cb89-1421"></a></span>
 <span id="cb89-1422"><a href="#cb89-1422"></a></span>
 <span id="cb89-1425"><a href="#cb89-1425"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1426"><a href="#cb89-1426"></a><span class="co">//| echo: false</span></span>
-<span id="cb89-1427"><a href="#cb89-1427"></a>R0_mean_age <span class="op">=</span> <span class="fu">calc_mean_age</span>(R0<span class="op">,</span> lifeexp)</span>
-<span id="cb89-1428"><a href="#cb89-1428"></a>Re_mean_age <span class="op">=</span> <span class="fu">calc_mean_age</span>(Re<span class="op">,</span> lifeexp)</span>
-<span id="cb89-1429"><a href="#cb89-1429"></a>Re_mean_age_str <span class="op">=</span> Re_mean_age<span class="op">.</span><span class="fu">toPrecision</span>(<span class="dv">4</span>)<span class="op">.</span><span class="fu">toLocaleString</span>()</span>
+<span id="cb89-1426"><a href="#cb89-1426"></a><span class="in">//| echo: false</span></span>
+<span id="cb89-1427"><a href="#cb89-1427"></a><span class="in">R0_mean_age = calc_mean_age(R0, lifeexp)</span></span>
+<span id="cb89-1428"><a href="#cb89-1428"></a><span class="in">Re_mean_age = calc_mean_age(Re, lifeexp)</span></span>
+<span id="cb89-1429"><a href="#cb89-1429"></a><span class="in">Re_mean_age_str = Re_mean_age.toPrecision(4).toLocaleString()</span></span>
 <span id="cb89-1430"><a href="#cb89-1430"></a><span class="in">```</span></span>
 <span id="cb89-1431"><a href="#cb89-1431"></a></span>
 <span id="cb89-1432"><a href="#cb89-1432"></a></span>
 <span id="cb89-1435"><a href="#cb89-1435"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1436"><a href="#cb89-1436"></a><span class="co">//| echo: false</span></span>
-<span id="cb89-1437"><a href="#cb89-1437"></a><span class="im">import</span> { aq<span class="op">,</span> op } <span class="im">from</span> <span class="st">'@uwdata/arquero'</span></span>
+<span id="cb89-1436"><a href="#cb89-1436"></a><span class="in">//| echo: false</span></span>
+<span id="cb89-1437"><a href="#cb89-1437"></a><span class="in">import { aq, op } from '@uwdata/arquero'</span></span>
 <span id="cb89-1438"><a href="#cb89-1438"></a><span class="in">```</span></span>
 <span id="cb89-1439"><a href="#cb89-1439"></a></span>
 <span id="cb89-1442"><a href="#cb89-1442"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1443"><a href="#cb89-1443"></a><span class="co">//| echo: false</span></span>
-<span id="cb89-1444"><a href="#cb89-1444"></a><span class="kw">function</span> <span class="fu">calc_mean_age_arr</span>(vacc<span class="op">,</span> lifeexp<span class="op">,</span> R0_min<span class="op">,</span> R0_max<span class="op">,</span> dR0) {</span>
-<span id="cb89-1445"><a href="#cb89-1445"></a>    <span class="kw">var</span> R0_sim <span class="op">=</span> R0_min</span>
+<span id="cb89-1443"><a href="#cb89-1443"></a><span class="in">//| echo: false</span></span>
+<span id="cb89-1444"><a href="#cb89-1444"></a><span class="in">function calc_mean_age_arr(vacc, lifeexp, R0_min, R0_max, dR0) {</span></span>
+<span id="cb89-1445"><a href="#cb89-1445"></a><span class="in">    var R0_sim = R0_min</span></span>
 <span id="cb89-1446"><a href="#cb89-1446"></a></span>
-<span id="cb89-1447"><a href="#cb89-1447"></a>    <span class="kw">var</span> R0 <span class="op">=</span> []</span>
-<span id="cb89-1448"><a href="#cb89-1448"></a>    <span class="kw">var</span> Re <span class="op">=</span> []</span>
-<span id="cb89-1449"><a href="#cb89-1449"></a>    <span class="kw">var</span> R0_mean_age <span class="op">=</span> []</span>
-<span id="cb89-1450"><a href="#cb89-1450"></a>    <span class="kw">var</span> Re_mean_age <span class="op">=</span> []</span>
+<span id="cb89-1447"><a href="#cb89-1447"></a><span class="in">    var R0 = []</span></span>
+<span id="cb89-1448"><a href="#cb89-1448"></a><span class="in">    var Re = []</span></span>
+<span id="cb89-1449"><a href="#cb89-1449"></a><span class="in">    var R0_mean_age = []</span></span>
+<span id="cb89-1450"><a href="#cb89-1450"></a><span class="in">    var Re_mean_age = []</span></span>
 <span id="cb89-1451"><a href="#cb89-1451"></a></span>
-<span id="cb89-1452"><a href="#cb89-1452"></a>    <span class="cf">for</span> (R0_sim <span class="op">=</span> R0_min<span class="op">;</span> R0_sim <span class="op">&lt;=</span> R0_max<span class="op">;</span> R0_sim <span class="op">+=</span> dR0) {</span>
-<span id="cb89-1453"><a href="#cb89-1453"></a>        <span class="kw">var</span> Re_sim <span class="op">=</span> R0_sim <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> vacc)</span>
-<span id="cb89-1454"><a href="#cb89-1454"></a>        <span class="kw">var</span> R0_mean_age_sim <span class="op">=</span> <span class="fu">calc_mean_age</span>(R0_sim<span class="op">,</span> lifeexp)</span>
-<span id="cb89-1455"><a href="#cb89-1455"></a>        <span class="kw">var</span> Re_mean_age_sim <span class="op">=</span> <span class="fu">calc_mean_age</span>(Re_sim<span class="op">,</span> lifeexp)</span>
+<span id="cb89-1452"><a href="#cb89-1452"></a><span class="in">    for (R0_sim = R0_min; R0_sim &lt;= R0_max; R0_sim += dR0) {</span></span>
+<span id="cb89-1453"><a href="#cb89-1453"></a><span class="in">        var Re_sim = R0_sim * (1 - vacc)</span></span>
+<span id="cb89-1454"><a href="#cb89-1454"></a><span class="in">        var R0_mean_age_sim = calc_mean_age(R0_sim, lifeexp)</span></span>
+<span id="cb89-1455"><a href="#cb89-1455"></a><span class="in">        var Re_mean_age_sim = calc_mean_age(Re_sim, lifeexp)</span></span>
 <span id="cb89-1456"><a href="#cb89-1456"></a></span>
-<span id="cb89-1457"><a href="#cb89-1457"></a>        R0<span class="op">.</span><span class="fu">push</span>(R0_sim)</span>
-<span id="cb89-1458"><a href="#cb89-1458"></a>        Re<span class="op">.</span><span class="fu">push</span>(Re_sim)</span>
-<span id="cb89-1459"><a href="#cb89-1459"></a>        R0_mean_age<span class="op">.</span><span class="fu">push</span>(R0_mean_age_sim)</span>
-<span id="cb89-1460"><a href="#cb89-1460"></a>        Re_mean_age<span class="op">.</span><span class="fu">push</span>(Re_mean_age_sim)</span>
-<span id="cb89-1461"><a href="#cb89-1461"></a>    }</span>
+<span id="cb89-1457"><a href="#cb89-1457"></a><span class="in">        R0.push(R0_sim)</span></span>
+<span id="cb89-1458"><a href="#cb89-1458"></a><span class="in">        Re.push(Re_sim)</span></span>
+<span id="cb89-1459"><a href="#cb89-1459"></a><span class="in">        R0_mean_age.push(R0_mean_age_sim)</span></span>
+<span id="cb89-1460"><a href="#cb89-1460"></a><span class="in">        Re_mean_age.push(Re_mean_age_sim)</span></span>
+<span id="cb89-1461"><a href="#cb89-1461"></a><span class="in">    }</span></span>
 <span id="cb89-1462"><a href="#cb89-1462"></a></span>
-<span id="cb89-1463"><a href="#cb89-1463"></a>    <span class="cf">return</span> {</span>
-<span id="cb89-1464"><a href="#cb89-1464"></a>        <span class="dt">Re</span><span class="op">:</span> aq<span class="op">.</span><span class="fu">table</span>({</span>
-<span id="cb89-1465"><a href="#cb89-1465"></a>                <span class="dt">R0</span><span class="op">:</span> R0<span class="op">,</span></span>
-<span id="cb89-1466"><a href="#cb89-1466"></a>                <span class="dt">mean_age</span><span class="op">:</span> Re_mean_age</span>
-<span id="cb89-1467"><a href="#cb89-1467"></a>            })<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">mean_age</span> <span class="op">&lt;=</span> <span class="dv">100</span>)<span class="op">,</span></span>
-<span id="cb89-1468"><a href="#cb89-1468"></a>        <span class="dt">R0</span><span class="op">:</span> aq<span class="op">.</span><span class="fu">table</span>({</span>
-<span id="cb89-1469"><a href="#cb89-1469"></a>                <span class="dt">R0</span><span class="op">:</span> R0<span class="op">,</span></span>
-<span id="cb89-1470"><a href="#cb89-1470"></a>                <span class="dt">mean_age</span><span class="op">:</span> R0_mean_age</span>
-<span id="cb89-1471"><a href="#cb89-1471"></a>            })<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">mean_age</span> <span class="op">&lt;=</span> <span class="dv">100</span>)</span>
-<span id="cb89-1472"><a href="#cb89-1472"></a>    }</span>
-<span id="cb89-1473"><a href="#cb89-1473"></a>}</span>
+<span id="cb89-1463"><a href="#cb89-1463"></a><span class="in">    return {</span></span>
+<span id="cb89-1464"><a href="#cb89-1464"></a><span class="in">        Re: aq.table({</span></span>
+<span id="cb89-1465"><a href="#cb89-1465"></a><span class="in">                R0: R0,</span></span>
+<span id="cb89-1466"><a href="#cb89-1466"></a><span class="in">                mean_age: Re_mean_age</span></span>
+<span id="cb89-1467"><a href="#cb89-1467"></a><span class="in">            }).filter((d) =&gt; d.mean_age &lt;= 100),</span></span>
+<span id="cb89-1468"><a href="#cb89-1468"></a><span class="in">        R0: aq.table({</span></span>
+<span id="cb89-1469"><a href="#cb89-1469"></a><span class="in">                R0: R0,</span></span>
+<span id="cb89-1470"><a href="#cb89-1470"></a><span class="in">                mean_age: R0_mean_age</span></span>
+<span id="cb89-1471"><a href="#cb89-1471"></a><span class="in">            }).filter((d) =&gt; d.mean_age &lt;= 100)</span></span>
+<span id="cb89-1472"><a href="#cb89-1472"></a><span class="in">    }</span></span>
+<span id="cb89-1473"><a href="#cb89-1473"></a><span class="in">}</span></span>
 <span id="cb89-1474"><a href="#cb89-1474"></a><span class="in">```</span></span>
 <span id="cb89-1475"><a href="#cb89-1475"></a></span>
 <span id="cb89-1478"><a href="#cb89-1478"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1479"><a href="#cb89-1479"></a><span class="co">//| echo: false</span></span>
-<span id="cb89-1480"><a href="#cb89-1480"></a>mean_age_arrs <span class="op">=</span> <span class="fu">calc_mean_age_arr</span>(vacc<span class="op">,</span> lifeexp<span class="op">,</span> <span class="fl">1.0</span><span class="op">,</span> <span class="fl">10.0</span><span class="op">,</span> <span class="fl">0.01</span>)</span>
+<span id="cb89-1479"><a href="#cb89-1479"></a><span class="in">//| echo: false</span></span>
+<span id="cb89-1480"><a href="#cb89-1480"></a><span class="in">mean_age_arrs = calc_mean_age_arr(vacc, lifeexp, 1.0, 10.0, 0.01)</span></span>
 <span id="cb89-1481"><a href="#cb89-1481"></a><span class="in">```</span></span>
 <span id="cb89-1482"><a href="#cb89-1482"></a></span>
 <span id="cb89-1485"><a href="#cb89-1485"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1486"><a href="#cb89-1486"></a><span class="co">//| echo: false</span></span>
-<span id="cb89-1487"><a href="#cb89-1487"></a>mean_age_dots <span class="op">=</span> [({</span>
-<span id="cb89-1488"><a href="#cb89-1488"></a>    <span class="dt">arrow_start</span><span class="op">:</span> R0_mean_age <span class="op">&lt;=</span> <span class="dv">100</span> <span class="op">?</span> R0_mean_age <span class="op">:</span> <span class="dv">100</span><span class="op">,</span></span>
-<span id="cb89-1489"><a href="#cb89-1489"></a>    <span class="dt">arrow_end</span><span class="op">:</span> Re_mean_age <span class="op">&lt;=</span> <span class="dv">100</span> <span class="op">?</span> Re_mean_age <span class="op">:</span> <span class="dv">100</span><span class="op">,</span></span>
-<span id="cb89-1490"><a href="#cb89-1490"></a>    <span class="dt">R0</span><span class="op">:</span> R0<span class="op">.</span><span class="fu">toPrecision</span>(<span class="dv">3</span>)<span class="op">,</span></span>
-<span id="cb89-1491"><a href="#cb89-1491"></a>    <span class="dt">Re</span><span class="op">:</span> Re<span class="op">.</span><span class="fu">toPrecision</span>(<span class="dv">3</span>)<span class="op">,</span></span>
-<span id="cb89-1492"><a href="#cb89-1492"></a>    R0_mean_age<span class="op">,</span></span>
-<span id="cb89-1493"><a href="#cb89-1493"></a>    Re_mean_age</span>
-<span id="cb89-1494"><a href="#cb89-1494"></a>})]</span>
+<span id="cb89-1486"><a href="#cb89-1486"></a><span class="in">//| echo: false</span></span>
+<span id="cb89-1487"><a href="#cb89-1487"></a><span class="in">mean_age_dots = [({</span></span>
+<span id="cb89-1488"><a href="#cb89-1488"></a><span class="in">    arrow_start: R0_mean_age &lt;= 100 ? R0_mean_age : 100,</span></span>
+<span id="cb89-1489"><a href="#cb89-1489"></a><span class="in">    arrow_end: Re_mean_age &lt;= 100 ? Re_mean_age : 100,</span></span>
+<span id="cb89-1490"><a href="#cb89-1490"></a><span class="in">    R0: R0.toPrecision(3),</span></span>
+<span id="cb89-1491"><a href="#cb89-1491"></a><span class="in">    Re: Re.toPrecision(3),</span></span>
+<span id="cb89-1492"><a href="#cb89-1492"></a><span class="in">    R0_mean_age,</span></span>
+<span id="cb89-1493"><a href="#cb89-1493"></a><span class="in">    Re_mean_age</span></span>
+<span id="cb89-1494"><a href="#cb89-1494"></a><span class="in">})]</span></span>
 <span id="cb89-1495"><a href="#cb89-1495"></a><span class="in">```</span></span>
 <span id="cb89-1496"><a href="#cb89-1496"></a></span>
 <span id="cb89-1499"><a href="#cb89-1499"></a><span class="in">```{ojs}</span></span>
-<span id="cb89-1500"><a href="#cb89-1500"></a><span class="co">//| echo: false</span></span>
-<span id="cb89-1501"><a href="#cb89-1501"></a><span class="co">//| panel: fill</span></span>
-<span id="cb89-1502"><a href="#cb89-1502"></a>{</span>
-<span id="cb89-1503"><a href="#cb89-1503"></a>    <span class="kw">let</span> R0Color <span class="op">=</span> <span class="st">"#1f77b4"</span></span>
-<span id="cb89-1504"><a href="#cb89-1504"></a>    <span class="kw">let</span> ReColor <span class="op">=</span> <span class="st">"#ff7f0e"</span></span>
+<span id="cb89-1500"><a href="#cb89-1500"></a><span class="in">//| echo: false</span></span>
+<span id="cb89-1501"><a href="#cb89-1501"></a><span class="in">//| panel: fill</span></span>
+<span id="cb89-1502"><a href="#cb89-1502"></a><span class="in">{</span></span>
+<span id="cb89-1503"><a href="#cb89-1503"></a><span class="in">    let R0Color = "#1f77b4"</span></span>
+<span id="cb89-1504"><a href="#cb89-1504"></a><span class="in">    let ReColor = "#ff7f0e"</span></span>
 <span id="cb89-1505"><a href="#cb89-1505"></a></span>
-<span id="cb89-1506"><a href="#cb89-1506"></a>    <span class="kw">let</span> plot <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb89-1507"><a href="#cb89-1507"></a>        <span class="dt">color</span><span class="op">:</span> {</span>
-<span id="cb89-1508"><a href="#cb89-1508"></a>            <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb89-1509"><a href="#cb89-1509"></a>            <span class="dt">domain</span><span class="op">:</span> [<span class="st">"Unvaccinated"</span><span class="op">,</span> <span class="st">"Vaccinated"</span>]<span class="op">,</span></span>
-<span id="cb89-1510"><a href="#cb89-1510"></a>            <span class="dt">range</span><span class="op">:</span> [<span class="st">"#1f77b4"</span><span class="op">,</span> <span class="st">"#ff7f0e"</span>]</span>
-<span id="cb89-1511"><a href="#cb89-1511"></a>        }<span class="op">,</span></span>
-<span id="cb89-1512"><a href="#cb89-1512"></a>        <span class="dt">style</span><span class="op">:</span> {<span class="dt">fontSize</span><span class="op">:</span> <span class="st">"20px"</span>}<span class="op">,</span></span>
-<span id="cb89-1513"><a href="#cb89-1513"></a>        <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">65</span><span class="op">,</span></span>
-<span id="cb89-1514"><a href="#cb89-1514"></a>        <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">40</span><span class="op">,</span></span>
-<span id="cb89-1515"><a href="#cb89-1515"></a>        <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">55</span><span class="op">,</span></span>
-<span id="cb89-1516"><a href="#cb89-1516"></a>        <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb89-1517"><a href="#cb89-1517"></a>        <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
-<span id="cb89-1518"><a href="#cb89-1518"></a>        <span class="dt">height</span><span class="op">:</span> <span class="dv">670</span><span class="op">,</span></span>
-<span id="cb89-1519"><a href="#cb89-1519"></a>        <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"R0"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">10</span>]}<span class="op">,</span></span>
-<span id="cb89-1520"><a href="#cb89-1520"></a>        <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Mean Age of Infection"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>]}<span class="op">,</span></span>
-<span id="cb89-1521"><a href="#cb89-1521"></a>        <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb89-1522"><a href="#cb89-1522"></a>            Plot<span class="op">.</span><span class="fu">line</span>(mean_age_arrs<span class="op">.</span><span class="at">Re</span><span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"R0"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"mean_age"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> ReColor<span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">6</span>})<span class="op">,</span></span>
-<span id="cb89-1523"><a href="#cb89-1523"></a>            Plot<span class="op">.</span><span class="fu">line</span>(mean_age_arrs<span class="op">.</span><span class="at">R0</span><span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"R0"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"mean_age"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> R0Color<span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">6</span>})<span class="op">,</span></span>
-<span id="cb89-1524"><a href="#cb89-1524"></a>            Re_mean_age <span class="op">&lt;=</span> <span class="dv">100</span> <span class="op">?</span></span>
-<span id="cb89-1525"><a href="#cb89-1525"></a>                [</span>
-<span id="cb89-1526"><a href="#cb89-1526"></a>                    vacc <span class="op">&gt;</span> <span class="fl">0.00</span> <span class="op">?</span> Plot<span class="op">.</span><span class="fu">dot</span>(mean_age_dots<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"R0"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"Re_mean_age"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">12</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> ReColor<span class="op">,</span> <span class="dt">fill</span><span class="op">:</span>     ReColor<span class="op">,</span>  <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.6</span>}) <span class="op">:</span> <span class="kw">null</span><span class="op">,</span></span>
-<span id="cb89-1527"><a href="#cb89-1527"></a>                    Plot<span class="op">.</span><span class="fu">text</span>(</span>
-<span id="cb89-1528"><a href="#cb89-1528"></a>                        mean_age_dots<span class="op">,</span></span>
-<span id="cb89-1529"><a href="#cb89-1529"></a>                        {<span class="dt">x</span><span class="op">:</span> <span class="st">"R0"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"Re_mean_age"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> (d) <span class="kw">=&gt;</span> <span class="vs">`Re = </span><span class="sc">${</span>d<span class="op">.</span><span class="at">Re</span><span class="sc">}</span><span class="vs">`</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">55</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="op">-</span><span class="dv">25</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> ReColor}</span>
-<span id="cb89-1530"><a href="#cb89-1530"></a>                    )</span>
-<span id="cb89-1531"><a href="#cb89-1531"></a>                ] <span class="op">:</span></span>
-<span id="cb89-1532"><a href="#cb89-1532"></a>            <span class="kw">null</span><span class="op">,</span></span>
-<span id="cb89-1533"><a href="#cb89-1533"></a>            R0_mean_age <span class="op">&lt;=</span> <span class="dv">100</span> <span class="op">?</span></span>
-<span id="cb89-1534"><a href="#cb89-1534"></a>                [</span>
-<span id="cb89-1535"><a href="#cb89-1535"></a>                Plot<span class="op">.</span><span class="fu">dot</span>(mean_age_dots<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"R0"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"R0_mean_age"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">12</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> R0Color<span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> R0Color<span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.6</span>})<span class="op">,</span></span>
-<span id="cb89-1536"><a href="#cb89-1536"></a>                Plot<span class="op">.</span><span class="fu">text</span>(</span>
-<span id="cb89-1537"><a href="#cb89-1537"></a>                    mean_age_dots<span class="op">,</span></span>
-<span id="cb89-1538"><a href="#cb89-1538"></a>                    {<span class="dt">x</span><span class="op">:</span> <span class="st">"R0"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"R0_mean_age"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> (d) <span class="kw">=&gt;</span> <span class="vs">`R0 = </span><span class="sc">${</span>d<span class="op">.</span><span class="at">R0</span><span class="sc">}</span><span class="vs">`</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="op">-</span><span class="dv">60</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="dv">30</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> R0Color}</span>
-<span id="cb89-1539"><a href="#cb89-1539"></a>                )</span>
-<span id="cb89-1540"><a href="#cb89-1540"></a>                ] <span class="op">:</span></span>
-<span id="cb89-1541"><a href="#cb89-1541"></a>            <span class="kw">null</span><span class="op">,</span></span>
-<span id="cb89-1542"><a href="#cb89-1542"></a>            Plot<span class="op">.</span><span class="fu">arrow</span>(mean_age_dots<span class="op">,</span> {<span class="dt">x1</span><span class="op">:</span> <span class="st">"R0"</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> <span class="st">"R0"</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="st">"arrow_start"</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> <span class="st">"arrow_end"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">headLength</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">inset</span><span class="op">:</span> <span class="dv">15</span>})<span class="op">,</span></span>
-<span id="cb89-1543"><a href="#cb89-1543"></a>        ]</span>
-<span id="cb89-1544"><a href="#cb89-1544"></a>    })<span class="op">;</span></span>
+<span id="cb89-1506"><a href="#cb89-1506"></a><span class="in">    let plot = Plot.plot({</span></span>
+<span id="cb89-1507"><a href="#cb89-1507"></a><span class="in">        color: {</span></span>
+<span id="cb89-1508"><a href="#cb89-1508"></a><span class="in">            legend: true,</span></span>
+<span id="cb89-1509"><a href="#cb89-1509"></a><span class="in">            domain: ["Unvaccinated", "Vaccinated"],</span></span>
+<span id="cb89-1510"><a href="#cb89-1510"></a><span class="in">            range: ["#1f77b4", "#ff7f0e"]</span></span>
+<span id="cb89-1511"><a href="#cb89-1511"></a><span class="in">        },</span></span>
+<span id="cb89-1512"><a href="#cb89-1512"></a><span class="in">        style: {fontSize: "20px"},</span></span>
+<span id="cb89-1513"><a href="#cb89-1513"></a><span class="in">        marginLeft: 65,</span></span>
+<span id="cb89-1514"><a href="#cb89-1514"></a><span class="in">        marginTop: 40,</span></span>
+<span id="cb89-1515"><a href="#cb89-1515"></a><span class="in">        marginBottom: 55,</span></span>
+<span id="cb89-1516"><a href="#cb89-1516"></a><span class="in">        grid: true,</span></span>
+<span id="cb89-1517"><a href="#cb89-1517"></a><span class="in">        width: 800,</span></span>
+<span id="cb89-1518"><a href="#cb89-1518"></a><span class="in">        height: 670,</span></span>
+<span id="cb89-1519"><a href="#cb89-1519"></a><span class="in">        x: {label: "R0", domain: [0, 10]},</span></span>
+<span id="cb89-1520"><a href="#cb89-1520"></a><span class="in">        y: {label: "Mean Age of Infection", domain: [0, 100]},</span></span>
+<span id="cb89-1521"><a href="#cb89-1521"></a><span class="in">        marks: [</span></span>
+<span id="cb89-1522"><a href="#cb89-1522"></a><span class="in">            Plot.line(mean_age_arrs.Re, {x: "R0", y: "mean_age", stroke: ReColor, strokeWidth: 6}),</span></span>
+<span id="cb89-1523"><a href="#cb89-1523"></a><span class="in">            Plot.line(mean_age_arrs.R0, {x: "R0", y: "mean_age", stroke: R0Color, strokeWidth: 6}),</span></span>
+<span id="cb89-1524"><a href="#cb89-1524"></a><span class="in">            Re_mean_age &lt;= 100 ?</span></span>
+<span id="cb89-1525"><a href="#cb89-1525"></a><span class="in">                [</span></span>
+<span id="cb89-1526"><a href="#cb89-1526"></a><span class="in">                    vacc &gt; 0.00 ? Plot.dot(mean_age_dots, {x: "R0", y: "Re_mean_age", r: 12, stroke: ReColor, fill:     ReColor,  fillOpacity: 0.6}) : null,</span></span>
+<span id="cb89-1527"><a href="#cb89-1527"></a><span class="in">                    Plot.text(</span></span>
+<span id="cb89-1528"><a href="#cb89-1528"></a><span class="in">                        mean_age_dots,</span></span>
+<span id="cb89-1529"><a href="#cb89-1529"></a><span class="in">                        {x: "R0", y: "Re_mean_age", text: (d) =&gt; `Re = ${d.Re}`, dx: 55, dy: -25, fontWeight: "bold", fill: ReColor}</span></span>
+<span id="cb89-1530"><a href="#cb89-1530"></a><span class="in">                    )</span></span>
+<span id="cb89-1531"><a href="#cb89-1531"></a><span class="in">                ] :</span></span>
+<span id="cb89-1532"><a href="#cb89-1532"></a><span class="in">            null,</span></span>
+<span id="cb89-1533"><a href="#cb89-1533"></a><span class="in">            R0_mean_age &lt;= 100 ?</span></span>
+<span id="cb89-1534"><a href="#cb89-1534"></a><span class="in">                [</span></span>
+<span id="cb89-1535"><a href="#cb89-1535"></a><span class="in">                Plot.dot(mean_age_dots, {x: "R0", y: "R0_mean_age", r: 12, stroke: R0Color, fill: R0Color, fillOpacity: 0.6}),</span></span>
+<span id="cb89-1536"><a href="#cb89-1536"></a><span class="in">                Plot.text(</span></span>
+<span id="cb89-1537"><a href="#cb89-1537"></a><span class="in">                    mean_age_dots,</span></span>
+<span id="cb89-1538"><a href="#cb89-1538"></a><span class="in">                    {x: "R0", y: "R0_mean_age", text: (d) =&gt; `R0 = ${d.R0}`, dx: -60, dy: 30, fontWeight: "bold", fill: R0Color}</span></span>
+<span id="cb89-1539"><a href="#cb89-1539"></a><span class="in">                )</span></span>
+<span id="cb89-1540"><a href="#cb89-1540"></a><span class="in">                ] :</span></span>
+<span id="cb89-1541"><a href="#cb89-1541"></a><span class="in">            null,</span></span>
+<span id="cb89-1542"><a href="#cb89-1542"></a><span class="in">            Plot.arrow(mean_age_dots, {x1: "R0", x2: "R0", y1: "arrow_start", y2: "arrow_end", strokeWidth: 4, headLength: 5, inset: 15}),</span></span>
+<span id="cb89-1543"><a href="#cb89-1543"></a><span class="in">        ]</span></span>
+<span id="cb89-1544"><a href="#cb89-1544"></a><span class="in">    });</span></span>
 <span id="cb89-1545"><a href="#cb89-1545"></a></span>
-<span id="cb89-1546"><a href="#cb89-1546"></a>  <span class="cf">return</span> plot<span class="op">;</span></span>
-<span id="cb89-1547"><a href="#cb89-1547"></a>}</span>
+<span id="cb89-1546"><a href="#cb89-1546"></a><span class="in">  return plot;</span></span>
+<span id="cb89-1547"><a href="#cb89-1547"></a><span class="in">}</span></span>
 <span id="cb89-1548"><a href="#cb89-1548"></a><span class="in">```</span></span>
 <span id="cb89-1549"><a href="#cb89-1549"></a></span>
 <span id="cb89-1550"><a href="#cb89-1550"></a><span class="fu">## Bonus Materials</span></span>
