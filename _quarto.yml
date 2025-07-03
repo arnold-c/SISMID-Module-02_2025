@@ -35,8 +35,8 @@ book:
         - r-session-03.qmd
     - part: "Day 3"
       chapters:
-        - L07_models-and-data.qmd
         - L08_stochastic-models.qmd
+        - r-session-04.qmd
     - references.qmd
   repo-url: https://github.com/arnold-c/SISMID-Module-02_2025
   repo-actions: [edit]
