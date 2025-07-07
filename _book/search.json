@@ -724,5 +724,16 @@
     "crumbs": [
       "**References**"
     ]
+  },
+  {
+    "objectID": "r-session-04.html#setup",
+    "href": "r-session-04.html#setup",
+    "title": "\n11  R Session 04\n",
+    "section": "",
+    "text": "Note\n\n\n\nThis R-session will go in parallel with the lecture on stochastic algorithms. First we’ll go through the basics of each algorithm in the lecture and then we’ll walk through the code and you can implement it for yourselves.",
+    "crumbs": [
+      "Day 3",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>R Session 04</span>"
+    ]
   }
 ]
