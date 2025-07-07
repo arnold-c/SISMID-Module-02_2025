@@ -603,7 +603,7 @@ window.Quarto = {
 <span id="cb4-2"><a href="#cb4-2"></a>sir_init_states <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">S =</span> <span class="fl">0.99</span>, <span class="at">I =</span> <span class="fl">0.01</span>, <span class="at">R =</span> <span class="dv">0</span>)</span>
 <span id="cb4-3"><a href="#cb4-3"></a>sim_times <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">200</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
 <span id="cb4-4"><a href="#cb4-4"></a></span>
-<span id="cb4-5"><a href="#cb4-5"></a>sir_sol <span class="ot">&lt;-</span> deSolve<span class="sc">::</span><span class="fu">ode</span>(</span>
+<span id="cb4-5"><a href="#cb4-5"></a>sir_sol <span class="ot">&lt;-</span> <span class="fu">ode</span>(</span>
 <span id="cb4-6"><a href="#cb4-6"></a>  <span class="at">y =</span> sir_init_states,</span>
 <span id="cb4-7"><a href="#cb4-7"></a>  <span class="at">times =</span> sim_times,</span>
 <span id="cb4-8"><a href="#cb4-8"></a>  <span class="at">func =</span> sir_model,</span>
@@ -679,15 +679,15 @@ window.Quarto = {
 <span id="cb6-13"><a href="#cb6-13"></a>  sir_init_states <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">S =</span> <span class="fl">0.99</span>, <span class="at">I =</span> <span class="fl">0.01</span>, <span class="at">R =</span> <span class="dv">0</span>)</span>
 <span id="cb6-14"><a href="#cb6-14"></a>  sim_times <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">200</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
 <span id="cb6-15"><a href="#cb6-15"></a></span>
-<span id="cb6-16"><a href="#cb6-16"></a>  sir_sol <span class="ot">&lt;-</span> deSolve<span class="sc">::</span><span class="fu">ode</span>(</span>
+<span id="cb6-16"><a href="#cb6-16"></a>  sir_sol <span class="ot">&lt;-</span> <span class="fu">ode</span>(</span>
 <span id="cb6-17"><a href="#cb6-17"></a>    <span class="at">y =</span> sir_init_states,</span>
 <span id="cb6-18"><a href="#cb6-18"></a>    <span class="at">times =</span> sim_times,</span>
 <span id="cb6-19"><a href="#cb6-19"></a>    <span class="at">func =</span> sir_model,</span>
 <span id="cb6-20"><a href="#cb6-20"></a>    <span class="at">parms =</span> sir_params</span>
 <span id="cb6-21"><a href="#cb6-21"></a>  )</span>
-<span id="cb6-22"><a href="#cb6-22"></a>  sir_sol <span class="ot">=</span> <span class="fu">data.frame</span>(sir_sol)</span>
+<span id="cb6-22"><a href="#cb6-22"></a>  sir_sol <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(sir_sol)</span>
 <span id="cb6-23"><a href="#cb6-23"></a>  <span class="co"># mark this as the iter iteration of the loop</span></span>
-<span id="cb6-24"><a href="#cb6-24"></a>  sir_sol<span class="sc">$</span>iteration <span class="ot">=</span> iter</span>
+<span id="cb6-24"><a href="#cb6-24"></a>  sir_sol<span class="sc">$</span>iteration <span class="ot">&lt;-</span> iter</span>
 <span id="cb6-25"><a href="#cb6-25"></a>  <span class="co"># if this is the first iteration, create a place to store the output</span></span>
 <span id="cb6-26"><a href="#cb6-26"></a>  <span class="co"># if it's the second or higher, append the output to the storage</span></span>
 <span id="cb6-27"><a href="#cb6-27"></a>  <span class="cf">if</span> (iter <span class="sc">==</span> <span class="dv">1</span>) {</span>
@@ -923,7 +923,7 @@ window.Quarto = {
 <span id="cb12-12"><a href="#cb12-12"></a>  R <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># number recovered</span></span>
 <span id="cb12-13"><a href="#cb12-13"></a>  time <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb12-14"><a href="#cb12-14"></a>  <span class="co"># initialize iteration counter</span></span>
-<span id="cb12-15"><a href="#cb12-15"></a>  iteration <span class="ot">=</span> iter</span>
+<span id="cb12-15"><a href="#cb12-15"></a>  iteration <span class="ot">&lt;-</span> iter</span>
 <span id="cb12-16"><a href="#cb12-16"></a></span>
 <span id="cb12-17"><a href="#cb12-17"></a>  beta <span class="ot">&lt;-</span> .<span class="dv">5</span> <span class="co"># transmission rate</span></span>
 <span id="cb12-18"><a href="#cb12-18"></a>  gamma <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">7</span> <span class="co"># recovery rate</span></span>
@@ -965,10 +965,10 @@ window.Quarto = {
 <span id="cb12-54"><a href="#cb12-54"></a>    <span class="co"># this prints the output as it goes</span></span>
 <span id="cb12-55"><a href="#cb12-55"></a>  }</span>
 <span id="cb12-56"><a href="#cb12-56"></a>  <span class="cf">if</span> (iter <span class="sc">==</span> <span class="dv">1</span>) {</span>
-<span id="cb12-57"><a href="#cb12-57"></a>    sir_gil_storage <span class="ot">=</span> <span class="fu">tibble</span>(S, I, R, time, iteration)</span>
+<span id="cb12-57"><a href="#cb12-57"></a>    sir_gil_storage <span class="ot">&lt;-</span> <span class="fu">tibble</span>(S, I, R, time, iteration)</span>
 <span id="cb12-58"><a href="#cb12-58"></a>  }</span>
 <span id="cb12-59"><a href="#cb12-59"></a>  <span class="cf">if</span> (iter <span class="sc">&gt;</span> <span class="dv">1</span>) {</span>
-<span id="cb12-60"><a href="#cb12-60"></a>    sir_gil_storage <span class="ot">=</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb12-60"><a href="#cb12-60"></a>    sir_gil_storage <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
 <span id="cb12-61"><a href="#cb12-61"></a>      sir_gil_storage,</span>
 <span id="cb12-62"><a href="#cb12-62"></a>      <span class="fu">tibble</span>(S, I, R, time, iteration)</span>
 <span id="cb12-63"><a href="#cb12-63"></a>    )</span>
@@ -1341,7 +1341,7 @@ window.Quarto = {
 <span id="cb23-8"><a href="#cb23-8"></a>  <span class="at">iteration =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>sims, <span class="at">each =</span> max_time)</span>
 <span id="cb23-9"><a href="#cb23-9"></a>)</span>
 <span id="cb23-10"><a href="#cb23-10"></a></span>
-<span id="cb23-11"><a href="#cb23-11"></a>bin_df <span class="ot">=</span> bin_df <span class="sc">%&gt;%</span></span>
+<span id="cb23-11"><a href="#cb23-11"></a>bin_df <span class="ot">&lt;-</span> bin_df <span class="sc">%&gt;%</span></span>
 <span id="cb23-12"><a href="#cb23-12"></a>  <span class="fu">pivot_longer</span>(</span>
 <span id="cb23-13"><a href="#cb23-13"></a>    <span class="co"># Don't pivot the time column</span></span>
 <span id="cb23-14"><a href="#cb23-14"></a>    <span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(time, iteration),</span>
@@ -1919,7 +1919,7 @@ window.Quarto = {
 <span id="cb24-68"><a href="#cb24-68"></a>sir_init_states <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">S =</span> <span class="fl">0.99</span>, <span class="at">I =</span> <span class="fl">0.01</span>, <span class="at">R =</span> <span class="dv">0</span>)</span>
 <span id="cb24-69"><a href="#cb24-69"></a>sim_times <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">200</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
 <span id="cb24-70"><a href="#cb24-70"></a></span>
-<span id="cb24-71"><a href="#cb24-71"></a>sir_sol <span class="ot">&lt;-</span> deSolve<span class="sc">::</span><span class="fu">ode</span>(</span>
+<span id="cb24-71"><a href="#cb24-71"></a>sir_sol <span class="ot">&lt;-</span> <span class="fu">ode</span>(</span>
 <span id="cb24-72"><a href="#cb24-72"></a>  <span class="at">y =</span> sir_init_states,</span>
 <span id="cb24-73"><a href="#cb24-73"></a>  <span class="at">times =</span> sim_times,</span>
 <span id="cb24-74"><a href="#cb24-74"></a>  <span class="at">func =</span> sir_model,</span>
@@ -1997,15 +1997,15 @@ window.Quarto = {
 <span id="cb24-150"><a href="#cb24-150"></a>  sir_init_states <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">S =</span> <span class="fl">0.99</span>, <span class="at">I =</span> <span class="fl">0.01</span>, <span class="at">R =</span> <span class="dv">0</span>)</span>
 <span id="cb24-151"><a href="#cb24-151"></a>  sim_times <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">200</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
 <span id="cb24-152"><a href="#cb24-152"></a></span>
-<span id="cb24-153"><a href="#cb24-153"></a>  sir_sol <span class="ot">&lt;-</span> deSolve<span class="sc">::</span><span class="fu">ode</span>(</span>
+<span id="cb24-153"><a href="#cb24-153"></a>  sir_sol <span class="ot">&lt;-</span> <span class="fu">ode</span>(</span>
 <span id="cb24-154"><a href="#cb24-154"></a>    <span class="at">y =</span> sir_init_states,</span>
 <span id="cb24-155"><a href="#cb24-155"></a>    <span class="at">times =</span> sim_times,</span>
 <span id="cb24-156"><a href="#cb24-156"></a>    <span class="at">func =</span> sir_model,</span>
 <span id="cb24-157"><a href="#cb24-157"></a>    <span class="at">parms =</span> sir_params</span>
 <span id="cb24-158"><a href="#cb24-158"></a>  )</span>
-<span id="cb24-159"><a href="#cb24-159"></a>  sir_sol <span class="ot">=</span> <span class="fu">data.frame</span>(sir_sol)</span>
+<span id="cb24-159"><a href="#cb24-159"></a>  sir_sol <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(sir_sol)</span>
 <span id="cb24-160"><a href="#cb24-160"></a>  <span class="co"># mark this as the iter iteration of the loop</span></span>
-<span id="cb24-161"><a href="#cb24-161"></a>  sir_sol<span class="sc">$</span>iteration <span class="ot">=</span> iter</span>
+<span id="cb24-161"><a href="#cb24-161"></a>  sir_sol<span class="sc">$</span>iteration <span class="ot">&lt;-</span> iter</span>
 <span id="cb24-162"><a href="#cb24-162"></a>  <span class="co"># if this is the first iteration, create a place to store the output</span></span>
 <span id="cb24-163"><a href="#cb24-163"></a>  <span class="co"># if it's the second or higher, append the output to the storage</span></span>
 <span id="cb24-164"><a href="#cb24-164"></a>  <span class="cf">if</span> (iter <span class="sc">==</span> <span class="dv">1</span>) {</span>
@@ -2256,7 +2256,7 @@ window.Quarto = {
 <span id="cb24-421"><a href="#cb24-421"></a>  R <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># number recovered</span></span>
 <span id="cb24-422"><a href="#cb24-422"></a>  time <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb24-423"><a href="#cb24-423"></a>  <span class="co"># initialize iteration counter</span></span>
-<span id="cb24-424"><a href="#cb24-424"></a>  iteration <span class="ot">=</span> iter</span>
+<span id="cb24-424"><a href="#cb24-424"></a>  iteration <span class="ot">&lt;-</span> iter</span>
 <span id="cb24-425"><a href="#cb24-425"></a></span>
 <span id="cb24-426"><a href="#cb24-426"></a>  beta <span class="ot">&lt;-</span> .<span class="dv">5</span> <span class="co"># transmission rate</span></span>
 <span id="cb24-427"><a href="#cb24-427"></a>  gamma <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">7</span> <span class="co"># recovery rate</span></span>
@@ -2298,10 +2298,10 @@ window.Quarto = {
 <span id="cb24-463"><a href="#cb24-463"></a>    <span class="co"># this prints the output as it goes</span></span>
 <span id="cb24-464"><a href="#cb24-464"></a>  }</span>
 <span id="cb24-465"><a href="#cb24-465"></a>  <span class="cf">if</span> (iter <span class="sc">==</span> <span class="dv">1</span>) {</span>
-<span id="cb24-466"><a href="#cb24-466"></a>    sir_gil_storage <span class="ot">=</span> <span class="fu">tibble</span>(S, I, R, time, iteration)</span>
+<span id="cb24-466"><a href="#cb24-466"></a>    sir_gil_storage <span class="ot">&lt;-</span> <span class="fu">tibble</span>(S, I, R, time, iteration)</span>
 <span id="cb24-467"><a href="#cb24-467"></a>  }</span>
 <span id="cb24-468"><a href="#cb24-468"></a>  <span class="cf">if</span> (iter <span class="sc">&gt;</span> <span class="dv">1</span>) {</span>
-<span id="cb24-469"><a href="#cb24-469"></a>    sir_gil_storage <span class="ot">=</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb24-469"><a href="#cb24-469"></a>    sir_gil_storage <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
 <span id="cb24-470"><a href="#cb24-470"></a>      sir_gil_storage,</span>
 <span id="cb24-471"><a href="#cb24-471"></a>      <span class="fu">tibble</span>(S, I, R, time, iteration)</span>
 <span id="cb24-472"><a href="#cb24-472"></a>    )</span>
@@ -2716,7 +2716,7 @@ window.Quarto = {
 <span id="cb24-903"><a href="#cb24-903"></a>  <span class="at">iteration =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>sims, <span class="at">each =</span> max_time)</span>
 <span id="cb24-904"><a href="#cb24-904"></a>)</span>
 <span id="cb24-905"><a href="#cb24-905"></a></span>
-<span id="cb24-906"><a href="#cb24-906"></a>bin_df <span class="ot">=</span> bin_df <span class="sc">%&gt;%</span></span>
+<span id="cb24-906"><a href="#cb24-906"></a>bin_df <span class="ot">&lt;-</span> bin_df <span class="sc">%&gt;%</span></span>
 <span id="cb24-907"><a href="#cb24-907"></a>  <span class="fu">pivot_longer</span>(</span>
 <span id="cb24-908"><a href="#cb24-908"></a>    <span class="co"># Don't pivot the time column</span></span>
 <span id="cb24-909"><a href="#cb24-909"></a>    <span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(time, iteration),</span>

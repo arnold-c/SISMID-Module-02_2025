@@ -153,7 +153,7 @@ for (iter in 1:num_iterations) {
     sir_sol_storage <- sir_sol
   }
   if (iter > 1) {
-    sir_sol_storage <- bind_rows(sir_sol_storage, sir_sol)
+    sir_sol_storage <- rbind(sir_sol_storage, sir_sol)
   }
 }
 ```
