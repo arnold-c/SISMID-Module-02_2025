@@ -28,7 +28,10 @@ library(tidyverse)
 theme_set(theme_minimal())
 ```
 
-
+:::callout-note
+This R-session will go in parallel with the lecture on stochastic algorithms.
+First we'll go through the basics of each algorithm in the lecture and then we'll walk through the code and you can implement it for yourselves.
+:::
 
 ## What is stochasticity and where does it come from?
 
@@ -159,6 +162,9 @@ for (iter in 1:num_iterations) {
 ```
 
 ```{r}
+#| out-width: 100%
+#| column: body
+
 # Turn the output from the ODE solver into a tibble (dataframe)
 # so we can manipulate and plot it easily
 sir_sol_df <- as_tibble(sir_sol_storage) %>%
@@ -220,18 +226,26 @@ You could make each run have the same $R_0$ by recalculating the duration of inf
 Alternatively, you might have uncertainty about \emph{both} transmission and duration, so could for e.g. make random draws for both (which would again give a setting where $R_0$ varies from run to run).
 None of these are more correct than another, the use case depends on which elements $R_0$, transmission, duration of infection, you are uncertain about.
 
-In each of the above, the model is \emph{deterministic}, meaning that for a given set of parameters, the resulting outbreak trajectory is always the same. For a \emph{stochastic} model, each run of the model will vary, even if the parameters are the same.
+In each of the above, the model is \emp{deterministic}, meaning that for a given set of parameters, the resulting outbreak trajectory is always the same. For a \emph{stochastic} model, each run of the model will vary, even if the parameters are the same.
 This is because each event that occurs (e.g. someone getting infected or recovering) is analogous to a coin flip; even though the rules of the coin (the parameters) are always the same, the side it lands on is random.
 Unlike a deterministic model, to fully understand the behavior of a stochastic model, you need to run it more than one time, often many times, so these are necessarily more time consuming to work with.
 
 There are many, many ways to make stochastic models and the steps can be way more complicated than flipping coins.
-But there are some foundational versions of these models that illustrate the trade-offs between exact representations of the random processes we think are happening and the computational time it takes to generate outputs. For what we'll do here, everything will be kind of fast, but in practice, for models of realistic scale, even a single stochastic run can take a while. And if you have to do thousands of runs, even shaving a few seconds or minutes can be important.
+But there some foundational versions of these models that illustrate the trade-offs between exact representations of the random processes we think are happening and the computational time it takes to generate outputs. For what we'll do here, everything will be kind of fast, but in practice, for models of realistic scale, even a single stochastic run can take a while. And if you have to do thousands of runs, even shaving a few seconds or minutes can be important.
 
 ## The Gillespie Algorithm
 
-CHANGE THIS Text to motivate the Gillespie Algorithm
-Explain the steps
+The Gillespie algorithm is the most explicit translation of the ODE form of the SIR model into a stochastic model.
+It achieves this by noting that ODE-based models are written in terms of the rates at which events occur.
+At any given point in time, the rate of all events in the ODE is known; what \bf{isn't} known, is which of the possible events will happen first.
+Note that even though we expect that the next thing to happen will be the thing that happens with the highest rate, it's possible that another thing may happen first by random chance.
+And then, since the rates in the SIR model are dependent on the value of the states (e.g. new infections depend on $\beta$ and S and I) any change in the states then changes the rates and the likelihood of what will happen next.
 
+The Gillespie algorithm proceeds by 1) calculating all the current rates, 2) randomly drawing exponential random variables that equate to the time until each event happens (recall we talked about the relationship between rate and time in the lectures), then 3) comparing those times and assuming that the next event to occur is the one that had the smallest randomly drawn time.
+Then you increment the states; e.g. an infection increases I by 1, reduces S by 1, and doesn't change R.
+Importantly, you then increment time forward by a step equal to the time until first event occurred.
+Then you recalculate the rates and randomly draw times, etc, and keep doing this over and over again.
+For this SIR model, that keeps happening until you run out of infected individuals and there are no new events that can happen.
 
 ```{r}
 ####################################################################
@@ -288,6 +302,8 @@ The gil_step() function increments the states forward by 1 event. Which event ha
 ####################################################################
 # Simulate over time                                               #
 ####################################################################
+# here we set the random seed. This isn't necessary in general, but it allows us to write a "random" simulation
+set.seed(101)
 counter <- 0 # set counter at 0
 while (all(I > 0)) {
   # continue until I is depleted
@@ -318,6 +334,8 @@ while (all(I > 0)) {
 
   # cat(S[counter],\"-\",I[counter],\"-\",R[counter],\"-\",time[counter], \".\\n\")
   # this prints the output as it goes
+  # reset the seed so that every subsequent simulation IS random
+  set.seed(NULL)
 }
 ```
 
@@ -451,6 +469,9 @@ for (iter in 1:num_iterations) {
 ```
 
 ```{r}
+#| out-width: 100%
+#| column: body
+
 # Reuse the plotting code from above
 
 # Turn the output from gil_step() into a tibble (dataframe)
@@ -506,6 +527,12 @@ ggplot(
   ) +
   theme(legend.position = "top")
 ```
+
+The Gillespie algorithm doesn't cut any corners relative to the ODE model, but that comes at the cost of computational efficiency.
+For every event that happens (e.g. an infection) you also have to generate a random draw (e.g. a recovery) that you don't use, except for comparison.
+And the bigger your population, the more possible events can happen.
+So the bigger the model (e.g. adding exposed or vaccinated classes, or heterogeneity, add transitions) and the bigger the population, the more calculation you need and and therefore the slower the model.
+
 
 ## The Tau Leaping Algorithm
 
@@ -737,10 +764,12 @@ tau_df %>%
   theme(legend.position = "top")
 ```
 
-Note that the time series of new incident cases is very different than the time series of prevalent cases.
+:::callout-note
+Recall that the time series of new incident cases is very different than the time series of prevalent cases.
 Recall from our earlier discussion that the former are more likely to be what we would see in clinical surveillance.
 The latter are what we might see if we did random testing in the population.
 Which one would you expect to correspond best to environmental wastewater surveillance?
+::::
 
 ## The Chain Binomial Algorithm
 
@@ -757,7 +786,11 @@ As before, we start with initial conditions.
 Here we initialize with the same population as before, but notice that the transmission rate, $\beta$ is different.
 Time is rescaled here to units of epidemic generation time, so $\beta$ is scaled correspondingly and now, for this formulation, $\beta$ is $R_0$.
 
-TO DO: ADD A CALLOUT HERE TO THE FACT THAT R0 IS NOT FIXED, IT DEPENDS ON THE PATHOGEN, THE POPULATION, AND THE MODEL.
+::: callout-note
+Recall that the basic reproduction number, $R_0$ is a function of the pathogen and the population of interest.
+In models, both the population (e.g. mixing, heterogeneity, etc) and the pathogen (e.g. time-scale of recovery) are represented using approximations to the biology.
+Here, the choice of model forces a change in time-scale which means that we have to change $\beta$ accordingly; thus, $\beta$, which is ostensibly a biological parameter is also a property of the model.
+:::
 
 ```{r}
 ####################################################################
@@ -868,9 +901,6 @@ bin_df <- bin_df %>%
 
 # fix this color
 sir_colors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851")
-
-# NOT CURRENTLY WORKING
-# NOT PLOTTING AS INDIVIDUAL LINES
 
 bin_df %>%
   mutate(iteration = as.factor(iteration)) %>%
