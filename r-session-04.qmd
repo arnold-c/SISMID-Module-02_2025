@@ -219,6 +219,7 @@ ggplot(
     y = "Fraction",
     color = "State"
   ) +
+  guides(color = guide_legend(override.aes = list(alpha = 1))) +
   theme(legend.position = "top")
 ```
 
@@ -529,6 +530,7 @@ ggplot(
     y = "Number",
     color = "State"
   ) +
+  guides(color = guide_legend(override.aes = list(alpha = 1))) +
   theme(legend.position = "top")
 ```
 
@@ -712,6 +714,7 @@ tau_df %>%
     y = "Number",
     color = "State"
   ) +
+  guides(color = guide_legend(override.aes = list(alpha = 1))) +
   theme(legend.position = "top")
 ```
 
@@ -765,6 +768,7 @@ tau_df %>%
     y = "Number",
     color = "State"
   ) +
+  guides(color = guide_legend(override.aes = list(alpha = 1))) +
   theme(legend.position = "top")
 ```
 
@@ -922,5 +926,6 @@ bin_df %>%
     y = "Number",
     color = "State"
   ) +
+  guides(color = guide_legend(override.aes = list(alpha = 1))) +
   theme(legend.position = "top")
 ```
