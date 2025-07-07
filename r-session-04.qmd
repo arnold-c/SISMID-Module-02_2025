@@ -205,17 +205,25 @@ Alternatively, you might have uncertainty about \emph{both} transmission and dur
 None of these are more correct than another, the use case depends on which elements $R_0$, transmission, duration of infection, you are uncertain about. 
 
 In each of the above, the model is \emp{deterministic}, meaning that for a given set of parameters, the resulting outbreak trajectory is always the same. For a \emph{stochastic} model, each run of the model will vary, even if the parameters are the same. 
-This is because each event that occurs (e.g. someone getting infected or recovering) is analogous to a coin flip; even though the rules of the coin (the paramters) are always the same, the side it lands on is random. 
+This is because each event that occurs (e.g. someone getting infected or recovering) is analogous to a coin flip; even though the rules of the coin (the parameters) are always the same, the side it lands on is random. 
 Unlike a deterministic model, to fully understand the behavior of a stochastic model, you need to run it more than one time, often many times, so these are necessarily more time consuming to work with.
 
 There are many, many ways to make stochastic models and the steps can be way more complicated than flipping coins. 
-But there some foundational versions of these models that illustrate the trade-offs between exact representaitons of the random processes we think are happening and the computational time it takes to generate outputs. For what we'll do here, everythind will be kind of fast, but in practice, for models of realistic scale, even a signle stochastic run can take a while. And if you have to do thousands of runs, even shaving a few seconds or minutes can be important. 
+But there some foundational versions of these models that illustrate the trade-offs between exact representations of the random processes we think are happening and the computational time it takes to generate outputs. For what we'll do here, everything will be kind of fast, but in practice, for models of realistic scale, even a single stochastic run can take a while. And if you have to do thousands of runs, even shaving a few seconds or minutes can be important. 
 
 ## The Gillespie Algorithm
 
-CHANGE THIS Text to motivate the Gillespie Algorithm
-Explain the steps
+The Gillespie algorithm is the most explicit translation of the ODE form of the SIR model into a stochastic model. 
+It achieves this by noting that ODE-based models are written in terms of the rates at which events occur. 
+At any given point in time, the rate of all events in the ODE is known; what \bf{isn't} known, is which of the possible events will happen first.
+Note that even though we expect that the next thing to happen will be the thing that happens with the highest rate, it's possible that another thing may happen first by random chance. 
+And then, since the rates in the SIR model are dependent on the value of the states (e.g. new infections depend on $\beta$ and S and I) any change in the states then changes the rates and the likelihood of what will happen next. 
 
+The Gillespie algorithm proceeds by 1) calculating all the current rates, 2) randomly drawing exponential random variables that equate to the time until each event happens (recall we talked about the relationship between rate and time in the lectures), then 3) comparing those times and assuming that the next event to occur is the one that had the smallest randomly drawn time. 
+Then you increment the states; e.g. an infection increases I by 1, reduces S by 1, and doesn't change R. 
+Importantly, you then increment time forward by a step equal to the time until first event occurred. 
+Then you recalculate the rates and randomly draw times, etc, and keep doing this over and over again.
+For this SIR model, that keeps happening until you run out of infected individuals and there are no new events that can happen.
 
 ```{r}
 ###############################################################################
@@ -254,7 +262,7 @@ gilstep <- function(SIR, beta, gamma){
 }
 ```
 
-The gilstep() function increments the states forward by 1 event. Which event happens first, and the time it takes for that event to happen are both random varaibles. We then need to do this many times. 
+The gilstep() function increments the states forward by 1 event. Which event happens first, and the time it takes for that event to happen are both random variables. We then need to do this many times. 
 
 ```{r}
 ###############################################################################
@@ -450,6 +458,12 @@ ggplot(gil_df, aes(x = time, y = number, color = state, group = interaction(iter
   ) +
   theme(legend.position = "top")
 ```
+
+The Gillespie algorithm doesn't cut any corners relative to the ODE model, but that comes at the cost of computational efficiency. 
+For every event that happens (e.g. an infection) you also have to generate a random draw (e.g. a recovery) that you don't use, except for comparison.
+And the bigger your population, the more possible events can happen. 
+So the bigger the model (e.g. adding exposed or vaccinated classes, or heterogeneity, add transitions) and the bigger the population, the more calculation you need and and therefore the slower the model. 
+
 
 ## The Tau Leaping Algorithm
 
@@ -733,9 +747,6 @@ bin_df = bin_df %>%
   mutate(state = factor(state, levels = c("S", "I", "R","N")))
 
 SIRcolors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851") # fix this color
-
-# NOT CURRENTLY WORKING
-# NOT PLOTTING AS INDIVIDUAL LINES
 
 bin_df %>%
   mutate(iteration = as.factor(iteration)) %>%
