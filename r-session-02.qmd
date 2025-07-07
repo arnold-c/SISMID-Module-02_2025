@@ -5,7 +5,7 @@ abstract: |
     *Materials adapted from Helen Wearing and Aaron King [@kingAgeStructuredModels2011]*
 execute:
     warning: false
-metadata-files: 
+metadata-files:
     - metadata/matthewferrari.yml
     - metadata/mathjax-packages.yml
 ---
@@ -34,22 +34,22 @@ We'll start with the simplest mechanistic model of two classes we can think of, 
 #| column: body
 #| out-width: 100%
 elpos <- rbind(
-    Sa = c(2, 3),
-    Sb = c(3, 3),
-    Ia = c(2, 2),
-    Ib = c(3, 2),
-    Ra = c(2, 1),
-    Rb = c(3, 1)
+  Sa = c(2, 3),
+  Sb = c(3, 3),
+  Ia = c(2, 2),
+  Ib = c(3, 2),
+  Ra = c(2, 1),
+  Rb = c(3, 1)
 )
 
 elpos[, 1] <- (2 * elpos[, 1] - 1) / 8
 elpos[, 2] <- (2 * elpos[, 2] - 1) / 6
 
 fromto <- rbind(
-    SaIa = c(1, 3),
-    SbIb = c(2, 4),
-    IaRa = c(3, 5),
-    IbRb = c(4, 6)
+  SaIa = c(1, 3),
+  SbIb = c(2, 4),
+  IaRa = c(3, 5),
+  IbRb = c(4, 6)
 )
 
 op <- par(mar = c(1, 1, 1, 1))
@@ -58,50 +58,50 @@ diagram::openplotmat(asp = 0.9)
 
 arrpos <- matrix(ncol = 2, nrow = nrow(fromto))
 
-for (i in seq_len(nrow(fromto))){
-    arrpos[i,] <- diagram::straightarrow(
-        to = elpos[fromto[i, 2], ],
-        from = elpos[fromto[i, 1], ],
-        lwd = 2,
-        arr.pos = 0.65,
-        arr.length = 0.5
-    )
+for (i in seq_len(nrow(fromto))) {
+  arrpos[i, ] <- diagram::straightarrow(
+    to = elpos[fromto[i, 2], ],
+    from = elpos[fromto[i, 1], ],
+    lwd = 2,
+    arr.pos = 0.65,
+    arr.length = 0.5
+  )
 }
 
 # Add labels to the boxes
 purrr::walk(
-    c("Sa", "Sb", "Ia", "Ib", "Ra", "Rb"),
-    .f = function(.x) {
-        diagram::textrect(
-            elpos[.x, ],
-            0.07,
-            0.07,
-            lab = .x,
-            box.col = gray(0.7),
-            shadow.col = gray(0.4),
-            shadow.size = 0.01,
-            cex = 2
-        )
-    }
+  c("Sa", "Sb", "Ia", "Ib", "Ra", "Rb"),
+  .f = function(.x) {
+    diagram::textrect(
+      elpos[.x, ],
+      0.07,
+      0.07,
+      lab = .x,
+      box.col = gray(0.7),
+      shadow.col = gray(0.4),
+      shadow.size = 0.01,
+      cex = 2
+    )
+  }
 )
 
 # Add labels to the arrows
 purrr::pwalk(
-    .l = list(
-        state = 1:4,
-        xadjust = rep(0.05, 4),
-        yadjust = rep(-0.175, 4),
-        label = rep(c("lambda", "gamma"), each = 2),
-        label_subscript = rep(c("a", "b"), 2)
-    ),
-    .f = function(state, xadjust, yadjust, label, label_subscript) {
-        text(
-            elpos[state, 1] + xadjust,
-            elpos[state, 2] + yadjust,
-            bquote(.(ensym(label))[.(label_subscript)]),
-            cex = 2
-        )
-    }
+  .l = list(
+    state = 1:4,
+    xadjust = rep(0.05, 4),
+    yadjust = rep(-0.175, 4),
+    label = rep(c("lambda", "gamma"), each = 2),
+    label_subscript = rep(c("a", "b"), 2)
+  ),
+  .f = function(state, xadjust, yadjust, label, label_subscript) {
+    text(
+      elpos[state, 1] + xadjust,
+      elpos[state, 2] + yadjust,
+      bquote(.(ensym(label))[.(label_subscript)]),
+      cex = 2
+    )
+  }
 )
 
 par(op)
@@ -135,49 +135,49 @@ To make things concrete, we'll assume that the transmission rates $\beta$ are gr
 ```{r}
 # Create a named parameter vector that we can index by name in the model
 ab_params <- c(
-    beta_within = 0.025,
-    beta_between = 0.005,
-    recovery = 10
+  beta_within = 0.025,
+  beta_between = 0.005,
+  recovery = 10
 )
 ```
 
 ```{r}
 # Here we set up the ODE model that matches the equations above
-ab_model <- function (t, x, p, ...) {
-    # Unpack the state variables
-    Sa <- x["Sa"]
-    Sb <- x["Sb"]
-    Ia <- x["Ia"]
-    Ib <- x["Ib"]
-    
-    # Unpack the parameters
-    beta_within <- p["beta_within"]
-    beta_between <- p["beta_between"]
-    recovery <- p["recovery"]
+ab_model <- function(t, x, p, ...) {
+  # Unpack the state variables
+  Sa <- x["Sa"]
+  Sb <- x["Sb"]
+  Ia <- x["Ia"]
+  Ib <- x["Ib"]
 
-    # group A force of infection
-    lambda_a <- beta_within * Ia + beta_between * Ib
+  # Unpack the parameters
+  beta_within <- p["beta_within"]
+  beta_between <- p["beta_between"]
+  recovery <- p["recovery"]
 
-    # group B force of infection
-    lambda_b <- beta_within * Ib + beta_between * Ia
-    
-    # The ODEs
-    dSadt <- - lambda_a * Sa
-    dSbdt <- - lambda_b * Sb
-    dIadt <- lambda_a * Sa - recovery * Ia
-    dIbdt <- lambda_b * Sb - recovery * Ib
-    dRadt <- recovery * Ia
-    dRbdt <- recovery * Ib
+  # group A force of infection
+  lambda_a <- beta_within * Ia + beta_between * Ib
 
-    # Return the derivatives
-    list(c(
-        dSadt,
-        dSbdt,
-        dIadt,
-        dIbdt,
-        dRadt,
-        dRbdt
-    ))
+  # group B force of infection
+  lambda_b <- beta_within * Ib + beta_between * Ia
+
+  # The ODEs
+  dSadt <- -lambda_a * Sa
+  dSbdt <- -lambda_b * Sb
+  dIadt <- lambda_a * Sa - recovery * Ia
+  dIbdt <- lambda_b * Sb - recovery * Ib
+  dRadt <- recovery * Ia
+  dRbdt <- recovery * Ib
+
+  # Return the derivatives
+  list(c(
+    dSadt,
+    dSbdt,
+    dIadt,
+    dIbdt,
+    dRadt,
+    dRbdt
+  ))
 }
 ```
 
@@ -187,37 +187,37 @@ ab_yinit <- c(Sa = 1000, Sb = 2000, Ia = 1, Ib = 1, Ra = 0, Rb = 0)
 
 # Run the ODE solver from the deSolve package
 ab_sol <- deSolve::ode(
-    y = ab_yinit,
-    times = seq(0, 2, by = 0.001),
-    func = ab_model,
-    parms = ab_params,
+  y = ab_yinit,
+  times = seq(0, 2, by = 0.001),
+  func = ab_model,
+  parms = ab_params,
 )
 ```
 
 ```{r}
 ab_df <- ab_sol %>%
-    # Convert the solution to a tibble for manipulation
-    as_tibble() %>%
-    # Create and modify columns
-    mutate(
-        # Convert all columns into type numeric
-        across(everything(), as.numeric),
-        # Create new columns to track pop sizes in each group
-        Na = Sa + Ia + Ra,
-        Nb = Sb + Ib + Rb
-    ) %>%
-    # Go from a wide to long dataframe for ggplot
-    pivot_longer(
-        cols = -time,
-        names_to = c("state", "group"),
-        names_sep = 1,
-        values_to = "value"
-    ) %>%
-    # Clean pivoted columns for ordered plots
-    mutate(
-        state = factor(state, levels = c("S", "I", "R", "N")),
-        group = paste("Group", str_to_upper(group))
-    )
+  # Convert the solution to a tibble for manipulation
+  as_tibble() %>%
+  # Create and modify columns
+  mutate(
+    # Convert all columns into type numeric
+    across(everything(), as.numeric),
+    # Create new columns to track pop sizes in each group
+    Na = Sa + Ia + Ra,
+    Nb = Sb + Ib + Rb
+  ) %>%
+  # Go from a wide to long dataframe for ggplot
+  pivot_longer(
+    cols = -time,
+    names_to = c("state", "group"),
+    names_sep = 1,
+    values_to = "value"
+  ) %>%
+  # Clean pivoted columns for ordered plots
+  mutate(
+    state = factor(state, levels = c("S", "I", "R", "N")),
+    group = paste("Group", str_to_upper(group))
+  )
 ```
 
 ```{r}
@@ -227,18 +227,18 @@ ab_df <- ab_sol %>%
 SIRcolors <- c("#1f77b4", "#ff7f0e", "#FF3851", "#591099")
 
 ggplot(ab_df, aes(x = time, y = value, color = state)) +
-    geom_line(linewidth = 1.5) +
-    facet_wrap(~group, scales = "free_y") +
-    scale_color_manual(
-        values = SIRcolors,
-        labels = c("Susceptible", "Infected", "Recovered", "Total")
-    ) +
-    labs(
-        x = "Time",
-        y = "Number of individuals",
-        color = "State"
-    ) +
-    theme(legend.position = "bottom")
+  geom_line(linewidth = 1.5) +
+  facet_wrap(~group, scales = "free_y") +
+  scale_color_manual(
+    values = SIRcolors,
+    labels = c("Susceptible", "Infected", "Recovered", "Total")
+  ) +
+  labs(
+    x = "Time",
+    y = "Number of individuals",
+    color = "State"
+  ) +
+  theme(legend.position = "bottom")
 ```
 
 ::: {.callout-question}
@@ -250,24 +250,24 @@ Now let's plot the proportion of individuals in each state for the two groups.
 
 ```{r}
 ab_df_props <- ab_df %>%
-    # Remove total pop count as we only want the group-specific values
-    filter(state != "N") %>%
-    mutate(
-        # Concatenate the state variable and the group letter for each row
-        state_group = paste0(state, str_extract_all(group, "[^Group ]")),
-        # Factor new variable for nicer plotting
-        state_group = factor(
-            state_group,
-            levels = c("RA", "RB", "IA", "IB", "SA", "SB")
-        )
-    ) %>%
-    # Group by time and state_group so we can calculate the relevant
-    # proportions over time
-    group_by(time, state_group) %>%
-    mutate(
-        prop = value / sum(ab_yinit)
-    ) %>%
-    ungroup()
+  # Remove total pop count as we only want the group-specific values
+  filter(state != "N") %>%
+  mutate(
+    # Concatenate the state variable and the group letter for each row
+    state_group = paste0(state, str_extract_all(group, "[^Group ]")),
+    # Factor new variable for nicer plotting
+    state_group = factor(
+      state_group,
+      levels = c("RA", "RB", "IA", "IB", "SA", "SB")
+    )
+  ) %>%
+  # Group by time and state_group so we can calculate the relevant
+  # proportions over time
+  group_by(time, state_group) %>%
+  mutate(
+    prop = value / sum(ab_yinit)
+  ) %>%
+  ungroup()
 ```
 
 ```{r}
@@ -279,17 +279,17 @@ Icolors <- RColorBrewer::brewer.pal(3, "Oranges")[c(2, 3)]
 Rcolors <- RColorBrewer::brewer.pal(3, "Greens")[c(2, 3)]
 
 ggplot(ab_df_props, aes(x = time, y = prop, fill = state_group)) +
-    geom_area() +
-    scale_fill_manual(
-        values = c(Scolors, Icolors, Rcolors),
-        limits = c("SA", "SB", "IA", "IB", "RA", "RB"),
-    ) +
-    labs(
-        x = "Time",
-        y = "Proportion of individuals",
-        fill = "State"
-    ) +
-    theme(legend.position = "bottom")
+  geom_area() +
+  scale_fill_manual(
+    values = c(Scolors, Icolors, Rcolors),
+    limits = c("SA", "SB", "IA", "IB", "RA", "RB"),
+  ) +
+  labs(
+    x = "Time",
+    y = "Proportion of individuals",
+    fill = "State"
+  ) +
+  theme(legend.position = "bottom")
 ```
 
 ## A Model With 2 Age Classes
@@ -306,33 +306,33 @@ Additionally, new juveniles are added through births (always first susceptible) 
 #| column: body
 #| out-width: 100%
 elpos <- rbind(
-    B = c(1, 3),
-    Sj = c(2, 3),
-    Sa = c(3, 3),
-    Ij = c(2, 2),
-    Ia = c(3, 2),
-    Rj = c(2, 1),
-    Ra = c(3, 1),
-    Ds = c(4, 3),
-    Di = c(4, 2),
-    Dr = c(4, 1)
+  B = c(1, 3),
+  Sj = c(2, 3),
+  Sa = c(3, 3),
+  Ij = c(2, 2),
+  Ia = c(3, 2),
+  Rj = c(2, 1),
+  Ra = c(3, 1),
+  Ds = c(4, 3),
+  Di = c(4, 2),
+  Dr = c(4, 1)
 )
 
 elpos[, 2] <- (2 * elpos[, 2] - 1) / 6
 elpos[, 1] <- (2 * elpos[, 1] - 1) / 8
 
 fromto <- rbind(
-    BSj = c(1, 2),
-    RaD = c(7, 10),
-    SjSa = c(2, 3),
-    IjIa = c(4, 5),
-    RjRa = c(6, 7),
-    SjIj = c(2, 4),
-    SaIa = c(3, 5),
-    IjRj = c(4, 6),
-    IaRa = c(5, 7),
-    SaD = c(3, 8),
-    IaD = c(5, 9)
+  BSj = c(1, 2),
+  RaD = c(7, 10),
+  SjSa = c(2, 3),
+  IjIa = c(4, 5),
+  RjRa = c(6, 7),
+  SjIj = c(2, 4),
+  SaIa = c(3, 5),
+  IjRj = c(4, 6),
+  IaRa = c(5, 7),
+  SaD = c(3, 8),
+  IaD = c(5, 9)
 )
 
 op <- par(mar = c(1, 1, 1, 1))
@@ -341,47 +341,48 @@ diagram::openplotmat(asp = 1.0)
 
 arrpos <- matrix(ncol = 2, nrow = nrow(fromto))
 
-for (i in seq_len(nrow(fromto)))
-    arrpos[i, ] <- diagram::straightarrow(
-        to = elpos[fromto[i, 2], ],
-        from = elpos[fromto[i, 1], ],
-        lwd = 2,
-        arr.pos = 0.65,
-        arr.length = 0.5
-    )
+for (i in seq_len(nrow(fromto))) {
+  arrpos[i, ] <- diagram::straightarrow(
+    to = elpos[fromto[i, 2], ],
+    from = elpos[fromto[i, 1], ],
+    lwd = 2,
+    arr.pos = 0.65,
+    arr.length = 0.5
+  )
+}
 
 purrr::walk(
-    c("B", "Sj", "Sa", "Ij", "Ia", "Rj", "Ra", "Ds", "Di", "Dr"),
-    .f = function(.x) {
-        diagram::textrect(
-            elpos[.x, ],
-            0.07,
-            0.07,
-            lab = .x,
-            box.col = gray(0.7),
-            shadow.col = gray(0.4),
-            shadow.size = 0.01,
-            cex = 2
-        )
-    }
+  c("B", "Sj", "Sa", "Ij", "Ia", "Rj", "Ra", "Ds", "Di", "Dr"),
+  .f = function(.x) {
+    diagram::textrect(
+      elpos[.x, ],
+      0.07,
+      0.07,
+      lab = .x,
+      box.col = gray(0.7),
+      shadow.col = gray(0.4),
+      shadow.size = 0.01,
+      cex = 2
+    )
+  }
 )
 
 purrr::pwalk(
-    .l = list(
-        state = c(seq(2, 7, by = 1), 2, 3, 4, 5),
-        xadjust = c(rep(0.125, 6), rep(0.05, 4)),
-        yadjust = c(rep(0.05, 6), rep(-0.175, 4)),
-        label = c(rep(c("alpha", "mu"), 3), rep("lambda", 2), rep("gamma", 2)),
-        label_subscript = c(rep("", 6), "J", "A", rep("", 2))
-    ),
-    .f = function(state, xadjust, yadjust, label, label_subscript) {
-        text(
-            elpos[state, 1] + xadjust,
-            elpos[state, 2] + yadjust,
-            bquote(.(ensym(label))[.(label_subscript)]),
-            cex = 2
-        )
-    }
+  .l = list(
+    state = c(seq(2, 7, by = 1), 2, 3, 4, 5),
+    xadjust = c(rep(0.125, 6), rep(0.05, 4)),
+    yadjust = c(rep(0.05, 6), rep(-0.175, 4)),
+    label = c(rep(c("alpha", "mu"), 3), rep("lambda", 2), rep("gamma", 2)),
+    label_subscript = c(rep("", 6), "J", "A", rep("", 2))
+  ),
+  .f = function(state, xadjust, yadjust, label, label_subscript) {
+    text(
+      elpos[state, 1] + xadjust,
+      elpos[state, 2] + yadjust,
+      bquote(.(ensym(label))[.(label_subscript)]),
+      cex = 2
+    )
+  }
 )
 
 par(op)
@@ -408,59 +409,58 @@ Now, let's simulate this model, under the same assumptions about transmission ra
 ```{r}
 # define the parameters for the demographic model
 demog_params <- c(
-    beta_within = 0.004,
-    beta_between = 0.002,
-    recovery = 10,
-    births = 100,
-    # Width of age bands in years
-    age_band_j = 20,
-    age_band_a = 60
+  beta_within = 0.004,
+  beta_between = 0.002,
+  recovery = 10,
+  births = 100,
+  # Width of age bands in years
+  age_band_j = 20,
+  age_band_a = 60
 )
 ```
 
 ```{r}
-demog_model <- function (t, x, p, ...) {
-    # Unpack states
-    Sj <- x["Sj"]
-    Sa <- x["Sa"]
-    Ij <- x["Ij"]
-    Ia <- x["Ia"]
-    Rj <- x["Rj"]
-    Ra <- x["Ra"]
+demog_model <- function(t, x, p, ...) {
+  # Unpack states
+  Sj <- x["Sj"]
+  Sa <- x["Sa"]
+  Ij <- x["Ij"]
+  Ia <- x["Ia"]
+  Rj <- x["Rj"]
+  Ra <- x["Ra"]
 
-    # Unpack parameters from vector
-    beta_within <- p["beta_within"]
-    beta_between <- p["beta_between"]
-    recovery <- p["recovery"]
-    births <- p["births"]
-    # Calculate rate of aging from each age group
-    aging_j <- 1 / p["age_band_j"]
-    aging_a <- 1 / p["age_band_a"]
+  # Unpack parameters from vector
+  beta_within <- p["beta_within"]
+  beta_between <- p["beta_between"]
+  recovery <- p["recovery"]
+  births <- p["births"]
+  # Calculate rate of aging from each age group
+  aging_j <- 1 / p["age_band_j"]
+  aging_a <- 1 / p["age_band_a"]
 
-    # juv. force of infection
-    lambda_j <- beta_within * Ij + beta_between * Ia
+  # juv. force of infection
+  lambda_j <- beta_within * Ij + beta_between * Ia
 
-    # adult. force of infection
-    lambda_a <- beta_within * Ia + beta_between * Ij
+  # adult. force of infection
+  lambda_a <- beta_within * Ia + beta_between * Ij
 
-    # Calculate the ODEs
-    dSjdt <- births - (lambda_j * Sj) - (aging_j * Sj)
-    dSadt <- -(lambda_a * Sa) + (aging_j * Sj) - (aging_a * Sa)
-    dIjdt <- (lambda_j * Sj) - (recovery * Ij) - (aging_j * Ij)
-    dIadt <- (lambda_a * Sa) - (recovery * Ia) +
-        (aging_j * Ij) - (aging_a * Ia)
-    dRjdt <- (recovery * Ij) - (aging_j * Rj)
-    dRadt <- (recovery * Ia) + (aging_j * Rj) - (aging_a * Ra)
+  # Calculate the ODEs
+  dSjdt <- births - (lambda_j * Sj) - (aging_j * Sj)
+  dSadt <- -(lambda_a * Sa) + (aging_j * Sj) - (aging_a * Sa)
+  dIjdt <- (lambda_j * Sj) - (recovery * Ij) - (aging_j * Ij)
+  dIadt <- (lambda_a * Sa) - (recovery * Ia) + (aging_j * Ij) - (aging_a * Ia)
+  dRjdt <- (recovery * Ij) - (aging_j * Rj)
+  dRadt <- (recovery * Ia) + (aging_j * Rj) - (aging_a * Ra)
 
-    # Return the ODEs
-    list(c(
-        dSjdt,
-        dSadt,
-        dIjdt,
-        dIadt,
-        dRjdt,
-        dRadt
-    ))
+  # Return the ODEs
+  list(c(
+    dSjdt,
+    dSadt,
+    dIjdt,
+    dIadt,
+    dRjdt,
+    dRadt
+  ))
 }
 ```
 
@@ -472,31 +472,31 @@ demog_yinit <- c(Sj = 2000, Sa = 3000, Ij = 0, Ia = 1, Rj = 0, Ra = 1000)
 
 # Solve the demographic model
 demog_sol <- deSolve::ode(
-    y = demog_yinit,
-    times = seq(0, 200, by = 0.1),
-    func = demog_model,
-    parms = demog_params
+  y = demog_yinit,
+  times = seq(0, 200, by = 0.1),
+  func = demog_model,
+  parms = demog_params
 )
 
 demog_df <- demog_sol %>%
-    as_tibble() %>%
-    mutate(
-        across(everything(), as.numeric),
-        Nj = Sj + Ij + Rj,
-        Na = Sa + Ia + Ra,
-        # Calculate total population as need for proportional area plots
-        N = Nj + Na
-    ) %>%
-    pivot_longer(
-        cols = -c(time, N),
-        names_to = c("state", "group"),
-        names_sep = 1,
-        values_to = "value"
-    ) %>%
-    mutate(
-        state = factor(state, levels = c("S", "I", "R", "N")),
-        group = paste("Group", str_to_upper(group))
-    )
+  as_tibble() %>%
+  mutate(
+    across(everything(), as.numeric),
+    Nj = Sj + Ij + Rj,
+    Na = Sa + Ia + Ra,
+    # Calculate total population as need for proportional area plots
+    N = Nj + Na
+  ) %>%
+  pivot_longer(
+    cols = -c(time, N),
+    names_to = c("state", "group"),
+    names_sep = 1,
+    values_to = "value"
+  ) %>%
+  mutate(
+    state = factor(state, levels = c("S", "I", "R", "N")),
+    group = paste("Group", str_to_upper(group))
+  )
 ```
 
 <div class="exercise">
@@ -509,24 +509,26 @@ demog_df <- demog_sol %>%
 #| column: body
 #| out-width: 100%
 ggplot(demog_df, aes(x = time, y = value, color = state)) +
-    geom_line(linewidth = 1.5) +
-    facet_wrap(
-        ~group, nrow = 2, scales = "free_y",
-        labeller = as_labeller(c(
-            `Group A` = "Adults",
-            `Group J` = "Juveniles"
-        ))
-    ) +
-    scale_color_manual(
-        values = SIRcolors,
-        labels = c("Susceptible", "Infected", "Recovered", "Total")
-    ) +
-    labs(
-        x = "Time",
-        y = "Number of individuals",
-        color = "State"
-    ) +
-    theme(legend.position = "bottom")
+  geom_line(linewidth = 1.5) +
+  facet_wrap(
+    ~group,
+    nrow = 2,
+    scales = "free_y",
+    labeller = as_labeller(c(
+      `Group A` = "Adults",
+      `Group J` = "Juveniles"
+    ))
+  ) +
+  scale_color_manual(
+    values = SIRcolors,
+    labels = c("Susceptible", "Infected", "Recovered", "Total")
+  ) +
+  labs(
+    x = "Time",
+    y = "Number of individuals",
+    color = "State"
+  ) +
+  theme(legend.position = "bottom")
 ```
 
 Note that now that births are replenishing susceptibles, infection persists. The results of the above are plotted here:
@@ -536,37 +538,37 @@ Now let's plot the proportion of individuals in each state for the two groups.
 ```{r}
 # Calculate the proportions in each state and group at each time point
 demog_df_props <- demog_df %>%
-    filter(state != "N") %>%
-    mutate(
-        state_group = paste0(state, str_extract_all(group, "[^Group ]")),
-        state_group = factor(
-          state_group,
-          levels = c("RJ", "RA", "IJ", "IA", "SJ", "SA")
-        )
-    ) %>%
-    group_by(time, state_group) %>%
-    mutate(
-        # Calculate the proportion of the total population, not the group pop
-        prop = value / N
-    ) %>%
-    ungroup()
+  filter(state != "N") %>%
+  mutate(
+    state_group = paste0(state, str_extract_all(group, "[^Group ]")),
+    state_group = factor(
+      state_group,
+      levels = c("RJ", "RA", "IJ", "IA", "SJ", "SA")
+    )
+  ) %>%
+  group_by(time, state_group) %>%
+  mutate(
+    # Calculate the proportion of the total population, not the group pop
+    prop = value / N
+  ) %>%
+  ungroup()
 ```
 
 ```{r}
 #| column: body
 #| out-width: 100%
 ggplot(demog_df_props, aes(x = time, y = prop, fill = state_group)) +
-    geom_area() +
-    scale_fill_manual(
-        values = c(Scolors, Icolors, Rcolors),
-        limits = c("SJ", "SA", "IJ", "IA", "RJ", "RA")
-    ) +
-    labs(
-        x = "Time",
-        y = "Proportion of individuals",
-        fill = "State"
-    ) +
-    theme(legend.position = "bottom")
+  geom_area() +
+  scale_fill_manual(
+    values = c(Scolors, Icolors, Rcolors),
+    limits = c("SJ", "SA", "IJ", "IA", "RJ", "RA")
+  ) +
+  labs(
+    x = "Time",
+    y = "Proportion of individuals",
+    fill = "State"
+  ) +
+  theme(legend.position = "bottom")
 ```
 
 Now let's plot the equilibrium seroprevalence for each age group.
@@ -574,15 +576,15 @@ Now let's plot the equilibrium seroprevalence for each age group.
 ```{r}
 # Select the last row (time point) of the data frame
 demog_equil_seroprev <- tail(demog_df) %>%
-    mutate(
-        # Calculate the proportion of individuals in each state and age group
-        prop = value / sum(value),
-        # Relabel groups for plots
-        group = case_when(group == "Group J" ~ "Juveniles", TRUE ~ "Adults"),
-        group = factor(group, levels = c("Juveniles", "Adults")),
-        .by = group
-    ) %>%
-    filter(state == "R")
+  mutate(
+    # Calculate the proportion of individuals in each state and age group
+    prop = value / sum(value),
+    # Relabel groups for plots
+    group = case_when(group == "Group J" ~ "Juveniles", TRUE ~ "Adults"),
+    group = factor(group, levels = c("Juveniles", "Adults")),
+    .by = group
+  ) %>%
+  filter(state == "R")
 ```
 
 ```{r}
@@ -592,16 +594,16 @@ demog_equil_seroprev <- tail(demog_df) %>%
 age_group_colors <- c("#2980B9", "#154360")
 
 ggplot(demog_equil_seroprev, aes(x = group, y = prop, fill = group)) +
-    geom_col(position = "identity") +
-    scale_fill_manual(
-        values = age_group_colors
-    ) +
-    labs(
-        x = "Age group",
-        y = "Equilibrium seroprevalence",
-        fill = "Age group"
-    ) +
-    theme(legend.position = "none")
+  geom_col(position = "identity") +
+  scale_fill_manual(
+    values = age_group_colors
+  ) +
+  labs(
+    x = "Age group",
+    y = "Equilibrium seroprevalence",
+    fill = "Age group"
+  ) +
+  theme(legend.position = "none")
 ```
 
 One thing we are often interested in is the $R_0$ of a system.
@@ -617,33 +619,42 @@ mu <- 1 / demog_params["age_band_a"]
 n <- demog_params["births"] / c(alpha, mu)
 
 # Create the transmission matrix
-beta_demog <- matrix(c(
+beta_demog <- matrix(
+  c(
     demog_params["beta_within"],
     demog_params["beta_between"],
     demog_params["beta_between"],
     demog_params["beta_within"]
-    ),
-    nrow = 2,
-    ncol = 2
+  ),
+  nrow = 2,
+  ncol = 2
 )
 
 # Calculate the next generation matrix
 ba_ngm <- matrix(
-    c(
-        n[1] * (beta_demog[1, 1] / (demog_params["recovery"] + alpha)) +
-            alpha / (demog_params["recovery"] + mu) *
-            n[1] * beta_demog[1, 2] / (demog_params["recovery"] + mu),
-        
-        n[2] * beta_demog[2, 1] / (demog_params["recovery"] + alpha) +
-            alpha / (demog_params["recovery"] + mu) *
-            n[2] * (beta_demog[2, 2] / (demog_params["recovery"] + mu)),
+  c(
+    n[1] *
+      (beta_demog[1, 1] / (demog_params["recovery"] + alpha)) +
+      alpha /
+        (demog_params["recovery"] + mu) *
+        n[1] *
+        beta_demog[1, 2] /
+        (demog_params["recovery"] + mu),
 
-        n[1] * beta_demog[1, 2] / (demog_params["recovery"] + mu),
+    n[2] *
+      beta_demog[2, 1] /
+      (demog_params["recovery"] + alpha) +
+      alpha /
+        (demog_params["recovery"] + mu) *
+        n[2] *
+        (beta_demog[2, 2] / (demog_params["recovery"] + mu)),
 
-        n[2] * beta_demog[2, 2] / (demog_params["recovery"] + mu)
-    ),
-    nrow = 2,
-    ncol = 2
+    n[1] * beta_demog[1, 2] / (demog_params["recovery"] + mu),
+
+    n[2] * beta_demog[2, 2] / (demog_params["recovery"] + mu)
+  ),
+  nrow = 2,
+  ncol = 2
 )
 
 # Calculate R0 by taking the **spectral trace** i.e., the largest non-negative Eigenvalue of the NGM
@@ -669,11 +680,11 @@ So that we don't change too many things all at once, let's keep the same contact
 ```{r}
 # Set up the parameters for model that incorporates a more realistic age matrix
 ages_params <- c(
-    beta_j = 0.02,
-    beta_a = 0.01,
-    beta_aj = 0.01 / 2,
-    recovery = 10,
-    births = 100
+  beta_j = 0.02,
+  beta_a = 0.01,
+  beta_aj = 0.01 / 2,
+  recovery = 10,
+  births = 100
 )
 
 # Create a vector of ages
@@ -705,22 +716,22 @@ ages_beta_mat[21:30, 1:20] <- ages_params["beta_aj"]
 #| column: body
 #| out-width: 100%
 ages_beta_mat %>%
-    # Turn into a data.frame so we can use ggplot()
-    as.data.frame.table() %>%
-    mutate(
-        age_contactor = rep(ages, 30),
-        # Repeat each age in ages vector 30 times before moving to next
-        age_contactee = rep(ages, each = 30)
-    ) %>%
-    ggplot(aes(x = age_contactor, y = age_contactee, z = Freq)) +
-    geom_contour_filled(bins = 8) +
-    scale_fill_brewer(
-        palette = "Reds",
-        # Don't drop unused bins as useful for ensuring extremities properly
-        # binned
-        drop = FALSE
-    ) +
-    labs(x = "Age of Contactor", y = "Age of Contactee")
+  # Turn into a data.frame so we can use ggplot()
+  as.data.frame.table() %>%
+  mutate(
+    age_contactor = rep(ages, 30),
+    # Repeat each age in ages vector 30 times before moving to next
+    age_contactee = rep(ages, each = 30)
+  ) %>%
+  ggplot(aes(x = age_contactor, y = age_contactee, z = Freq)) +
+  geom_contour_filled(bins = 8) +
+  scale_fill_brewer(
+    palette = "Reds",
+    # Don't drop unused bins as useful for ensuring extremities properly
+    # binned
+    drop = FALSE
+  ) +
+  labs(x = "Age of Contactor", y = "Age of Contactee")
 ```
 
 ::: {.callout-note collapse="false"}
@@ -729,11 +740,13 @@ You could also use the `filled.contour()` base-R function to plot the beta matri
 ```{r}
 #| code-fold: true
 filled.contour(
-    ages, ages, ages_beta_mat,
-    plot.title = title(
-        xlab = "Age of Contactor",
-        ylab = "Age of Contactee"
-    )
+  ages,
+  ages,
+  ages_beta_mat,
+  plot.title = title(
+    xlab = "Age of Contactor",
+    ylab = "Age of Contactee"
+  )
 )
 ```
 :::
@@ -745,9 +758,9 @@ The vector `yinit` expresses these initial conditions.
 # Create a long vector of initial states with only one
 # initial infection in age 50
 demog_yinit_ages <- c(
-    S = c(rep(100, 20), rep(0, 5), rep(200, 5)),
-    I = c(rep(0, 25), 1, rep(0, 4)),
-    R = c(rep(0, 20), rep(1000, 5), rep(0, 5))
+  S = c(rep(100, 20), rep(0, 5), rep(200, 5)),
+  I = c(rep(0, 25), 1, rep(0, 4)),
+  R = c(rep(0, 20), rep(1000, 5), rep(0, 5))
 )
 ```
 
@@ -808,40 +821,42 @@ aging_mat[25:30, 25:30]
 #| echo: false
 
 aging_mat %>%
-    as.data.frame.table() %>%
-    mutate(
-        age_recipient = rep(ages, 30),
-        # Repeat each age in ages vector 30 times before moving to next
-        age_source = rep(ages, each = 30)
-    ) %>%
-    ggplot(aes(x = age_source, y = age_recipient, z = Freq)) +
-    geom_contour_filled() +
-    scale_fill_brewer(
-        palette = "RdBu",
-        drop = FALSE
-    ) +
-    labs(x = "Source Age Group", y = "Recipient Age Group")
-
+  as.data.frame.table() %>%
+  mutate(
+    age_recipient = rep(ages, 30),
+    # Repeat each age in ages vector 30 times before moving to next
+    age_source = rep(ages, each = 30)
+  ) %>%
+  ggplot(aes(x = age_source, y = age_recipient, z = Freq)) +
+  geom_contour_filled() +
+  scale_fill_brewer(
+    palette = "RdBu",
+    drop = FALSE
+  ) +
+  labs(x = "Source Age Group", y = "Recipient Age Group")
 ```
 
 ```{r}
 #| column: body
 #| out-width: 100%
 
-
 aging_mat %>%
-    as.data.frame.table() %>%
-    mutate(
-        age_recipient = rep(ages, 30),
-        # Repeat each age in ages vector 30 times before moving to next
-        age_source = rep(ages, each = 30)
-    ) %>%
-    ggplot(aes(x = as.factor(age_source), y = as.factor(age_recipient), z = Freq)) +
-    geom_tile(colour = "grey", size = 0.4, aes(fill=Freq))  + scale_fill_gradientn(
+  as.data.frame.table() %>%
+  mutate(
+    age_recipient = rep(ages, 30),
+    # Repeat each age in ages vector 30 times before moving to next
+    age_source = rep(ages, each = 30)
+  ) %>%
+  ggplot(aes(
+    x = as.factor(age_source),
+    y = as.factor(age_recipient),
+    z = Freq
+  )) +
+  geom_tile(colour = "grey", size = 0.4, aes(fill = Freq)) +
+  scale_fill_gradientn(
     colours = c("red", "white", "blue")
-  ) + 
-    labs(x = "Source Age Group", y = "Recipient Age Group")
-
+  ) +
+  labs(x = "Source Age Group", y = "Recipient Age Group")
 ```
 
 <div class="exercise">
@@ -857,40 +872,39 @@ Now we can put the pieces together to write a simulator for the age-structured S
 # aging are both matrices, so we want to keep them as matrices, rather than
 # flattening
 multistage_params <- list(
-    beta_mat = ages_beta_mat,
-    recovery = ages_params["recovery"],
-    births = ages_params["births"],
-    aging_mat = aging_mat
+  beta_mat = ages_beta_mat,
+  recovery = ages_params["recovery"],
+  births = ages_params["births"],
+  aging_mat = aging_mat
 )
 
-multistage_model <- function (t, x, p, ...) {
-    # Unpack all states from the vector using the relevant indices
-    s <- x[sindex]
-    i <- x[iindex]
-    r <- x[rindex]
-    
-    # Unpack parameters
-    beta_mat <- p[["beta_mat"]]
-    recovery <- p[["recovery"]]
-    births <- p[["births"]]
-    aging_mat <- p[["aging_mat"]]
+multistage_model <- function(t, x, p, ...) {
+  # Unpack all states from the vector using the relevant indices
+  s <- x[sindex]
+  i <- x[iindex]
+  r <- x[rindex]
 
-    # Calculate force of infection using matrix multiplication
-    lambda <- beta_mat %*% i
-    
-    # Calculate the ODEs at every time step
-    # Note that R add element-wise for vectors i.e. lambda * s results
-    # in a vector length 30 (30 age groups), as does aging_mat %*% s,
-    # so v1[i] + v2[i] for i in 1:30
-    dsdt <- -lambda * s + aging_mat %*% s
-    didt <- lambda * s + aging_mat %*% i - recovery * i
-    drdt <- aging_mat %*% r + recovery * i 
-    # Add the birth rate to the first age group
-    dsdt[1] <- dsdt[1] + births
-    
-    # Return the ODEs in a list
-    list(c(dsdt, didt, drdt))
+  # Unpack parameters
+  beta_mat <- p[["beta_mat"]]
+  recovery <- p[["recovery"]]
+  births <- p[["births"]]
+  aging_mat <- p[["aging_mat"]]
 
+  # Calculate force of infection using matrix multiplication
+  lambda <- beta_mat %*% i
+
+  # Calculate the ODEs at every time step
+  # Note that R add element-wise for vectors i.e. lambda * s results
+  # in a vector length 30 (30 age groups), as does aging_mat %*% s,
+  # so v1[i] + v2[i] for i in 1:30
+  dsdt <- -lambda * s + aging_mat %*% s
+  didt <- lambda * s + aging_mat %*% i - recovery * i
+  drdt <- aging_mat %*% r + recovery * i
+  # Add the birth rate to the first age group
+  dsdt[1] <- dsdt[1] + births
+
+  # Return the ODEs in a list
+  list(c(dsdt, didt, drdt))
 }
 ```
 
@@ -900,10 +914,10 @@ We'll then plot the epidemic curve.
 ```{r}
 # Solve the model with a realistic age matrix
 multistage_sol <- deSolve::ode(
-    y = demog_yinit_ages,
-    times = seq(0, 100, by = 0.1),
-    func = multistage_model,
-    parms = multistage_params
+  y = demog_yinit_ages,
+  times = seq(0, 100, by = 0.1),
+  func = multistage_model,
+  parms = multistage_params
 )
 
 # Extract all infected age groups at all time points into a new vector
@@ -914,40 +928,40 @@ multistage_infecteds <- multistage_sol[, 1 + iindex]
 # Create a dataframe of the sum of infectious individuals in Juv/Adult age groups
 # at each time point
 multistage_df <- tibble(
-        # Get all times from model run
-        time = multistage_sol[, 1],
-        # At each timepoint, apply the sum function to all juvenile infected
-        # individuals
-        Juveniles = apply(multistage_infecteds[, juvies], 1, sum),
-        # At each timepoint, apply the sum function to all adult infected
-        # individuals
-        Adults = apply(multistage_infecteds[, adults], 1, sum)
-    ) %>%
-    # Pivot to create a long dataframe that works with ggplot
-    pivot_longer(
-        cols = c(Juveniles, Adults),
-        names_to = "age_group",
-        values_to = "infections"
-    ) %>%
-    # Turn new pivoted variable into a factor to plot nicely
-    mutate(
-        age_group = factor(age_group, levels = c("Juveniles", "Adults"))
-    )
+  # Get all times from model run
+  time = multistage_sol[, 1],
+  # At each timepoint, apply the sum function to all juvenile infected
+  # individuals
+  Juveniles = apply(multistage_infecteds[, juvies], 1, sum),
+  # At each timepoint, apply the sum function to all adult infected
+  # individuals
+  Adults = apply(multistage_infecteds[, adults], 1, sum)
+) %>%
+  # Pivot to create a long dataframe that works with ggplot
+  pivot_longer(
+    cols = c(Juveniles, Adults),
+    names_to = "age_group",
+    values_to = "infections"
+  ) %>%
+  # Turn new pivoted variable into a factor to plot nicely
+  mutate(
+    age_group = factor(age_group, levels = c("Juveniles", "Adults"))
+  )
 ```
 
 ```{r}
 #| column: body
 #| out-width: 100%
 ggplot(multistage_df, aes(x = time, y = infections, color = age_group)) +
-    geom_line(linewidth = 1.5) +
-    scale_color_manual(
-        values = age_group_colors
-    ) +
-    labs(
-        x = "Time",
-        y = "Number of infections",
-        color = "Age group"
-    )
+  geom_line(linewidth = 1.5) +
+  scale_color_manual(
+    values = age_group_colors
+  ) +
+  labs(
+    x = "Time",
+    y = "Number of infections",
+    color = "Age group"
+  )
 ```
 
 Let's mimic a situation where we have cross-sectional seroprevalence data (e.g. measures of antibodies that tell you someone is in the R class).
@@ -967,17 +981,17 @@ Use the code below to display the age-specific seroprevalence (i.e., the seropre
 multistage_equil <- drop(tail(multistage_sol, 1))[-1]
 # Calculate the equilibrium pop sizes of each age group
 multistage_equil_n <- multistage_equil[sindex] +
-    multistage_equil[iindex] +
-    multistage_equil[rindex]
+  multistage_equil[iindex] +
+  multistage_equil[rindex]
 
 # Calculate equilibrium seroprevalence for each age group
 multistage_equil_seroprev <- multistage_equil[rindex] / multistage_equil_n
 
 # Create a dataframe to store equilibrium seroprev for plotting
 multistage_equil_seroprev_df <- tibble(
-    age = ages,
-    seroprev = multistage_equil_seroprev,
-    width = da_ages
+  age = ages,
+  seroprev = multistage_equil_seroprev,
+  width = da_ages
 )
 ```
 
@@ -985,21 +999,22 @@ multistage_equil_seroprev_df <- tibble(
 #| column: body
 #| out-width: 100%
 ggplot(multistage_equil_seroprev_df, aes(x = age, y = seroprev, fill = age)) +
-    # Set column width to width of age bands, and justify to start at
-    # lower bound
-    geom_col(
-        width = multistage_equil_seroprev_df$width,
-        just = 1.0, color = "black"
-    ) +
-    labs(
-        x = "Age",
-        y = "Seroprevalence"
-    ) +
-    scale_x_continuous(breaks = seq(0, 80, 10)) +
-    scale_fill_continuous(
-        low = age_group_colors[1],
-        high = age_group_colors[2]
-    )
+  # Set column width to width of age bands, and justify to start at
+  # lower bound
+  geom_col(
+    width = multistage_equil_seroprev_df$width,
+    just = 1.0,
+    color = "black"
+  ) +
+  labs(
+    x = "Age",
+    y = "Seroprevalence"
+  ) +
+  scale_x_continuous(breaks = seq(0, 80, 10)) +
+  scale_fill_continuous(
+    low = age_group_colors[1],
+    high = age_group_colors[2]
+  )
 ```
 
 ::: {.callout-note title="QUESTION"}
@@ -1015,8 +1030,8 @@ We have created a function to calculate R0 for an age-structured SIR and have ad
 # Calculate the stable disease-free age distribution.
 # Could also simulate without any infections.
 multistage_stable_n <- solve(
-    aging_mat,
-    c(-1 * multistage_params[["births"]], rep(0, 29))
+  aging_mat,
+  c(-1 * multistage_params[["births"]], rep(0, 29))
 )
 ```
 
@@ -1042,32 +1057,32 @@ multistage_stable_n <- solve(
 #'    recovery_rate = multistage_params[["recovery"]]
 #')
 calculate_R0 <- function(beta_mat, stable_n_mat, aging_mat, recovery_rate) {
-    # evaluate new inf jac pde at dfe
-    f_mat <- beta_mat * stable_n_mat
+  # evaluate new inf jac pde at dfe
+  f_mat <- beta_mat * stable_n_mat
 
-    # set off-diag of non-inf transition jac pde to neg aging of prev age group
-    # (use aging matrix as already calculated in correct places)
-    v_mat <- -aging_mat
-    # Update the diagonal of non-inf transition jac to add recovery rate
-    diag(v_mat) <- diag(v_mat) + recovery_rate
+  # set off-diag of non-inf transition jac pde to neg aging of prev age group
+  # (use aging matrix as already calculated in correct places)
+  v_mat <- -aging_mat
+  # Update the diagonal of non-inf transition jac to add recovery rate
+  diag(v_mat) <- diag(v_mat) + recovery_rate
 
-    ## Alternative method of calculating using age bands directly
-    # v_mat <- diag(recovery_rate + 1 / da_ages)
-    # v_mat[row(v_mat) - col(v_mat) == 1] <- - 1 / head(da_ages, -1)
-    
-    # spectral trace
-    R0 <- max(Re(eigen(solve(v_mat, f_mat), only.values = TRUE)$values))   
-    
-    return(R0)
+  ## Alternative method of calculating using age bands directly
+  # v_mat <- diag(recovery_rate + 1 / da_ages)
+  # v_mat[row(v_mat) - col(v_mat) == 1] <- - 1 / head(da_ages, -1)
+
+  # spectral trace
+  R0 <- max(Re(eigen(solve(v_mat, f_mat), only.values = TRUE)$values))
+
+  return(R0)
 }
 ```
 
 ```{r}
 calculate_R0(
-    beta_mat = multistage_params[["beta_mat"]],
-    stable_n_mat = multistage_stable_n,
-    aging_mat = multistage_params[["aging_mat"]],
-    recovery_rate = multistage_params[["recovery"]]
+  beta_mat = multistage_params[["beta_mat"]],
+  stable_n_mat = multistage_stable_n,
+  aging_mat = multistage_params[["aging_mat"]],
+  recovery_rate = multistage_params[["recovery"]]
 )
 ```
 
@@ -1088,9 +1103,7 @@ We have highlighted the relevant lines in the code chunks, so hopefully you won'
 #| eval: false
 #| source-line-numbers: "2"
 update_age_beta_mat <- ages_beta_mat
-update_age_beta_mat[1:20, 1:20] <- ?
-
-update_age_params <- multistage_params
+update_age_beta_mat[1:20, 1:20] <- ?update_age_params <- multistage_params
 update_age_params[["beta_mat"]] <- update_age_beta_mat
 ```
 
@@ -1159,10 +1172,10 @@ ggplot(update_age_equil_seroprev_df, aes(x = age, y = seroprev, fill = age)) +
 ##### Answer: Simulate and plot the age-structured SIR dynamics under your assumptions and record how the age-specific seroprevalence has changed.
 ```{r}
 update_age_sol <- deSolve::ode(
-    y = demog_yinit_ages,
-    times = seq(0, 400, by = 0.1),
-    func = multistage_model,
-    parms = update_age_params
+  y = demog_yinit_ages,
+  times = seq(0, 400, by = 0.1),
+  func = multistage_model,
+  parms = update_age_params
 )
 
 # Get the time series for each infectious age group
@@ -1171,15 +1184,15 @@ update_age_infecteds <- update_age_sol[, 1 + iindex]
 update_age_equil <- drop(tail(update_age_sol, 1))[-1]
 
 update_age_equil_n <- update_age_equil[sindex] +
-    update_age_equil[iindex] +
-    update_age_equil[rindex]
+  update_age_equil[iindex] +
+  update_age_equil[rindex]
 
 update_age_equil_seroprev <- update_age_equil[rindex] / update_age_equil_n
 
 update_age_equil_seroprev_df <- tibble(
-    age = ages,
-    seroprev = update_age_equil_seroprev,
-    width = da_ages
+  age = ages,
+  seroprev = update_age_equil_seroprev,
+  width = da_ages
 )
 ```
 
@@ -1211,13 +1224,13 @@ calculate_R0(
 
 ```{r}
 update_age_R0 <- round(
-    calculate_R0(
-        beta_mat = update_age_params[["beta_mat"]],
-        stable_n_mat = multistage_stable_n,
-        aging_mat = update_age_params[["aging_mat"]],
-        recovery_rate = update_age_params[["recovery"]]
-    ),
-    digits = 2
+  calculate_R0(
+    beta_mat = update_age_params[["beta_mat"]],
+    stable_n_mat = multistage_stable_n,
+    aging_mat = update_age_params[["aging_mat"]],
+    recovery_rate = update_age_params[["recovery"]]
+  ),
+  digits = 2
 )
 ```
 
@@ -1441,7 +1454,7 @@ mean_age_dots = [({
 
 To compute $R_0$, we need to know the stable age distribution (the relative proportion in the juvenile and adult age classes) of the population, which we can find by solving for the disease-free equilibrium: $S_J^*=B/\alpha$ and $S_A^*=B/\mu$.
 With the stable age distribution, we can calculate $R_0$ by constructing the next generation matrix.
-The code below outlines how the next generation matrix is constructed using the $\alpha$ (aging from juvenile to adult), $\mu$ (death), $n$ (total births), $\gamma$ (recovery), $da$ (width of age groups in years), and $\beta$ (transmission) parameters. 
+The code below outlines how the next generation matrix is constructed using the $\alpha$ (aging from juvenile to adult), $\mu$ (death), $n$ (total births), $\gamma$ (recovery), $da$ (width of age groups in years), and $\beta$ (transmission) parameters.
 
 
 The next generation matrix is a matrix that specifies how many new age-specific infections are generated by a typical infected individual of each age class (in a fully susceptible population).
@@ -1454,9 +1467,9 @@ $$
         \frac{S_J^* \beta_{JJ}}{(\gamma + \alpha)} +
         \frac{\alpha}{(\gamma+\mu)} \frac{S_J^* \beta_{JA}}{(\gamma + \mu)} &
         \frac{S_J^* \beta_{JA}}{(\gamma + \mu)} \\
-        \frac{S_A^* \beta_{AJ}}{(\gamma + \alpha)} + 
+        \frac{S_A^* \beta_{AJ}}{(\gamma + \alpha)} +
             \frac{\alpha}{(\gamma + \mu)} \frac{S_A^*\beta_{AA}}{(\gamma+\mu)} &
-            \frac{S_A^* \beta_{AA}}{(\gamma + \mu)} 
+            \frac{S_A^* \beta_{AA}}{(\gamma + \mu)}
     \end{pmatrix}
 $$ {#eq-simple-ngm}
 
@@ -1464,25 +1477,26 @@ $R_0$ can then be computed as the dominant eigenvalue (i.e., the one with the la
 
 ```{r}
 ngm_params <- c(
-    beta_within = 0.011,
-    beta_between = 0.005,
-    age_band_j = 20,
-    age_band_a = 60,
-    recovery = 10
+  beta_within = 0.011,
+  beta_between = 0.005,
+  age_band_j = 20,
+  age_band_a = 60,
+  recovery = 10
 )
 
 alpha_ngm <- 1 / ngm_params["age_band_j"]
 mu_ngm <- 1 / ngm_params["age_band_a"]
 n_ngm <- demog_params["births"] / c(alpha_ngm, mu_ngm)
 
-beta_ngm <- matrix(c(
+beta_ngm <- matrix(
+  c(
     ngm_params["beta_within"],
     ngm_params["beta_between"],
     ngm_params["beta_between"],
     ngm_params["beta_within"]
-    ),
-    nrow = 2,
-    ncol = 2
+  ),
+  nrow = 2,
+  ncol = 2
 )
 ```
 
@@ -1490,21 +1504,29 @@ The Next Generation Matrix can be calculated in `R` as:
 
 ```{r}
 ngm <- matrix(
-    c(
-        n_ngm[1] * (beta_ngm[1, 1] / (ngm_params["recovery"] + alpha_ngm)) +
-            alpha_ngm / (ngm_params["recovery"] + mu_ngm) *
-            n_ngm[1] * beta_ngm[1, 2] / (ngm_params["recovery"] + mu_ngm),
-        
-        n_ngm[2] * beta_ngm[2, 1] / (ngm_params["recovery"] + alpha_ngm) +
-            alpha_ngm / (ngm_params["recovery"] + mu_ngm) *
-            n_ngm[2] * (beta_ngm[2, 2] / (ngm_params["recovery"] + mu_ngm)),
+  c(
+    n_ngm[1] *
+      (beta_ngm[1, 1] / (ngm_params["recovery"] + alpha_ngm)) +
+      alpha_ngm /
+        (ngm_params["recovery"] + mu_ngm) *
+        n_ngm[1] *
+        beta_ngm[1, 2] /
+        (ngm_params["recovery"] + mu_ngm),
 
-        n_ngm[1] * beta_ngm[1, 2] / (ngm_params["recovery"] + mu_ngm),
+    n_ngm[2] *
+      beta_ngm[2, 1] /
+      (ngm_params["recovery"] + alpha_ngm) +
+      alpha_ngm /
+        (ngm_params["recovery"] + mu_ngm) *
+        n_ngm[2] *
+        (beta_ngm[2, 2] / (ngm_params["recovery"] + mu_ngm)),
 
-        n_ngm[2] * beta_ngm[2, 2] / (ngm_params["recovery"] + mu_ngm)
-    ),
-    nrow = 2,
-    ncol = 2
+    n_ngm[1] * beta_ngm[1, 2] / (ngm_params["recovery"] + mu_ngm),
+
+    n_ngm[2] * beta_ngm[2, 2] / (ngm_params["recovery"] + mu_ngm)
+  ),
+  nrow = 2,
+  ncol = 2
 )
 ```
 
@@ -1524,9 +1546,9 @@ Finally, let's print $R_0$:
 
 ```{r}
 max(
-    Re(
-        eigen(ngm, only.values = TRUE)$values
-    )
+  Re(
+    eigen(ngm, only.values = TRUE)$values
+  )
 )
 ```
 
@@ -1548,23 +1570,23 @@ There are two ways we can do this:
 ```{r}
 # Set up initial conditions without any infections
 multistage_sonly_yinit <- c(
-    S = c(rep(250, 30)),
-    I = c(rep(0, 30)),
-    R = c(rep(0, 30))
+  S = c(rep(250, 30)),
+  I = c(rep(0, 30)),
+  R = c(rep(0, 30))
 )
 
 # Solve disease free sim to get dfe
 multistage_sonly_sol <- deSolve::ode(
-    y = multistage_sonly_yinit,
-    times = seq(0, 300, by = 1),
-    func = multistage_model,
-    parms = multistage_params
+  y = multistage_sonly_yinit,
+  times = seq(0, 300, by = 1),
+  func = multistage_model,
+  parms = multistage_params
 )
 
 # Calculate population size at each time point and save to dataframe
 multistage_sonly_pop <- tibble(
-    time = multistage_sonly_sol[, 1],
-    pop = apply(multistage_sonly_sol[, -1], 1 , sum)
+  time = multistage_sonly_sol[, 1],
+  pop = apply(multistage_sonly_sol[, -1], 1, sum)
 )
 ```
 
@@ -1572,11 +1594,11 @@ multistage_sonly_pop <- tibble(
 #| column: body
 #| out-width: 100%
 ggplot(multistage_sonly_pop, aes(x = time, y = pop)) +
-    geom_area(fill = SIRcolors[4], alpha = 0.6) +
-    labs(
-        x = "Time",
-        y = "Population size"
-    )
+  geom_area(fill = SIRcolors[4], alpha = 0.6) +
+  labs(
+    x = "Time",
+    y = "Population size"
+  )
 ```
 
 ###### Doing the Math
@@ -1609,8 +1631,8 @@ To solve this equation in `R`, we can do
 # solve(a, b) solves the equation a %*% x = b for x, so rearrange equation
 # above so b is on the RHS of the equation
 multistage_stable_n <- solve(
-    aging_mat,
-    c(-1 * multistage_params[["births"]], rep(0, 29))
+  aging_mat,
+  c(-1 * multistage_params[["births"]], rep(0, 29))
 )
 
 multistage_stable_n
@@ -1709,7 +1731,7 @@ To start, let's write out our differential equation:
         - \alpha_1 & \gamma + \alpha_2 & \cdots & 0 \\
         \vdots & \ddots & \ddots & \vdots \\
         0 & \cdots & - \alpha_{29} & \gamma + \alpha_{30}
-    \end{pmatrix} 
+    \end{pmatrix}
 \end{align*}
 
 4. To evaluate $\mathbf{f}$ and $\mathbf{v}$ at the disease-free equilibrium, we can use the results from our previous calculations.
@@ -1728,7 +1750,7 @@ But this time, we'll calculate $R_0$, the mean age of infection, and the number 
 
 Recall from the rubella and congenital rubella syndrome (CRS) example that the risk of severe disease outcomes depends on the risk of infection in reproductive age women (here we'll use individuals between 15 and 35 years as a proxy; in reality we would want to account for the differential rate of reproduction at different ages, including those above 35 years).
 Recall also that increasing vaccination reduces $R_E$ -- for simplicity here, so we don't have to add vaccination into the code, we'll simply change $R_0$ because we already know that will give us outcomes that are dynamically equivalent to increasing the proportion of children born who are vaccinated.
-We'll then calculate how the mean age of infection changes, and specifically how the absolute number of cases among individuals between the ages of 15-35 (as a proxy for reproductive age women) changes. 
+We'll then calculate how the mean age of infection changes, and specifically how the absolute number of cases among individuals between the ages of 15-35 (as a proxy for reproductive age women) changes.
 To do so, we'll make a loop and evaluate the code for each of 10 decreaing levels of mixing (which will reduce $R_0$ and we can interpret as analogous to the reduction in $R_E$ that would result from increasing vaccination).
 
 ::: {.callout-note title="Note about `map()`" collapse="false"}
@@ -1760,68 +1782,68 @@ scaled_params <- multistage_params
 ```{r}
 # Create a dataframe where each row relates to a different R0 value
 R0_mean_age_contacts_df <- map_dfr(
-    # Apply the function to each item in the vector of R0 scaling factors
-    .x = scale_contact,
-    .f = function(.x) {
-        # Scale contacts
-        scaled_beta_mat <- beta_mat * .x
+  # Apply the function to each item in the vector of R0 scaling factors
+  .x = scale_contact,
+  .f = function(.x) {
+    # Scale contacts
+    scaled_beta_mat <- beta_mat * .x
 
-        # Set up parameters
-        scaled_params[["beta_mat"]] <- scaled_beta_mat
+    # Set up parameters
+    scaled_params[["beta_mat"]] <- scaled_beta_mat
 
-        # Solve the model
-        sol <- deSolve::ode(
-            y = demog_yinit_ages,
-            times = seq(0, 400, by = 0.1),
-            func = multistage_model,
-            parms = scaled_params
-        )
+    # Solve the model
+    sol <- deSolve::ode(
+      y = demog_yinit_ages,
+      times = seq(0, 400, by = 0.1),
+      func = multistage_model,
+      parms = scaled_params
+    )
 
-        # Get stable age distribution
-        stable_n <- solve(
-            scaled_params[["aging_mat"]],
-            -c(scaled_params[["births"]], rep(0, 29))
-        )
+    # Get stable age distribution
+    stable_n <- solve(
+      scaled_params[["aging_mat"]],
+      -c(scaled_params[["births"]], rep(0, 29))
+    )
 
-        R0 <- calculate_R0(
-            beta_mat = scaled_params[["beta_mat"]],
-            stable_n_mat = stable_n,
-            aging_mat = scaled_params[["aging_mat"]],
-            recovery = scaled_params[["recovery"]]
-        )
+    R0 <- calculate_R0(
+      beta_mat = scaled_params[["beta_mat"]],
+      stable_n_mat = stable_n,
+      aging_mat = scaled_params[["aging_mat"]],
+      recovery = scaled_params[["recovery"]]
+    )
 
-        sol_dims <- dim(sol)
+    sol_dims <- dim(sol)
 
-        final_age_sizes <- sol[sol_dims[1], 2:sol_dims[2]]
+    final_age_sizes <- sol[sol_dims[1], 2:sol_dims[2]]
 
-        # Get final number of infected individuals for each S, I, and R class
-        susceptibles <- final_age_sizes[sindex]
-        infecteds <- final_age_sizes[iindex]
-        recovereds <- final_age_sizes[rindex]
+    # Get final number of infected individuals for each S, I, and R class
+    susceptibles <- final_age_sizes[sindex]
+    infecteds <- final_age_sizes[iindex]
+    recovereds <- final_age_sizes[rindex]
 
-        # Calculate mean age of infection
-        mean_age <- sum(ages * infecteds / sum(infecteds))
+    # Calculate mean age of infection
+    mean_age <- sum(ages * infecteds / sum(infecteds))
 
-        # Calculate sum of cases between 15-35 years recall, from the figures
-        # above, that that this is the equilibrium prevalence of infection in
-        # these age classes, or the average number of individuals that are
-        # infected at any given time in these age classes. Note that we're not
-        # differentiating between individuals who can and cannot get pregnant
-        # here. So we're making an implicit assumption that there no
-        # difference in the risk of rubella infection in these groups so that
-        # if prevalence goes up in one group, it goes up in the other.
-        sum_cases <- sum(infecteds[15:23])
+    # Calculate sum of cases between 15-35 years recall, from the figures
+    # above, that that this is the equilibrium prevalence of infection in
+    # these age classes, or the average number of individuals that are
+    # infected at any given time in these age classes. Note that we're not
+    # differentiating between individuals who can and cannot get pregnant
+    # here. So we're making an implicit assumption that there no
+    # difference in the risk of rubella infection in these groups so that
+    # if prevalence goes up in one group, it goes up in the other.
+    sum_cases <- sum(infecteds[15:23])
 
-        total_15_35 <- sum(susceptibles[15:23]) +
-            sum_cases +
-            sum(recovereds[15:23])
+    total_15_35 <- sum(susceptibles[15:23]) +
+      sum_cases +
+      sum(recovereds[15:23])
 
-        # Calculate the prevalence as a proportion per 100000 population
-        prev_perc <- sum_cases * 100000 / total_15_35
+    # Calculate the prevalence as a proportion per 100000 population
+    prev_perc <- sum_cases * 100000 / total_15_35
 
-        # Return a dataframe with the values
-        return(tibble(R0, mean_age, sum_cases, prev_perc))
-    }
+    # Return a dataframe with the values
+    return(tibble(R0, mean_age, sum_cases, prev_perc))
+  }
 )
 ```
 
@@ -1832,46 +1854,46 @@ Now we can make a table of the results and plot mean age and the sum of cases be
 #| out-width: 100%
 # Create a table from the dataframe
 gt(R0_mean_age_contacts_df) %>%
-    fmt_number(
-        columns = everything(),
-        decimals = 2
-    ) %>%
-    # Relabel the column headers
-    cols_label(
-        R0 = md("**R0**"),
-        mean_age = md("**Mean age of<br>infection**"),
-        sum_cases = md("**Total cases between<br>15-35 years**"),
-        prev_perc = md("**Prevalence (per 100_000) <br> between 15-35 years**")
-    ) %>%
-    # Apply style to the table with gray alternating rows
-    opt_stylize(style = 1, color = 'gray') %>%
-    # Increate space between columns
-    opt_horizontal_padding(scale = 3) %>%
-    cols_align("center")
+  fmt_number(
+    columns = everything(),
+    decimals = 2
+  ) %>%
+  # Relabel the column headers
+  cols_label(
+    R0 = md("**R0**"),
+    mean_age = md("**Mean age of<br>infection**"),
+    sum_cases = md("**Total cases between<br>15-35 years**"),
+    prev_perc = md("**Prevalence (per 100_000) <br> between 15-35 years**")
+  ) %>%
+  # Apply style to the table with gray alternating rows
+  opt_stylize(style = 1, color = 'gray') %>%
+  # Increate space between columns
+  opt_horizontal_padding(scale = 3) %>%
+  cols_align("center")
 ```
 
 ```{r}
 #| column: body
 #| out-width: 100%
 R0_mean_age_contacts_df %>%
-    select(-sum_cases) %>%
-    # Convert to long data frame for facet plotting
-    pivot_longer(-R0, names_to = "metric", values_to = "value") %>%
-    ggplot(aes(x = R0, y = value)) +
-    geom_line(color = "slategray4") +
-    geom_point(shape = 21, size = 5, fill = "slategray4", alpha = 0.8) +
-    facet_wrap(
-        ~metric,
-        scales = "free_y",
-        labeller = as_labeller(c(
-            mean_age = "Mean Age of Infection",
-            prev_perc = "Prevalence (per 100_000) between 15-35 years"
-        ))
-    ) +
-    labs(
-        x = "R0",
-        y = "Value"
-    )
+  select(-sum_cases) %>%
+  # Convert to long data frame for facet plotting
+  pivot_longer(-R0, names_to = "metric", values_to = "value") %>%
+  ggplot(aes(x = R0, y = value)) +
+  geom_line(color = "slategray4") +
+  geom_point(shape = 21, size = 5, fill = "slategray4", alpha = 0.8) +
+  facet_wrap(
+    ~metric,
+    scales = "free_y",
+    labeller = as_labeller(c(
+      mean_age = "Mean Age of Infection",
+      prev_perc = "Prevalence (per 100_000) between 15-35 years"
+    ))
+  ) +
+  labs(
+    x = "R0",
+    y = "Value"
+  )
 ```
 
 ### What do real contact networks look like?
@@ -1880,18 +1902,20 @@ The POLYMOD study [@mossongSocialContactsMixing2008a] was a journal-based look i
 Let's have a look what these data tell us about the contact structure.
 
 ```{r}
-mossong_cont_net <- rio::import("https://raw.githubusercontent.com/arnold-c/SISMID-Module-02_2023/main/data/mossong-matrix.csv")
+mossong_cont_net <- rio::import(
+  "https://raw.githubusercontent.com/arnold-c/SISMID-Module-02_2023/main/data/mossong-matrix.csv"
+)
 # mossong_cont_net <- rio::import(here::here("data", "mossong-matrix.csv"))
 
 mossong_ages <- unique(mossong_cont_net$contactor)
 mossong_cont_net$contactor <- ordered(
-    mossong_cont_net$contactor,
-    levels = mossong_ages
+  mossong_cont_net$contactor,
+  levels = mossong_ages
 )
 
 mossong_cont_net$contactee <- ordered(
-    mossong_cont_net$contactee,
-    levels = mossong_ages
+  mossong_cont_net$contactee,
+  levels = mossong_ages
 )
 ```
 
@@ -1899,12 +1923,12 @@ Since contacts are symmetric, we'll need to estimate the symmetric contact matri
 
 ```{r}
 mossong_mat <- mossong_cont_net %>%
-    pivot_wider(
-        names_from = contactor,
-        values_from = contact.rate
-    ) %>%
-    select(-contactee) %>%
-    as.matrix()
+  pivot_wider(
+    names_from = contactor,
+    values_from = contact.rate
+  ) %>%
+  select(-contactee) %>%
+  as.matrix()
 
 rownames(mossong_mat) <- mossong_ages
 
@@ -1919,12 +1943,14 @@ Notices that we are using the raw matrix object, not a long dataframe, as previo
 #| column: body
 #| out-width: 100%
 filled.contour(
-    ages, ages, log10(mossong_mat),
-    plot.title = title(
-        main = "Log10 of Raw Contact Rate",
-        xlab = "Age of Contactor",
-        ylab = "Age of Contactee"
-    )
+  ages,
+  ages,
+  log10(mossong_mat),
+  plot.title = title(
+    main = "Log10 of Raw Contact Rate",
+    xlab = "Age of Contactor",
+    ylab = "Age of Contactee"
+  )
 )
 ```
 
@@ -1932,53 +1958,58 @@ filled.contour(
 #| column: body
 #| out-width: 100%
 filled.contour(
-    ages, ages, log10(mossong_mat_sym),
-    plot.title = title(
-        main = "Log10 of Symmetrical Contact Rate",
-        xlab = "Age of Contactor",
-        ylab = "Age of Contactee"
-    )
+  ages,
+  ages,
+  log10(mossong_mat_sym),
+  plot.title = title(
+    main = "Log10 of Symmetrical Contact Rate",
+    xlab = "Age of Contactor",
+    ylab = "Age of Contactee"
+  )
 )
 ```
 
 ```{r}
 mossong_cont_sums <- tibble(
-        age = factor(mossong_ages, levels = mossong_ages),
-        contactees = rowSums(mossong_mat),
-        contactors = colSums(mossong_mat)
-    ) %>%
-    pivot_longer(-age, names_to = "type", values_to = "total_contacts") 
+  age = factor(mossong_ages, levels = mossong_ages),
+  contactees = rowSums(mossong_mat),
+  contactors = colSums(mossong_mat)
+) %>%
+  pivot_longer(-age, names_to = "type", values_to = "total_contacts")
 ```
 
 ```{r}
 #| column: body
 #| out-width: 100%
 ggplot(
-        mossong_cont_sums,
-        aes(
-            x = age, y = total_contacts, 
-            color = type, fill = type, group = type
-        )
-    ) +
-    geom_path(linewidth = 1) +
-    geom_point(
-        position = "identity",
-        alpha = 0.8,
-        shape = 21,
-        size = 4
-    ) +
-    scale_color_manual(
-        values = c("slategray4", "navy"),
-        labels = c("Contactees", "Contactors"),
-        aesthetics = c("color", "fill")
-    ) +
-    guides(color = "none") +
-    labs(
-        x = "Age",
-        y = "Total contacts",
-        fill = "Type of contact"
-    ) +
-    theme(legend.position = "bottom")
+  mossong_cont_sums,
+  aes(
+    x = age,
+    y = total_contacts,
+    color = type,
+    fill = type,
+    group = type
+  )
+) +
+  geom_path(linewidth = 1) +
+  geom_point(
+    position = "identity",
+    alpha = 0.8,
+    shape = 21,
+    size = 4
+  ) +
+  scale_color_manual(
+    values = c("slategray4", "navy"),
+    labels = c("Contactees", "Contactors"),
+    aesthetics = c("color", "fill")
+  ) +
+  guides(color = "none") +
+  labs(
+    x = "Age",
+    y = "Total contacts",
+    fill = "Type of contact"
+  ) +
+  theme(legend.position = "bottom")
 ```
 
 While this matrix tells us how many contacts are made per year by an individual of each age, it doesn't tell us anything about the probability that a contact results in communication of infection.
@@ -1993,12 +2024,14 @@ mossong_beta_mat <- q * mossong_mat_sym
 #| column: body
 #| out-width: 100%
 filled.contour(
-    ages, ages, log10(mossong_beta_mat),
-    plot.title = title(
-        main = "WAIFW matrix based on POLYMOD data",
-        xlab = "Age",
-        ylab = "Age"
-    )
+  ages,
+  ages,
+  log10(mossong_beta_mat),
+  plot.title = title(
+    main = "WAIFW matrix based on POLYMOD data",
+    xlab = "Age",
+    ylab = "Age"
+  )
 )
 ```
 
@@ -2011,10 +2044,10 @@ mossong_params[["beta_mat"]] <- mossong_beta_mat
 
 # Solve the model with the updated parameters
 mossong_sol <- deSolve::ode(
-    y = demog_yinit_ages,
-    times = seq(0, 200, by = 0.5),
-    func = multistage_model,
-    parms = mossong_params
+  y = demog_yinit_ages,
+  times = seq(0, 200, by = 0.5),
+  func = multistage_model,
+  parms = mossong_params
 )
 
 # Extract the timeseries of infectious individuals
@@ -2022,36 +2055,36 @@ mossong_infecteds <- mossong_sol[, 1 + iindex]
 
 # Convert infectious individual timeseries to dataframe for plotting
 mossong_infecteds_df <- tibble(
-        time = mossong_sol[, 1],
-        Juveniles = apply(mossong_infecteds[, juvies], 1, sum),
-        Adults = apply(mossong_infecteds[, adults], 1, sum)
-    ) %>%
-    pivot_longer(
-        cols = c(Juveniles, Adults),
-        names_to = "age_group",
-        values_to = "infections"
-    ) %>%
-    mutate(
-        age_group = factor(age_group, levels = c("Juveniles", "Adults"))
-    )
+  time = mossong_sol[, 1],
+  Juveniles = apply(mossong_infecteds[, juvies], 1, sum),
+  Adults = apply(mossong_infecteds[, adults], 1, sum)
+) %>%
+  pivot_longer(
+    cols = c(Juveniles, Adults),
+    names_to = "age_group",
+    values_to = "infections"
+  ) %>%
+  mutate(
+    age_group = factor(age_group, levels = c("Juveniles", "Adults"))
+  )
 ```
 
 ```{r}
 #| column: body
 #| out-width: 100%
 ggplot(
-        mossong_infecteds_df,
-        aes(x = time, y = infections, color = age_group)
-    ) +
-    geom_line(linewidth = 1.5) +
-    scale_color_manual(
-        values = age_group_colors
-    ) +
-    labs(
-        x = "Time",
-        y = "Number of infections",
-        color = "Age group"
-    )
+  mossong_infecteds_df,
+  aes(x = time, y = infections, color = age_group)
+) +
+  geom_line(linewidth = 1.5) +
+  scale_color_manual(
+    values = age_group_colors
+  ) +
+  labs(
+    x = "Time",
+    y = "Number of infections",
+    color = "Age group"
+  )
 ```
 
 As before, we can also look at the equilibrium seroprevalence
@@ -2062,19 +2095,19 @@ mossong_equil <- drop(tail(mossong_sol, 1))[-1]
 
 # Calculate number of individuals in each age group at end of simulation
 mossong_equil_n <- mossong_equil[sindex] +
-    mossong_equil[iindex] +
-    mossong_equil[rindex]
+  mossong_equil[iindex] +
+  mossong_equil[rindex]
 
 # Calculate equilibrium seroprevalence
 mossong_equil_seroprev <- mossong_equil[rindex] / mossong_equil_n
 
 # Convert to dataframe for plotting
 mossong_equil_seroprev_df <- tibble(
-    # We can reuse the ages vectors from before as they are the same
-    # as the POLYMOD data
-    age = ages,
-    seroprev = mossong_equil_seroprev,
-    width = da_ages
+  # We can reuse the ages vectors from before as they are the same
+  # as the POLYMOD data
+  age = ages,
+  seroprev = mossong_equil_seroprev,
+  width = da_ages
 )
 ```
 
@@ -2082,35 +2115,35 @@ mossong_equil_seroprev_df <- tibble(
 #| column: body
 #| out-width: 100%
 ggplot(mossong_equil_seroprev_df, aes(x = age, y = seroprev, fill = age)) +
-    geom_col(
-        width = mossong_equil_seroprev_df$width,
-        just = 1.0,
-        color = "black"
-    ) +
-    labs(
-        x = "Age",
-        y = "Seroprevalence"
-    ) +
-    scale_x_continuous(breaks = seq(0, 80, 10)) +
-    scale_fill_continuous(
-        low = age_group_colors[1],
-        high = age_group_colors[2]
-    )
+  geom_col(
+    width = mossong_equil_seroprev_df$width,
+    just = 1.0,
+    color = "black"
+  ) +
+  labs(
+    x = "Age",
+    y = "Seroprevalence"
+  ) +
+  scale_x_continuous(breaks = seq(0, 80, 10)) +
+  scale_fill_continuous(
+    low = age_group_colors[1],
+    high = age_group_colors[2]
+  )
 ```
 
 and compute the $R_0$ for this infection.
 
 ```{r}
 mossong_stable_n <- solve(
-    mossong_params[["aging_mat"]],
-    -c(mossong_params[["births"]], rep(0, 29))
+  mossong_params[["aging_mat"]],
+  -c(mossong_params[["births"]], rep(0, 29))
 )
 
 calculate_R0(
-    beta_mat = mossong_params[["beta_mat"]],
-    stable_n_mat = mossong_stable_n,
-    aging_mat = mossong_params[["aging_mat"]],
-    recovery = mossong_params[["recovery"]]
+  beta_mat = mossong_params[["beta_mat"]],
+  stable_n_mat = mossong_stable_n,
+  aging_mat = mossong_params[["aging_mat"]],
+  recovery = mossong_params[["recovery"]]
 )
 ```
 
