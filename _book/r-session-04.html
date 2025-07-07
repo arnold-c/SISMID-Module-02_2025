@@ -1137,12 +1137,36 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Note that the time series of new incident cases is very different than the time series of prevalent cases. Recall from our earlier discussion that the former are more likely to be what we would see in clinical surveillance. The latter are what we might see if we did random testing in the population. Which one would you expect to correspond best to environmental wastewater surveillance?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Recall that the time series of new incident cases is very different than the time series of prevalent cases. Recall from our earlier discussion that the former are more likely to be what we would see in clinical surveillance. The latter are what we might see if we did random testing in the population. Which one would you expect to correspond best to environmental wastewater surveillance?</p>
+</div>
+</div>
 </section><section id="the-chain-binomial-algorithm" class="level2 page-columns page-full" data-number="11.5"><h2 data-number="11.5" class="anchored" data-anchor-id="the-chain-binomial-algorithm">
 <span class="header-section-number">11.5</span> The Chain Binomial Algorithm</h2>
 <p>In the last section, we saw that by moving from continuous time to discrete time steps, we limit the complexity (the number of stochastic evaluations scales with time and the number of states, instead of population size and the number of states). You may have also noticed that the individual steps in the Tau Leaping algorithm can be modeled as Poisson or Binomial random variables. Combining these two gives us another common algorithm for stochastic simulation, the Chain Binomial model. Here, we simplify further and use a time step that is equal to the infectious generation period; e.g.&nbsp;2 weeks for measles, or 1 week for flu. If we assume that time progresses in discrete, non-overlapping generations, then those that get infected at the start of one time step, recover at the end of that time step. This simplification means that we only have to model the infection process as stochastic, and the recovery process at the end of the time step is now deterministic. This is obviously unrealistic, but makes the model much simpler for formal statistical model fitting using likelihood and Bayesian methods. So while it is imperfect, it remains as a common method for “first-pass” analyses.</p>
 <p>As before, we start with initial conditions. Here we initialize with the same population as before, but notice that the transmission rate, <span class="math inline">\(\beta\)</span> is different. Time is rescaled here to units of epidemic generation time, so <span class="math inline">\(\beta\)</span> is scaled correspondingly and now, for this formulation, <span class="math inline">\(\beta\)</span> is <span class="math inline">\(R_0\)</span>.</p>
-<p>TO DO: ADD A CALLOUT HERE TO THE FACT THAT R0 IS NOT FIXED, IT DEPENDS ON THE PATHOGEN, THE POPULATION, AND THE MODEL.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Recall that the basic reproduction number, <span class="math inline">\(R_0\)</span> is a function of the pathogen and the population of interest. In models, both the population (e.g.&nbsp;mixing, heterogeneity, etc) and the pathogen (e.g.&nbsp;time-scale of recovery) are represented using approximations to the biology. Here, the choice of model forces a change in time-scale which means that we have to change <span class="math inline">\(\beta\)</span> accordingly; thus, <span class="math inline">\(\beta\)</span>, which is ostensibly a biological parameter is also a property of the model.</p>
+</div>
+</div>
 <div class="cell">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb20" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="do">###############################################################################</span></span>
 <span id="cb20-2"><a href="#cb20-2"></a><span class="co"># Parameters and initial conditions                                           #</span></span>
@@ -2357,130 +2381,136 @@ window.Quarto = {
 <span id="cb24-682"><a href="#cb24-682"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span>
 <span id="cb24-683"><a href="#cb24-683"></a><span class="in">```</span></span>
 <span id="cb24-684"><a href="#cb24-684"></a></span>
-<span id="cb24-685"><a href="#cb24-685"></a>Note that the time series of new incident cases is very different than the time series of prevalent cases.</span>
-<span id="cb24-686"><a href="#cb24-686"></a>Recall from our earlier discussion that the former are more likely to be what we would see in clinical surveillance. </span>
-<span id="cb24-687"><a href="#cb24-687"></a>The latter are what we might see if we did random testing in the population.</span>
-<span id="cb24-688"><a href="#cb24-688"></a>Which one would you expect to correspond best to environmental wastewater surveillance?</span>
-<span id="cb24-689"><a href="#cb24-689"></a></span>
-<span id="cb24-690"><a href="#cb24-690"></a><span class="fu">## The Chain Binomial Algorithm</span></span>
+<span id="cb24-685"><a href="#cb24-685"></a>:::callout-note</span>
+<span id="cb24-686"><a href="#cb24-686"></a>Recall that the time series of new incident cases is very different than the time series of prevalent cases.</span>
+<span id="cb24-687"><a href="#cb24-687"></a>Recall from our earlier discussion that the former are more likely to be what we would see in clinical surveillance. </span>
+<span id="cb24-688"><a href="#cb24-688"></a>The latter are what we might see if we did random testing in the population.</span>
+<span id="cb24-689"><a href="#cb24-689"></a>Which one would you expect to correspond best to environmental wastewater surveillance?</span>
+<span id="cb24-690"><a href="#cb24-690"></a>::::</span>
 <span id="cb24-691"><a href="#cb24-691"></a></span>
-<span id="cb24-692"><a href="#cb24-692"></a>In the last section, we saw that by moving from continuous time to discrete time steps, we limit the complexity (the number of stochastic evaluations scales with time and the number of states, instead of population size and the number of states). </span>
-<span id="cb24-693"><a href="#cb24-693"></a>You may have also noticed that the individual steps in the Tau Leaping algorithm can be modeled as Poisson or Binomial random variables.</span>
-<span id="cb24-694"><a href="#cb24-694"></a>Combining these two gives us another common algorithm for stochastic simulation, the Chain Binomial model. </span>
-<span id="cb24-695"><a href="#cb24-695"></a>Here, we simplify further and use a time step that is equal to the infectious generation period; e.g. 2 weeks for measles, or 1 week for flu. </span>
-<span id="cb24-696"><a href="#cb24-696"></a>If we assume that time progresses in discrete, non-overlapping generations, then those that get infected at the start of one time step, recover at the end of that time step. </span>
-<span id="cb24-697"><a href="#cb24-697"></a>This simplification means that we only have to model the infection process as stochastic, and the recovery process at the end of the time step is now deterministic. </span>
-<span id="cb24-698"><a href="#cb24-698"></a>This is obviously unrealistic, but makes the model much simpler for formal statistical model fitting using likelihood and Bayesian methods. </span>
-<span id="cb24-699"><a href="#cb24-699"></a>So while it is imperfect, it remains as a common method for "first-pass" analyses.</span>
-<span id="cb24-700"><a href="#cb24-700"></a></span>
-<span id="cb24-701"><a href="#cb24-701"></a>As before, we start with initial conditions.</span>
-<span id="cb24-702"><a href="#cb24-702"></a>Here we initialize with the same population as before, but notice that the transmission rate, $\beta$ is different.</span>
-<span id="cb24-703"><a href="#cb24-703"></a>Time is rescaled here to units of epidemic generation time, so $\beta$ is scaled correspondingly and now, for this formulation, $\beta$ is $R_0$. </span>
-<span id="cb24-704"><a href="#cb24-704"></a></span>
-<span id="cb24-705"><a href="#cb24-705"></a>TO DO: ADD A CALLOUT HERE TO THE FACT THAT R0 IS NOT FIXED, IT DEPENDS ON THE PATHOGEN, THE POPULATION, AND THE MODEL. </span>
+<span id="cb24-692"><a href="#cb24-692"></a><span class="fu">## The Chain Binomial Algorithm</span></span>
+<span id="cb24-693"><a href="#cb24-693"></a></span>
+<span id="cb24-694"><a href="#cb24-694"></a>In the last section, we saw that by moving from continuous time to discrete time steps, we limit the complexity (the number of stochastic evaluations scales with time and the number of states, instead of population size and the number of states). </span>
+<span id="cb24-695"><a href="#cb24-695"></a>You may have also noticed that the individual steps in the Tau Leaping algorithm can be modeled as Poisson or Binomial random variables.</span>
+<span id="cb24-696"><a href="#cb24-696"></a>Combining these two gives us another common algorithm for stochastic simulation, the Chain Binomial model. </span>
+<span id="cb24-697"><a href="#cb24-697"></a>Here, we simplify further and use a time step that is equal to the infectious generation period; e.g. 2 weeks for measles, or 1 week for flu. </span>
+<span id="cb24-698"><a href="#cb24-698"></a>If we assume that time progresses in discrete, non-overlapping generations, then those that get infected at the start of one time step, recover at the end of that time step. </span>
+<span id="cb24-699"><a href="#cb24-699"></a>This simplification means that we only have to model the infection process as stochastic, and the recovery process at the end of the time step is now deterministic. </span>
+<span id="cb24-700"><a href="#cb24-700"></a>This is obviously unrealistic, but makes the model much simpler for formal statistical model fitting using likelihood and Bayesian methods. </span>
+<span id="cb24-701"><a href="#cb24-701"></a>So while it is imperfect, it remains as a common method for "first-pass" analyses.</span>
+<span id="cb24-702"><a href="#cb24-702"></a></span>
+<span id="cb24-703"><a href="#cb24-703"></a>As before, we start with initial conditions.</span>
+<span id="cb24-704"><a href="#cb24-704"></a>Here we initialize with the same population as before, but notice that the transmission rate, $\beta$ is different.</span>
+<span id="cb24-705"><a href="#cb24-705"></a>Time is rescaled here to units of epidemic generation time, so $\beta$ is scaled correspondingly and now, for this formulation, $\beta$ is $R_0$. </span>
 <span id="cb24-706"><a href="#cb24-706"></a></span>
-<span id="cb24-709"><a href="#cb24-709"></a><span class="in">```{r}</span></span>
-<span id="cb24-710"><a href="#cb24-710"></a><span class="do">###############################################################################</span></span>
-<span id="cb24-711"><a href="#cb24-711"></a><span class="co"># Parameters and initial conditions                                           #</span></span>
-<span id="cb24-712"><a href="#cb24-712"></a><span class="do">###############################################################################</span></span>
-<span id="cb24-713"><a href="#cb24-713"></a>S <span class="ot">&lt;-</span> <span class="dv">998</span>           <span class="co"># number susceptible</span></span>
-<span id="cb24-714"><a href="#cb24-714"></a>I <span class="ot">&lt;-</span> <span class="dv">1</span>              <span class="co"># number infected</span></span>
-<span id="cb24-715"><a href="#cb24-715"></a>R <span class="ot">&lt;-</span> <span class="dv">1</span>              <span class="co"># number recovered</span></span>
-<span id="cb24-716"><a href="#cb24-716"></a>time <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb24-717"><a href="#cb24-717"></a></span>
-<span id="cb24-718"><a href="#cb24-718"></a>beta <span class="ot">&lt;-</span> <span class="fl">3.5</span>           <span class="co"># transmission rate -- note the change in value</span></span>
-<span id="cb24-719"><a href="#cb24-719"></a></span>
-<span id="cb24-720"><a href="#cb24-720"></a></span>
-<span id="cb24-721"><a href="#cb24-721"></a><span class="in">```</span></span>
-<span id="cb24-722"><a href="#cb24-722"></a></span>
-<span id="cb24-723"><a href="#cb24-723"></a>When we implement the forward simulation, we now only have to generate random draws for the infection process, which again simplifies the amount of stochastic simulation we have to do, and speeds up run times. </span>
-<span id="cb24-724"><a href="#cb24-724"></a>While this might not be limiting in the scale of this activity, this DOES become an issue when we have to fit stochastic models. </span>
-<span id="cb24-725"><a href="#cb24-725"></a>Recall from the lecture on parameter estimation that the basic recipe has us build a model and test out all, or many, values of the parameters (here $\beta$) to find which one is closest to the data. </span>
-<span id="cb24-726"><a href="#cb24-726"></a>Here, because each run of the stochastic simulation is different, we need to run simulations over many possible parameters, and for each parameter, we need to run many stochastic runs to characterize the average, or most likely, behavior. </span>
-<span id="cb24-727"><a href="#cb24-727"></a>So, the number of simulations can rapidly increase into the millions (bigger for models with more parameters), so every bit of savings in computational time can be valuable. </span>
+<span id="cb24-707"><a href="#cb24-707"></a>::: callout-note</span>
+<span id="cb24-708"><a href="#cb24-708"></a>Recall that the basic reproduction number, $R_0$ is a function of the pathogen and the population of interest.</span>
+<span id="cb24-709"><a href="#cb24-709"></a>In models, both the population (e.g. mixing, heterogeneity, etc) and the pathogen (e.g. time-scale of recovery) are represented using approximations to the biology. </span>
+<span id="cb24-710"><a href="#cb24-710"></a>Here, the choice of model forces a change in time-scale which means that we have to change $\beta$ accordingly; thus, $\beta$, which is ostensibly a biological parameter is also a property of the model. </span>
+<span id="cb24-711"><a href="#cb24-711"></a>:::</span>
+<span id="cb24-712"><a href="#cb24-712"></a></span>
+<span id="cb24-715"><a href="#cb24-715"></a><span class="in">```{r}</span></span>
+<span id="cb24-716"><a href="#cb24-716"></a><span class="do">###############################################################################</span></span>
+<span id="cb24-717"><a href="#cb24-717"></a><span class="co"># Parameters and initial conditions                                           #</span></span>
+<span id="cb24-718"><a href="#cb24-718"></a><span class="do">###############################################################################</span></span>
+<span id="cb24-719"><a href="#cb24-719"></a>S <span class="ot">&lt;-</span> <span class="dv">998</span>           <span class="co"># number susceptible</span></span>
+<span id="cb24-720"><a href="#cb24-720"></a>I <span class="ot">&lt;-</span> <span class="dv">1</span>              <span class="co"># number infected</span></span>
+<span id="cb24-721"><a href="#cb24-721"></a>R <span class="ot">&lt;-</span> <span class="dv">1</span>              <span class="co"># number recovered</span></span>
+<span id="cb24-722"><a href="#cb24-722"></a>time <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb24-723"><a href="#cb24-723"></a></span>
+<span id="cb24-724"><a href="#cb24-724"></a>beta <span class="ot">&lt;-</span> <span class="fl">3.5</span>           <span class="co"># transmission rate -- note the change in value</span></span>
+<span id="cb24-725"><a href="#cb24-725"></a></span>
+<span id="cb24-726"><a href="#cb24-726"></a></span>
+<span id="cb24-727"><a href="#cb24-727"></a><span class="in">```</span></span>
 <span id="cb24-728"><a href="#cb24-728"></a></span>
-<span id="cb24-729"><a href="#cb24-729"></a></span>
-<span id="cb24-732"><a href="#cb24-732"></a><span class="in">```{r}</span></span>
-<span id="cb24-733"><a href="#cb24-733"></a><span class="do">###############################################################################</span></span>
-<span id="cb24-734"><a href="#cb24-734"></a><span class="co"># Single time step                                                            #</span></span>
-<span id="cb24-735"><a href="#cb24-735"></a><span class="do">###############################################################################</span></span>
-<span id="cb24-736"><a href="#cb24-736"></a>cb_step <span class="ot">&lt;-</span> <span class="cf">function</span> (sims, S, I, R, beta, ...) {</span>
-<span id="cb24-737"><a href="#cb24-737"></a>  <span class="co"># S = initial susceptible population</span></span>
-<span id="cb24-738"><a href="#cb24-738"></a>  <span class="co"># I = initial infected population</span></span>
-<span id="cb24-739"><a href="#cb24-739"></a>  <span class="co"># R = initial recovered population</span></span>
-<span id="cb24-740"><a href="#cb24-740"></a>  <span class="co"># beta is transmission rate</span></span>
-<span id="cb24-741"><a href="#cb24-741"></a>  </span>
-<span id="cb24-742"><a href="#cb24-742"></a>  N <span class="ot">&lt;-</span> S<span class="sc">+</span>I<span class="sc">+</span>R    <span class="co"># total population size</span></span>
-<span id="cb24-743"><a href="#cb24-743"></a>  newI <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n=</span>sims, <span class="fu">pmax</span>(S,<span class="dv">0</span>), <span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>beta <span class="sc">*</span> <span class="fu">pmax</span>(I,<span class="dv">0</span>)<span class="sc">/</span>N)) <span class="co"># this is the only stochastic step; only do draw if I &gt;0</span></span>
-<span id="cb24-744"><a href="#cb24-744"></a>  newS <span class="ot">&lt;-</span> S <span class="sc">-</span> newI    <span class="co">#this step is now deterministic, because everyone from the past time step recovers   </span></span>
-<span id="cb24-745"><a href="#cb24-745"></a>  newR <span class="ot">&lt;-</span> R <span class="sc">+</span> I</span>
-<span id="cb24-746"><a href="#cb24-746"></a></span>
-<span id="cb24-747"><a href="#cb24-747"></a>  <span class="fu">cbind</span>(newS, newI, newR) </span>
-<span id="cb24-748"><a href="#cb24-748"></a>}</span>
-<span id="cb24-749"><a href="#cb24-749"></a></span>
-<span id="cb24-750"><a href="#cb24-750"></a><span class="in">```</span></span>
-<span id="cb24-751"><a href="#cb24-751"></a></span>
-<span id="cb24-752"><a href="#cb24-752"></a>Then we can run the simulation over a set of discrete time steps, T. </span>
-<span id="cb24-753"><a href="#cb24-753"></a>Note again that T is now the number of infectious generation times, since time is rescaled relative to the models above. </span>
-<span id="cb24-754"><a href="#cb24-754"></a></span>
-<span id="cb24-757"><a href="#cb24-757"></a><span class="in">```{r}</span></span>
-<span id="cb24-758"><a href="#cb24-758"></a><span class="do">###############################################################################</span></span>
-<span id="cb24-759"><a href="#cb24-759"></a><span class="co"># Run over many steps                                                         #</span></span>
-<span id="cb24-760"><a href="#cb24-760"></a><span class="do">###############################################################################</span></span>
-<span id="cb24-761"><a href="#cb24-761"></a></span>
-<span id="cb24-762"><a href="#cb24-762"></a>T <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="co"># note here that the time step is one infectious generation time, so 7 days from gamma above</span></span>
-<span id="cb24-763"><a href="#cb24-763"></a>sims <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb24-764"><a href="#cb24-764"></a>  </span>
-<span id="cb24-765"><a href="#cb24-765"></a>Smat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(S,<span class="dv">1</span>,sims)      <span class="co"># storage item for S for all simulations</span></span>
-<span id="cb24-766"><a href="#cb24-766"></a>Imat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(I,<span class="dv">1</span>,sims)      <span class="co"># storage item for I for all simulations</span></span>
-<span id="cb24-767"><a href="#cb24-767"></a>Rmat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(R,<span class="dv">1</span>,sims)      <span class="co"># storage item for R for all simulations</span></span>
-<span id="cb24-768"><a href="#cb24-768"></a>Nmat <span class="ot">&lt;-</span> S<span class="sc">+</span>I<span class="sc">+</span>R</span>
-<span id="cb24-769"><a href="#cb24-769"></a></span>
-<span id="cb24-770"><a href="#cb24-770"></a><span class="cf">for</span>(ts <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>T){</span>
-<span id="cb24-771"><a href="#cb24-771"></a>  out <span class="ot">&lt;-</span> <span class="fu">cb_step</span>(sims, Smat[ts<span class="dv">-1</span>,], Imat[ts<span class="dv">-1</span>,], Rmat[ts<span class="dv">-1</span>,], beta)</span>
-<span id="cb24-772"><a href="#cb24-772"></a>  Smat <span class="ot">&lt;-</span> <span class="fu">rbind</span>(Smat, out[,<span class="dv">1</span>])  <span class="co"># update state</span></span>
-<span id="cb24-773"><a href="#cb24-773"></a>  Imat <span class="ot">&lt;-</span> <span class="fu">rbind</span>(Imat, out[,<span class="dv">2</span>])  <span class="co"># update state</span></span>
-<span id="cb24-774"><a href="#cb24-774"></a>  Rmat <span class="ot">&lt;-</span> <span class="fu">rbind</span>(Rmat, out[,<span class="dv">3</span>])  <span class="co"># update state</span></span>
-<span id="cb24-775"><a href="#cb24-775"></a>  Nmat <span class="ot">&lt;-</span> <span class="fu">rbind</span>(Nmat, out[,<span class="dv">1</span>]<span class="sc">+</span>out[,<span class="dv">2</span>]<span class="sc">+</span>out[,<span class="dv">3</span>])  <span class="co"># update state -- note population size isn't changing, but this could be updated with births/deaths</span></span>
-<span id="cb24-776"><a href="#cb24-776"></a>  </span>
-<span id="cb24-777"><a href="#cb24-777"></a>}</span>
-<span id="cb24-778"><a href="#cb24-778"></a><span class="in">```</span></span>
-<span id="cb24-779"><a href="#cb24-779"></a></span>
-<span id="cb24-780"><a href="#cb24-780"></a>We can plot, but note again, that this is plotted in terms of epidemic generations on the X-axis, rather than days (as in the previous sections).</span>
-<span id="cb24-781"><a href="#cb24-781"></a></span>
-<span id="cb24-784"><a href="#cb24-784"></a><span class="in">```{r}</span></span>
-<span id="cb24-785"><a href="#cb24-785"></a><span class="co">#| echo: true</span></span>
-<span id="cb24-786"><a href="#cb24-786"></a><span class="co">#| message: false</span></span>
-<span id="cb24-787"><a href="#cb24-787"></a><span class="co">#| out-width: 100%</span></span>
-<span id="cb24-788"><a href="#cb24-788"></a><span class="co">#| column: body</span></span>
-<span id="cb24-789"><a href="#cb24-789"></a></span>
-<span id="cb24-790"><a href="#cb24-790"></a><span class="co"># put output in a data frame</span></span>
-<span id="cb24-791"><a href="#cb24-791"></a>bin_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">S=</span><span class="fu">array</span>(Smat), <span class="at">I=</span><span class="fu">array</span>(Imat), <span class="at">R=</span><span class="fu">array</span>(Rmat), <span class="at">N=</span><span class="fu">array</span>(<span class="fu">matrix</span>(Nmat)), <span class="at">time =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>T,sims), <span class="at">iteration =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>sims,<span class="at">each=</span>T))</span>
-<span id="cb24-792"><a href="#cb24-792"></a></span>
-<span id="cb24-793"><a href="#cb24-793"></a>bin_df <span class="ot">=</span> bin_df <span class="sc">%&gt;%</span></span>
-<span id="cb24-794"><a href="#cb24-794"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb24-795"><a href="#cb24-795"></a>    <span class="co"># Don't pivot the time column</span></span>
-<span id="cb24-796"><a href="#cb24-796"></a>    <span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(time,iteration),</span>
-<span id="cb24-797"><a href="#cb24-797"></a>    <span class="at">names_to =</span> <span class="st">"state"</span>,</span>
-<span id="cb24-798"><a href="#cb24-798"></a>    <span class="at">values_to =</span> <span class="st">"number"</span></span>
-<span id="cb24-799"><a href="#cb24-799"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb24-800"><a href="#cb24-800"></a>  <span class="fu">mutate</span>(<span class="at">state =</span> <span class="fu">factor</span>(state, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"S"</span>, <span class="st">"I"</span>, <span class="st">"R"</span>,<span class="st">"N"</span>)))</span>
-<span id="cb24-801"><a href="#cb24-801"></a></span>
-<span id="cb24-802"><a href="#cb24-802"></a>SIRcolors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">S =</span> <span class="st">"#1f77b4"</span>, <span class="at">I =</span> <span class="st">"#ff7f0e"</span>, <span class="at">R =</span> <span class="st">"#FF3851"</span>) <span class="co"># fix this color</span></span>
-<span id="cb24-803"><a href="#cb24-803"></a></span>
-<span id="cb24-804"><a href="#cb24-804"></a>bin_df <span class="sc">%&gt;%</span></span>
-<span id="cb24-805"><a href="#cb24-805"></a>  <span class="fu">mutate</span>(<span class="at">iteration =</span> <span class="fu">as.factor</span>(iteration)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-806"><a href="#cb24-806"></a>  <span class="fu">filter</span>(state <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"S"</span>,<span class="st">"I"</span>,<span class="st">"R"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-807"><a href="#cb24-807"></a>  <span class="fu">ggplot</span>( <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> number, <span class="at">group =</span> <span class="fu">interaction</span>(iteration, state), <span class="at">color =</span> state)) <span class="sc">+</span></span>
-<span id="cb24-808"><a href="#cb24-808"></a>    <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.5</span>,<span class="at">alpha =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb24-809"><a href="#cb24-809"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> SIRcolors) <span class="sc">+</span></span>
-<span id="cb24-810"><a href="#cb24-810"></a>    <span class="fu">labs</span>(</span>
-<span id="cb24-811"><a href="#cb24-811"></a>      <span class="at">x =</span> <span class="st">"Time"</span>,</span>
-<span id="cb24-812"><a href="#cb24-812"></a>    <span class="at">y =</span> <span class="st">"Number"</span>,</span>
-<span id="cb24-813"><a href="#cb24-813"></a>      <span class="at">color =</span> <span class="st">"State"</span></span>
-<span id="cb24-814"><a href="#cb24-814"></a>    ) <span class="sc">+</span></span>
-<span id="cb24-815"><a href="#cb24-815"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span>
-<span id="cb24-816"><a href="#cb24-816"></a><span class="in">```</span></span>
+<span id="cb24-729"><a href="#cb24-729"></a>When we implement the forward simulation, we now only have to generate random draws for the infection process, which again simplifies the amount of stochastic simulation we have to do, and speeds up run times. </span>
+<span id="cb24-730"><a href="#cb24-730"></a>While this might not be limiting in the scale of this activity, this DOES become an issue when we have to fit stochastic models. </span>
+<span id="cb24-731"><a href="#cb24-731"></a>Recall from the lecture on parameter estimation that the basic recipe has us build a model and test out all, or many, values of the parameters (here $\beta$) to find which one is closest to the data. </span>
+<span id="cb24-732"><a href="#cb24-732"></a>Here, because each run of the stochastic simulation is different, we need to run simulations over many possible parameters, and for each parameter, we need to run many stochastic runs to characterize the average, or most likely, behavior. </span>
+<span id="cb24-733"><a href="#cb24-733"></a>So, the number of simulations can rapidly increase into the millions (bigger for models with more parameters), so every bit of savings in computational time can be valuable. </span>
+<span id="cb24-734"><a href="#cb24-734"></a></span>
+<span id="cb24-735"><a href="#cb24-735"></a></span>
+<span id="cb24-738"><a href="#cb24-738"></a><span class="in">```{r}</span></span>
+<span id="cb24-739"><a href="#cb24-739"></a><span class="do">###############################################################################</span></span>
+<span id="cb24-740"><a href="#cb24-740"></a><span class="co"># Single time step                                                            #</span></span>
+<span id="cb24-741"><a href="#cb24-741"></a><span class="do">###############################################################################</span></span>
+<span id="cb24-742"><a href="#cb24-742"></a>cb_step <span class="ot">&lt;-</span> <span class="cf">function</span> (sims, S, I, R, beta, ...) {</span>
+<span id="cb24-743"><a href="#cb24-743"></a>  <span class="co"># S = initial susceptible population</span></span>
+<span id="cb24-744"><a href="#cb24-744"></a>  <span class="co"># I = initial infected population</span></span>
+<span id="cb24-745"><a href="#cb24-745"></a>  <span class="co"># R = initial recovered population</span></span>
+<span id="cb24-746"><a href="#cb24-746"></a>  <span class="co"># beta is transmission rate</span></span>
+<span id="cb24-747"><a href="#cb24-747"></a>  </span>
+<span id="cb24-748"><a href="#cb24-748"></a>  N <span class="ot">&lt;-</span> S<span class="sc">+</span>I<span class="sc">+</span>R    <span class="co"># total population size</span></span>
+<span id="cb24-749"><a href="#cb24-749"></a>  newI <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n=</span>sims, <span class="fu">pmax</span>(S,<span class="dv">0</span>), <span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>beta <span class="sc">*</span> <span class="fu">pmax</span>(I,<span class="dv">0</span>)<span class="sc">/</span>N)) <span class="co"># this is the only stochastic step; only do draw if I &gt;0</span></span>
+<span id="cb24-750"><a href="#cb24-750"></a>  newS <span class="ot">&lt;-</span> S <span class="sc">-</span> newI    <span class="co">#this step is now deterministic, because everyone from the past time step recovers   </span></span>
+<span id="cb24-751"><a href="#cb24-751"></a>  newR <span class="ot">&lt;-</span> R <span class="sc">+</span> I</span>
+<span id="cb24-752"><a href="#cb24-752"></a></span>
+<span id="cb24-753"><a href="#cb24-753"></a>  <span class="fu">cbind</span>(newS, newI, newR) </span>
+<span id="cb24-754"><a href="#cb24-754"></a>}</span>
+<span id="cb24-755"><a href="#cb24-755"></a></span>
+<span id="cb24-756"><a href="#cb24-756"></a><span class="in">```</span></span>
+<span id="cb24-757"><a href="#cb24-757"></a></span>
+<span id="cb24-758"><a href="#cb24-758"></a>Then we can run the simulation over a set of discrete time steps, T. </span>
+<span id="cb24-759"><a href="#cb24-759"></a>Note again that T is now the number of infectious generation times, since time is rescaled relative to the models above. </span>
+<span id="cb24-760"><a href="#cb24-760"></a></span>
+<span id="cb24-763"><a href="#cb24-763"></a><span class="in">```{r}</span></span>
+<span id="cb24-764"><a href="#cb24-764"></a><span class="do">###############################################################################</span></span>
+<span id="cb24-765"><a href="#cb24-765"></a><span class="co"># Run over many steps                                                         #</span></span>
+<span id="cb24-766"><a href="#cb24-766"></a><span class="do">###############################################################################</span></span>
+<span id="cb24-767"><a href="#cb24-767"></a></span>
+<span id="cb24-768"><a href="#cb24-768"></a>T <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="co"># note here that the time step is one infectious generation time, so 7 days from gamma above</span></span>
+<span id="cb24-769"><a href="#cb24-769"></a>sims <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb24-770"><a href="#cb24-770"></a>  </span>
+<span id="cb24-771"><a href="#cb24-771"></a>Smat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(S,<span class="dv">1</span>,sims)      <span class="co"># storage item for S for all simulations</span></span>
+<span id="cb24-772"><a href="#cb24-772"></a>Imat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(I,<span class="dv">1</span>,sims)      <span class="co"># storage item for I for all simulations</span></span>
+<span id="cb24-773"><a href="#cb24-773"></a>Rmat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(R,<span class="dv">1</span>,sims)      <span class="co"># storage item for R for all simulations</span></span>
+<span id="cb24-774"><a href="#cb24-774"></a>Nmat <span class="ot">&lt;-</span> S<span class="sc">+</span>I<span class="sc">+</span>R</span>
+<span id="cb24-775"><a href="#cb24-775"></a></span>
+<span id="cb24-776"><a href="#cb24-776"></a><span class="cf">for</span>(ts <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>T){</span>
+<span id="cb24-777"><a href="#cb24-777"></a>  out <span class="ot">&lt;-</span> <span class="fu">cb_step</span>(sims, Smat[ts<span class="dv">-1</span>,], Imat[ts<span class="dv">-1</span>,], Rmat[ts<span class="dv">-1</span>,], beta)</span>
+<span id="cb24-778"><a href="#cb24-778"></a>  Smat <span class="ot">&lt;-</span> <span class="fu">rbind</span>(Smat, out[,<span class="dv">1</span>])  <span class="co"># update state</span></span>
+<span id="cb24-779"><a href="#cb24-779"></a>  Imat <span class="ot">&lt;-</span> <span class="fu">rbind</span>(Imat, out[,<span class="dv">2</span>])  <span class="co"># update state</span></span>
+<span id="cb24-780"><a href="#cb24-780"></a>  Rmat <span class="ot">&lt;-</span> <span class="fu">rbind</span>(Rmat, out[,<span class="dv">3</span>])  <span class="co"># update state</span></span>
+<span id="cb24-781"><a href="#cb24-781"></a>  Nmat <span class="ot">&lt;-</span> <span class="fu">rbind</span>(Nmat, out[,<span class="dv">1</span>]<span class="sc">+</span>out[,<span class="dv">2</span>]<span class="sc">+</span>out[,<span class="dv">3</span>])  <span class="co"># update state -- note population size isn't changing, but this could be updated with births/deaths</span></span>
+<span id="cb24-782"><a href="#cb24-782"></a>  </span>
+<span id="cb24-783"><a href="#cb24-783"></a>}</span>
+<span id="cb24-784"><a href="#cb24-784"></a><span class="in">```</span></span>
+<span id="cb24-785"><a href="#cb24-785"></a></span>
+<span id="cb24-786"><a href="#cb24-786"></a>We can plot, but note again, that this is plotted in terms of epidemic generations on the X-axis, rather than days (as in the previous sections).</span>
+<span id="cb24-787"><a href="#cb24-787"></a></span>
+<span id="cb24-790"><a href="#cb24-790"></a><span class="in">```{r}</span></span>
+<span id="cb24-791"><a href="#cb24-791"></a><span class="co">#| echo: true</span></span>
+<span id="cb24-792"><a href="#cb24-792"></a><span class="co">#| message: false</span></span>
+<span id="cb24-793"><a href="#cb24-793"></a><span class="co">#| out-width: 100%</span></span>
+<span id="cb24-794"><a href="#cb24-794"></a><span class="co">#| column: body</span></span>
+<span id="cb24-795"><a href="#cb24-795"></a></span>
+<span id="cb24-796"><a href="#cb24-796"></a><span class="co"># put output in a data frame</span></span>
+<span id="cb24-797"><a href="#cb24-797"></a>bin_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">S=</span><span class="fu">array</span>(Smat), <span class="at">I=</span><span class="fu">array</span>(Imat), <span class="at">R=</span><span class="fu">array</span>(Rmat), <span class="at">N=</span><span class="fu">array</span>(<span class="fu">matrix</span>(Nmat)), <span class="at">time =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>T,sims), <span class="at">iteration =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>sims,<span class="at">each=</span>T))</span>
+<span id="cb24-798"><a href="#cb24-798"></a></span>
+<span id="cb24-799"><a href="#cb24-799"></a>bin_df <span class="ot">=</span> bin_df <span class="sc">%&gt;%</span></span>
+<span id="cb24-800"><a href="#cb24-800"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb24-801"><a href="#cb24-801"></a>    <span class="co"># Don't pivot the time column</span></span>
+<span id="cb24-802"><a href="#cb24-802"></a>    <span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(time,iteration),</span>
+<span id="cb24-803"><a href="#cb24-803"></a>    <span class="at">names_to =</span> <span class="st">"state"</span>,</span>
+<span id="cb24-804"><a href="#cb24-804"></a>    <span class="at">values_to =</span> <span class="st">"number"</span></span>
+<span id="cb24-805"><a href="#cb24-805"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb24-806"><a href="#cb24-806"></a>  <span class="fu">mutate</span>(<span class="at">state =</span> <span class="fu">factor</span>(state, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"S"</span>, <span class="st">"I"</span>, <span class="st">"R"</span>,<span class="st">"N"</span>)))</span>
+<span id="cb24-807"><a href="#cb24-807"></a></span>
+<span id="cb24-808"><a href="#cb24-808"></a>SIRcolors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">S =</span> <span class="st">"#1f77b4"</span>, <span class="at">I =</span> <span class="st">"#ff7f0e"</span>, <span class="at">R =</span> <span class="st">"#FF3851"</span>) <span class="co"># fix this color</span></span>
+<span id="cb24-809"><a href="#cb24-809"></a></span>
+<span id="cb24-810"><a href="#cb24-810"></a>bin_df <span class="sc">%&gt;%</span></span>
+<span id="cb24-811"><a href="#cb24-811"></a>  <span class="fu">mutate</span>(<span class="at">iteration =</span> <span class="fu">as.factor</span>(iteration)) <span class="sc">%&gt;%</span></span>
+<span id="cb24-812"><a href="#cb24-812"></a>  <span class="fu">filter</span>(state <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"S"</span>,<span class="st">"I"</span>,<span class="st">"R"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb24-813"><a href="#cb24-813"></a>  <span class="fu">ggplot</span>( <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> number, <span class="at">group =</span> <span class="fu">interaction</span>(iteration, state), <span class="at">color =</span> state)) <span class="sc">+</span></span>
+<span id="cb24-814"><a href="#cb24-814"></a>    <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.5</span>,<span class="at">alpha =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb24-815"><a href="#cb24-815"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> SIRcolors) <span class="sc">+</span></span>
+<span id="cb24-816"><a href="#cb24-816"></a>    <span class="fu">labs</span>(</span>
+<span id="cb24-817"><a href="#cb24-817"></a>      <span class="at">x =</span> <span class="st">"Time"</span>,</span>
+<span id="cb24-818"><a href="#cb24-818"></a>    <span class="at">y =</span> <span class="st">"Number"</span>,</span>
+<span id="cb24-819"><a href="#cb24-819"></a>      <span class="at">color =</span> <span class="st">"State"</span></span>
+<span id="cb24-820"><a href="#cb24-820"></a>    ) <span class="sc">+</span></span>
+<span id="cb24-821"><a href="#cb24-821"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span>
+<span id="cb24-822"><a href="#cb24-822"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

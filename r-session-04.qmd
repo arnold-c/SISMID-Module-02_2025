@@ -644,10 +644,12 @@ tau_df %>%
     theme(legend.position = "top")
 ```
 
-Note that the time series of new incident cases is very different than the time series of prevalent cases.
+:::callout-note
+Recall that the time series of new incident cases is very different than the time series of prevalent cases.
 Recall from our earlier discussion that the former are more likely to be what we would see in clinical surveillance. 
 The latter are what we might see if we did random testing in the population.
 Which one would you expect to correspond best to environmental wastewater surveillance?
+::::
 
 ## The Chain Binomial Algorithm
 
@@ -664,7 +666,11 @@ As before, we start with initial conditions.
 Here we initialize with the same population as before, but notice that the transmission rate, $\beta$ is different.
 Time is rescaled here to units of epidemic generation time, so $\beta$ is scaled correspondingly and now, for this formulation, $\beta$ is $R_0$. 
 
-TO DO: ADD A CALLOUT HERE TO THE FACT THAT R0 IS NOT FIXED, IT DEPENDS ON THE PATHOGEN, THE POPULATION, AND THE MODEL. 
+::: callout-note
+Recall that the basic reproduction number, $R_0$ is a function of the pathogen and the population of interest.
+In models, both the population (e.g. mixing, heterogeneity, etc) and the pathogen (e.g. time-scale of recovery) are represented using approximations to the biology. 
+Here, the choice of model forces a change in time-scale which means that we have to change $\beta$ accordingly; thus, $\beta$, which is ostensibly a biological parameter is also a property of the model. 
+:::
 
 ```{r}
 ###############################################################################
