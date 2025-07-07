@@ -262,7 +262,7 @@ I <- 1 # number infected
 R <- 1 # number recovered
 time <- 0
 
-beta <- .5 # transmission rate
+beta <- 0.5 # transmission rate
 gamma <- 1 / 7 # recovery rate
 ```
 
