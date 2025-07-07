@@ -22,8 +22,6 @@ library(here)
 library(rio)
 library(deSolve)
 library(tidyverse)
-library(ggtext)
-library(gt)
 ```
 
 ```{r}
