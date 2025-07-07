@@ -260,9 +260,13 @@ The gilstep() function increments the states forward by 1 event. Which event hap
 ###############################################################################
 # Simulate over time                                                          #
 ###############################################################################
+set.seed(101)               # here we set the random seed. This isn't necessary in general, but it allows us to write a "random" simulation
+                            # always returns the same result. For the purposes of this lesson it is useful because (as you'll see below)
+                            # we can get random realizations of an outbreak where the first case recovers before they infect anyone and 
+                            # there is no epidemic to plot. This can happen (rarely) even with R0>1. 
 counter <- 0                # set counter at 0
 while(all(I>0)){            #continue until I is depleted
-  counter <- counter + 1    #counter for number of transitions: we don't know how many transitions will happen until the simualtion is over
+  counter <- counter + 1    #counter for number of transitions: we don't know how many transitions will happen until the simulation is over
   # 
   SIRtmp <- c(S[counter], I[counter], R[counter], time[counter])       #current SIR states
   step <- gilstep(SIRtmp, beta, gamma)
@@ -283,6 +287,7 @@ while(all(I>0)){            #continue until I is depleted
   time <- c(time,SIRtmp[4])
 
   #cat(S[counter],"-",I[counter],"-",R[counter],"-",time[counter], ".\n"). # this prints the output as it goes
+  set.seed(NULL)          # reset the seed so that every subsequent simulation IS random
 }
 ```
 
