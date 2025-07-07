@@ -226,7 +226,7 @@ You could make each run have the same $R_0$ by recalculating the duration of inf
 Alternatively, you might have uncertainty about \emph{both} transmission and duration, so could for e.g. make random draws for both (which would again give a setting where $R_0$ varies from run to run).
 None of these are more correct than another, the use case depends on which elements $R_0$, transmission, duration of infection, you are uncertain about.
 
-In each of the above, the model is \emp{deterministic}, meaning that for a given set of parameters, the resulting outbreak trajectory is always the same. For a \emph{stochastic} model, each run of the model will vary, even if the parameters are the same.
+In each of the above, the model is \emph{deterministic}, meaning that for a given set of parameters, the resulting outbreak trajectory is always the same. For a \emph{stochastic} model, each run of the model will vary, even if the parameters are the same.
 This is because each event that occurs (e.g. someone getting infected or recovering) is analogous to a coin flip; even though the rules of the coin (the parameters) are always the same, the side it lands on is random.
 Unlike a deterministic model, to fully understand the behavior of a stochastic model, you need to run it more than one time, often many times, so these are necessarily more time consuming to work with.
 
@@ -237,7 +237,7 @@ But there some foundational versions of these models that illustrate the trade-o
 
 The Gillespie algorithm is the most explicit translation of the ODE form of the SIR model into a stochastic model.
 It achieves this by noting that ODE-based models are written in terms of the rates at which events occur.
-At any given point in time, the rate of all events in the ODE is known; what \bf{isn't} known, is which of the possible events will happen first.
+At any given point in time, the rate of all events in the ODE is known; what \textbf{isn't} known, is which of the possible events will happen first.
 Note that even though we expect that the next thing to happen will be the thing that happens with the highest rate, it's possible that another thing may happen first by random chance.
 And then, since the rates in the SIR model are dependent on the value of the states (e.g. new infections depend on $\beta$ and S and I) any change in the states then changes the rates and the likelihood of what will happen next.
 
