@@ -123,17 +123,18 @@ An entirely reasonable way to represent this uncertainty in the estimate of the 
 For this we can modify the code above with a loop that does this multiple times.
 
 ```{r}
-num_iterations <- 100 # the number of times we want to do this.
+# the number of times we want to do this.
 # This is a matter of choice and computational capacity
 # (this model is small and quick, but that won't always be the case)
+num_iterations <- 100
 
 # since we're going to do this num_iterations times we need a place
 # to store the results
 
 for (iter in 1:num_iterations) {
-  sir_params <- c(transmission = runif(1, .283, .317), duration = 6) 
   # each time take a random draw of the transmission rate from the
   # confidence interval
+  sir_params <- c(transmission = runif(1, .283, .317), duration = 6)
   sir_init_states <- c(S = 0.99, I = 0.01, R = 0)
   sim_times <- seq(0, 200, by = 0.1)
 
@@ -144,7 +145,8 @@ for (iter in 1:num_iterations) {
     parms = sir_params
   )
   sir_sol = data.frame(sir_sol)
-  sir_sol$iteration = iter # mark this as the iter iteration of the loop
+  # mark this as the iter iteration of the loop
+  sir_sol$iteration = iter
   # if this is the first iteration, create a place to store the output
   # if it's the second or higher, append the output to the storage
   if (iter == 1) {
@@ -232,9 +234,9 @@ Explain the steps
 
 
 ```{r}
-###############################################################################
-# Parameters and initial conditions                                            #
-###############################################################################
+####################################################################
+# Parameters and initial conditions                                #
+####################################################################
 
 S <- 998 # number susceptible
 I <- 1 # number infected
@@ -246,9 +248,9 @@ gamma <- 1 / 7 # recovery rate
 ```
 
 ```{r}
-###############################################################################
-# Gillespie Step                                                              #
-###############################################################################
+####################################################################
+# Gillespie Step                                                   #
+####################################################################
 gil_step <- function(SIR, beta, gamma) {
   # SIR is a vector containing 4 elements
   #   S = scalar number of susceptibles now
@@ -258,40 +260,43 @@ gil_step <- function(SIR, beta, gamma) {
   # beta = transmission rate
   # gamma = recovery rate
 
+  # draw two random exponential variables
   times <- rexp(
-    2, # draw two random exponential variables
+    2,
     c(
-      beta * SIR[1] * SIR[2] / sum(SIR[1:3]), 
       # the first is the rate of new infections: S*Beta*I/N
+      beta * SIR[1] * SIR[2] / sum(SIR[1:3]),
+      # the second is the rate of new recoveries: I*gamma
       SIR[2] * gamma
     )
-  ) # the second is the rate of new recoveries: I*gamma
+  )
 
   return(list(
-    change_state = which.min(times), 
     # which.min identifies which of the two random variables is smallest,
     # and thus the first to happen: this is the transition that we'll make
+    change_state = which.min(times),
+    # this identifies how much time elapsed before the transition occurred,
+    # so we can increment time forward
     time_step = min(times)
-  )) 
-  # this identifies how much time elapsed before the transition occurred,
-  # so we can increment time forward
+  ))
 }
 ```
 
 The gil_step() function increments the states forward by 1 event. Which event happens first, and the time it takes for that event to happen are both random variables. We then need to do this many times.
 
 ```{r}
-###############################################################################
-# Simulate over time                                                          #
-###############################################################################
+####################################################################
+# Simulate over time                                               #
+####################################################################
 counter <- 0 # set counter at 0
 while (all(I > 0)) {
   # continue until I is depleted
-  counter <- counter + 1 
+  counter <- counter + 1
   # counter for number of transitions: we don't know how many transitions
   # will happen until the simulation is over
   #
-  sir_tmp <- c(S[counter], I[counter], R[counter], time[counter]) #current SIR states
+  # current SIR states
+  sir_tmp <- c(S[counter], I[counter], R[counter], time[counter])
   step <- gil_step(sir_tmp, beta, gamma)
   if (step$change_state == 1) {
     # if transition is an infection, reduce S and increase I
@@ -326,7 +331,8 @@ We can now plot the one realization of this stochastic outbreak. Notice that it 
 
 # Turn the output from gil_step() into a tibble (dataframe)
 # so we can manipulate and plot it easily
-gil_df <- tibble(time, S, I, R) %>% # put elements in a data frame
+# put elements in a data frame
+gil_df <- tibble(time, S, I, R) %>%
   # Convert all columns to numeric (they are currently type
   # deSolve so will produce warnings when plotting etc)
   mutate(
@@ -377,36 +383,37 @@ Note that this code is designed to be transparent not to be fast.
 Making these run fast is beyond the scope of this assignment.
 
 ```{r}
-###############################################################################
-# Simulate over time                                                          #
+####################################################################
+# Simulate over time                                               #
 num_iterations <- 10 # number of realizations to simulate
 
 for (iter in 1:num_iterations) {
-  ###############################################################################
-  # Parameters and initial conditions                                            #
-  ###############################################################################
+  ####################################################################
+  # Parameters and initial conditions                                #
+  ####################################################################
 
   S <- 998 # number susceptible
   I <- 1 # number infected
   R <- 1 # number recovered
   time <- 0
-  iteration = iter #initialize iteration counter
+  # initialize iteration counter
+  iteration = iter
 
   beta <- .5 # transmission rate
   gamma <- 1 / 7 # recovery rate
 
-  ###############################################################################
-  # Simulate over time                                                          #
-  ###############################################################################
+  ####################################################################
+  # Simulate over time                                               #
+  ####################################################################
   counter <- 0 # set counter at 0
   while (all(I > 0)) {
     # continue until I is depleted
-    counter <- counter + 1 
+    counter <- counter + 1
     # counter for number of transitions: we don't know how many transitions
     # will happen until the simulation is over
-    
-    sir_tmp <- c(S[counter], I[counter], R[counter], time[counter]) 
+
     # current SIR states
+    sir_tmp <- c(S[counter], I[counter], R[counter], time[counter])
     step <- gil_step(sir_tmp, beta, gamma)
     if (step$change_state == 1) {
       # if transition is an infection, reduce S and increase I
@@ -418,9 +425,10 @@ for (iter in 1:num_iterations) {
       sir_tmp[2] <- sir_tmp[2] - 1
       sir_tmp[3] <- sir_tmp[3] + 1
     }
-    sir_tmp[4] <- sir_tmp[4] + step$time_step # increment time
+    # increment time
+    sir_tmp[4] <- sir_tmp[4] + step$time_step
 
-    #Append changes
+    # Append changes
     S <- c(S, sir_tmp[1])
     I <- c(I, sir_tmp[2])
     R <- c(R, sir_tmp[3])
@@ -447,7 +455,8 @@ for (iter in 1:num_iterations) {
 
 # Turn the output from gil_step() into a tibble (dataframe)
 # so we can manipulate and plot it easily
-gil_df <- sir_gil_storage %>% # put elements in a data frame
+# put elements in a data frame
+gil_df <- sir_gil_storage %>%
   # Convert all columns to numeric (they are currently type
   # deSolve so will produce warnings when plotting etc)
   mutate(
@@ -514,9 +523,9 @@ There's no right answer to what time step to use.
 Here we'll use 1 day, for convenience.
 
 ```{r}
-###############################################################################
-# Parameters and initial conditions                                           #
-###############################################################################
+####################################################################
+# Parameters and initial conditions                                #
+####################################################################
 
 S <- 998 # number susceptible
 I <- 1 # number infected
@@ -528,9 +537,9 @@ gamma <- 1 / 7 # recovery rate
 ```
 
 ```{r}
-###############################################################################
-# Tau Leaping Single time step                                                            #
-###############################################################################
+####################################################################
+# Tau Leaping Single time step                                     #
+####################################################################
 tau_sir_step <- function(sims, S, I, R, beta, gamma, delta_t, ...) {
   # adapted from Aaron King's code
   # sims = number of simulations
@@ -540,23 +549,28 @@ tau_sir_step <- function(sims, S, I, R, beta, gamma, delta_t, ...) {
   # beta = transmission rate
   # gamma = recovery rate
 
-  N <- S + I + R # total population size
-  dSI <- rpois(n = sims, beta * S * (I / N) * delta_t) 
+  # total population size
+  N <- S + I + R
   # new incident infections
-  dIR <- rpois(n = sims, gamma * I * delta_t) # recoveries
+  dSI <- rpois(n = sims, beta * S * (I / N) * delta_t)
+  # recoveries
+  dIR <- rpois(n = sims, gamma * I * delta_t)
   # note that this can be done with a binomial step as well
-  # dSI <- rbinom(n=sims,size=S,prob=1-exp(-beta*(I/N)*delta_t))  
+  # dSI <- rbinom(n=sims,size=S,prob=1-exp(-beta*(I/N)*delta_t))
   # new incident infections
-  # dIR <- rbinom(n=sims,size=I,prob=1-exp(-gamma*delta_t))       
+  # dIR <- rbinom(n=sims,size=I,prob=1-exp(-gamma*delta_t))
   # recoveries
 
   # since it is possible for the transitions to drive the states negative,
   # we have to prevent that
-  S <- pmax(S - dSI, 0) # change in S
-  I <- pmax(I + dSI - dIR, 0) # change in I
-  R <- R + dIR # change in R
-  cbind(S, I, R, dSI) 
+  # change in S
+  S <- pmax(S - dSI, 0)
+  # change in I
+  I <- pmax(I + dSI - dIR, 0)
+  # change in R
+  R <- R + dIR
   # note that dSI are the new incident infections
+  cbind(S, I, R, dSI)
 }
 ```
 
@@ -568,28 +582,28 @@ The reason we don't automatically start with binomial draws is that they are com
 As computers have gotten faster, this is less of an issue.
 
 ```{r}
-###############################################################################
-# set up and storage for states                                               #
-###############################################################################
-max_time <- 100 
+####################################################################
+# set up and storage for states                                    #
+####################################################################
+max_time <- 100
 # time to simulate over. With Tau Leaping the random draws scale with time
 # not with population size, so this is much more efficient than Gillespie
 # for large populations
-sims <- 1000 
+sims <- 1000
 # number of simulations: notice that we can do WAY more now
 
 s_mat <- matrix(S, 1, sims) # storage item for S for all simulations
 i_mat <- matrix(I, 1, sims) # storage item for I for all simulations
 r_mat <- matrix(R, 1, sims) # storage item for R for all simulations
-new_cases <- matrix(0, 1, sims) 
+new_cases <- matrix(0, 1, sims)
 # storage item for new cases (i.e. incidence) for all simulations
 n_mat <- S + I + R # storage item for N for all simulations
 ```
 
 ```{r}
-###############################################################################
-# run over a time from 2 to T                                               #
-###############################################################################
+####################################################################
+# run over a time from 2 to T                                      #
+####################################################################
 #
 for (time_step in 2:max_time) {
   # loop over time, time_step is the index
@@ -602,15 +616,20 @@ for (time_step in 2:max_time) {
     beta,
     gamma,
     delta_t = 1
-  ) # call to SIR step function above
+  )
+  # call to SIR step function above
 
-  s_mat <- rbind(s_mat, out[, 1]) # update state
-  i_mat <- rbind(i_mat, out[, 2]) # update state
-  r_mat <- rbind(r_mat, out[, 3]) # update state
-  n_mat <- rbind(n_mat, out[, 1] + out[, 2] + out[, 3]) 
+  # update state
+  s_mat <- rbind(s_mat, out[, 1])
+  # update state
+  i_mat <- rbind(i_mat, out[, 2])
+  # update state
+  r_mat <- rbind(r_mat, out[, 3])
   # update state -- note population size isn't changing, but this could be
   # updated with births/deaths
-  new_cases <- rbind(new_cases, out[, 4]) # update state
+  n_mat <- rbind(n_mat, out[, 1] + out[, 2] + out[, 3])
+  # update state
+  new_cases <- rbind(new_cases, out[, 4])
 }
 ```
 
@@ -620,9 +639,9 @@ Hopefully you can easily see that simulating 1000 iterations of Tau Leaping is \
 #| out-width: 100%
 #| column: body
 
-###############################################################################
-# plotting                                                                   #
-###############################################################################
+####################################################################
+# plotting                                                         #
+####################################################################
 # put output in a data frame
 tau_df <- tibble(
   S = array(s_mat),
@@ -643,7 +662,8 @@ tau_df <- tau_df %>%
   ) %>%
   mutate(state = factor(state, levels = c("S", "I", "R", "N", "cases")))
 
-sir_colors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851", cases = "#2ca02c") # fix this color
+# fix this color
+sir_colors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851", cases = "#2ca02c")
 
 tau_df %>%
   mutate(iteration = as.factor(iteration)) %>%
@@ -672,9 +692,9 @@ Note that because we have stored the newly infected individuals as "new cases" t
 ```{r}
 #| out-width: 100%
 #| column: body
-###############################################################################
-# plotting                                                                   #
-###############################################################################
+####################################################################
+# plotting                                                         #
+####################################################################
 # put output in a data frame
 tau_df <- tibble(
   S = array(s_mat),
@@ -695,7 +715,8 @@ tau_df <- tau_df %>%
   ) %>%
   mutate(state = factor(state, levels = c("S", "I", "R", "N", "cases")))
 
-sir_colors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851", cases = "#2ca02c") # fix this color
+# fix this color
+sir_colors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851", cases = "#2ca02c")
 
 tau_df %>%
   mutate(iteration = as.factor(iteration)) %>%
@@ -739,9 +760,9 @@ Time is rescaled here to units of epidemic generation time, so $\beta$ is scaled
 TO DO: ADD A CALLOUT HERE TO THE FACT THAT R0 IS NOT FIXED, IT DEPENDS ON THE PATHOGEN, THE POPULATION, AND THE MODEL.
 
 ```{r}
-###############################################################################
-# Parameters and initial conditions                                           #
-###############################################################################
+####################################################################
+# Parameters and initial conditions                                #
+####################################################################
 S <- 998 # number susceptible
 I <- 1 # number infected
 R <- 1 # number recovered
@@ -758,21 +779,22 @@ So, the number of simulations can rapidly increase into the millions (bigger for
 
 
 ```{r}
-###############################################################################
-# Single time step                                                            #
-###############################################################################
+####################################################################
+# Single time step                                                 #
+####################################################################
 chain_binomial_step <- function(sims, S, I, R, beta, ...) {
   # S = initial susceptible population
   # I = initial infected population
   # R = initial recovered population
   # beta is transmission rate
 
-  N <- S + I + R # total population size
-  new_i <- rbinom(n = sims, pmax(S, 0), 1 - exp(-beta * pmax(I, 0) / N)) 
+  # total population size
+  N <- S + I + R
   # this is the only stochastic step; only do draw if I >0
-  new_s <- S - new_i 
+  new_i <- rbinom(n = sims, pmax(S, 0), 1 - exp(-beta * pmax(I, 0) / N))
   # this step is now deterministic, because everyone from the past time
   # step recovers
+  new_s <- S - new_i
   new_r <- R + I
 
   cbind(new_s, new_i, new_r)
@@ -783,11 +805,11 @@ Then we can run the simulation over a set of discrete time steps, T.
 Note again that T is now the number of infectious generation times, since time is rescaled relative to the models above.
 
 ```{r}
-###############################################################################
-# Run over many steps                                                         #
-###############################################################################
+####################################################################
+# Run over many steps											   #
+####################################################################
 
-max_time <- 20 
+max_time <- 20
 # note here that the time step is one infectious generation time,
 # so 7 days from gamma above
 sims <- 1000
@@ -798,15 +820,22 @@ r_mat <- matrix(R, 1, sims) # storage item for R for all simulations
 n_mat <- S + I + R
 
 for (time_step in 2:max_time) {
-  out <- chain_binomial_step(sims, s_mat[time_step - 1, ], 
-                             i_mat[time_step - 1, ], 
-                             r_mat[time_step - 1, ], beta)
-  s_mat <- rbind(s_mat, out[, 1]) # update state
-  i_mat <- rbind(i_mat, out[, 2]) # update state
-  r_mat <- rbind(r_mat, out[, 3]) # update state
-  n_mat <- rbind(n_mat, out[, 1] + out[, 2] + out[, 3]) 
+  out <- chain_binomial_step(
+    sims,
+    s_mat[time_step - 1, ],
+    i_mat[time_step - 1, ],
+    r_mat[time_step - 1, ],
+    beta
+  )
+  # update state
+  s_mat <- rbind(s_mat, out[, 1])
+  # update state
+  i_mat <- rbind(i_mat, out[, 2])
+  # update state
+  r_mat <- rbind(r_mat, out[, 3])
   # update state -- note population size isn't changing, but this could be
   # updated with births/deaths
+  n_mat <- rbind(n_mat, out[, 1] + out[, 2] + out[, 3])
 }
 ```
 
@@ -837,7 +866,8 @@ bin_df = bin_df %>%
   ) %>%
   mutate(state = factor(state, levels = c("S", "I", "R", "N")))
 
-sir_colors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851") # fix this color
+# fix this color
+sir_colors <- c(S = "#1f77b4", I = "#ff7f0e", R = "#FF3851")
 
 # NOT CURRENTLY WORKING
 # NOT PLOTTING AS INDIVIDUAL LINES
