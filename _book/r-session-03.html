@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.7.32">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Callum Arnold">
 <meta name="author" content="Matthew Ferrari">
@@ -20,8 +20,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -32,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -84,17 +85,20 @@ div.csl-indent {
 <link href="./L08_stochastic-models.html" rel="next">
 <link href="./L06_parameter-estimation.html" rel="prev">
 <link href="././images/sismid2025-logo-blue.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-71f524eee1dc5ed9e55699206ad9d6f5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-4c0fb4a9f49e9c425cadb25d7a35c2be.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-71f524eee1dc5ed9e55699206ad9d6f5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -164,7 +168,169 @@ window.Quarto = {
 };
 </script>
 </head>
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
@@ -1633,7 +1799,7 @@ F-statistic: 861.2 on 1 and 2 DF,  p-value: 0.001159</code></pre>
 }
 </style>
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead><tr class="header gt_col_headings">
+<thead><tr class="gt_col_headings header">
 <th id="site" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Site</strong></th>
 <th id="beta" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Beta</strong></th>
 <th id="S_init" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Initial S</strong></th>
@@ -2570,7 +2736,7 @@ F-statistic: 240.8 on 1 and 8 DF,  p-value: 2.963e-07</code></pre>
 }
 </style>
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead><tr class="header gt_col_headings">
+<thead><tr class="gt_col_headings header">
 <th id="site" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Site</strong></th>
 <th id="beta" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Beta</strong></th>
 <th id="gamma" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Gamma</strong></th>
@@ -2756,434 +2922,306 @@ window._ojs.paths.docToRoot = "";
 window._ojs.selfContained = false;
 window._ojs.runtime.interpretFromScriptTags();
 </script><script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
     }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
     }
-  }
-  toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
     }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
     }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
       }
     }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
     }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
       });
     }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        return container.innerHTML
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -3191,185 +3229,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="./L06_parameter-estimation.html" class="pagination-link" aria-label="Parameter Estimation">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Parameter Estimation</span></span>
       </a>          
@@ -3670,201 +3684,201 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb50-310"><a href="#cb50-310"></a><span class="in">```</span></span>
 <span id="cb50-311"><a href="#cb50-311"></a></span>
 <span id="cb50-314"><a href="#cb50-314"></a><span class="in">```{ojs}</span></span>
-<span id="cb50-315"><a href="#cb50-315"></a><span class="in">//| echo: false</span></span>
-<span id="cb50-316"><a href="#cb50-316"></a><span class="in">filtered_niamey_data = aq.table(niamey_data)</span></span>
-<span id="cb50-317"><a href="#cb50-317"></a><span class="in">    .filter(aq.escape(d =&gt; d.site == site_select))</span></span>
+<span id="cb50-315"><a href="#cb50-315"></a><span class="co">//| echo: false</span></span>
+<span id="cb50-316"><a href="#cb50-316"></a>filtered_niamey_data <span class="op">=</span> aq<span class="op">.</span><span class="fu">table</span>(niamey_data)</span>
+<span id="cb50-317"><a href="#cb50-317"></a>    <span class="op">.</span><span class="fu">filter</span>(aq<span class="op">.</span><span class="fu">escape</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">site</span> <span class="op">==</span> site_select))</span>
 <span id="cb50-318"><a href="#cb50-318"></a><span class="in">```</span></span>
 <span id="cb50-319"><a href="#cb50-319"></a></span>
 <span id="cb50-322"><a href="#cb50-322"></a><span class="in">```{ojs}</span></span>
-<span id="cb50-323"><a href="#cb50-323"></a><span class="in">//| echo: false</span></span>
-<span id="cb50-324"><a href="#cb50-324"></a><span class="in">reset_S = 10000</span></span>
-<span id="cb50-325"><a href="#cb50-325"></a><span class="in">reset_I = 20</span></span>
-<span id="cb50-326"><a href="#cb50-326"></a><span class="in">reset_beta = 5.00</span></span>
+<span id="cb50-323"><a href="#cb50-323"></a><span class="co">//| echo: false</span></span>
+<span id="cb50-324"><a href="#cb50-324"></a>reset_S <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb50-325"><a href="#cb50-325"></a>reset_I <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb50-326"><a href="#cb50-326"></a>reset_beta <span class="op">=</span> <span class="fl">5.00</span></span>
 <span id="cb50-327"><a href="#cb50-327"></a><span class="in">```</span></span>
 <span id="cb50-328"><a href="#cb50-328"></a></span>
 <span id="cb50-331"><a href="#cb50-331"></a><span class="in">```{ojs}</span></span>
-<span id="cb50-332"><a href="#cb50-332"></a><span class="in">//| echo: false</span></span>
-<span id="cb50-333"><a href="#cb50-333"></a><span class="in">function set(input, value) {</span></span>
-<span id="cb50-334"><a href="#cb50-334"></a><span class="in">  input.value = value;</span></span>
-<span id="cb50-335"><a href="#cb50-335"></a><span class="in">  input.dispatchEvent(new Event("input", {bubbles: true}));</span></span>
-<span id="cb50-336"><a href="#cb50-336"></a><span class="in">}</span></span>
+<span id="cb50-332"><a href="#cb50-332"></a><span class="co">//| echo: false</span></span>
+<span id="cb50-333"><a href="#cb50-333"></a><span class="kw">function</span> <span class="fu">set</span>(input<span class="op">,</span> value) {</span>
+<span id="cb50-334"><a href="#cb50-334"></a>  input<span class="op">.</span><span class="at">value</span> <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb50-335"><a href="#cb50-335"></a>  input<span class="op">.</span><span class="fu">dispatchEvent</span>(<span class="kw">new</span> <span class="bu">Event</span>(<span class="st">"input"</span><span class="op">,</span> {<span class="dt">bubbles</span><span class="op">:</span> <span class="kw">true</span>}))<span class="op">;</span></span>
+<span id="cb50-336"><a href="#cb50-336"></a>}</span>
 <span id="cb50-337"><a href="#cb50-337"></a><span class="in">```</span></span>
 <span id="cb50-338"><a href="#cb50-338"></a></span>
 <span id="cb50-341"><a href="#cb50-341"></a><span class="in">```{ojs}</span></span>
-<span id="cb50-342"><a href="#cb50-342"></a><span class="in">//| echo: false</span></span>
-<span id="cb50-343"><a href="#cb50-343"></a><span class="in">function sse(obs, preds) {</span></span>
+<span id="cb50-342"><a href="#cb50-342"></a><span class="co">//| echo: false</span></span>
+<span id="cb50-343"><a href="#cb50-343"></a><span class="kw">function</span> <span class="fu">sse</span>(obs<span class="op">,</span> preds) {</span>
 <span id="cb50-344"><a href="#cb50-344"></a></span>
-<span id="cb50-345"><a href="#cb50-345"></a><span class="in">    if(obs.length == preds.length) {</span></span>
-<span id="cb50-346"><a href="#cb50-346"></a><span class="in">        var squared_errs = obs.map((e, i) =&gt; (e - preds[i])**2 )</span></span>
-<span id="cb50-347"><a href="#cb50-347"></a><span class="in">        return squared_errs.reduce((a, b) =&gt; a + b, 0)</span></span>
-<span id="cb50-348"><a href="#cb50-348"></a><span class="in">    } else {</span></span>
-<span id="cb50-349"><a href="#cb50-349"></a><span class="in">        return("lengths are not the same")</span></span>
-<span id="cb50-350"><a href="#cb50-350"></a><span class="in">    }</span></span>
-<span id="cb50-351"><a href="#cb50-351"></a><span class="in">}</span></span>
+<span id="cb50-345"><a href="#cb50-345"></a>    <span class="cf">if</span>(obs<span class="op">.</span><span class="at">length</span> <span class="op">==</span> preds<span class="op">.</span><span class="at">length</span>) {</span>
+<span id="cb50-346"><a href="#cb50-346"></a>        <span class="kw">var</span> squared_errs <span class="op">=</span> obs<span class="op">.</span><span class="fu">map</span>((e<span class="op">,</span> i) <span class="kw">=&gt;</span> (e <span class="op">-</span> preds[i])<span class="op">**</span><span class="dv">2</span> )</span>
+<span id="cb50-347"><a href="#cb50-347"></a>        <span class="cf">return</span> squared_errs<span class="op">.</span><span class="fu">reduce</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a <span class="op">+</span> b<span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb50-348"><a href="#cb50-348"></a>    } <span class="cf">else</span> {</span>
+<span id="cb50-349"><a href="#cb50-349"></a>        <span class="cf">return</span>(<span class="st">"lengths are not the same"</span>)</span>
+<span id="cb50-350"><a href="#cb50-350"></a>    }</span>
+<span id="cb50-351"><a href="#cb50-351"></a>}</span>
 <span id="cb50-352"><a href="#cb50-352"></a><span class="in">```</span></span>
 <span id="cb50-353"><a href="#cb50-353"></a></span>
 <span id="cb50-356"><a href="#cb50-356"></a><span class="in">```{ojs}</span></span>
-<span id="cb50-357"><a href="#cb50-357"></a><span class="in">//| panel: sidebar</span></span>
-<span id="cb50-358"><a href="#cb50-358"></a><span class="in">//| echo: false</span></span>
-<span id="cb50-359"><a href="#cb50-359"></a><span class="in">viewof reset = Inputs.button([</span></span>
-<span id="cb50-360"><a href="#cb50-360"></a><span class="in">  ["Reset all sliders", () =&gt; {</span></span>
-<span id="cb50-361"><a href="#cb50-361"></a><span class="in">    set(viewof S0, reset_S)</span></span>
-<span id="cb50-362"><a href="#cb50-362"></a><span class="in">    set(viewof I0, reset_I)</span></span>
-<span id="cb50-363"><a href="#cb50-363"></a><span class="in">    set(viewof beta_input, reset_beta)</span></span>
-<span id="cb50-364"><a href="#cb50-364"></a><span class="in">  }]</span></span>
-<span id="cb50-365"><a href="#cb50-365"></a><span class="in">])</span></span>
-<span id="cb50-366"><a href="#cb50-366"></a><span class="in">viewof S0 = Inputs.range(</span></span>
-<span id="cb50-367"><a href="#cb50-367"></a><span class="in">    [500, 15000],</span></span>
-<span id="cb50-368"><a href="#cb50-368"></a><span class="in">    {value: reset_S, step: 1, label: md`${tex`S(0)`}`}</span></span>
-<span id="cb50-369"><a href="#cb50-369"></a><span class="in">)</span></span>
+<span id="cb50-357"><a href="#cb50-357"></a><span class="co">//| panel: sidebar</span></span>
+<span id="cb50-358"><a href="#cb50-358"></a><span class="co">//| echo: false</span></span>
+<span id="cb50-359"><a href="#cb50-359"></a>viewof reset <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>([</span>
+<span id="cb50-360"><a href="#cb50-360"></a>  [<span class="st">"Reset all sliders"</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb50-361"><a href="#cb50-361"></a>    <span class="kw">set</span>(viewof S0<span class="op">,</span> reset_S)</span>
+<span id="cb50-362"><a href="#cb50-362"></a>    <span class="kw">set</span>(viewof I0<span class="op">,</span> reset_I)</span>
+<span id="cb50-363"><a href="#cb50-363"></a>    <span class="kw">set</span>(viewof beta_input<span class="op">,</span> reset_beta)</span>
+<span id="cb50-364"><a href="#cb50-364"></a>  }]</span>
+<span id="cb50-365"><a href="#cb50-365"></a>])</span>
+<span id="cb50-366"><a href="#cb50-366"></a>viewof S0 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb50-367"><a href="#cb50-367"></a>    [<span class="dv">500</span><span class="op">,</span> <span class="dv">15000</span>]<span class="op">,</span></span>
+<span id="cb50-368"><a href="#cb50-368"></a>    {<span class="dt">value</span><span class="op">:</span> reset_S<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="fu">md</span><span class="vs">`</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`S(0)`</span><span class="sc">}</span><span class="vs">`</span>}</span>
+<span id="cb50-369"><a href="#cb50-369"></a>)</span>
 <span id="cb50-370"><a href="#cb50-370"></a></span>
-<span id="cb50-371"><a href="#cb50-371"></a><span class="in">viewof I0 = Inputs.range(</span></span>
-<span id="cb50-372"><a href="#cb50-372"></a><span class="in">    [0.001, 50],</span></span>
-<span id="cb50-373"><a href="#cb50-373"></a><span class="in">    {value: reset_I, step: 0.001, label: md`${tex`I(0)`}`}</span></span>
-<span id="cb50-374"><a href="#cb50-374"></a><span class="in">)</span></span>
+<span id="cb50-371"><a href="#cb50-371"></a>viewof I0 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb50-372"><a href="#cb50-372"></a>    [<span class="fl">0.001</span><span class="op">,</span> <span class="dv">50</span>]<span class="op">,</span></span>
+<span id="cb50-373"><a href="#cb50-373"></a>    {<span class="dt">value</span><span class="op">:</span> reset_I<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.001</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="fu">md</span><span class="vs">`</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`I(0)`</span><span class="sc">}</span><span class="vs">`</span>}</span>
+<span id="cb50-374"><a href="#cb50-374"></a>)</span>
 <span id="cb50-375"><a href="#cb50-375"></a></span>
-<span id="cb50-376"><a href="#cb50-376"></a><span class="in">viewof beta_input = Inputs.range(</span></span>
-<span id="cb50-377"><a href="#cb50-377"></a><span class="in">    [1, 100],</span></span>
-<span id="cb50-378"><a href="#cb50-378"></a><span class="in">    {value: reset_beta, step: 0.001, label: md`${tex`\beta (\times 10^{-3})`}`}</span></span>
-<span id="cb50-379"><a href="#cb50-379"></a><span class="in">)</span></span>
+<span id="cb50-376"><a href="#cb50-376"></a>viewof beta_input <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb50-377"><a href="#cb50-377"></a>    [<span class="dv">1</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span></span>
+<span id="cb50-378"><a href="#cb50-378"></a>    {<span class="dt">value</span><span class="op">:</span> reset_beta<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.001</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="fu">md</span><span class="vs">`</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`</span><span class="sc">\b</span><span class="vs">eta (</span><span class="sc">\t</span><span class="vs">imes 10^{-3})`</span><span class="sc">}</span><span class="vs">`</span>}</span>
+<span id="cb50-379"><a href="#cb50-379"></a>)</span>
 <span id="cb50-380"><a href="#cb50-380"></a></span>
-<span id="cb50-381"><a href="#cb50-381"></a><span class="in">viewof site_select = Inputs.select(</span></span>
-<span id="cb50-382"><a href="#cb50-382"></a><span class="in">    ["Site 1", "Site 2", "Site 3"],</span></span>
-<span id="cb50-383"><a href="#cb50-383"></a><span class="in">    {label: "Select a site:"}</span></span>
-<span id="cb50-384"><a href="#cb50-384"></a><span class="in">)</span></span>
+<span id="cb50-381"><a href="#cb50-381"></a>viewof site_select <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
+<span id="cb50-382"><a href="#cb50-382"></a>    [<span class="st">"Site 1"</span><span class="op">,</span> <span class="st">"Site 2"</span><span class="op">,</span> <span class="st">"Site 3"</span>]<span class="op">,</span></span>
+<span id="cb50-383"><a href="#cb50-383"></a>    {<span class="dt">label</span><span class="op">:</span> <span class="st">"Select a site:"</span>}</span>
+<span id="cb50-384"><a href="#cb50-384"></a>)</span>
 <span id="cb50-385"><a href="#cb50-385"></a></span>
-<span id="cb50-386"><a href="#cb50-386"></a><span class="in">// convert to daily time scale as easier to manipulate</span></span>
-<span id="cb50-387"><a href="#cb50-387"></a><span class="in">beta = (beta_input / 365) * (10 ** (-3))</span></span>
+<span id="cb50-386"><a href="#cb50-386"></a><span class="co">// convert to daily time scale as easier to manipulate</span></span>
+<span id="cb50-387"><a href="#cb50-387"></a>beta <span class="op">=</span> (beta_input <span class="op">/</span> <span class="dv">365</span>) <span class="op">*</span> (<span class="dv">10</span> <span class="op">**</span> (<span class="op">-</span><span class="dv">3</span>))</span>
 <span id="cb50-388"><a href="#cb50-388"></a></span>
-<span id="cb50-389"><a href="#cb50-389"></a><span class="in">md`${tex`R_0 = ${R0_str}`}`</span></span>
+<span id="cb50-389"><a href="#cb50-389"></a><span class="fu">md</span><span class="vs">`</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`R_0 = </span><span class="sc">${</span>R0_str<span class="sc">}</span><span class="vs">`</span><span class="sc">}</span><span class="vs">`</span></span>
 <span id="cb50-390"><a href="#cb50-390"></a><span class="in">```</span></span>
 <span id="cb50-391"><a href="#cb50-391"></a></span>
 <span id="cb50-394"><a href="#cb50-394"></a><span class="in">```{ojs}</span></span>
-<span id="cb50-395"><a href="#cb50-395"></a><span class="in">//| echo: false</span></span>
-<span id="cb50-396"><a href="#cb50-396"></a><span class="in">dur_inf = 14</span></span>
-<span id="cb50-397"><a href="#cb50-397"></a><span class="in">gamma = 1 / dur_inf</span></span>
-<span id="cb50-398"><a href="#cb50-398"></a><span class="in">R0 = beta * (S0 + I0)/ gamma</span></span>
+<span id="cb50-395"><a href="#cb50-395"></a><span class="co">//| echo: false</span></span>
+<span id="cb50-396"><a href="#cb50-396"></a>dur_inf <span class="op">=</span> <span class="dv">14</span></span>
+<span id="cb50-397"><a href="#cb50-397"></a>gamma <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> dur_inf</span>
+<span id="cb50-398"><a href="#cb50-398"></a>R0 <span class="op">=</span> beta <span class="op">*</span> (S0 <span class="op">+</span> I0)<span class="op">/</span> gamma</span>
 <span id="cb50-399"><a href="#cb50-399"></a></span>
-<span id="cb50-400"><a href="#cb50-400"></a><span class="in">R0_str = R0.toPrecision(2).toLocaleString()</span></span>
+<span id="cb50-400"><a href="#cb50-400"></a>R0_str <span class="op">=</span> R0<span class="op">.</span><span class="fu">toPrecision</span>(<span class="dv">2</span>)<span class="op">.</span><span class="fu">toLocaleString</span>()</span>
 <span id="cb50-401"><a href="#cb50-401"></a><span class="in">```</span></span>
 <span id="cb50-402"><a href="#cb50-402"></a></span>
 <span id="cb50-405"><a href="#cb50-405"></a><span class="in">```{ojs}</span></span>
-<span id="cb50-406"><a href="#cb50-406"></a><span class="in">//| echo: false</span></span>
-<span id="cb50-407"><a href="#cb50-407"></a><span class="in">dt = 0.01</span></span>
-<span id="cb50-408"><a href="#cb50-408"></a><span class="in">tmax = 16 * 14</span></span>
+<span id="cb50-406"><a href="#cb50-406"></a><span class="co">//| echo: false</span></span>
+<span id="cb50-407"><a href="#cb50-407"></a>dt <span class="op">=</span> <span class="fl">0.01</span></span>
+<span id="cb50-408"><a href="#cb50-408"></a>tmax <span class="op">=</span> <span class="dv">16</span> <span class="op">*</span> <span class="dv">14</span></span>
 <span id="cb50-409"><a href="#cb50-409"></a><span class="in">```</span></span>
 <span id="cb50-410"><a href="#cb50-410"></a></span>
 <span id="cb50-413"><a href="#cb50-413"></a><span class="in">```{ojs}</span></span>
-<span id="cb50-414"><a href="#cb50-414"></a><span class="in">//| echo: false</span></span>
-<span id="cb50-415"><a href="#cb50-415"></a><span class="in">import {odeRK4} from '@rreusser/integration@3064'</span></span>
-<span id="cb50-416"><a href="#cb50-416"></a><span class="in">import { aq, op } from '@uwdata/arquero'</span></span>
+<span id="cb50-414"><a href="#cb50-414"></a><span class="co">//| echo: false</span></span>
+<span id="cb50-415"><a href="#cb50-415"></a><span class="im">import</span> {odeRK4} <span class="im">from</span> <span class="st">'@rreusser/integration@3064'</span></span>
+<span id="cb50-416"><a href="#cb50-416"></a><span class="im">import</span> { aq<span class="op">,</span> op } <span class="im">from</span> <span class="st">'@uwdata/arquero'</span></span>
 <span id="cb50-417"><a href="#cb50-417"></a><span class="in">```</span></span>
 <span id="cb50-418"><a href="#cb50-418"></a></span>
 <span id="cb50-421"><a href="#cb50-421"></a><span class="in">```{ojs}</span></span>
-<span id="cb50-422"><a href="#cb50-422"></a><span class="in">//| echo: false</span></span>
-<span id="cb50-423"><a href="#cb50-423"></a><span class="in">function sir(dydt, y, t) {</span></span>
-<span id="cb50-424"><a href="#cb50-424"></a><span class="in">    dydt[3] = beta * y[0] * y[1]</span></span>
+<span id="cb50-422"><a href="#cb50-422"></a><span class="co">//| echo: false</span></span>
+<span id="cb50-423"><a href="#cb50-423"></a><span class="kw">function</span> <span class="fu">sir</span>(dydt<span class="op">,</span> y<span class="op">,</span> t) {</span>
+<span id="cb50-424"><a href="#cb50-424"></a>    dydt[<span class="dv">3</span>] <span class="op">=</span> beta <span class="op">*</span> y[<span class="dv">0</span>] <span class="op">*</span> y[<span class="dv">1</span>]</span>
 <span id="cb50-425"><a href="#cb50-425"></a></span>
-<span id="cb50-426"><a href="#cb50-426"></a><span class="in">    dydt[0] = - dydt[3]</span></span>
-<span id="cb50-427"><a href="#cb50-427"></a><span class="in">    dydt[1] = dydt[3] - gamma * y[1]</span></span>
-<span id="cb50-428"><a href="#cb50-428"></a><span class="in">    dydt[2] = gamma * y[1]</span></span>
-<span id="cb50-429"><a href="#cb50-429"></a><span class="in">}</span></span>
+<span id="cb50-426"><a href="#cb50-426"></a>    dydt[<span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span> dydt[<span class="dv">3</span>]</span>
+<span id="cb50-427"><a href="#cb50-427"></a>    dydt[<span class="dv">1</span>] <span class="op">=</span> dydt[<span class="dv">3</span>] <span class="op">-</span> gamma <span class="op">*</span> y[<span class="dv">1</span>]</span>
+<span id="cb50-428"><a href="#cb50-428"></a>    dydt[<span class="dv">2</span>] <span class="op">=</span> gamma <span class="op">*</span> y[<span class="dv">1</span>]</span>
+<span id="cb50-429"><a href="#cb50-429"></a>}</span>
 <span id="cb50-430"><a href="#cb50-430"></a><span class="in">```</span></span>
 <span id="cb50-431"><a href="#cb50-431"></a></span>
 <span id="cb50-434"><a href="#cb50-434"></a><span class="in">```{ojs}</span></span>
-<span id="cb50-435"><a href="#cb50-435"></a><span class="in">//| echo: false</span></span>
-<span id="cb50-436"><a href="#cb50-436"></a><span class="in">function simulate(f, t0, y0, dt, tmax) {</span></span>
-<span id="cb50-437"><a href="#cb50-437"></a><span class="in">    var t = t0</span></span>
-<span id="cb50-438"><a href="#cb50-438"></a><span class="in">    var y = y0</span></span>
-<span id="cb50-439"><a href="#cb50-439"></a><span class="in">    var i = 0</span></span>
+<span id="cb50-435"><a href="#cb50-435"></a><span class="co">//| echo: false</span></span>
+<span id="cb50-436"><a href="#cb50-436"></a><span class="kw">function</span> <span class="fu">simulate</span>(f<span class="op">,</span> t0<span class="op">,</span> y0<span class="op">,</span> dt<span class="op">,</span> tmax) {</span>
+<span id="cb50-437"><a href="#cb50-437"></a>    <span class="kw">var</span> t <span class="op">=</span> t0</span>
+<span id="cb50-438"><a href="#cb50-438"></a>    <span class="kw">var</span> y <span class="op">=</span> y0</span>
+<span id="cb50-439"><a href="#cb50-439"></a>    <span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb50-440"><a href="#cb50-440"></a></span>
-<span id="cb50-441"><a href="#cb50-441"></a><span class="in">    var ysim = [y0]</span></span>
+<span id="cb50-441"><a href="#cb50-441"></a>    <span class="kw">var</span> ysim <span class="op">=</span> [y0]</span>
 <span id="cb50-442"><a href="#cb50-442"></a></span>
-<span id="cb50-443"><a href="#cb50-443"></a><span class="in">    for (t = t0 + dt; t &lt;= tmax; t += dt) {</span></span>
-<span id="cb50-444"><a href="#cb50-444"></a><span class="in">        ysim.push(odeRK4([], ysim[i], f, dt))</span></span>
-<span id="cb50-445"><a href="#cb50-445"></a><span class="in">        i += 1</span></span>
-<span id="cb50-446"><a href="#cb50-446"></a><span class="in">    }</span></span>
+<span id="cb50-443"><a href="#cb50-443"></a>    <span class="cf">for</span> (t <span class="op">=</span> t0 <span class="op">+</span> dt<span class="op">;</span> t <span class="op">&lt;=</span> tmax<span class="op">;</span> t <span class="op">+=</span> dt) {</span>
+<span id="cb50-444"><a href="#cb50-444"></a>        ysim<span class="op">.</span><span class="fu">push</span>(<span class="fu">odeRK4</span>([]<span class="op">,</span> ysim[i]<span class="op">,</span> f<span class="op">,</span> dt))</span>
+<span id="cb50-445"><a href="#cb50-445"></a>        i <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb50-446"><a href="#cb50-446"></a>    }</span>
 <span id="cb50-447"><a href="#cb50-447"></a></span>
-<span id="cb50-448"><a href="#cb50-448"></a><span class="in">    // return cumulative infections</span></span>
-<span id="cb50-449"><a href="#cb50-449"></a><span class="in">    return ysim.map(d =&gt; d[3])</span></span>
-<span id="cb50-450"><a href="#cb50-450"></a><span class="in">}</span></span>
+<span id="cb50-448"><a href="#cb50-448"></a>    <span class="co">// return cumulative infections</span></span>
+<span id="cb50-449"><a href="#cb50-449"></a>    <span class="cf">return</span> ysim<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d[<span class="dv">3</span>])</span>
+<span id="cb50-450"><a href="#cb50-450"></a>}</span>
 <span id="cb50-451"><a href="#cb50-451"></a><span class="in">```</span></span>
 <span id="cb50-452"><a href="#cb50-452"></a></span>
 <span id="cb50-455"><a href="#cb50-455"></a><span class="in">```{ojs}</span></span>
-<span id="cb50-456"><a href="#cb50-456"></a><span class="in">//| echo: false</span></span>
-<span id="cb50-457"><a href="#cb50-457"></a><span class="in">sir_sol = simulate(sir, 0, [S0, I0, 0.0, 0.0], dt, tmax)</span></span>
+<span id="cb50-456"><a href="#cb50-456"></a><span class="co">//| echo: false</span></span>
+<span id="cb50-457"><a href="#cb50-457"></a>sir_sol <span class="op">=</span> <span class="fu">simulate</span>(sir<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> [S0<span class="op">,</span> I0<span class="op">,</span> <span class="fl">0.0</span><span class="op">,</span> <span class="fl">0.0</span>]<span class="op">,</span> dt<span class="op">,</span> tmax)</span>
 <span id="cb50-458"><a href="#cb50-458"></a><span class="in">```</span></span>
 <span id="cb50-459"><a href="#cb50-459"></a></span>
 <span id="cb50-462"><a href="#cb50-462"></a><span class="in">```{ojs}</span></span>
-<span id="cb50-463"><a href="#cb50-463"></a><span class="in">//| echo: false</span></span>
-<span id="cb50-464"><a href="#cb50-464"></a><span class="in">siteColors = ["#1b9e77", "#d95f02", "#7570b3"]</span></span>
+<span id="cb50-463"><a href="#cb50-463"></a><span class="co">//| echo: false</span></span>
+<span id="cb50-464"><a href="#cb50-464"></a>siteColors <span class="op">=</span> [<span class="st">"#1b9e77"</span><span class="op">,</span> <span class="st">"#d95f02"</span><span class="op">,</span> <span class="st">"#7570b3"</span>]</span>
 <span id="cb50-465"><a href="#cb50-465"></a><span class="in">```</span></span>
 <span id="cb50-466"><a href="#cb50-466"></a></span>
 <span id="cb50-469"><a href="#cb50-469"></a><span class="in">```{ojs}</span></span>
-<span id="cb50-470"><a href="#cb50-470"></a><span class="in">//| echo: false</span></span>
-<span id="cb50-471"><a href="#cb50-471"></a><span class="in">// Create an array of time indices, dropping first as from returns index 0, which</span></span>
-<span id="cb50-472"><a href="#cb50-472"></a><span class="in">// doesn't exist in the real data</span></span>
-<span id="cb50-473"><a href="#cb50-473"></a><span class="in">times = Array.from({length: 17}, (_, i) =&gt; i * 14).slice(1)</span></span>
-<span id="cb50-474"><a href="#cb50-474"></a><span class="in">tindex = times.map((e, i) =&gt; e * (1 / dt))</span></span>
+<span id="cb50-470"><a href="#cb50-470"></a><span class="co">//| echo: false</span></span>
+<span id="cb50-471"><a href="#cb50-471"></a><span class="co">// Create an array of time indices, dropping first as from returns index 0, which</span></span>
+<span id="cb50-472"><a href="#cb50-472"></a><span class="co">// doesn't exist in the real data</span></span>
+<span id="cb50-473"><a href="#cb50-473"></a>times <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({<span class="dt">length</span><span class="op">:</span> <span class="dv">17</span>}<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> i <span class="op">*</span> <span class="dv">14</span>)<span class="op">.</span><span class="fu">slice</span>(<span class="dv">1</span>)</span>
+<span id="cb50-474"><a href="#cb50-474"></a>tindex <span class="op">=</span> times<span class="op">.</span><span class="fu">map</span>((e<span class="op">,</span> i) <span class="kw">=&gt;</span> e <span class="op">*</span> (<span class="dv">1</span> <span class="op">/</span> dt))</span>
 <span id="cb50-475"><a href="#cb50-475"></a></span>
-<span id="cb50-476"><a href="#cb50-476"></a><span class="in">cum_inc = tindex.map((i) =&gt; sir_sol[i])</span></span>
+<span id="cb50-476"><a href="#cb50-476"></a>cum_inc <span class="op">=</span> tindex<span class="op">.</span><span class="fu">map</span>((i) <span class="kw">=&gt;</span> sir_sol[i])</span>
 <span id="cb50-477"><a href="#cb50-477"></a></span>
-<span id="cb50-478"><a href="#cb50-478"></a><span class="in">preds = [cum_inc[0] + I0, ...cum_inc.map((e, i) =&gt; cum_inc[i] - cum_inc[i-1]).slice(1)]</span></span>
+<span id="cb50-478"><a href="#cb50-478"></a>preds <span class="op">=</span> [cum_inc[<span class="dv">0</span>] <span class="op">+</span> I0<span class="op">,</span> <span class="op">...</span>cum_inc<span class="op">.</span><span class="fu">map</span>((e<span class="op">,</span> i) <span class="kw">=&gt;</span> cum_inc[i] <span class="op">-</span> cum_inc[i<span class="op">-</span><span class="dv">1</span>])<span class="op">.</span><span class="fu">slice</span>(<span class="dv">1</span>)]</span>
 <span id="cb50-479"><a href="#cb50-479"></a></span>
-<span id="cb50-480"><a href="#cb50-480"></a><span class="in">sir_tbl = aq.table({</span></span>
-<span id="cb50-481"><a href="#cb50-481"></a><span class="in">    Biweek: times.map(t =&gt; t / 14),</span></span>
-<span id="cb50-482"><a href="#cb50-482"></a><span class="in">    "Cumulative Incidence": cum_inc,</span></span>
-<span id="cb50-483"><a href="#cb50-483"></a><span class="in">    "Number of Individuals": preds</span></span>
-<span id="cb50-484"><a href="#cb50-484"></a><span class="in">})</span></span>
+<span id="cb50-480"><a href="#cb50-480"></a>sir_tbl <span class="op">=</span> aq<span class="op">.</span><span class="fu">table</span>({</span>
+<span id="cb50-481"><a href="#cb50-481"></a>    <span class="dt">Biweek</span><span class="op">:</span> times<span class="op">.</span><span class="fu">map</span>(t <span class="kw">=&gt;</span> t <span class="op">/</span> <span class="dv">14</span>)<span class="op">,</span></span>
+<span id="cb50-482"><a href="#cb50-482"></a>    <span class="st">"Cumulative Incidence"</span><span class="op">:</span> cum_inc<span class="op">,</span></span>
+<span id="cb50-483"><a href="#cb50-483"></a>    <span class="st">"Number of Individuals"</span><span class="op">:</span> preds</span>
+<span id="cb50-484"><a href="#cb50-484"></a>})</span>
 <span id="cb50-485"><a href="#cb50-485"></a></span>
-<span id="cb50-486"><a href="#cb50-486"></a><span class="in">sim_sse = [({</span></span>
-<span id="cb50-487"><a href="#cb50-487"></a><span class="in">    sse: sse(</span></span>
-<span id="cb50-488"><a href="#cb50-488"></a><span class="in">            filtered_niamey_data.array("Number of Individuals"),</span></span>
-<span id="cb50-489"><a href="#cb50-489"></a><span class="in">            preds</span></span>
-<span id="cb50-490"><a href="#cb50-490"></a><span class="in">        ).toPrecision(4),</span></span>
-<span id="cb50-491"><a href="#cb50-491"></a><span class="in">    Biweek: 3,</span></span>
-<span id="cb50-492"><a href="#cb50-492"></a><span class="in">    "Number of Individuals": Math.max(</span></span>
-<span id="cb50-493"><a href="#cb50-493"></a><span class="in">        ...sir_tbl.array("Number of Individuals"),</span></span>
-<span id="cb50-494"><a href="#cb50-494"></a><span class="in">        ...filtered_niamey_data.array("Number of Individuals")</span></span>
-<span id="cb50-495"><a href="#cb50-495"></a><span class="in">    ) * 0.9</span></span>
-<span id="cb50-496"><a href="#cb50-496"></a><span class="in">})]</span></span>
+<span id="cb50-486"><a href="#cb50-486"></a>sim_sse <span class="op">=</span> [({</span>
+<span id="cb50-487"><a href="#cb50-487"></a>    <span class="dt">sse</span><span class="op">:</span> <span class="fu">sse</span>(</span>
+<span id="cb50-488"><a href="#cb50-488"></a>            filtered_niamey_data<span class="op">.</span><span class="fu">array</span>(<span class="st">"Number of Individuals"</span>)<span class="op">,</span></span>
+<span id="cb50-489"><a href="#cb50-489"></a>            preds</span>
+<span id="cb50-490"><a href="#cb50-490"></a>        )<span class="op">.</span><span class="fu">toPrecision</span>(<span class="dv">4</span>)<span class="op">,</span></span>
+<span id="cb50-491"><a href="#cb50-491"></a>    <span class="dt">Biweek</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span></span>
+<span id="cb50-492"><a href="#cb50-492"></a>    <span class="st">"Number of Individuals"</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(</span>
+<span id="cb50-493"><a href="#cb50-493"></a>        <span class="op">...</span>sir_tbl<span class="op">.</span><span class="fu">array</span>(<span class="st">"Number of Individuals"</span>)<span class="op">,</span></span>
+<span id="cb50-494"><a href="#cb50-494"></a>        <span class="op">...</span>filtered_niamey_data<span class="op">.</span><span class="fu">array</span>(<span class="st">"Number of Individuals"</span>)</span>
+<span id="cb50-495"><a href="#cb50-495"></a>    ) <span class="op">*</span> <span class="fl">0.9</span></span>
+<span id="cb50-496"><a href="#cb50-496"></a>})]</span>
 <span id="cb50-497"><a href="#cb50-497"></a><span class="in">```</span></span>
 <span id="cb50-498"><a href="#cb50-498"></a></span>
 <span id="cb50-501"><a href="#cb50-501"></a><span class="in">```{ojs}</span></span>
-<span id="cb50-502"><a href="#cb50-502"></a><span class="in">//| echo: false</span></span>
-<span id="cb50-503"><a href="#cb50-503"></a><span class="in">//| panel: fill</span></span>
-<span id="cb50-504"><a href="#cb50-504"></a><span class="in">Plot.plot({</span></span>
-<span id="cb50-505"><a href="#cb50-505"></a><span class="in">    color: {</span></span>
-<span id="cb50-506"><a href="#cb50-506"></a><span class="in">        legend: true,</span></span>
-<span id="cb50-507"><a href="#cb50-507"></a><span class="in">        domain: ["Site 1", "Site 2", "Site 3"],</span></span>
-<span id="cb50-508"><a href="#cb50-508"></a><span class="in">        range: siteColors,</span></span>
-<span id="cb50-509"><a href="#cb50-509"></a><span class="in">    },</span></span>
-<span id="cb50-510"><a href="#cb50-510"></a><span class="in">    style: {fontSize: "20px"},</span></span>
-<span id="cb50-511"><a href="#cb50-511"></a><span class="in">    marginLeft: 75,</span></span>
-<span id="cb50-512"><a href="#cb50-512"></a><span class="in">    marginTop: 40,</span></span>
-<span id="cb50-513"><a href="#cb50-513"></a><span class="in">    marginBottom: 55,</span></span>
-<span id="cb50-514"><a href="#cb50-514"></a><span class="in">    grid: true,</span></span>
-<span id="cb50-515"><a href="#cb50-515"></a><span class="in">    width: 800,</span></span>
-<span id="cb50-516"><a href="#cb50-516"></a><span class="in">    height: 670,</span></span>
-<span id="cb50-517"><a href="#cb50-517"></a><span class="in">    marks: [</span></span>
-<span id="cb50-518"><a href="#cb50-518"></a><span class="in">        Plot.lineY(</span></span>
-<span id="cb50-519"><a href="#cb50-519"></a><span class="in">            sir_tbl,</span></span>
-<span id="cb50-520"><a href="#cb50-520"></a><span class="in">            {x: "Biweek", y: "Number of Individuals", stroke: "#4d4d4dff", strokeWidth: 6, strokeOpacity: 0.8}</span></span>
-<span id="cb50-521"><a href="#cb50-521"></a><span class="in">        ),</span></span>
-<span id="cb50-522"><a href="#cb50-522"></a><span class="in">        Plot.dot(</span></span>
-<span id="cb50-523"><a href="#cb50-523"></a><span class="in">            filtered_niamey_data,</span></span>
-<span id="cb50-524"><a href="#cb50-524"></a><span class="in">            {x: "Biweek", y: "Number of Individuals", stroke: "site", fill: "site", fillOpacity: 0.6, r: 12}</span></span>
-<span id="cb50-525"><a href="#cb50-525"></a><span class="in">        ),</span></span>
-<span id="cb50-526"><a href="#cb50-526"></a><span class="in">        Plot.lineY(</span></span>
-<span id="cb50-527"><a href="#cb50-527"></a><span class="in">            filtered_niamey_data,</span></span>
-<span id="cb50-528"><a href="#cb50-528"></a><span class="in">            {x: "Biweek", y: "Number of Individuals", stroke: "site"}</span></span>
-<span id="cb50-529"><a href="#cb50-529"></a><span class="in">        ),</span></span>
-<span id="cb50-530"><a href="#cb50-530"></a><span class="in">        Plot.text(</span></span>
-<span id="cb50-531"><a href="#cb50-531"></a><span class="in">            sim_sse,</span></span>
-<span id="cb50-532"><a href="#cb50-532"></a><span class="in">            {x: "Biweek", y: "Number of Individuals", text: (d) =&gt; `SSE = ${d.sse}`, dx: 0, dy: 0, fontWeight: "bold"}</span></span>
-<span id="cb50-533"><a href="#cb50-533"></a><span class="in">        )</span></span>
-<span id="cb50-534"><a href="#cb50-534"></a><span class="in">    ]</span></span>
-<span id="cb50-535"><a href="#cb50-535"></a><span class="in">})</span></span>
+<span id="cb50-502"><a href="#cb50-502"></a><span class="co">//| echo: false</span></span>
+<span id="cb50-503"><a href="#cb50-503"></a><span class="co">//| panel: fill</span></span>
+<span id="cb50-504"><a href="#cb50-504"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb50-505"><a href="#cb50-505"></a>    <span class="dt">color</span><span class="op">:</span> {</span>
+<span id="cb50-506"><a href="#cb50-506"></a>        <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb50-507"><a href="#cb50-507"></a>        <span class="dt">domain</span><span class="op">:</span> [<span class="st">"Site 1"</span><span class="op">,</span> <span class="st">"Site 2"</span><span class="op">,</span> <span class="st">"Site 3"</span>]<span class="op">,</span></span>
+<span id="cb50-508"><a href="#cb50-508"></a>        <span class="dt">range</span><span class="op">:</span> siteColors<span class="op">,</span></span>
+<span id="cb50-509"><a href="#cb50-509"></a>    }<span class="op">,</span></span>
+<span id="cb50-510"><a href="#cb50-510"></a>    <span class="dt">style</span><span class="op">:</span> {<span class="dt">fontSize</span><span class="op">:</span> <span class="st">"20px"</span>}<span class="op">,</span></span>
+<span id="cb50-511"><a href="#cb50-511"></a>    <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">75</span><span class="op">,</span></span>
+<span id="cb50-512"><a href="#cb50-512"></a>    <span class="dt">marginTop</span><span class="op">:</span> <span class="dv">40</span><span class="op">,</span></span>
+<span id="cb50-513"><a href="#cb50-513"></a>    <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">55</span><span class="op">,</span></span>
+<span id="cb50-514"><a href="#cb50-514"></a>    <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb50-515"><a href="#cb50-515"></a>    <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb50-516"><a href="#cb50-516"></a>    <span class="dt">height</span><span class="op">:</span> <span class="dv">670</span><span class="op">,</span></span>
+<span id="cb50-517"><a href="#cb50-517"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb50-518"><a href="#cb50-518"></a>        Plot<span class="op">.</span><span class="fu">lineY</span>(</span>
+<span id="cb50-519"><a href="#cb50-519"></a>            sir_tbl<span class="op">,</span></span>
+<span id="cb50-520"><a href="#cb50-520"></a>            {<span class="dt">x</span><span class="op">:</span> <span class="st">"Biweek"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"Number of Individuals"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#4d4d4dff"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">6</span><span class="op">,</span> <span class="dt">strokeOpacity</span><span class="op">:</span> <span class="fl">0.8</span>}</span>
+<span id="cb50-521"><a href="#cb50-521"></a>        )<span class="op">,</span></span>
+<span id="cb50-522"><a href="#cb50-522"></a>        Plot<span class="op">.</span><span class="fu">dot</span>(</span>
+<span id="cb50-523"><a href="#cb50-523"></a>            filtered_niamey_data<span class="op">,</span></span>
+<span id="cb50-524"><a href="#cb50-524"></a>            {<span class="dt">x</span><span class="op">:</span> <span class="st">"Biweek"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"Number of Individuals"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"site"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"site"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.6</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">12</span>}</span>
+<span id="cb50-525"><a href="#cb50-525"></a>        )<span class="op">,</span></span>
+<span id="cb50-526"><a href="#cb50-526"></a>        Plot<span class="op">.</span><span class="fu">lineY</span>(</span>
+<span id="cb50-527"><a href="#cb50-527"></a>            filtered_niamey_data<span class="op">,</span></span>
+<span id="cb50-528"><a href="#cb50-528"></a>            {<span class="dt">x</span><span class="op">:</span> <span class="st">"Biweek"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"Number of Individuals"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"site"</span>}</span>
+<span id="cb50-529"><a href="#cb50-529"></a>        )<span class="op">,</span></span>
+<span id="cb50-530"><a href="#cb50-530"></a>        Plot<span class="op">.</span><span class="fu">text</span>(</span>
+<span id="cb50-531"><a href="#cb50-531"></a>            sim_sse<span class="op">,</span></span>
+<span id="cb50-532"><a href="#cb50-532"></a>            {<span class="dt">x</span><span class="op">:</span> <span class="st">"Biweek"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"Number of Individuals"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> (d) <span class="kw">=&gt;</span> <span class="vs">`SSE = </span><span class="sc">${</span>d<span class="op">.</span><span class="at">sse</span><span class="sc">}</span><span class="vs">`</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span>}</span>
+<span id="cb50-533"><a href="#cb50-533"></a>        )</span>
+<span id="cb50-534"><a href="#cb50-534"></a>    ]</span>
+<span id="cb50-535"><a href="#cb50-535"></a>})</span>
 <span id="cb50-536"><a href="#cb50-536"></a><span class="in">```</span></span>
 <span id="cb50-537"><a href="#cb50-537"></a></span>
 <span id="cb50-538"><a href="#cb50-538"></a><span class="fu">## Objective Function</span></span>
