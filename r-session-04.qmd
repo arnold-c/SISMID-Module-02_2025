@@ -150,6 +150,10 @@ for(m in 1:M){
 ```
 
 ```{r}
+#| out-width: 100%
+#| column: body
+
+
 # Turn the output from the ODE solver into a tibble (dataframe)
 # so we can manipulate and plot it easily
 sir_sol_df <- as_tibble(sir_sol_storage) %>%
@@ -412,6 +416,9 @@ for(m in 1:M){
 ```
 
 ```{r}
+#| out-width: 100%
+#| column: body
+
 # Reuse the plotting code from above
 
 # Turn the output from gilstep() into a tibble (dataframe)
