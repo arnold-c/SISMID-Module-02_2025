@@ -60,7 +60,7 @@ sir_params <- c(transmission = 0.3, duration = 6)
 sir_init_states <- c(S = 0.99, I = 0.01, R = 0)
 sim_times <- seq(0, 200, by = 0.1)
 
-sir_sol <- deSolve::ode(
+sir_sol <- ode(
   y = sir_init_states,
   times = sim_times,
   func = sir_model,
@@ -138,22 +138,22 @@ for (iter in 1:num_iterations) {
   sir_init_states <- c(S = 0.99, I = 0.01, R = 0)
   sim_times <- seq(0, 200, by = 0.1)
 
-  sir_sol <- deSolve::ode(
+  sir_sol <- ode(
     y = sir_init_states,
     times = sim_times,
     func = sir_model,
     parms = sir_params
   )
-  sir_sol = data.frame(sir_sol)
+  sir_sol <- as_tibble(sir_sol)
   # mark this as the iter iteration of the loop
-  sir_sol$iteration = iter
+  sir_sol$iteration <- iter
   # if this is the first iteration, create a place to store the output
   # if it's the second or higher, append the output to the storage
   if (iter == 1) {
     sir_sol_storage <- sir_sol
   }
   if (iter > 1) {
-    sir_sol_storage <- rbind(sir_sol_storage, sir_sol)
+    sir_sol_storage <- bind_rows(sir_sol_storage, sir_sol)
   }
 }
 ```
@@ -397,7 +397,7 @@ for (iter in 1:num_iterations) {
   R <- 1 # number recovered
   time <- 0
   # initialize iteration counter
-  iteration = iter
+  iteration <- iter
 
   beta <- .5 # transmission rate
   gamma <- 1 / 7 # recovery rate
@@ -439,10 +439,10 @@ for (iter in 1:num_iterations) {
     # this prints the output as it goes
   }
   if (iter == 1) {
-    sir_gil_storage = tibble(S, I, R, time, iteration)
+    sir_gil_storage <- tibble(S, I, R, time, iteration)
   }
   if (iter > 1) {
-    sir_gil_storage = bind_rows(
+    sir_gil_storage <- bind_rows(
       sir_gil_storage,
       tibble(S, I, R, time, iteration)
     )
@@ -857,7 +857,7 @@ bin_df <- tibble(
   iteration = rep(1:sims, each = max_time)
 )
 
-bin_df = bin_df %>%
+bin_df <- bin_df %>%
   pivot_longer(
     # Don't pivot the time column
     cols = -c(time, iteration),
