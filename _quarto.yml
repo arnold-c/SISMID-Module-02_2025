@@ -2,7 +2,7 @@ project:
   type: book
 
 book:
-  title: "SISMID Module 2 Materials (2025)"
+  title: "SISMID Module 1 Materials (2025)"
   subtitle: "Mathematical Models of Infectious Diseases"
   author:
     - name: "Callum Arnold"
