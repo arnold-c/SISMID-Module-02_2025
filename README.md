@@ -1,8 +1,8 @@
-# SISMID Module 2 Materials (2025)
+# SISMID Module 1 Materials (2025)
 
 **Mathematical Models of Infectious Diseases**
 
-This repository contains the educational materials for the [2025 Summer Institute in Statistics and Modeling in Infectious Diseases (SISMID) Module 2: Mathematical Models of Infectious Diseases](https://sph.emory.edu/SISMID/modules/math-models/index.html). The materials are presented as an interactive Quarto book website with lecture notes, hands-on R exercises, and comprehensive tutorials for epidemiological modeling.
+This repository contains the educational materials for the [2025 Summer Institute in Statistics and Modeling in Infectious Diseases (SISMID) Module 1: Mathematical Models of Infectious Diseases](https://sph.emory.edu/SISMID/modules/math-models/index.html). The materials are presented as an interactive Quarto book website with lecture notes, hands-on R exercises, and comprehensive tutorials for epidemiological modeling.
 
 ## About This Project
 
@@ -52,7 +52,7 @@ This material is designed for:
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/arnold-c/SISMID-Module-02_2025.git
-   cd SISMID-Module-02_2025
+   cd SISMID-Module-01_2025
    ```
 
 2. **Install R dependencies:**
@@ -103,9 +103,9 @@ You can contact me via my email: "contact *at* callumarnold *dot* com".
 We welcome contributions to improve these educational materials! Here are several ways you can help:
 
 ### Reporting Issues
-- **Found a bug or error?** Open an [Issue](https://github.com/arnold-c/SISMID-Module-02_2025/issues) describing the problem
-- **Have a suggestion?** Start a [Discussion](https://github.com/arnold-c/SISMID-Module-02_2025/discussions) to share your ideas
-- **Unclear instructions?** Let us know what could be explained better (open a [Discussion](https://github.com/arnold-c/SISMID-Module-02_2025/discussions))
+- **Found a bug or error?** Open an [Issue](https://github.com/arnold-c/SISMID-Module-01_2025/issues) describing the problem
+- **Have a suggestion?** Start a [Discussion](https://github.com/arnold-c/SISMID-Module-01_2025/discussions) to share your ideas
+- **Unclear instructions?** Let us know what could be explained better (open a [Discussion](https://github.com/arnold-c/SISMID-Module-01_2025/discussions))
 
 ### Contributing Code or Content
 1. **Fork the repository** and create a feature branch
