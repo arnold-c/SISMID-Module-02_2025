@@ -770,7 +770,7 @@ The codes that follow will be a bit easier to follow if we introduce some indexe
 
 ```{r}
 # Create vectors of indices relating to each state
-# Note that there are are 30 age classes, 1-20 are 1 year wide, 21-30 are 5 years wide, taking us up to age 80 years
+# Note that there are are 30 age classes, 1-20 are 1 year wide, 21-30 are 5 years wide, taking us up to age
 # (ordered S1-80, I1-80, R1-80)
 sindex <- 1:30
 iindex <- 31:60
