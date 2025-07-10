@@ -28,7 +28,6 @@ book:
         - L03_hit-and-vaccinations.qmd
     - part: "Day 2"
       chapters:
-        - L04_heterogeneity.qmd
         - L05_age-structure.qmd
         - r-session-02.qmd
         - L06_parameter-estimation.qmd

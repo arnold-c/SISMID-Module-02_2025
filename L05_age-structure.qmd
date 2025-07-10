@@ -1,5 +1,5 @@
 ---
-title: Age Structured Models
+title: Heterogeneity and Age Structure
 format:
     html:
         page-layout: full
