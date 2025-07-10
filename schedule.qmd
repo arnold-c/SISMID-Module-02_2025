@@ -17,7 +17,7 @@ July 14, Monday: 9:00 a.m. - 5 p.m. EDT
 
 July 15, Tuesday: 9:00 a.m. - 5 p.m. EDT
 
-July 16, Wednesday: 9:000 a.m. - 12 p.m. EDT
+July 16, Wednesday: 9:00 a.m. - 12 p.m. EDT
 
 ::: {.callout-important}
 All times are in local time EDT (Eastern Daylight Time).
@@ -31,17 +31,17 @@ Please see pre-requisites on the course website
 
 | Time | Section |
 |:--|:--|
-| 9:00 - 9:30am | Lecture 1: Intro to Modeling by Amy Winter |
-| 9:30 - 10am | Lecture 2: Basics of SIR Models by Matt Ferrari (first half) |
+| 9:00 - 9:30am | Welcome and Introductions |
+| 9:30 - 10am | Lecture 1: Introduction to ID Models by Amy Winter |
 | 10 - 10:30pm | coffee break |
-| 10:30am - 11am | Lecture 2: Basics of SIR Models by Matt Ferrari (second half) |
-| 11 - 12pm | `R` Session 1: Intro to modeling by Matt Ferrari |
+| 10:30am - 11:30 am | Lecture 2: Basics of SIR Models by Matt Ferrari |
+| 11:30 - 12pm | `R` Session 1: Intro to modeling by Matt Ferrari |
 | 12 - 1:30pm | lunch on your own |
-| 1:30pm - 2pm | `R` Session 1: Intro to modeling (continued) by Matt Ferrari |
-| 2pm - 3pm | Lecture 3: Vaccination & Interventions by Amy Winter |
+| 1:30pm - 2:30pm | `R` Session 1: Intro to modeling (continued) by Matt Ferrari |
+| 2:30pm - 3pm | Lecture 3: Vaccination & Interventions by Matt Ferrari |
 | 3pm - 3:30pm | Coffee break |
-| 3:30pm - 4:15pm | Finish `R` exercises and work on [group assignment](#group-assignments) for `R` Session 1. |
-| 4:15pm - 5pm | Group Assignment debrief for `R` Session 1 |
+| 3:30pm - 4:00pm | Lecture 3: Vaccination & Interventions by Matt Ferrari |
+| 4:00pm - 5pm | Interactive Session |
 | 5pm - 7pm | SISMID-wide networking mixer |
 : {.striped .hover tbl-colwidths="[25,75]"}
 
