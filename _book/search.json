@@ -104,7 +104,7 @@
     "href": "exercise-requirements.html",
     "title": "Exercise Requirements",
     "section": "",
-    "text": "R Packages\nIf you use renv to manage package dependencies in your projects, you can visit the GitHub repository for this project and download the renv.lock, .Rprofile, and renv/activate.R files, before running the command renv::restore(). Alternatively, if you already use GitHub, you could clone the project and just run renv::restore().\nIf you would prefer to just install the packages manually to avoid the complications associated with using renv, you can install the packages printed below.\nCodeinstall.packages(c(\n  \"tidyverse\",\n  \"deSolve\",\n  \"diagram\",\n  \"gt\",\n  \"ggtext\",\n  \"here\",\n  \"rio\",\n))",
+    "text": "R Packages\nIf you use renv to manage package dependencies in your projects, you can visit the GitHub repository for this project and download the renv.lock, .Rprofile, and renv/activate.R files, before running the command renv::restore(). Alternatively, if you already use GitHub, you could clone the project and just run renv::restore().\nIf you would prefer to just install the packages manually to avoid the complications associated with using renv, you can install the packages printed below.\nCodeinstall.packages(c(\n  \"tidyverse\",\n  \"deSolve\",\n  \"diagram\",\n  \"gt\",\n  \"ggtext\",\n  \"here\",\n  \"rio\"\n))",
     "crumbs": [
       "Pre-Requisites",
       "Exercise Requirements"
