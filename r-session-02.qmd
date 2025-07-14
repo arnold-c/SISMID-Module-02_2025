@@ -715,41 +715,23 @@ ages_beta_mat[21:30, 1:20] <- ages_params["beta_aj"]
 ```{r}
 #| column: body
 #| out-width: 100%
-ages_beta_mat %>%
-  # Turn into a data.frame so we can use ggplot()
-  as.data.frame.table() %>%
-  mutate(
-    age_contactor = rep(ages, 30),
-    # Repeat each age in ages vector 30 times before moving to next
-    age_contactee = rep(ages, each = 30)
-  ) %>%
-  ggplot(aes(x = age_contactor, y = age_contactee, z = Freq)) +
-  geom_contour_filled(bins = 8) +
-  scale_fill_brewer(
-    palette = "Reds",
-    # Don't drop unused bins as useful for ensuring extremities properly
-    # binned
-    drop = FALSE
-  ) +
-  labs(x = "Age of Contactor", y = "Age of Contactee")
+# Convert matrix to data frame
+tile_df <- expand.grid(x = 1:30, y = 1:30)
+tile_df$value <- as.vector(ages_beta_mat)
+
+# Convert to factor to treat as discrete categories and define colors
+tile_df$value <- factor(tile_df$value)
+beta_colors <- c("0.005" = "#fcae91", "0.01" = "#de2d26", "0.02" = "#a50f15")
+
+# Create tile plot with 3 betas
+ggplot(tile_df, aes(x = x, y = y, fill = value)) +
+  geom_tile(color = "white") +
+  scale_fill_manual(values = beta_colors, name = expression(beta)) +
+  labs(x = "Age of Contactor", y = "Age of Contactee") +
+  scale_x_continuous(breaks = 1:30, labels = as.character(ages)) +
+  scale_y_continuous(breaks = 1:30, labels = as.character(ages))
 ```
 
-::: {.callout-note collapse="false"}
-You could also use the `filled.contour()` base-R function to plot the beta matrix without needing to do any dataframe modifications, but it doesn't look as nice ...
-
-```{r}
-#| code-fold: true
-filled.contour(
-  ages,
-  ages,
-  ages_beta_mat,
-  plot.title = title(
-    xlab = "Age of Contactor",
-    ylab = "Age of Contactee"
-  )
-)
-```
-:::
 
 We'll assume that, at the time of introduction, all children are susceptible, as are adults over 45, but that individuals aged 20--45 have seen the pathogen before and are immune.
 The vector `yinit` expresses these initial conditions.
@@ -854,8 +836,10 @@ aging_mat %>%
     z = Freq
   )) +
   geom_tile(colour = "grey", size = 0.4, aes(fill = Freq)) +
-  scale_fill_gradientn(
-    colours = c("red", "white", "blue")
+scale_fill_gradientn(
+    colours = c("red", "white", "blue"),
+    breaks = c(-1, -0.2, 0, 0.2, 1),
+    labels = c("-1", "-0.2", "0", "0.2", "1")
   ) +
   labs(x = "Source Age Group", y = "Recipient Age Group")
 ```
