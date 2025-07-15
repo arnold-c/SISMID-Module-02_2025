@@ -1570,3 +1570,4 @@ fit1.x0y0 <- optim(
 ) #fit
 exp(fit1.x0y0$par) #back-transform parameters
 ```
+
